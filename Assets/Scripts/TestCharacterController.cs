@@ -15,7 +15,7 @@ namespace SimpleInputNamespace
 
         void Update()
         {
-            if (transform.position.x > 4.2f && SW.Angle > 0)
+            if (transform.position.x > 4.2f && SW.Angle > 0) //ther 4.2 is the cordinqate position of the edge of the road
             {
                 hMovement = 0 * movementSpeed / 100;
             }
@@ -25,7 +25,7 @@ namespace SimpleInputNamespace
             }
             else
             {
-                hMovement = SW.Angle * movementSpeed / 50;
+                hMovement = SW.Angle * movementSpeed / 100;
             } 
             float vMovement = 1 * movementSpeed;
 
