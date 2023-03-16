@@ -8,9 +8,9 @@ namespace SimpleInputNamespace
     {
         public float movementSpeed = 10f;
         public SpawnManager spawnManager;
-
+        
         public SteeringWheel SW;
-
+     
         private float hMovement;
 
         void Update()
