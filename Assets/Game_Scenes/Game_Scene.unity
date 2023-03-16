@@ -1231,9 +1231,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e978aab4f2337ba44a9670ae157f9f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
   spawnManager: {fileID: 9218222}
+  SteeringWheel: 0
+  movementSpeed: 10
   SW: {fileID: 816486613}
+  LanesX:
+  - -4
+  - -2
+  - 0
+  - 2
+  - 4
+  MoveToLane: 0
+  MoveFromLane: 2
+  signedDirection: 0
+  hPosition: 0
+  interpolationFramesCount: 45
 --- !u!54 &930167904
 Rigidbody:
   m_ObjectHideFlags: 0
