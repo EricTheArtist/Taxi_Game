@@ -16,6 +16,7 @@ namespace SimpleInputNamespace
         public float movementSpeed = 10f;
         public SteeringWheel SW;
         private float hMovement;
+        public GameObject SteeringwheelUI;
 
         [Header("Swiping")]
         public float[] LanesX;
@@ -23,7 +24,19 @@ namespace SimpleInputNamespace
         public int MoveFromLane = 2;
         public float hPosition = 0;
 
+        public float swipeThreshold = 20f;
 
+        private Vector2 fingerDownPosition;
+        private Vector2 fingerUpPosition;
+
+
+        private void Start()
+        {
+            if(SteeringWheel == false)
+            {
+                SteeringwheelUI.SetActive(false);
+            }
+        }
         void Update()
         {
             //Code for steering wheel
@@ -44,6 +57,46 @@ namespace SimpleInputNamespace
             }
 
             //Code for swiping controls 
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                // Check for finger down
+                if (touch.phase == TouchPhase.Began)
+                {
+                    fingerDownPosition = touch.position;
+                }
+
+                // Check for finger up
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    fingerUpPosition = touch.position;
+
+                    // Check for swipe
+                    if (Mathf.Abs(fingerUpPosition.x - fingerDownPosition.x) > swipeThreshold)
+                    {
+                        // Swipe detected, handle it here
+                        if (fingerUpPosition.x - fingerDownPosition.x > 0)
+                        {
+                            Debug.Log("Swiped Right");
+                            if (MoveFromLane < 4)
+                            {
+                                MoveToLane = MoveFromLane + 1;
+                                hPosition = LanesX[MoveToLane];
+                                MoveFromLane = MoveToLane;
+                            }
+                        }
+                        else if(MoveFromLane > 0)
+                        {
+                            Debug.Log("Swiped Left");
+                            MoveToLane = MoveFromLane - 1;
+                            hPosition = LanesX[MoveToLane];
+                            MoveFromLane = MoveToLane;
+                        }
+                    }
+                }
+            }
 
 
             // set The forward movement
