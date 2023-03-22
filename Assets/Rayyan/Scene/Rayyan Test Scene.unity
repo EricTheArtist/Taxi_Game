@@ -874,6 +874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -899,7 +900,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -958,6 +959,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!114 &816486613 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114646804193482684, guid: 5fe76d8874b5ab349a260c69ea0dece9,
@@ -1231,9 +1252,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e978aab4f2337ba44a9670ae157f9f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
   spawnManager: {fileID: 9218222}
+  SteeringWheel: 0
+  movementSpeed: 10
   SW: {fileID: 816486613}
+  SteeringwheelUI: {fileID: 0}
+  LanesX: []
+  MoveToLane: 1
+  MoveFromLane: 2
+  hPosition: 0
+  swipeThreshold: 20
 --- !u!54 &930167904
 Rigidbody:
   m_ObjectHideFlags: 0
