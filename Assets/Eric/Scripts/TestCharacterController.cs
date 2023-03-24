@@ -117,14 +117,14 @@ namespace SimpleInputNamespace
 
         void MovementTest()
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) && MoveFromLane < 4)
             {
                 Debug.Log("Swiped Right");
                 MoveToLane = MoveFromLane + 1;
                 hPosition = LanesX[MoveToLane];
                 MoveFromLane = MoveToLane;
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && MoveFromLane > 0)
             {
                 Debug.Log("Swiped Left");
                 MoveToLane = MoveFromLane - 1;
