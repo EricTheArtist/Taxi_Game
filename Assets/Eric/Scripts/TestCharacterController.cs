@@ -39,6 +39,7 @@ namespace SimpleInputNamespace
         }
         void Update()
         {
+            MovementTest();
             //Code for steering wheel
             if (SteeringWheel== true) 
                 {
@@ -110,11 +111,31 @@ namespace SimpleInputNamespace
 
         }
 
-
+        void MovementTest()
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                Debug.Log("Swiped Right");
+                MoveToLane = MoveFromLane + 1;
+                hPosition = LanesX[MoveToLane];
+                MoveFromLane = MoveToLane;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Debug.Log("Swiped Left");
+                MoveToLane = MoveFromLane - 1;
+                hPosition = LanesX[MoveToLane];
+                MoveFromLane = MoveToLane;
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
-            spawnManager.SpawnTriggerEnter();
+            if(other.tag=="Module Collision")
+            {
+                spawnManager.SpawnTriggerEnter();
+            }
+           
         }
 
     }
