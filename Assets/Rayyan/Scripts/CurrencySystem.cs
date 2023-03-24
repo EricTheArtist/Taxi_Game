@@ -5,7 +5,7 @@ using UnityEngine;
 public class CurrencySystem : MonoBehaviour
 {
     
-    public int current_amount;
+    public int main_amount;
     public int run_amount;
     public int multiplier;
 
@@ -52,7 +52,7 @@ public class CurrencySystem : MonoBehaviour
     }
     void End_Run_Add()
     {
-        current_amount = current_amount + run_amount;
+        main_amount = main_amount + run_amount;
     }
 
 }
