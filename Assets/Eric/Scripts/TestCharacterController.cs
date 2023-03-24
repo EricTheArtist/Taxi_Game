@@ -11,7 +11,7 @@ namespace SimpleInputNamespace
         public SpawnManager spawnManager;
 
         public bool SteeringWheel;
-
+        public bool game_over;
         [Header("Steering Wheel")]
         public float movementSpeed = 10f;
         public SteeringWheel SW;
@@ -32,6 +32,7 @@ namespace SimpleInputNamespace
 
         private void Start()
         {
+            game_over = false;
             if(SteeringWheel == false)
             {
                 SteeringwheelUI.SetActive(false);
@@ -99,15 +100,18 @@ namespace SimpleInputNamespace
                 }
             }
 
+            if (!game_over)
+            {
+                // set The forward movement
+                float vMovement = 1 * movementSpeed;
 
-            // set The forward movement
-            float vMovement = 1 * movementSpeed;
-            
-            //updates the position of the car with steering wheel included
-            transform.Translate(new Vector3(hMovement, 0, vMovement) * Time.deltaTime);
+                //updates the position of the car with steering wheel included
+                transform.Translate(new Vector3(hMovement, 0, vMovement) * Time.deltaTime);
 
-            //updates the position of the care with swiping
-            this.transform.position = new Vector3(hPosition,0.5f,transform.position.z);
+                //updates the position of the care with swiping
+                this.transform.position = new Vector3(hPosition, 0.5f, transform.position.z);
+            }
+           
 
         }
 
