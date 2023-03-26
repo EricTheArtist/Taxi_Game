@@ -23,5 +23,15 @@ public class RoadSpawner : MonoBehaviour
         movedRoad.transform.position = new Vector3(0, -0.5f, newZ);
         roads.Add(movedRoad);
     }
+
+    public void AlignRoads() // called by the floating origin script each time all the assets are sent back to the origin
+    {
+
+        foreach (GameObject obj in roads)
+        {
+            obj.transform.position = new Vector3(0, -0.5f, obj.transform.position.z);
+        }
+
+    }
     
 }
