@@ -13,6 +13,11 @@ public class BreakSystem : MonoBehaviour
     private Image brakeImage;
     float _movementSpeed;
 
+    // used for lerping the break
+    public float BreakingSpeed = 3f;
+    float LerpOfBreak;
+    bool CanLerp = false;
+
     private SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +30,25 @@ public class BreakSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ManageBrakeSystem();
+        ManageBrakeSystem(); // temporary system for Input of testing breaks on PC 
+
+        LerpBreaking(); // checks for lerping if the break has been pressed 
+    }
+
+
+    void LerpBreaking()
+    {
+        if(CanLerp == true)
+        {
+            LerpOfBreak += BreakingSpeed * Time.deltaTime;
+            controller.movementSpeed = Mathf.Lerp(_movementSpeed, 0, LerpOfBreak);
+
+            if(LerpOfBreak > 1)
+            {
+                CanLerp = false;
+                LerpOfBreak = 0;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,23 +60,39 @@ public class BreakSystem : MonoBehaviour
         }
     }
 
-    void ManageBrakeSystem()
+    void ManageBrakeSystem() // temporary system
     {
         if (Input.GetKeyDown(KeyCode.B) && brakesAmount>0)
         {
             //Debug.Log("You Are Braking");
-            _movementSpeed = 0f;
-            _movementSpeed = controller.movementSpeed;
-            controller.movementSpeed = 0f;
-            ReduceBrakes();        
+            BreakPadDown();
         }
         if (Input.GetKeyUp(KeyCode.B) && brakesAmount>=0)
         {
             //Debug.Log("You Are Not Braking");
-            controller.movementSpeed = _movementSpeed;
+            BreakPadUp();
         }
     }
-    void ManageBrakePads()
+
+    public void BreakPadDown() //called on button press
+    {
+        if (brakesAmount > 0) //check that the player has not used all their breaks
+        {
+            _movementSpeed = 0f;
+            _movementSpeed = controller.movementSpeed;
+            CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
+            //controller.movementSpeed = 0f;
+            ReduceBrakes();
+        }
+
+    }
+
+    public void BreakPadUp() //called on button release
+    {
+        controller.movementSpeed = _movementSpeed;
+    }
+    
+    void ManageBrakePads() //let's replace this system with one that interpolates the colour based on the percentage of breaks left
     {
         if (brakesAmount == 3)
         {
@@ -69,7 +108,8 @@ public class BreakSystem : MonoBehaviour
         }
         if (brakesAmount == 0)
         {
-            brakeImage.gameObject.SetActive(false);
+            brakeImage.color = Color.black;
+            //brakeImage.gameObject.SetActive(false);
         }
     }
     void ReduceBrakes()

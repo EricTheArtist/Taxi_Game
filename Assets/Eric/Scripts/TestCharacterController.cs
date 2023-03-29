@@ -12,19 +12,22 @@ namespace SimpleInputNamespace
 
         public bool SteeringWheel;
         public bool game_over;
+        public float movementSpeed = 10f; // speed of forward movement and of horizontal movement when using steering wheel
         [Header("Steering Wheel")]
-        public float movementSpeed = 10f;
         public SteeringWheel SW;
-        private float hMovement;
+        private float hMovement; //horixontal movement, the speed at which the x value of the taxi is shifted 
         public GameObject SteeringwheelUI;
 
         [Header("Swiping")]
-        public float[] LanesX;
-        public int MoveToLane = 1;
-        public int MoveFromLane = 2;
-        public float hPosition = 0;
-
+        public float[] LanesX; //X value of each lane stored in an array
+        public int MoveToLane = 1; //array index
+        public int MoveFromLane = 2; //arry index
+        public float LaneTransitionSpeed = 4f; //fraction of 1 second (so if the LaneTransitionSpeed = 4 then the time to switch lanes will be 0.25s)
+        float LaneLep; // ratio of 0-1 of position between each lane when switching lanes
+        public float hPosition = 0;  //horizontal position, this is used as the X value of the taxi's position 
         public float swipeThreshold = 20f;
+
+        private bool LerpSwipe = false;
 
         private Vector2 fingerDownPosition;
         private Vector2 fingerUpPosition;
@@ -38,13 +41,48 @@ namespace SimpleInputNamespace
                 SteeringwheelUI.SetActive(false);
             }
         }
+
+        public void ToggleSteeringWheel()
+        {
+            if(SteeringWheel == false)
+            {
+                SteeringwheelUI.SetActive(true);
+                SteeringWheel = true;
+                
+            }
+            else
+            {
+                SteeringwheelUI.SetActive(false);
+                SteeringWheel = false;
+                
+            }
+
+        }
         void Update()
         {
-            MovementTest();
+            MovementTest(); // testing input for PC (Remove later)
+
             //Code for steering wheel
-            if (SteeringWheel== true) 
-                {
-                    if (transform.position.x > 4.2f && SW.Angle > 0) //the 4.2 is the cordinqate position of the edge of the road
+            SteeringWheelUpdate();
+
+            //Code for swiping controls 
+            SwipingUpdate();
+
+            //Code For forward and side to side movement
+            MovementUpdate();    
+
+            //code for interpolating when swiping side to side
+            InterpolateLanes();
+
+        }
+
+
+        void SteeringWheelUpdate()
+        {
+            //Code for steering wheel
+            if (SteeringWheel == true)
+            {
+                if (transform.position.x > 4.2f && SW.Angle > 0) //the 4.2 is the cordinqate position of the edge of the road
                 {
                     hMovement = 0 * movementSpeed / 100;
                 }
@@ -55,11 +93,12 @@ namespace SimpleInputNamespace
                 else
                 {
                     hMovement = SW.Angle * movementSpeed / 100;
-                }  
+                }
             }
+        }
 
-            //Code for swiping controls 
-
+        void SwipingUpdate()
+        {
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -70,7 +109,7 @@ namespace SimpleInputNamespace
                     fingerDownPosition = touch.position;
                 }
 
-                // Check for finger up
+                // Check for finger up this means this logic 
                 if (touch.phase == TouchPhase.Ended)
                 {
                     fingerUpPosition = touch.position;
@@ -79,61 +118,92 @@ namespace SimpleInputNamespace
                     if (Mathf.Abs(fingerUpPosition.x - fingerDownPosition.x) > swipeThreshold)
                     {
                         // Swipe detected, handle it here
-                        if (fingerUpPosition.x - fingerDownPosition.x > 0)
+                        if (fingerUpPosition.x - fingerDownPosition.x > 0 && LerpSwipe == false)
                         {
-                            Debug.Log("Swiped Right");
-                            if (MoveFromLane < 4)
+                            //Debug.Log("Swiped Right");
+                            if (MoveFromLane < 4) //checks to make sure there is a lane to the right and that you are not busy moving lanes
                             {
                                 MoveToLane = MoveFromLane + 1;
-                                hPosition = LanesX[MoveToLane];
-                                MoveFromLane = MoveToLane;
+                                LerpSwipe = true;
+                                
                             }
                         }
-                        else if(MoveFromLane > 0)
+                        else if (MoveFromLane > 0 && LerpSwipe == false) //checks to make sure there is a lane to the left and that you are not busy moving lanes
                         {
-                            Debug.Log("Swiped Left");
+                            //Debug.Log("Swiped Left");
                             MoveToLane = MoveFromLane - 1;
-                            hPosition = LanesX[MoveToLane];
-                            MoveFromLane = MoveToLane;
+                            LerpSwipe = true;
+                            
+
                         }
                     }
                 }
             }
+        }
 
+        void MovementUpdate() //updates X and Z position based on if steeringwheel or swiping is being used
+        {
             if (!game_over)
             {
                 // set The forward movement
                 float vMovement = 1 * movementSpeed;
+                if (SteeringWheel == true)
+                {
+                    //updates the position of the car with steering wheel included
+                    transform.Translate(new Vector3(hMovement, 0, vMovement) * Time.deltaTime);
+                }
+                else
+                {
+                    //updates the position of the car with swiping
+                    transform.Translate(new Vector3(0, 0, vMovement) * Time.deltaTime);
+                    this.transform.position = new Vector3(hPosition, 0.5f, transform.position.z);
+                }
 
-                //updates the position of the car with steering wheel included
-                transform.Translate(new Vector3(hMovement, 0, vMovement) * Time.deltaTime);
-
-                //updates the position of the care with swiping
-                this.transform.position = new Vector3(hPosition, 0.5f, transform.position.z);
             }
-           
-
         }
 
-        void MovementTest()
+        void InterpolateLanes() // called in update
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow) && MoveFromLane < 4)
+            if(LerpSwipe == true) // this is set true when a succesfull swipe is dectected in SwipingUpdate
+            {
+                LaneLep += LaneTransitionSpeed * Time.deltaTime;
+                hPosition = Mathf.Lerp(LanesX[MoveFromLane], LanesX[MoveToLane], LaneLep);
+                if (LaneLep > 1f)
+                {
+                    LerpSwipe = false;
+                    LaneLep = 0;
+                    SwitchLanes(); // completes the lane switching by assigning the lane that the player moved into as their new current lane
+                }
+
+            }
+        }
+
+
+        void SwitchLanes() //called once when the lerping of lanes is finished
+        {
+            //Debug.Log("Lane switch complete");
+            hPosition = LanesX[MoveToLane];
+            MoveFromLane = MoveToLane;
+        }
+
+        void MovementTest() //input for tseting lane switching on PC
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) && MoveFromLane < 4 && LerpSwipe == false)
             {
                 Debug.Log("Swiped Right");
                 MoveToLane = MoveFromLane + 1;
-                hPosition = LanesX[MoveToLane];
-                MoveFromLane = MoveToLane;
+                LerpSwipe = true;
+
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && MoveFromLane > 0)
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && MoveFromLane > 0 && LerpSwipe == false)
             {
                 Debug.Log("Swiped Left");
                 MoveToLane = MoveFromLane - 1;
-                hPosition = LanesX[MoveToLane];
-                MoveFromLane = MoveToLane;
+                LerpSwipe = true;
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other) //calls the spawn manger that moves road segments from behind the player to the front of the stack
         {
             if(other.tag=="Module Collision")
             {
