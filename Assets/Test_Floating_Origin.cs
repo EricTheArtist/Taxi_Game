@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(Camera))]
+//RequireComponent(typeof(Camera))]
 public class Test_Floating_Origin : MonoBehaviour
 {
     public float threshold = 500f;

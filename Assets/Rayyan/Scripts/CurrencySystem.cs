@@ -11,6 +11,7 @@ public class CurrencySystem : MonoBehaviour
     public int multiplier;
 
     public TMP_Text run_amount_text;
+    public TMP_Text run_amount_shadow;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class CurrencySystem : MonoBehaviour
     void Update()
     {
         run_amount_text.SetText(run_amount.ToString());
+        run_amount_shadow.SetText(run_amount.ToString());
     }
 
     private void OnTriggerEnter(Collider other)

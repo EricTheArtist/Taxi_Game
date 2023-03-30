@@ -6,8 +6,8 @@ public class TestCameraFollow : MonoBehaviour
 {
     private Transform player;
 
-    private float yOffset = 3f;
-    private float zOffset = -6;
+    public float yOffset = 3f;
+    public float zOffset = -10;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,6 @@ public class TestCameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(transform.position.x, player.position.y + yOffset, player.position.z + zOffset);
+        transform.position = new Vector3(player.position.x/1.3f, player.position.y + yOffset, player.position.z + zOffset);
     }
 }

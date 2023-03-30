@@ -18,10 +18,13 @@ public class GameEndSystem : MonoBehaviour
    
     public bool endgame;
     public GameObject endgame_ui;
+    public GameObject welcome_ui;
     CurrencySystem currency_system;
 
     public TMP_Text main_currency_text;
     public TMP_Text run_curreny_text;
+
+    public GameObject FloatingOrigin;
 
     SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
@@ -29,6 +32,7 @@ public class GameEndSystem : MonoBehaviour
     {
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
+        //controller.game_over = true;
     }
 
     // Update is called once per frame
@@ -59,6 +63,7 @@ public class GameEndSystem : MonoBehaviour
     {
 
     }
+
     void Endgame()
     {
         endgame_ui.SetActive(true);
@@ -75,11 +80,34 @@ public class GameEndSystem : MonoBehaviour
         PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
 
         currency_system.run_amount = 0;
+
+        // here we need to add calculations for the player's distance high score and check their placement on the leaderboard
     }
     public void restart_button()
     {
         Debug.Log("Game Restarted");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reloading the whole scene is might cause big peformance hit as our game becomes more complex
+        // instead we shoud do the following:
+        // reset posion of enviroment (this can be done using the same approach as in the floating origin system)
+        // reset position of player (we will also need to reset the current lane var in the player)
+        // reset the player's distance score
+        // set controller.game_over to false
+    }
+
+    public void main_button()
+    {
+        welcome_ui.SetActive(true);
+        endgame_ui.SetActive(false);
+    }
+    public void play_button()
+    {
+        welcome_ui.SetActive(false);
+        controller.game_over = false;
+    }
+
+    public void shop_button()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
 }
