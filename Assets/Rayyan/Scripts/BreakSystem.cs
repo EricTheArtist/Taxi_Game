@@ -80,6 +80,7 @@ public class BreakSystem : MonoBehaviour
         {
             _movementSpeed = 0f;
             _movementSpeed = controller.movementSpeed;
+           //controller.movementSpeed = 0f;
             CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
             //controller.movementSpeed = 0f;
             ReduceBrakes();
@@ -89,6 +90,7 @@ public class BreakSystem : MonoBehaviour
 
     public void BreakPadUp() //called on button release
     {
+        CanLerp = false;
         controller.movementSpeed = _movementSpeed;
     }
     
