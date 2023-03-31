@@ -11,7 +11,7 @@ public class TestCameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Taxi").transform;
+        player = GameObject.Find("PLAYER_VEHICLE").transform;
     }
 
     // Update is called once per frame
