@@ -24,7 +24,7 @@ public class GameEndSystem : MonoBehaviour
     public TMP_Text main_currency_text;
     public TMP_Text run_curreny_text;
 
-    public GameObject FloatingOrigin;
+    public Test_Floating_Origin FloatingOrigin;
 
     SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class GameEndSystem : MonoBehaviour
     {
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
-        //controller.game_over = true;
+        controller.game_over = true;
     }
 
     // Update is called once per frame
@@ -86,12 +86,30 @@ public class GameEndSystem : MonoBehaviour
     public void restart_button()
     {
         Debug.Log("Game Restarted");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reloading the whole scene is might cause big peformance hit as our game becomes more complex
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reloading the whole scene is might cause big peformance hit as our game becomes more complex
         // instead we shoud do the following:
+
         // reset posion of enviroment (this can be done using the same approach as in the floating origin system)
-        // reset position of player (we will also need to reset the current lane var in the player)
+        FloatingOrigin.resetToOrigin();
+
+        // reset position of player
+        controller.hPosition = 0;
+        this.transform.position = new Vector3(0, 0.5f, 0);
+        transform.rotation = Quaternion.identity;
+
+        // reset the current lane var in the player
+        controller.MoveFromLane = 2;
+
         // reset the player's distance score
-        // set controller.game_over to false
+
+        // reset the momentum of the player
+
+        // reset the obsticle spawning system
+
+        // restart the movement in the controller
+        controller.game_over = false;
+
+        endgame_ui.SetActive(false);
     }
 
     public void main_button()
@@ -102,7 +120,7 @@ public class GameEndSystem : MonoBehaviour
     public void play_button()
     {
         welcome_ui.SetActive(false);
-        controller.game_over = false;
+        restart_button();
     }
 
     public void shop_button()
