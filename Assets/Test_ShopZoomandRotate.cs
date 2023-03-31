@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class Test_ShopZoomandRotate : MonoBehaviour
 {
-    // The speed of the zoom and rotate operations
+    // The speed of the zoom operation
     public float zoomSpeed = 0.5f;
-    public float rotateSpeed = 0.5f;
 
-    // The minimum and maximum zoom levels
-    public float minZoom = 1.0f;
-    public float maxZoom = 10.0f;
+    // The minimum and maximum distance between the camera and the target object
+    public float minDistance = 1.0f;
+    public float maxDistance = 10.0f;
 
-    // The touch inputs to detect pinch and drag gestures
+    // The touch inputs to detect pinch gestures
     private Touch touchZero;
     private Touch touchOne;
 
     // The initial distance between the two touch points
     private float initialDistance = 0.0f;
 
-    // The initial rotation of the camera
-    private Quaternion initialRotation;
+    // The initial position of the camera
+    private Vector3 initialPosition;
 
-    // The GameObject to zoom and rotate towards
+    // The GameObject to move towards and away from
     public GameObject targetObject;
 
     void Start()
     {
-        // Store the initial rotation of the camera
-        initialRotation = transform.rotation;
+        // Store the initial position of the camera
+        initialPosition = transform.position;
     }
 
     void Update()
@@ -56,11 +55,16 @@ public class Test_ShopZoomandRotate : MonoBehaviour
                 // Calculate the zoom factor based on the new and initial distances
                 float zoomFactor = newDistance / initialDistance;
 
-                // Clamp the zoom factor between the minimum and maximum zoom levels
-                zoomFactor = Mathf.Clamp(zoomFactor, minZoom, maxZoom);
+                // Invert the zoom factor to move the camera in the opposite direction of the pinch
+                zoomFactor = 1 / zoomFactor;
 
-                // Calculate the new position of the camera based on the zoom factor and target object
-                Vector3 newPosition = Vector3.Lerp(transform.position, targetObject.transform.position, zoomFactor);
+                // Clamp the zoom factor between the minimum and maximum distance levels
+                float distance = Vector3.Distance(transform.position, targetObject.transform.position);
+                float targetDistance = distance * zoomFactor;
+                targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
+
+                // Calculate the new position of the camera based on the target object and zoom factor
+                Vector3 newPosition = targetObject.transform.position + (transform.position - targetObject.transform.position).normalized * targetDistance;
 
                 // Move the camera to the new position
                 transform.position = newPosition;
@@ -71,29 +75,6 @@ public class Test_ShopZoomandRotate : MonoBehaviour
             {
                 // Reset the initial distance between the two touch points
                 initialDistance = 0.0f;
-            }
-        }
-        else if (Input.touchCount == 1)
-        {
-            // Get the touch input
-            Touch touch = Input.GetTouch(0);
-
-            // Check if the touch input has just started
-            if (touch.phase == TouchPhase.Began)
-            {
-                // Store the initial rotation of the camera
-                initialRotation = transform.rotation;
-            }
-
-            // Check if the touch input has moved
-            if (touch.phase == TouchPhase.Moved)
-            {
-                // Calculate the rotation based on the touch input's movement
-                float rotateX = touch.deltaPosition.x * rotateSpeed;
-                float rotateY = touch.deltaPosition.y * rotateSpeed;
-
-                // Apply the rotation to the camera's transform
-                transform.rotation = initialRotation * Quaternion.Euler(-rotateY, rotateX, 0);
             }
         }
     }

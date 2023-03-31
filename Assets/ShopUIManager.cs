@@ -10,6 +10,7 @@ public class ShopUIManager : MonoBehaviour
     public TMP_Text coins_amount_text;
     public TMP_Text coins_amount_shadow;
     public GameObject shopInterface;
+    public GameObject TaxiRankScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,14 @@ public class ShopUIManager : MonoBehaviour
     {
         if(Screen.orientation == ScreenOrientation.Portrait)
         {
-            shopInterface.transform.position = new Vector3(0,-400,0);
+            
+            shopInterface.transform.localPosition = new Vector3(0,430,0);
+            TaxiRankScene.transform.position = new Vector3(2.43f, 0.8f, -2.25f);
         }
         else
         {
-            shopInterface.transform.position = new Vector3(600, 0, 0);
+            shopInterface.transform.localPosition = new Vector3(600, 0, 0);
+            TaxiRankScene.transform.position = new Vector3(0.15f,1.3f,-2.25f);
         }
     }
 
@@ -46,5 +50,18 @@ public class ShopUIManager : MonoBehaviour
         Coins = Coins - deductAmount;
         PlayerPrefs.SetInt("Main Amount", Coins);
         updateCoinsText();
+    }
+
+    public bool CheckForEnoughMoney(int Cost) 
+    {
+        if(Cost < Coins)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    
     }
 }
