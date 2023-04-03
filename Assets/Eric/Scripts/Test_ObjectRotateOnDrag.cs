@@ -19,6 +19,8 @@ public class Test_ObjectRotateOnDrag : MonoBehaviour
     // The horizontal distance between the initial and current touch positions
     private float horizontalDragDistance = 0f;
 
+    //float draglimit = 0; 
+
     void Update()
     {
         // Check if there is one touch point on the screen
@@ -46,6 +48,7 @@ public class Test_ObjectRotateOnDrag : MonoBehaviour
                 // Calculate the rotation angle based on the horizontal drag distance
                 float rotationAngle = horizontalDragDistance * rotationSpeed * Time.deltaTime;
 
+                Debug.Log(horizontalDragDistance);
                 // Rotate the object around its Y-axis based on the rotation angle
                 transform.Rotate(new Vector3(0, -rotationAngle, 0));
             }

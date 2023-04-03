@@ -24,6 +24,7 @@ public class Test_ShopZoomandRotate : MonoBehaviour
     // The GameObject to move towards and away from
     public GameObject targetObject;
 
+    float LepAmt = 0; 
     void Start()
     {
         // Store the initial position of the camera
@@ -55,19 +56,39 @@ public class Test_ShopZoomandRotate : MonoBehaviour
                 // Calculate the zoom factor based on the new and initial distances
                 float zoomFactor = newDistance / initialDistance;
 
+                Debug.Log(zoomFactor);
                 // Invert the zoom factor to move the camera in the opposite direction of the pinch
-                zoomFactor = 1 / zoomFactor;
+                //zoomFactor = 1 / zoomFactor;
 
                 // Clamp the zoom factor between the minimum and maximum distance levels
                 float distance = Vector3.Distance(transform.position, targetObject.transform.position);
-                float targetDistance = distance * zoomFactor;
-                targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
+                //float targetDistance = distance * zoomFactor;
+                //targetDistance = Mathf.Clamp(targetDistance, minDistance, maxDistance);
 
+                Debug.Log("Distance: " + distance);
+
+                if (zoomFactor>1 && distance>minDistance)
+                {
+                    //Debug.Log("ZoomIN");
+                    //float LepAmt = 0;
+                    LepAmt += zoomSpeed * Time.deltaTime;
+                    Vector3 newPosition = Vector3.Lerp(initialPosition, targetObject.transform.position, LepAmt);
+                    // Move the camera to the new position
+                    transform.position = newPosition;
+                }
+                else if (zoomFactor < 1 && distance < maxDistance)
+                {
+                    //Debug.Log("ZoomOUT");
+                    //float LepAmt = 0;
+                    LepAmt -= zoomSpeed * Time.deltaTime;
+                    Vector3 newPosition = Vector3.Lerp(initialPosition, targetObject.transform.position, LepAmt);
+                    // Move the camera to the new position
+                    transform.position = newPosition;
+                }
                 // Calculate the new position of the camera based on the target object and zoom factor
-                Vector3 newPosition = targetObject.transform.position + (transform.position - targetObject.transform.position).normalized * targetDistance;
+                 //targetObject.transform.position + (transform.position - targetObject.transform.position).normalized * targetDistance;
 
-                // Move the camera to the new position
-                transform.position = newPosition;
+
             }
 
             // Check if the touch inputs have ended
@@ -75,6 +96,7 @@ public class Test_ShopZoomandRotate : MonoBehaviour
             {
                 // Reset the initial distance between the two touch points
                 initialDistance = 0.0f;
+                LepAmt = 0;
             }
         }
     }
