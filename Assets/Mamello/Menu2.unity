@@ -2823,6 +2823,7 @@ MonoBehaviour:
   run_amount: 0
   multiplier: 0
   run_amount_text: {fileID: 280704592}
+  run_amount_shadow: {fileID: 0}
 --- !u!114 &930167906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2837,8 +2838,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endgame: 0
   endgame_ui: {fileID: 479098224}
+  welcome_ui: {fileID: 0}
   main_currency_text: {fileID: 1057181258}
   run_curreny_text: {fileID: 730011481}
+  FloatingOrigin: {fileID: 0}
 --- !u!114 &930167907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,6 +2893,7 @@ MonoBehaviour:
   LanesX: []
   MoveToLane: 1
   MoveFromLane: 2
+  LaneTransitionSpeed: 4
   hPosition: 0
   swipeThreshold: 20
 --- !u!1 &963194225
@@ -2991,6 +2995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecca3a080f381940b53ecff87353395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yOffset: 3
+  zOffset: -10
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

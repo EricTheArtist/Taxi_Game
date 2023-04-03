@@ -436,6 +436,8 @@ GameObject:
   - component: {fileID: 1995571284987025672}
   - component: {fileID: 1995571284987025675}
   - component: {fileID: 1995571284987025674}
+  - component: {fileID: 3045257163946532914}
+  - component: {fileID: 6711505760930659472}
   m_Layer: 0
   m_Name: PLAYER_VEHICLE
   m_TagString: Coin
@@ -620,6 +622,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brakePads: {fileID: 0}
   BreakingSpeed: 3
+--- !u!95 &3045257163946532914
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995571284987025715}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60f38319e47f3504583efb3d4e45e016, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6711505760930659472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995571284987025715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11668936af097c48821b4f6544a990b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3045257163946532914}
 --- !u!1001 &1995571284370934263
 PrefabInstance:
   m_ObjectHideFlags: 0
