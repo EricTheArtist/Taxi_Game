@@ -12,7 +12,7 @@ public class BreakSystem : MonoBehaviour
     private int brakesAmount = 3;
     private Image brakeImage;
     float _movementSpeed;
-
+    public bool isBraking = false;
     // used for lerping the break
     public float BreakingSpeed = 3f;
     float LerpOfBreak;
@@ -78,6 +78,7 @@ public class BreakSystem : MonoBehaviour
     {
         if (brakesAmount > 0) //check that the player has not used all their breaks
         {
+            isBraking = true;
             _movementSpeed = 0f;
             _movementSpeed = controller.movementSpeed;
            //controller.movementSpeed = 0f;
@@ -91,6 +92,7 @@ public class BreakSystem : MonoBehaviour
     public void BreakPadUp() //called on button release
     {
         CanLerp = false;
+        isBraking = false;
         controller.movementSpeed = _movementSpeed;
     }
     
