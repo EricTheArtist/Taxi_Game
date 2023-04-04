@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaxiAnimationTest : MonoBehaviour
+public class VehicleAnimationTest : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
@@ -17,20 +17,28 @@ public class TaxiAnimationTest : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            animator.SetBool("isSwervingRight", true);
+            //animator.SetBool("isSwervingRight", true);
+            animator.SetTrigger("isSwervingRight 0");
         }
-        else
+        /*else
         {
             animator.SetBool("isSwervingRight", false);
-        }
+        }*/
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            animator.SetBool("isSwervingLeft", true);
+            //animator.SetBool("isSwervingLeft", true);
+            animator.SetTrigger("isSwervingLeft 0");
         }
-        else
+        /*else
         {
             animator.SetBool("isSwervingLeft", false);
-        }
+        }*/
     }
+
+    public void SwerveAnimations()
+    {
+     
+    }
+
 }
