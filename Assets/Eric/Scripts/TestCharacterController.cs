@@ -27,19 +27,26 @@ namespace SimpleInputNamespace
         public float hPosition = 0;  //horizontal position, this is used as the X value of the taxi's position 
         public float swipeThreshold = 20f;
 
+        /*public bool isSwervingLeft = false;
+        public bool isSwervingRight;*/
+
         private bool LerpSwipe = false;
 
         private Vector2 fingerDownPosition;
         private Vector2 fingerUpPosition;
+        
+        private Animator animator;
 
 
         private void Start()
         {
+            animator = GetComponent<Animator>();
+
             game_over = false;
             if(SteeringWheel == false)
             {
                 SteeringwheelUI.SetActive(false);
-            }
+            } 
         }
 
         public void ToggleSteeringWheel()
@@ -73,6 +80,8 @@ namespace SimpleInputNamespace
 
             //code for interpolating when swiping side to side
             InterpolateLanes();
+
+            //vehicleAnimation.SwerveAnimations();
 
         }
 
@@ -125,16 +134,21 @@ namespace SimpleInputNamespace
                             {
                                 MoveToLane = MoveFromLane + 1;
                                 LerpSwipe = true;
-                                
+                                animator.SetTrigger("isSwervingRight 0");
+                                //animator.SetBool("isSwervingRight", true);
                             }
+                            /*else
+                            {
+                                animator.SetBool("isSwervingRight", false);
+                            }*/
                         }
                         else if (MoveFromLane > 0 && LerpSwipe == false) //checks to make sure there is a lane to the left and that you are not busy moving lanes
                         {
                             //Debug.Log("Swiped Left");
                             MoveToLane = MoveFromLane - 1;
                             LerpSwipe = true;
-                            
-
+                            animator.SetTrigger("isSwervingLeft 0");
+                            //animator.SetBool("isSwervingLeft", true);
                         }
                     }
                 }
