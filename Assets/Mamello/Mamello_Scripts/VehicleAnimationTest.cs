@@ -15,7 +15,7 @@ public class VehicleAnimationTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             //animator.SetBool("isSwervingRight", true);
             animator.SetTrigger("isSwervingRight 0");
@@ -25,7 +25,7 @@ public class VehicleAnimationTest : MonoBehaviour
             animator.SetBool("isSwervingRight", false);
         }*/
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             //animator.SetBool("isSwervingLeft", true);
             animator.SetTrigger("isSwervingLeft 0");
