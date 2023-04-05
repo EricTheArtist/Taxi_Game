@@ -103,6 +103,7 @@ public class GameEndSystem : MonoBehaviour
         // reset the player's distance score
 
         // reset the momentum of the player
+        controller.movementSpeed = 10f;
 
         // reset the obsticle spawning system
 

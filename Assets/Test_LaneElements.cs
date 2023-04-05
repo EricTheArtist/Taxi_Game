@@ -7,22 +7,30 @@ public class Test_LaneElements : MonoBehaviour
     public Vector3[] Lanes;
     GameObject[] SpawnedObsticles;
     GameObject spawnedcoins;
+    GameObject spawnedpassengerpickup;
     public GameObject ObstructionPrefab;
     public GameObject CoinsRow;
+    public GameObject Passengerpickup;
 
     public void OnTranslatePosition( int Openlane)
     {
         DestroyLast();
 
-        for (int i = 0; i < Lanes.Length; i++)
+        for (int i = 0; i < Lanes.Length; i++) // loops through all the lanes
         {
-            if(i != Openlane)
+            if(i != Openlane) // is the lane is not open spawn an obsticle
             {
                 SpawnedObsticles[i] = Instantiate(ObstructionPrefab, Lanes[i], Quaternion.identity);
                 SpawnedObsticles[i].transform.parent = transform;
                 SpawnedObsticles[i].transform.localPosition = Lanes[i];
             }
-            else
+            else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge spawn a passender pickup
+            {
+                spawnedpassengerpickup = Instantiate(Passengerpickup, Lanes[i], Quaternion.identity);
+                spawnedpassengerpickup.transform.parent = transform;
+                spawnedpassengerpickup.transform.localPosition = Lanes[i];
+            }
+            else // if tthe lase is open spawn coins
             {
                 spawnedcoins = Instantiate(CoinsRow, Lanes[i], Quaternion.identity);
                 spawnedcoins.transform.parent = transform;
@@ -33,7 +41,7 @@ public class Test_LaneElements : MonoBehaviour
 
     }
 
-    void DestroyLast()
+    void DestroyLast() // removes as spawned objects
     {
         if (SpawnedObsticles != null)
         {
@@ -45,6 +53,10 @@ public class Test_LaneElements : MonoBehaviour
         if(spawnedcoins!= null)
         {
             Destroy(spawnedcoins);
+        }
+        if(spawnedpassengerpickup != null)
+        {
+            Destroy(spawnedpassengerpickup);
         }
 
 

@@ -13,6 +13,7 @@ namespace SimpleInputNamespace
         public bool SteeringWheel;
         public bool game_over;
         public float movementSpeed = 10f; // speed of forward movement and of horizontal movement when using steering wheel
+        public float maxMovementSpeed = 40f;
         [Header("Steering Wheel")]
         public SteeringWheel SW;
         private float hMovement; //horixontal movement, the speed at which the x value of the taxi is shifted 
@@ -81,10 +82,24 @@ namespace SimpleInputNamespace
             //code for interpolating when swiping side to side
             InterpolateLanes();
 
-            //vehicleAnimation.SwerveAnimations();
+            //increases the movement speed over time
+            IncrementSpeed();
 
         }
 
+        void IncrementSpeed()
+        {
+            if (!game_over && movementSpeed < maxMovementSpeed)
+            {
+                
+                
+                    movementSpeed += Time.deltaTime/4;
+                    Debug.Log("Speed: " + movementSpeed);
+                
+
+            }
+
+        }
 
         void SteeringWheelUpdate()
         {
@@ -135,12 +150,9 @@ namespace SimpleInputNamespace
                                 MoveToLane = MoveFromLane + 1;
                                 LerpSwipe = true;
                                 animator.SetTrigger("isSwervingRight 0");
-                                //animator.SetBool("isSwervingRight", true);
+                                
                             }
-                            /*else
-                            {
-                                animator.SetBool("isSwervingRight", false);
-                            }*/
+
                         }
                         else if (MoveFromLane > 0 && LerpSwipe == false) //checks to make sure there is a lane to the left and that you are not busy moving lanes
                         {
@@ -148,7 +160,7 @@ namespace SimpleInputNamespace
                             MoveToLane = MoveFromLane - 1;
                             LerpSwipe = true;
                             animator.SetTrigger("isSwervingLeft 0");
-                            //animator.SetBool("isSwervingLeft", true);
+                            
                         }
                     }
                 }

@@ -9,7 +9,7 @@ public class BreakSystem : MonoBehaviour
 
     public GameObject brakePads;
     
-    private int brakesAmount = 3;
+    private int brakesAmount = 100;
     private Image brakeImage;
     float _movementSpeed;
     public bool isBraking = false;
@@ -81,6 +81,7 @@ public class BreakSystem : MonoBehaviour
             isBraking = true;
             _movementSpeed = 0f;
             _movementSpeed = controller.movementSpeed;
+            controller.game_over = true; // prevents movment from being incremented
            //controller.movementSpeed = 0f;
             CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
             //controller.movementSpeed = 0f;
@@ -93,12 +94,13 @@ public class BreakSystem : MonoBehaviour
     {
         CanLerp = false;
         isBraking = false;
+        controller.game_over = false;
         controller.movementSpeed = _movementSpeed;
     }
     
     void ManageBrakePads() //let's replace this system with one that interpolates the colour based on the percentage of breaks left
     {
-        if (brakesAmount == 3)
+        if (brakesAmount >= 3)
         {
             brakeImage.color = Color.green;
         }

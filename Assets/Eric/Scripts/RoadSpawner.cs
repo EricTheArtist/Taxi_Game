@@ -29,20 +29,20 @@ public class RoadSpawner : MonoBehaviour
         //update obsticles on road
         TLE = movedRoad.GetComponent<Test_LaneElements>();
         TLE.OnTranslatePosition(clearLane);
-        if(clearLane == 0)
+        if(clearLane == 0) //if the clear lane is in the furthest right
         {
-            int randomI = Random.Range(0, 2);
+            int randomI = 1; //Random.Range(0, 2);
             clearLane += randomI;
             Debug.Log("Random from 0: " + randomI);
 
         }
-        if(clearLane == 4)
+        if(clearLane == 4) //if the clear lane is in the furthest right lane
         {
-            int randomI = Random.Range(0, -2);
+            int randomI = -1; //Random.Range(0, -2);
             clearLane += randomI;
             Debug.Log("Randomfrom 4: " + randomI);
         }
-        else if(clearLane < 4 && clearLane > 0)
+        else if(clearLane < 4 && clearLane > 0) // if the clear lane is in any middle 3 lanes
         {
             int randomI = Random.Range(-1, 2);
             clearLane += randomI;
