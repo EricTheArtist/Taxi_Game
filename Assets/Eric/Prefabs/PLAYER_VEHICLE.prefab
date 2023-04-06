@@ -436,8 +436,8 @@ GameObject:
   - component: {fileID: 1995571284987025672}
   - component: {fileID: 1995571284987025675}
   - component: {fileID: 1995571284987025674}
-  - component: {fileID: 3045257163946532914}
   - component: {fileID: 6711505760930659472}
+  - component: {fileID: 3045257163946532914}
   m_Layer: 0
   m_Name: PLAYER_VEHICLE
   m_TagString: Coin
@@ -544,6 +544,7 @@ MonoBehaviour:
   SteeringWheel: 0
   game_over: 0
   movementSpeed: 10
+  maxMovementSpeed: 40
   SW: {fileID: 0}
   SteeringwheelUI: {fileID: 0}
   LanesX:
@@ -623,6 +624,19 @@ MonoBehaviour:
   brakePads: {fileID: 0}
   isBraking: 0
   BreakingSpeed: 3
+--- !u!114 &6711505760930659472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995571284987025715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11668936af097c48821b4f6544a990b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3045257163946532914}
 --- !u!95 &3045257163946532914
 Animator:
   serializedVersion: 4
@@ -643,19 +657,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6711505760930659472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995571284987025715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c11668936af097c48821b4f6544a990b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3045257163946532914}
 --- !u!1001 &1995571284370934263
 PrefabInstance:
   m_ObjectHideFlags: 0

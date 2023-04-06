@@ -8,7 +8,7 @@ public class BreakSystem : MonoBehaviour
 {
 
     public GameObject brakePads;
-    
+
     private int brakesAmount = 100;
     private Image brakeImage;
     float _movementSpeed;
