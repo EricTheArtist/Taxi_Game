@@ -39,8 +39,13 @@ public class ShopUIManager : MonoBehaviour
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
+    void RefreshCoinValue()
+    {
+        Coins = PlayerPrefs.GetInt("Main Amount");
+    }
     public void updateCoinsText()
     {
+        RefreshCoinValue();
         coins_amount_text.SetText(Coins.ToString());
         coins_amount_shadow.SetText(Coins.ToString());
     }
@@ -52,7 +57,7 @@ public class ShopUIManager : MonoBehaviour
         updateCoinsText();
     }
 
-    public bool CheckForEnoughMoney(int Cost) 
+    public bool CheckForEnoughMoney(int Cost) //Public function that must be called each time the player attempts to but something with coins
     {
         if(Cost < Coins)
         {
