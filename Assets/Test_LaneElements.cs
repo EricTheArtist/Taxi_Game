@@ -41,7 +41,7 @@ public class Test_LaneElements : MonoBehaviour
 
     }
 
-    void DestroyLast() // removes as spawned objects
+    public void DestroyLast() // removes as spawned objects
     {
         if (SpawnedObsticles != null)
         {

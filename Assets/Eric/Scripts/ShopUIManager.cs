@@ -10,6 +10,7 @@ public class ShopUIManager : MonoBehaviour
     public TMP_Text coins_amount_text;
     public TMP_Text coins_amount_shadow;
     public GameObject shopInterface;
+    public GameObject PlayButton;
     public GameObject TaxiRankScene;
     // Start is called before the first frame update
     void Start()
@@ -25,12 +26,14 @@ public class ShopUIManager : MonoBehaviour
         {
             
             shopInterface.transform.localPosition = new Vector3(0,430,0);
-            TaxiRankScene.transform.position = new Vector3(2.43f, 0.8f, -2.25f);
+            PlayButton.transform.localPosition = new Vector3(0, -800, 0);
+            TaxiRankScene.transform.position = new Vector3(2.43f, 1.5f, -2.25f);
         }
         else
         {
             shopInterface.transform.localPosition = new Vector3(600, 0, 0);
-            TaxiRankScene.transform.position = new Vector3(0.15f,1.3f,-2.25f);
+            PlayButton.transform.localPosition = new Vector3(-660, -330, 0);
+            TaxiRankScene.transform.position = new Vector3(0.87f,3.11f,-5.31f);
         }
     }
 

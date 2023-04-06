@@ -48,7 +48,7 @@ public class Test_ObjectRotateOnDrag : MonoBehaviour
                 // Calculate the rotation angle based on the horizontal drag distance
                 float rotationAngle = horizontalDragDistance * rotationSpeed * Time.deltaTime;
 
-                Debug.Log(horizontalDragDistance);
+                //Debug.Log(horizontalDragDistance);
                 // Rotate the object around its Y-axis based on the rotation angle
                 transform.Rotate(new Vector3(0, -rotationAngle, 0));
             }

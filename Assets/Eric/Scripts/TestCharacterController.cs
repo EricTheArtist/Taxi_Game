@@ -94,7 +94,7 @@ namespace SimpleInputNamespace
                 
                 
                     movementSpeed += Time.deltaTime/4;
-                    Debug.Log("Speed: " + movementSpeed);
+                    //Debug.Log("Speed: " + movementSpeed);
                 
 
             }

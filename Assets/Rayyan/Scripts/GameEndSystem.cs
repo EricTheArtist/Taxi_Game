@@ -25,6 +25,7 @@ public class GameEndSystem : MonoBehaviour
     public TMP_Text run_curreny_text;
 
     public Test_Floating_Origin FloatingOrigin;
+    public RoadSpawner RS;
 
     SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
@@ -105,7 +106,8 @@ public class GameEndSystem : MonoBehaviour
         // reset the momentum of the player
         controller.movementSpeed = 10f;
 
-        // reset the obsticle spawning system
+        // reset the obsticle spawning system (currenlty just deletes all objects)
+        RS.ClearRoads();
 
         // restart the movement in the controller
         controller.game_over = false;

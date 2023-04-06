@@ -52,6 +52,16 @@ public class RoadSpawner : MonoBehaviour
 
     }
 
+    public void ClearRoads()
+    {
+        foreach (GameObject objet in roads)
+        {
+            Test_LaneElements TLM;
+            TLM = objet.GetComponent<Test_LaneElements>();
+            TLM.DestroyLast();
+        }
+    }
+
 
     public void AlignRoads() // called by the floating origin script each time all the assets are sent back to the origin
     {
