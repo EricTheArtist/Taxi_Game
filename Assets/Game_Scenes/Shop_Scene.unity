@@ -4446,13 +4446,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productId: 5000coins
   buttonType: 0
-  consumePurchase: 0
+  consumePurchase: 1
   onTransactionsRestored:
     m_PersistentCalls:
       m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7337296424044160569}
+        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
+        m_MethodName: CoinPurchaseSucess
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPurchaseFailed:
     m_PersistentCalls:
       m_Calls: []

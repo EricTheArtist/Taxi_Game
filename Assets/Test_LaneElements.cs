@@ -22,7 +22,7 @@ public class Test_LaneElements : MonoBehaviour
             {
                 SpawnedObsticles[i] = Instantiate(ObstructionPrefab, Lanes[i], Quaternion.identity);
                 SpawnedObsticles[i].transform.parent = transform;
-                SpawnedObsticles[i].transform.localPosition = Lanes[i];
+                SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-0.4f,0.4f));
             }
             else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge spawn a passender pickup
             {
