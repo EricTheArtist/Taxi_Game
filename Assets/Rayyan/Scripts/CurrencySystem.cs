@@ -17,13 +17,17 @@ public class CurrencySystem : MonoBehaviour
     {
         run_amount = 0;
         multiplier = 1;
+        main_amount = PlayerPrefs.GetInt("Main Amount");
     }
 
     // Update is called once per frame
     void Update()
     {
-        run_amount_text.SetText(run_amount.ToString());
-        run_amount_shadow.SetText(run_amount.ToString());
+        // setting 
+        
+        run_amount_text.SetText(main_amount.ToString());
+        run_amount_shadow.SetText(main_amount.ToString());
+        //PlayerPrefs.SetInt("Main Amount", main_amount);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +37,7 @@ public class CurrencySystem : MonoBehaviour
             run_amount=Addition_Function(Multiplier_Function(multiplier), run_amount);
            // Debug.Log(Addition_Function(Multiplier_Function(multiplier), run_amount));
             Destroy(other.gameObject);
+            main_amount++;
         }
     }
     public int Addition_Function(int coins_to_add, int current_coins)
@@ -53,10 +58,6 @@ public class CurrencySystem : MonoBehaviour
         int result = coin_value * coin_multiplier;
 
         return result;
-    }
-    void End_Run_Add()
-    {
-        main_amount = main_amount + run_amount;
     }
 
 }

@@ -35,6 +35,7 @@ public class PickUpSystem : MonoBehaviour
     {
         passengerCount++;//right now it one passenger per zone
         currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);
+        currencySystem.main_amount += 3;
         Debug.Log("Passenger Picked Up");
         //pickUpPointAnimator.SetTrigger("isPassengerBoarding");
         animator.SetTrigger("isGettingPassenger");

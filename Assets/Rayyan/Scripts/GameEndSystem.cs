@@ -75,8 +75,8 @@ public class GameEndSystem : MonoBehaviour
     void Endgame_Calculations()
     {
         run_curreny_text.SetText(currency_system.run_amount.ToString()); // = currency_system.run_amount_text; removed this cause it wasn't updating properly
-        currency_system.main_amount=PlayerPrefs.GetInt("Main Amount");
-        currency_system.main_amount = currency_system.main_amount + currency_system.run_amount;
+        //currency_system.main_amount=PlayerPrefs.GetInt("Main Amount");
+        //currency_system.main_amount = currency_system.main_amount + currency_system.run_amount;
         main_currency_text.SetText(currency_system.main_amount.ToString());
         PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
 
