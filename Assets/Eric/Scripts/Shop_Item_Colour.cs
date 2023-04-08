@@ -17,6 +17,8 @@ public class Shop_Item_Colour : MonoBehaviour
     public string PlayerPrefName;
 
     public GameObject TaxiMaterial;
+
+    public string shaderInput = "_Color";
     
     // Start is called before the first frame update
     void Start()
@@ -49,7 +51,7 @@ public class Shop_Item_Colour : MonoBehaviour
         }
         if (Owned == true)
         {
-            TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Colour);
+            TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor(shaderInput, Colour);
         }
     }
 }

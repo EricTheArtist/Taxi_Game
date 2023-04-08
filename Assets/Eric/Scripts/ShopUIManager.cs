@@ -12,6 +12,9 @@ public class ShopUIManager : MonoBehaviour
     public GameObject shopInterface;
     public GameObject PlayButton;
     public GameObject TaxiRankScene;
+
+    public GameObject Colour1Shop;
+    public GameObject Colour2Shop;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,5 +74,21 @@ public class ShopUIManager : MonoBehaviour
             return false;
         }
     
+    }
+
+    public void Button_OpenColour1()
+    {
+        Colour1Shop.SetActive(true);
+    }
+
+    public void Button_OpenColour2()
+    {
+        Colour2Shop.SetActive(true);
+    }
+
+    public void Button_ReturnToShopMain()
+    {
+        Colour1Shop.SetActive(false);
+        Colour2Shop.SetActive(false);
     }
 }

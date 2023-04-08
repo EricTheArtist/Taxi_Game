@@ -74,9 +74,7 @@ public class GameEndSystem : MonoBehaviour
     }
     void Endgame_Calculations()
     {
-        run_curreny_text.SetText(currency_system.run_amount.ToString()); // = currency_system.run_amount_text; removed this cause it wasn't updating properly
-        //currency_system.main_amount=PlayerPrefs.GetInt("Main Amount");
-        //currency_system.main_amount = currency_system.main_amount + currency_system.run_amount;
+        run_curreny_text.SetText(currency_system.run_amount.ToString());
         main_currency_text.SetText(currency_system.main_amount.ToString());
         PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
 
@@ -87,8 +85,6 @@ public class GameEndSystem : MonoBehaviour
     public void restart_button()
     {
         Debug.Log("Game Restarted");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reloading the whole scene is might cause big peformance hit as our game becomes more complex
-        // instead we shoud do the following:
 
         // reset posion of enviroment (this can be done using the same approach as in the floating origin system)
         FloatingOrigin.resetToOrigin();
@@ -106,7 +102,7 @@ public class GameEndSystem : MonoBehaviour
         // reset the momentum of the player
         controller.movementSpeed = 10f;
 
-        // reset the obsticle spawning system (currenlty just deletes all objects)
+        // reset the obsticle spawning system
         RS.ClearRoads();
 
         // restart the movement in the controller

@@ -24,19 +24,23 @@ public class Test_LaneElements : MonoBehaviour
 
         for (int i = 0; i < Lanes.Length; i++) // loops through all the lanes
         {
-            if(i != Openlane) // is the lane is not open spawn an obsticle
+            if(i != Openlane) // is the lane is not open set an obsticle to that lane
             {
                 //SpawnedObsticles[i] = Instantiate(ObstructionPrefab, Lanes[i], Quaternion.identity);
                 //SpawnedObsticles[i].transform.parent = transform;
                 SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-0.4f,0.4f));
                 SpawnedObsticles[i].SetActive(true);
             }
-            else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge spawn a passender pickup
+            else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge place a passender pickup
             {
                 //spawnedpassengerpickup = Instantiate(Passengerpickup, Lanes[i], Quaternion.identity);
                 //spawnedpassengerpickup.transform.parent = transform;
                 spawnedpassengerpickup.transform.localPosition = Lanes[i];
                 spawnedpassengerpickup.SetActive(true);
+                foreach (Transform child in spawnedpassengerpickup.transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
             }
             else // if tthe lase is open spawn coins
             {
@@ -81,12 +85,5 @@ public class Test_LaneElements : MonoBehaviour
 
         
     }
-    // Start is called before the first frame update
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
