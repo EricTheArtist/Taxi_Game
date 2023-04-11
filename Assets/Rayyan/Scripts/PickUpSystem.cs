@@ -9,21 +9,23 @@ public class PickUpSystem : MonoBehaviour
     //List<int> passengers = new List<int>();
     //[SerializeField] private GameObject pickUpPoint;
 
-    BreakSystem breakSystem;
+    //BreakSystem breakSystem;
+    private SimpleInputNamespace.TestCharacterController controller;
     CurrencySystem currencySystem;
     private Animator animator;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        breakSystem = gameObject.GetComponent<BreakSystem>();
+        controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         currencySystem = gameObject.GetComponent<CurrencySystem>();
         animator = GetComponent<Animator>();
     }
 
     private void OnTriggerStay(Collider other)// If Player is within the pickup zone
     {
-        if (breakSystem.isBraking && other.tag=="PickUpPoint")//check if the player has stoped in the zone
+        if (controller.isBraking && other.tag=="PickUpPoint")//check if the player has stoped in the zone
         {
 
             other.gameObject.SetActive(false);

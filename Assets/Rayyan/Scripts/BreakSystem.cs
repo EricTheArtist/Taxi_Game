@@ -10,7 +10,7 @@ public class BreakSystem : MonoBehaviour
     public GameObject brakePads;
 
     private int brakesAmount = 100;
-    private Image brakeImage;
+    public Image brakeImage;
     float _movementSpeed;
     public bool isBraking = false;
     // used for lerping the break
@@ -82,7 +82,6 @@ public class BreakSystem : MonoBehaviour
             _movementSpeed = 0f;
             _movementSpeed = controller.movementSpeed;
             controller.game_over = true; // prevents movment from being incremented
-           //controller.movementSpeed = 0f;
             CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
             //controller.movementSpeed = 0f;
             ReduceBrakes();

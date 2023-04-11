@@ -27,15 +27,18 @@ namespace SimpleInputNamespace
         float LaneLep; // ratio of 0-1 of position between each lane when switching lanes
         public float hPosition = 0;  //horizontal position, this is used as the X value of the taxi's position 
         public float swipeThreshold = 20f;
-
-        /*public bool isSwervingLeft = false;
-        public bool isSwervingRight;*/
-
         private bool LerpSwipe = false;
-
         private Vector2 fingerDownPosition;
         private Vector2 fingerUpPosition;
-        
+
+        [Header("Breaking")]
+        private int brakesAmount = 100;
+        float _movementSpeed;
+        public bool isBraking = false;
+        public float BreakingSpeed = 3f; // used for lerping the break
+        float LerpOfBreak;
+        bool CanLerp = false;
+
         private Animator animator;
 
 
@@ -84,6 +87,11 @@ namespace SimpleInputNamespace
 
             //increases the movement speed over time
             IncrementSpeed();
+
+
+            ManageBrakeSystem(); // temporary system for Input of testing breaks on PC 
+
+            LerpBreaking(); // checks for lerping if the break has been pressed 
 
         }
 
@@ -235,8 +243,91 @@ namespace SimpleInputNamespace
             {
                 spawnManager.SpawnTriggerEnter();
             }
-           
+            if (other.gameObject.tag == "Pothole")
+            {
+                ReduceBrakes();
+                //play animation
+            }
+
         }
+
+        public void BreakPadDown() //called on button press
+        {
+            if (brakesAmount > 0) //check that the player has not used all their breaks
+            {
+                isBraking = true;
+                _movementSpeed = 0f;
+                _movementSpeed = movementSpeed;
+                game_over = true; // prevents movment from being incremented
+                CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
+                                //controller.movementSpeed = 0f;
+                ReduceBrakes();
+            }
+
+        }
+
+        public void BreakPadUp() //called on button release
+        {
+            CanLerp = false;
+            isBraking = false;
+            game_over = false;
+            movementSpeed = _movementSpeed;
+        }
+
+        void ReduceBrakes()
+        {
+            int brakeDamage = 1;
+            if (brakesAmount >= 0)
+            {
+                brakesAmount -= brakeDamage;
+                //ManageBrakePads(); this function was used to change the UI colour of the break pad
+            }
+            else
+            {
+                brakesAmount = 0;
+            }
+        }
+
+        void IncreaseBrake()
+        {
+            int restoreDamage = 1;
+            if (brakesAmount <= 3)
+            {
+                brakesAmount += restoreDamage;
+                //ManageBrakePads();
+            }
+
+        }
+
+        void LerpBreaking()
+        {
+            if (CanLerp == true)
+            {
+                LerpOfBreak += BreakingSpeed * Time.deltaTime;
+                movementSpeed = Mathf.Lerp(_movementSpeed, 0, LerpOfBreak);
+
+                if (LerpOfBreak > 1)
+                {
+                    CanLerp = false;
+                    LerpOfBreak = 0;
+                }
+            }
+        }
+
+        void ManageBrakeSystem() // temporary system
+        {
+            if (Input.GetKeyDown(KeyCode.B) && brakesAmount > 0)
+            {
+                //Debug.Log("You Are Braking");
+                BreakPadDown();
+            }
+            if (Input.GetKeyUp(KeyCode.B) && brakesAmount >= 0)
+            {
+                //Debug.Log("You Are Not Braking");
+                BreakPadUp();
+            }
+        }
+
 
     }
 }

@@ -8,9 +8,6 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject[] SpawnedObsticles;
     public GameObject spawnedcoins;
     public GameObject spawnedpassengerpickup;
-    //public GameObject ObstructionPrefab;
-    //public GameObject CoinsRow;
-    //public GameObject Passengerpickup;
 
 
     void Start()
@@ -26,15 +23,12 @@ public class Test_LaneElements : MonoBehaviour
         {
             if(i != Openlane) // is the lane is not open set an obsticle to that lane
             {
-                //SpawnedObsticles[i] = Instantiate(ObstructionPrefab, Lanes[i], Quaternion.identity);
-                //SpawnedObsticles[i].transform.parent = transform;
                 SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-0.4f,0.4f));
                 SpawnedObsticles[i].SetActive(true);
             }
             else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge place a passender pickup
             {
-                //spawnedpassengerpickup = Instantiate(Passengerpickup, Lanes[i], Quaternion.identity);
-                //spawnedpassengerpickup.transform.parent = transform;
+
                 spawnedpassengerpickup.transform.localPosition = Lanes[i];
                 spawnedpassengerpickup.SetActive(true);
                 foreach (Transform child in spawnedpassengerpickup.transform)
@@ -44,8 +38,7 @@ public class Test_LaneElements : MonoBehaviour
             }
             else // if tthe lase is open spawn coins
             {
-                //spawnedcoins = Instantiate(CoinsRow, Lanes[i], Quaternion.identity);
-                //spawnedcoins.transform.parent = transform;
+
                 spawnedcoins.transform.localPosition = Lanes[i];
                 spawnedcoins.SetActive(true);
                 foreach (Transform child in spawnedcoins.transform)
