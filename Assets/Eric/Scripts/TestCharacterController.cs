@@ -33,7 +33,7 @@ namespace SimpleInputNamespace
 
         [Header("Breaking")]
         private int brakesAmount = 100;
-        float _movementSpeed;
+        public float _movementSpeed; //is used by lane spawner if the taxi is busy breaking
         public bool isBraking = false;
         public float BreakingSpeed = 3f; // used for lerping the break
         float LerpOfBreak;

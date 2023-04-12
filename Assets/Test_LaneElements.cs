@@ -9,10 +9,14 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject spawnedcoins;
     public GameObject spawnedpassengerpickup;
 
+    float ChanceToSawn;
+    private SimpleInputNamespace.TestCharacterController controller;
+
 
     void Start()
     {
-        
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
     }
 
     public void OnTranslatePosition( int Openlane)
@@ -24,7 +28,21 @@ public class Test_LaneElements : MonoBehaviour
             if(i != Openlane) // is the lane is not open set an obsticle to that lane
             {
                 SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-0.4f,0.4f));
-                SpawnedObsticles[i].SetActive(true);
+
+                
+                if(controller.isBraking == true) //The chance of an obsticle to spawn is based on the percent ratio of the current speed to max speed, meaning that at max speed 4 lanes will always have obsticles
+                {
+                    ChanceToSawn = 1 - (controller._movementSpeed / controller.maxMovementSpeed);
+                }
+                if(controller.isBraking == false)
+                {
+                    ChanceToSawn = 1 - (controller.movementSpeed / controller.maxMovementSpeed);
+                }
+                //Debug.Log("Obsticle spawn probability: " + ChanceToSawn);
+                if (Random.value > ChanceToSawn) 
+                {
+                    SpawnedObsticles[i].SetActive(true);
+                } 
             }
             else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge place a passender pickup
             {
