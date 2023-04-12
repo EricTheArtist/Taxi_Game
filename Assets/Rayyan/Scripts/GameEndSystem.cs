@@ -27,10 +27,13 @@ public class GameEndSystem : MonoBehaviour
     public Test_Floating_Origin FloatingOrigin;
     public RoadSpawner RS;
 
+    Test_HighScore THS;
+
     SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
     void Start()
     {
+        THS = gameObject.GetComponent<Test_HighScore>();
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
@@ -98,6 +101,7 @@ public class GameEndSystem : MonoBehaviour
         controller.MoveFromLane = 2;
 
         // reset the player's distance score
+        THS.ResetScore();
 
         // reset the momentum of the player
         controller.movementSpeed = 10f;
