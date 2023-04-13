@@ -21,17 +21,23 @@ public class ShopUIManager : MonoBehaviour
 
     public bool updatedV = true;
     public bool updatedH = true;
+
+    public Image colour1Sample;
+    public Image colour2Sample;
+    public Renderer TaxiMaterial;
     // Start is called before the first frame update
     void Start()
     {
         Coins = PlayerPrefs.GetInt("Main Amount");
         updateCoinsText();
+        refreshcolouronsamples();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if( Screen.orientation == ScreenOrientation.Portrait)
+        
+        if ( Screen.orientation == ScreenOrientation.Portrait)
         {
             if (updatedV == true)
             {
@@ -86,6 +92,11 @@ public class ShopUIManager : MonoBehaviour
         }
     }
 
+    void refreshcolouronsamples()
+    {
+        colour1Sample.color = TaxiMaterial.sharedMaterial.GetColor("_Color");
+        colour2Sample.color = TaxiMaterial.sharedMaterial.GetColor("_Color2");
+    }
     public void Button_Play()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
@@ -134,6 +145,7 @@ public class ShopUIManager : MonoBehaviour
 
     public void Button_ReturnToShopMain()
     {
+        refreshcolouronsamples();
         Colour1Shop.SetActive(false);
         Colour2Shop.SetActive(false);
     }

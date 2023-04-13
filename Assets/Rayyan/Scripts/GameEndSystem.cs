@@ -19,9 +19,10 @@ public class GameEndSystem : MonoBehaviour
     public bool endgame;
     public GameObject endgame_ui;
     public GameObject welcome_ui;
+    public GameObject rank_ui;
     CurrencySystem currency_system;
 
-    public TMP_Text main_currency_text;
+    public TMP_Text Score_Text;
     public TMP_Text run_curreny_text;
 
     public Test_Floating_Origin FloatingOrigin;
@@ -78,11 +79,12 @@ public class GameEndSystem : MonoBehaviour
     void Endgame_Calculations()
     {
         run_curreny_text.SetText(currency_system.run_amount.ToString());
-        main_currency_text.SetText(currency_system.main_amount.ToString());
+        Score_Text.SetText(THS.scoreInt.ToString());
         PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
 
         currency_system.run_amount = 0;
-
+        // reset the player's distance score
+        THS.ResetScore();
         // here we need to add calculations for the player's distance high score and check their placement on the leaderboard
     }
     public void restart_button()
@@ -101,7 +103,7 @@ public class GameEndSystem : MonoBehaviour
         controller.MoveFromLane = 2;
 
         // reset the player's distance score
-        THS.ResetScore();
+        //THS.ResetScore();
 
         // reset the momentum of the player
         controller.movementSpeed = 10f;
@@ -124,6 +126,12 @@ public class GameEndSystem : MonoBehaviour
     {
         welcome_ui.SetActive(false);
         restart_button();
+    }
+
+    public void rank_button()
+    {
+        //welcome_ui.SetActive(false);
+        rank_ui.SetActive(true);
     }
 
     public void shop_button()
