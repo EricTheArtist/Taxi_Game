@@ -13,10 +13,14 @@ public class ShopUIManager : MonoBehaviour
     public GameObject shopInterface;
     public GameObject PlayButton;
     public GameObject TaxiRankScene;
-    public GameObject ModRidesBTNS;
+    public GameObject ModRidesHorizontal;
+    public GameObject ModRidesVertical;
 
     public GameObject Colour1Shop;
     public GameObject Colour2Shop;
+
+    public bool updatedV = true;
+    public bool updatedH = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,58 +30,60 @@ public class ShopUIManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {/*
-        if(Screen.orientation == ScreenOrientation.Portrait)
+    {
+        if( Screen.orientation == ScreenOrientation.Portrait)
         {
+            if (updatedV == true)
+            {
+                ModRidesHorizontal.SetActive(false);
+                ModRidesVertical.SetActive(true);
 
+                //sent ancorage
+                RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
+                RT_Shop.anchorMin = new Vector2(0.5f, 1);
+                RT_Shop.anchorMax = new Vector2(0.5f, 1);
+                RT_Shop.pivot = new Vector2(0.5f, 1);
 
-            //sent ancorage
-            RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
-            RT_Shop.anchorMin = new Vector2(0.5f, 1);
-            RT_Shop.anchorMax = new Vector2(0.5f, 1);
-            RT_Shop.pivot = new Vector2(0.5f, 1);
+                RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
+                RT_BackBTN.anchorMin = new Vector2(0.5f, 0);
+                RT_BackBTN.anchorMax = new Vector2(0.5f, 0);
+                RT_BackBTN.pivot = new Vector2(0.5f, 0);
 
-            RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
-            RT_BackBTN.anchorMin = new Vector2(0.5f, 0);
-            RT_BackBTN.anchorMax = new Vector2(0.5f, 0);
-            RT_BackBTN.pivot = new Vector2(0.5f, 0);
+                //set positions
 
-            RectTransform RT_ModRides = ModRidesBTNS.GetComponent<RectTransform>();
-            RT_ModRides.anchorMin = new Vector2(0.5f, 0);
-            RT_ModRides.anchorMax = new Vector2(0.5f, 0);
-            RT_ModRides.pivot = new Vector2(0.5f, 0);
-            
-            //set positions
-            RT_Shop.position = new Vector3(0, -10, 0);
-            //shopInterface.transform.position = new Vector3(0,-10,0);
-            PlayButton.transform.position = new Vector3(0, 20, 0);
-            TaxiRankScene.transform.position = new Vector3(2.43f, 1f, -2.25f);
-            ModRidesBTNS.transform.position = new Vector3(0, -1040, 0);
+                TaxiRankScene.transform.position = new Vector3(2.43f, 1f, -2.25f);
+
+                updatedV = false;
+                updatedH = true;
+            }
+
 
         }
         else
         {
-            //set positions
-            shopInterface.transform.localPosition = new Vector3(-10, -10, 0);
-            PlayButton.transform.localPosition = new Vector3(20, 20, 0);
-            TaxiRankScene.transform.position = new Vector3(0.87f,3.11f,-5.31f);
-            ModRidesBTNS.transform.localPosition = new Vector3(850, 50, 0);
-            //sent ancorage
-            RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
-            RT_Shop.anchorMin = new Vector2(1, 1);
-            RT_Shop.anchorMax = new Vector2(1, 1);
-            RT_Shop.pivot = new Vector2(1, 1);
+            if (updatedH == true)
+            {
+                ModRidesHorizontal.SetActive(true);
+                ModRidesVertical.SetActive(false);
+                //sent ancorage
+                RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
+                RT_Shop.anchorMin = new Vector2(1, 1);
+                RT_Shop.anchorMax = new Vector2(1, 1);
+                RT_Shop.pivot = new Vector2(1, 1);
 
-            RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
-            RT_BackBTN.anchorMin = new Vector2(0,0);
-            RT_BackBTN.anchorMax = new Vector2(0,0);
-            RT_BackBTN.pivot = new Vector2(0,0);
+                RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
+                RT_BackBTN.anchorMin = new Vector2(0, 0);
+                RT_BackBTN.anchorMax = new Vector2(0, 0);
+                RT_BackBTN.pivot = new Vector2(0, 0);
 
-            RectTransform RT_ModRides = ModRidesBTNS.GetComponent<RectTransform>();
-            RT_ModRides.anchorMin = new Vector2(0, 0);
-            RT_ModRides.anchorMax = new Vector2(0, 0);
-            RT_ModRides.pivot = new Vector2(0, 0);
-       }*/ 
+                //set positions
+                TaxiRankScene.transform.position = new Vector3(1.7f, 3.11f, -5.31f);
+
+                updatedH = false;
+                updatedV = true;
+            }
+
+        }
     }
 
     public void Button_Play()
