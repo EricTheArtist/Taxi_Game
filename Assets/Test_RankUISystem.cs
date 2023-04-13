@@ -14,8 +14,12 @@ public class Test_RankUISystem : MonoBehaviour
 
     private void OnEnable()
     {
-        int high = PlayerPrefs.GetInt("HighScore");
-        MyHighScore.SetText(high.ToString());
+        if(MyHighScore!= null)
+        {
+            int high = PlayerPrefs.GetInt("HighScore");
+            MyHighScore.SetText(high.ToString());
+        }
+
     }
     
         

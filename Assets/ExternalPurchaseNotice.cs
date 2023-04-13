@@ -8,7 +8,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
 {
     public GameObject Notice;
 
-    int CoinsToBuy = 5000;
+    //int CoinsToBuy = 5000;
     int CurrentBalance;
     int NewBalance;
     public TMP_Text ProductName;
@@ -28,9 +28,21 @@ public class ExternalPurchaseNotice : MonoBehaviour
 
     public void ExternalCoinsProduct5000(Product product)
     {
-        ProductName.SetText(product.definition.id.ToString());
+
+        //ProductName.SetText(product.definition.id.ToString());
         CurrentBalance = PlayerPrefs.GetInt("Main Amount");
-        NewBalance = CurrentBalance + CoinsToBuy;
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.promocoin5000")
+        {
+            ProductName.SetText("5000 Coins Promo");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.preregister10000")
+        {
+            ProductName.SetText("10000 Coins Pre-Registration Reward");
+        }
+
+        var payout = product.definition.payout.quantity; // Assuming a single payout, retrieve the payout quantity
+        NewBalance = CurrentBalance + (int)payout;
         PlayerPrefs.SetInt("Main Amount", NewBalance);
 
         // updates text on screen

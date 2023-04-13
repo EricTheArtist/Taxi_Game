@@ -20,6 +20,7 @@ public class GameEndSystem : MonoBehaviour
     public GameObject endgame_ui;
     public GameObject welcome_ui;
     public GameObject rank_ui;
+    public GameObject settigns_ui;
     CurrencySystem currency_system;
 
     public TMP_Text Score_Text;
@@ -132,6 +133,11 @@ public class GameEndSystem : MonoBehaviour
     {
         //welcome_ui.SetActive(false);
         rank_ui.SetActive(true);
+    }
+
+    public void settings_button()
+    {
+        settigns_ui.SetActive(true);
     }
 
     public void shop_button()
