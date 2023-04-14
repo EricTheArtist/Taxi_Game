@@ -38,9 +38,10 @@ namespace SimpleInputNamespace
         public bool isBraking = false;
         float BreakingSpeed = 3f; // used for lerping the break
         float LerpOfBreak;
-        bool CanLerp = false;
-        bool breakfinished = true;
-        bool brakcooldown = true;
+        bool CanLerp = false; // used to enable the lerp once the break is pressed
+        bool breakfinished = true; // set true when the player releases the break button
+        bool brakcooldown = true; // set true after the cooldown time after the player resumes driving
+        public float BrakeCooldownTime = 1.5f;
         public Image image_brakepad;
         public Button breakButton;
 
@@ -262,7 +263,7 @@ namespace SimpleInputNamespace
             {
                 isBraking = true;
                 breakfinished = false;
-                brakcooldown = false;
+                
                 _movementSpeed = 0f;
                 _movementSpeed = movementSpeed;
                 //breakButton.interactable = false;
@@ -278,13 +279,14 @@ namespace SimpleInputNamespace
         public void BreakPadUp() //called on button release
         {
             //breakButton.interactable = false;
-            if (CanLerp == false)
+            if (CanLerp == false && brakcooldown == true)
             {
                 resumedriving();
             }
             breakfinished = true;
+            brakcooldown = false;
             //game_over = false;
-            
+
         }
 
         void ReduceBrakes()
@@ -307,7 +309,7 @@ namespace SimpleInputNamespace
             movementSpeed = _movementSpeed;
             isBraking = false;
             image_brakepad.color = Color.red;
-            Invoke("ResetCooldown", 2.0f);
+            Invoke("ResetCooldown", BrakeCooldownTime);
             //StartCoroutine(BrakeTimerCoroutine());
         }
         void IncreaseBrake()
