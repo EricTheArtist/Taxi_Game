@@ -19,18 +19,22 @@ public class Shop_Item_Colour : MonoBehaviour
     public GameObject TaxiMaterial;
 
     public string shaderInput = "_Color";
+
+    public bool Premium = false;
     
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         GameObject canvas;
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         ColourSample.color = Colour;
-        Price_Text.SetText(Price.ToString());
-        
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
 
+        if(Premium == false)
+        {
+            Price_Text.SetText(Price.ToString());
+        }
         if(Owned == true)
         {
             PriceBG.SetActive(false);
@@ -41,7 +45,7 @@ public class Shop_Item_Colour : MonoBehaviour
  
     public void Button_Clicked_Colour()
     {
-        if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false)
+        if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false)
         {
             Owned = true;
             SUIM.DeductCoins(Price);
@@ -53,5 +57,12 @@ public class Shop_Item_Colour : MonoBehaviour
         {
             TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor(shaderInput, Colour);
         }
+    }
+
+    public void RealCurrencyColourPurchaseSucess()
+    {
+        Owned = true;
+        PriceBG.SetActive(false);
+        PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
     }
 }
