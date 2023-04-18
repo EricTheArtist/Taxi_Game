@@ -18,9 +18,12 @@ public class GameEndSystem : MonoBehaviour
    
     public bool endgame;
     public GameObject endgame_ui;
-    public GameObject welcome_ui;
-    public GameObject rank_ui;
-    public GameObject settigns_ui;
+    public GameObject welcome_ui_static;
+    public GameObject welcome_ui_dynamic;
+    public GameObject rank_ui_static;
+    public GameObject rank_ui_dynamic;
+    public GameObject settigns_ui_static;
+    public GameObject settigns_ui_dynamic;
     CurrencySystem currency_system;
 
     public TMP_Text Score_Text;
@@ -120,24 +123,28 @@ public class GameEndSystem : MonoBehaviour
 
     public void main_button()
     {
-        welcome_ui.SetActive(true);
+        welcome_ui_static.SetActive(true);
+        welcome_ui_dynamic.SetActive(true);
         endgame_ui.SetActive(false);
     }
     public void play_button()
     {
-        welcome_ui.SetActive(false);
+        welcome_ui_static.SetActive(false);
+        welcome_ui_dynamic.SetActive(false);
         restart_button();
     }
 
     public void rank_button()
     {
         //welcome_ui.SetActive(false);
-        rank_ui.SetActive(true);
+        rank_ui_static.SetActive(true);
+        rank_ui_dynamic.SetActive(true);
     }
 
     public void settings_button()
     {
-        settigns_ui.SetActive(true);
+        settigns_ui_static.SetActive(true);
+        settigns_ui_dynamic.SetActive(true);
     }
 
     public void shop_button()

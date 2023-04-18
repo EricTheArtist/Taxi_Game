@@ -230,14 +230,14 @@ namespace SimpleInputNamespace
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) && MoveFromLane < 4 && LerpSwipe == false)
             {
-                Debug.Log("Swiped Right");
+                //Debug.Log("Swiped Right");
                 MoveToLane = MoveFromLane + 1;
                 LerpSwipe = true;
 
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && MoveFromLane > 0 && LerpSwipe == false)
             {
-                Debug.Log("Swiped Left");
+                //Debug.Log("Swiped Left");
                 MoveToLane = MoveFromLane - 1;
                 LerpSwipe = true;
             }

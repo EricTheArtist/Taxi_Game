@@ -6,6 +6,8 @@ using TMPro;
 public class Test_RankUISystem : MonoBehaviour
 {
     public TMP_Text MyHighScore;
+    public GameObject Rank_ui_Static;
+    public GameObject Rank_ui_Dynamic;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class Test_RankUISystem : MonoBehaviour
 
     public void Button_ColoseRank()
     {
-        gameObject.SetActive(false);
+        Rank_ui_Dynamic.SetActive(false);
+        Rank_ui_Static.SetActive(false);
     }
+
 }

@@ -33,22 +33,22 @@ public class RoadSpawner : MonoBehaviour
         {
             int randomI = 1; //Random.Range(0, 2);
             clearLane += randomI;
-            Debug.Log("Random from 0: " + randomI);
+            //Debug.Log("Random from 0: " + randomI);
 
         }
         if(clearLane == 4) //if the clear lane is in the furthest right lane
         {
             int randomI = -1; //Random.Range(0, -2);
             clearLane += randomI;
-            Debug.Log("Randomfrom 4: " + randomI);
+            //Debug.Log("Randomfrom 4: " + randomI);
         }
         else if(clearLane < 4 && clearLane > 0) // if the clear lane is in any middle 3 lanes
         {
             int randomI = Random.Range(-1, 2);
             clearLane += randomI;
-            Debug.Log("Random mic: " + randomI);
+            //Debug.Log("Random mic: " + randomI);
         }
-        Debug.Log("Clear lane: " + clearLane );
+        //Debug.Log("Clear lane: " + clearLane );
 
     }
 
