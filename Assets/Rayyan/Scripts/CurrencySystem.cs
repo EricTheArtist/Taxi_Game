@@ -36,7 +36,7 @@ public class CurrencySystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Coin")
+        if (other.tag == "Coin" || other.tag == "Coin2")
         {
             run_amount=Addition_Function(Multiplier_Function(multiplier), run_amount);
             // Debug.Log(Addition_Function(Multiplier_Function(multiplier), run_amount));
