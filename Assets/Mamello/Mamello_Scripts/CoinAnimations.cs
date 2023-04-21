@@ -6,8 +6,8 @@ public class CoinAnimations : MonoBehaviour
 {
     private float coin1RotationSpeed = 70f;
     private float coin2RotationSpeed = 100f;
-    private float coin1BobTime = 0.30f;
-    private float coin2BobTime = 0.30f;
+    //private float coin1BobTime = 0.30f;
+    //private float coin2BobTime = 0.30f;
 
 
     // Update is called once per frame
