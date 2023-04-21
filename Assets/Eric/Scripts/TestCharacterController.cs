@@ -15,6 +15,7 @@ namespace SimpleInputNamespace
         public bool game_over;
         public float movementSpeed = 10f; // speed of forward movement and of horizontal movement when using steering wheel
         public float maxMovementSpeed = 40f;
+        public float MovementIncrement = 4;
         [Header("Steering Wheel")]
         public SteeringWheel SW;
         private float hMovement; //horixontal movement, the speed at which the x value of the taxi is shifted 
@@ -40,10 +41,8 @@ namespace SimpleInputNamespace
         float LerpOfBreak;
         bool CanLerp = false; // used to enable the lerp once the break is pressed
         bool breakfinished = true; // set true when the player releases the break button
-        bool brakcooldown = true; // set true after the cooldown time after the player resumes driving
-        public float BrakeCooldownTime = 1.5f;
         public Image image_brakepad;
-        public Button breakButton;
+        public GameObject breakButton;
 
         private Animator animator;
 
@@ -51,6 +50,7 @@ namespace SimpleInputNamespace
         private void Start()
         {
             animator = GetComponent<Animator>();
+            breakButton.SetActive(false);
 
             game_over = false;
             if(SteeringWheel == false)
@@ -107,7 +107,7 @@ namespace SimpleInputNamespace
             {
                 
                 
-                    movementSpeed += Time.deltaTime/4;
+                    movementSpeed += Time.deltaTime/MovementIncrement;
                     //Debug.Log("Speed: " + movementSpeed);
                 
 
@@ -259,17 +259,16 @@ namespace SimpleInputNamespace
 
         public void BreakPadDown() //called on button press
         {
-            if ((brakesAmount > 0) && (CanLerp == false) && brakcooldown == true) //check that the player has not used all their breaks and is nit currently breaking
+            if ((brakesAmount > 0) && (CanLerp == false)) //check that the player has not used all their breaks and is nit currently breaking
             {
                 isBraking = true;
                 breakfinished = false;
                 
                 _movementSpeed = 0f;
-                _movementSpeed = movementSpeed;
-                //breakButton.interactable = false;
-                //game_over = true; // prevents movment from being incremented
+                _movementSpeed = movementSpeed; // saves the players speed
+
                 CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
-                                //controller.movementSpeed = 0f;
+                                
                 ReduceBrakes();
                 
             }
@@ -278,14 +277,14 @@ namespace SimpleInputNamespace
 
         public void BreakPadUp() //called on button release
         {
-            //breakButton.interactable = false;
-            if (CanLerp == false && brakcooldown == true)
+            
+            if (CanLerp == false)
             {
                 resumedriving();
             }
             breakfinished = true;
-            brakcooldown = false;
-            //game_over = false;
+            
+            
 
         }
 
@@ -295,7 +294,7 @@ namespace SimpleInputNamespace
             if (brakesAmount >= 0)
             {
                 brakesAmount -= brakeDamage;
-                //ManageBrakePads(); this function was used to change the UI colour of the break pad
+                
             }
             else
             {
@@ -308,9 +307,10 @@ namespace SimpleInputNamespace
             CanLerp = false;
             movementSpeed = _movementSpeed;
             isBraking = false;
-            image_brakepad.color = Color.red;
-            Invoke("ResetCooldown", BrakeCooldownTime);
-            //StartCoroutine(BrakeTimerCoroutine());
+
+            breakButton.SetActive(false); //break pad is re-enabled in the Pickup system
+            
+            
         }
         void IncreaseBrake()
         {
@@ -357,23 +357,8 @@ namespace SimpleInputNamespace
             }
         }
 
-        /*
-         IEnumerator BrakeTimerCoroutine()
-         {
 
-             image_brakepad.color = Color.red;
-             //yield on a new YieldInstruction that waits for 5 seconds.
-             yield return new WaitForSeconds(5);
-             brakcooldown = true;
-             image_brakepad.color = Color.green;
-         }
-        */
 
-        void ResetCooldown()
-        {
-            brakcooldown = true;
-            image_brakepad.color = Color.green;
-            //breakButton.interactable = true;
-        }
+
     }
 }

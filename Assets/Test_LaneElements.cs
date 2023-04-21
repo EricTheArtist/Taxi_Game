@@ -12,11 +12,16 @@ public class Test_LaneElements : MonoBehaviour
     float ChanceToSawn;
     private SimpleInputNamespace.TestCharacterController controller;
 
+    public GameObject RobotComponent;
+    public bool RobotEnabled;
+    float RobotSpawnChance = 0.8f;
+
 
     void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
+        RobotComponent.SetActive(false);
     }
 
     public void OnTranslatePosition( int Openlane)
@@ -67,6 +72,15 @@ public class Test_LaneElements : MonoBehaviour
             
         }
 
+        if(RobotEnabled== true)
+        {
+            
+            if(Random.value > RobotSpawnChance)
+            {
+                RobotComponent.SetActive(true);
+            }
+        }
+
     }
 
     public void DestroyLast() // deactivatets all pickup and obsticle objects
@@ -93,8 +107,8 @@ public class Test_LaneElements : MonoBehaviour
             spawnedpassengerpickup.SetActive(false);
         }
 
+        RobotComponent.SetActive(false);
 
-        
     }
 
 }
