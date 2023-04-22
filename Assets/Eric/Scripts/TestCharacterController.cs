@@ -130,14 +130,14 @@ namespace SimpleInputNamespace
                 }
                 else
                 {
-                    hMovement = SW.Angle * movementSpeed / 100;
+                    hMovement = SW.Angle * movementSpeed / 200;
                 }
             }
         }
 
         void SwipingUpdate()
         {
-            if (Input.touchCount > 0)
+            if (Input.touchCount > 0 && SteeringWheel == false)
             {
                 Touch touch = Input.GetTouch(0);
 
