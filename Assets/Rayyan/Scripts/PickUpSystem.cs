@@ -45,7 +45,7 @@ public class PickUpSystem : MonoBehaviour
         if (controller.isBraking && other.tag=="PickUpPoint")//check if the player has stoped in the zone
         {
 
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
             AddPassenger();
         }
     }

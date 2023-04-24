@@ -118,6 +118,9 @@ public class GameEndSystem : MonoBehaviour
         // restart the movement in the controller
         controller.game_over = false;
 
+        //Check and reset cop chase                 --------MISSING
+
+        //open the game over UI
         endgame_ui.SetActive(false);
     }
 
