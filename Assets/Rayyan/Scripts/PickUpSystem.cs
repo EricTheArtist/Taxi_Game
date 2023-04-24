@@ -18,6 +18,7 @@ public class PickUpSystem : MonoBehaviour
     bool CopIsChasing = false;
 
     public GameObject Cops;
+    bool used;
     
 
     // Start is called before the first frame update
@@ -33,6 +34,11 @@ public class PickUpSystem : MonoBehaviour
         CheckCopChase();   
     }
 
+    private void OnEnable()
+    {
+        
+    }
+
     void CheckCopChase()
     {
         if (CopIsChasing == true)
@@ -44,9 +50,12 @@ public class PickUpSystem : MonoBehaviour
     {
         if (controller.isBraking && other.tag=="PickUpPoint")//check if the player has stoped in the zone
         {
-
-            //other.gameObject.SetActive(false);
-            AddPassenger();
+            if(used == false)
+            {
+                AddPassenger();
+                used = true;
+            }
+           
         }
     }
 
@@ -55,6 +64,7 @@ public class PickUpSystem : MonoBehaviour
         if (other.tag == "PickUpPoint")
         {
             controller.breakButton.SetActive(true);
+            used = false;
         }
         if (other.tag == "Robot")
         {
@@ -70,6 +80,11 @@ public class PickUpSystem : MonoBehaviour
         if (other.tag == "PickUpPoint")
         {
             controller.breakButton.SetActive(false);
+            if (controller.isBraking) // if the player is still holding down the break pad after exiting the pickup zone, they are forced to continue driving
+            {
+                controller.BreakPadUp();
+            }
+            other.gameObject.SetActive(false);
         }
         if (other.tag == "Robot")
         {
@@ -89,6 +104,12 @@ public class PickUpSystem : MonoBehaviour
     {
         CopIsChasing = false;
         controller.movementSpeed -= 10;
+        Cops.SetActive(false);
+    }
+
+    public void CancelCopChase()
+    {
+        CopIsChasing = false;
         Cops.SetActive(false);
     }
 

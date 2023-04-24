@@ -75,7 +75,7 @@ public class Test_LaneElements : MonoBehaviour
         if(RobotEnabled== true)
         {
             
-            if(Random.value > RobotSpawnChance)
+            if(Random.value > RobotSpawnChance && spawnedpassengerpickup.activeInHierarchy == false)
             {
                 RobotComponent.SetActive(true);
             }

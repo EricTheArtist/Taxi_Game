@@ -25,6 +25,7 @@ public class GameEndSystem : MonoBehaviour
     public GameObject settigns_ui_static;
     public GameObject settigns_ui_dynamic;
     CurrencySystem currency_system;
+    public PickUpSystem PUS;
 
     public TMP_Text Score_Text;
     public TMP_Text run_curreny_text;
@@ -118,7 +119,9 @@ public class GameEndSystem : MonoBehaviour
         // restart the movement in the controller
         controller.game_over = false;
 
-        //Check and reset cop chase                 --------MISSING
+        //Check and reset cop chase
+        CancelInvoke("CopChase"); // stops the cops timer
+        PUS.CancelCopChase(); // resets cops variables without adjusting player speed
 
         //open the game over UI
         endgame_ui.SetActive(false);
