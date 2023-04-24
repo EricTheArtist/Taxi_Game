@@ -68,7 +68,7 @@ string appkey = "";
 
     private void SdkInitializationCompletedEvent() 
     {
-        IronSource.Agent.validateIntegration();
+        IronSource.Agent.validateIntegration(); //integration tester remove for live build
     }
 
     public void LoadFullAd()
