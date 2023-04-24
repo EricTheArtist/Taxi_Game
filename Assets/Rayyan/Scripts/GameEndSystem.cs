@@ -120,7 +120,7 @@ public class GameEndSystem : MonoBehaviour
         controller.game_over = false;
 
         //Check and reset cop chase
-        CancelInvoke("CopChase"); // stops the cops timer
+        
         PUS.CancelCopChase(); // resets cops variables without adjusting player speed
 
         //open the game over UI

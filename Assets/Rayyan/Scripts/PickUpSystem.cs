@@ -109,6 +109,7 @@ public class PickUpSystem : MonoBehaviour
 
     public void CancelCopChase()
     {
+        CancelInvoke("CopChase");
         CopIsChasing = false;
         Cops.SetActive(false);
     }
