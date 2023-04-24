@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CoinRotationAnimation : MonoBehaviour
 {
-    public float coinDelayTime = 10f;
+    //public float coinDelayTime = 10f;
     public float rotationSpeed = 100f;
+    [SerializeField] GameObject[] childrenCoin;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,29 +16,25 @@ public class CoinRotationAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RotationControl();
     }
     void RotationControl()
     {
-        //GameObject[] parentCoinRow = GameObject.FindGameObjectsWithTag("CoinRow");
-        GameObject parentCoinRow = GameObject.FindGameObjectWithTag("CoinRow");
-        GameObject[] childrenCoin;
-
-        for (int i=0; i<parentCoinRow.transform.childCount; i++)
+        GameObject[] parentCoinRow = GameObject.FindGameObjectsWithTag("CoinRow");
+        childrenCoin = GameObject.FindGameObjectsWithTag("Coin");
+        
+        for(int i=0; i< parentCoinRow.Length-1; i++)
         {
-            childrenCoin = new GameObject[parentCoinRow.transform.childCount];
-            childrenCoin[i] = parentCoinRow.transform.GetChild(i).gameObject;
-            for(int j=0; j<childrenCoin.Length-1; j++)
+            GameObject temp = parentCoinRow[i].gameObject;
+            childrenCoin = new GameObject[temp.transform.childCount];
+            for (int k =0; k<temp.transform.childCount; k++)
             {
-                //Invoke(nameof(RotationAnimation(childrenCoin[j].gameObject)), coinDelayTime);
-                Invoke("RotationAnimation", coinDelayTime);
+                childrenCoin[k] = temp.transform.GetChild(k).gameObject;
+                childrenCoin[k].transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f, Space.World);
             }
+           
         }
+       
+    }
 
-      
-    }
-    void RotationAnimation(GameObject coin)
-    {
-        coin.transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f, Space.World);
-    }
 }
