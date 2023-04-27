@@ -83,7 +83,7 @@ public class ShopUIManager : MonoBehaviour
                 RT_BackBTN.pivot = new Vector2(0, 0);
 
                 //set positions
-                //TaxiRankScene.transform.position = new Vector3(1.7f, 3.11f, -5.31f);
+                TaxiRankScene.transform.position = new Vector3(1.7f, 3.11f, -5.31f);
 
                 updatedH = false;
                 updatedV = true;
