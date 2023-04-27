@@ -39,8 +39,11 @@ public class IronSourceDemoScript : MonoBehaviour
 
         //Add Init Event
         IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
-        
+
+
+
         //Add Rewarded Video Events
+        /*
         IronSourceEvents.onRewardedVideoAdOpenedEvent += RewardedVideoAdOpenedEvent;
         IronSourceEvents.onRewardedVideoAdClosedEvent += RewardedVideoAdClosedEvent;
         IronSourceEvents.onRewardedVideoAvailabilityChangedEvent += RewardedVideoAvailabilityChangedEvent;
@@ -48,9 +51,11 @@ public class IronSourceDemoScript : MonoBehaviour
         IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
         IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
         IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
-        IronSourceEvents.onRewardedVideoAdClickedEvent += RewardedVideoAdClickedEvent;
+        IronSourceEvents.onRewardedVideoAdClickedEvent += RewardedVideoAdClickedEvent; 
+        */
 
         //Add Rewarded Video DemandOnly Events
+        /*
         IronSourceEvents.onRewardedVideoAdOpenedDemandOnlyEvent += RewardedVideoAdOpenedDemandOnlyEvent;
         IronSourceEvents.onRewardedVideoAdClosedDemandOnlyEvent += RewardedVideoAdClosedDemandOnlyEvent;
         IronSourceEvents.onRewardedVideoAdLoadedDemandOnlyEvent += RewardedVideoAdLoadedDemandOnlyEvent;
@@ -58,7 +63,7 @@ public class IronSourceDemoScript : MonoBehaviour
         IronSourceEvents.onRewardedVideoAdShowFailedDemandOnlyEvent += RewardedVideoAdShowFailedDemandOnlyEvent;
         IronSourceEvents.onRewardedVideoAdClickedDemandOnlyEvent += RewardedVideoAdClickedDemandOnlyEvent;
         IronSourceEvents.onRewardedVideoAdLoadFailedDemandOnlyEvent += RewardedVideoAdLoadFailedDemandOnlyEvent;
-
+        */
 
         // Add Offerwall Events
         IronSourceEvents.onOfferwallClosedEvent += OfferwallClosedEvent;
@@ -70,6 +75,7 @@ public class IronSourceDemoScript : MonoBehaviour
 
 
         // Add Interstitial Events
+        /*
         IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
         IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
         IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
@@ -85,7 +91,7 @@ public class IronSourceDemoScript : MonoBehaviour
         IronSourceEvents.onInterstitialAdClickedDemandOnlyEvent += InterstitialAdClickedDemandOnlyEvent;
         IronSourceEvents.onInterstitialAdOpenedDemandOnlyEvent += InterstitialAdOpenedDemandOnlyEvent;
         IronSourceEvents.onInterstitialAdClosedDemandOnlyEvent += InterstitialAdClosedDemandOnlyEvent;
-
+        
 
         // Add Banner Events
         IronSourceEvents.onBannerAdLoadedEvent += BannerAdLoadedEvent;
@@ -94,10 +100,12 @@ public class IronSourceDemoScript : MonoBehaviour
         IronSourceEvents.onBannerAdScreenPresentedEvent += BannerAdScreenPresentedEvent;
         IronSourceEvents.onBannerAdScreenDismissedEvent += BannerAdScreenDismissedEvent;
         IronSourceEvents.onBannerAdLeftApplicationEvent += BannerAdLeftApplicationEvent;
+        */
+
 
         //Add ImpressionSuccess Event
-        IronSourceEvents.onImpressionSuccessEvent += ImpressionSuccessEvent;
-        IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
+        //IronSourceEvents.onImpressionSuccessEvent += ImpressionSuccessEvent;
+        //IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
 
 
         //Add AdInfo Rewarded Video Events
@@ -301,7 +309,7 @@ public class IronSourceDemoScript : MonoBehaviour
 
     /************* RewardedVideo DemandOnly Delegates *************/
 
-    void RewardedVideoAdLoadedDemandOnlyEvent(string instanceId)
+        void RewardedVideoAdLoadedDemandOnlyEvent(string instanceId)
     {
         
         Debug.Log("unity-script: I got RewardedVideoAdLoadedDemandOnlyEvent for instance: " + instanceId);

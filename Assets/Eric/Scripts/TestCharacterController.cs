@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 namespace SimpleInputNamespace
 {
@@ -43,6 +44,7 @@ namespace SimpleInputNamespace
         bool breakfinished = true; // set true when the player releases the break button
         public Image image_brakepad;
         public GameObject breakButton;
+        public TMP_Text BreakInstruction;
 
         private Animator animator;
 
@@ -97,7 +99,7 @@ namespace SimpleInputNamespace
 
             ManageBrakeSystem(); // temporary system for Input of testing breaks on PC 
 
-            LerpBreaking(); // checks for lerping if the break has been pressed 
+            //LerpBreaking(); // checks for lerping if the break has been pressed 
 
         }
 
@@ -251,7 +253,7 @@ namespace SimpleInputNamespace
             }
             if (other.gameObject.tag == "Pothole")
             {
-                ReduceBrakes();
+                //ReduceBrakes();
                 //play animation
             }
 
@@ -259,30 +261,33 @@ namespace SimpleInputNamespace
 
         public void BreakPadDown() //called on button press
         {
-            if ((brakesAmount > 0) && (CanLerp == false)) //check that the player has not used all their breaks and is nit currently breaking
-            {
-                isBraking = true;
-                breakfinished = false;
-                
-                _movementSpeed = 0f;
-                _movementSpeed = movementSpeed; // saves the players speed
+            //if ((brakesAmount > 0) && (CanLerp == false)) //check that the player has not used all their breaks and is nit currently breaking
+            //{
 
-                CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
-                                
-                ReduceBrakes();
-                
-            }
+            //breakfinished = false;
+            isBraking = true;
+            _movementSpeed = 0f;
+            _movementSpeed = movementSpeed; // saves the players speed
+            movementSpeed = 0;
+            
+
+            //CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
+
+            //ReduceBrakes();
+
+            //}
 
         }
 
         public void BreakPadUp() //called on button release
         {
-            
-            if (CanLerp == false)
-            {
-                resumedriving();
-            }
-            breakfinished = true;
+
+            //if (CanLerp == false)
+            //{
+            breakButton.SetActive(false); //break pad is re-enabled in the Pickup system
+            resumedriving();
+            //}
+            //breakfinished = true;
             
             
 
@@ -304,11 +309,10 @@ namespace SimpleInputNamespace
 
         void resumedriving()
         {
-            CanLerp = false;
+            //CanLerp = false;
             movementSpeed = _movementSpeed;
             isBraking = false;
 
-            breakButton.SetActive(false); //break pad is re-enabled in the Pickup system
             
             
         }

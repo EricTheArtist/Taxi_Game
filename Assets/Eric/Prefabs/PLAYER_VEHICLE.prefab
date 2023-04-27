@@ -435,7 +435,6 @@ GameObject:
   - component: {fileID: 1995571284987025673}
   - component: {fileID: 1995571284987025672}
   - component: {fileID: 1995571284987025675}
-  - component: {fileID: 1995571284987025674}
   - component: {fileID: 6711505760930659472}
   - component: {fileID: 3045257163946532914}
   m_Layer: 0
@@ -545,6 +544,7 @@ MonoBehaviour:
   game_over: 0
   movementSpeed: 10
   maxMovementSpeed: 40
+  MovementIncrement: 4
   SW: {fileID: 0}
   SteeringwheelUI: {fileID: 0}
   LanesX:
@@ -558,6 +558,11 @@ MonoBehaviour:
   LaneTransitionSpeed: 10
   hPosition: 0
   swipeThreshold: 100
+  _movementSpeed: 0
+  isBraking: 0
+  image_brakepad: {fileID: 0}
+  breakButton: {fileID: 0}
+  BreakInstruction: {fileID: 0}
 --- !u!54 &1995571284987025673
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -591,6 +596,7 @@ MonoBehaviour:
   multiplier: 0
   run_amount_text: {fileID: 0}
   run_amount_shadow: {fileID: 0}
+  coinIcon: {fileID: 0}
 --- !u!114 &1995571284987025675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,25 +611,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endgame: 0
   endgame_ui: {fileID: 0}
-  welcome_ui: {fileID: 0}
-  main_currency_text: {fileID: 0}
+  welcome_ui_static: {fileID: 0}
+  welcome_ui_dynamic: {fileID: 0}
+  rank_ui_static: {fileID: 0}
+  rank_ui_dynamic: {fileID: 0}
+  settigns_ui_static: {fileID: 0}
+  settigns_ui_dynamic: {fileID: 0}
+  PUS: {fileID: 0}
+  Score_Text: {fileID: 0}
   run_curreny_text: {fileID: 0}
   FloatingOrigin: {fileID: 0}
---- !u!114 &1995571284987025674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995571284987025715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4acbce16100b7254aa8ec4287ee75229, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brakePads: {fileID: 0}
-  isBraking: 0
-  BreakingSpeed: 3
+  RS: {fileID: 0}
 --- !u!114 &6711505760930659472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11668936af097c48821b4f6544a990b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 3045257163946532914}
 --- !u!95 &3045257163946532914
 Animator:
   serializedVersion: 4

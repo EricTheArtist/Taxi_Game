@@ -54,8 +54,17 @@ public class PickUpSystem : MonoBehaviour
             {
                 AddPassenger();
                 used = true;
+                other.gameObject.SetActive(false);
             }
            
+        }
+        if (other.tag == "Robot")
+        {
+            Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
+            if (TR.RedLightON == false)
+            {
+                controller.BreakInstruction.SetText("GO!");
+            }
         }
     }
 
@@ -64,13 +73,19 @@ public class PickUpSystem : MonoBehaviour
         if (other.tag == "PickUpPoint")
         {
             controller.breakButton.SetActive(true);
+            controller.BreakInstruction.SetText("TAP!");
             used = false;
         }
         if (other.tag == "Robot")
         {
-            controller.breakButton.SetActive(true);
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
-            TR.CountoGreen();
+            if(TR.RedLightON == true)
+            {
+                controller.breakButton.SetActive(true);
+                controller.BreakInstruction.SetText("HOLD!");
+            }
+            //Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
+            //TR.CountoGreen();
 
         }
     }
@@ -84,7 +99,7 @@ public class PickUpSystem : MonoBehaviour
             {
                 controller.BreakPadUp();
             }
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
         if (other.tag == "Robot")
         {
