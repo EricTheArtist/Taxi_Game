@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78bf770f10f41a54d9c7ff27aba1e778
+guid: 5b7ab764fdf5fb840b1a625cb08cb695
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -51,7 +51,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -129,43 +129,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: T_Icon_Coin
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 1
-        width: 138
-        height: 138
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddb9ab877972e6343a6a30ee39379790
-      internalID: 687101282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: T_Icon_Brake
+      name: T_BrakePad
       rect:
         serializedVersion: 2
         x: 142
         y: 0
         width: 114
-        height: 255
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3079109fde1df2409a1babccbc79455
-      internalID: -1057457332
+      spriteID: a3268aed800bff54ebaae9941827df6d
+      internalID: -1456553955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Flash1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 126
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1021c36700777b445bf61c8e0df26b87
+      internalID: -744788036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Flash2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 129
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499f8928e5c659f4a85dc042b93a8788
+      internalID: 777068323
       vertices: []
       indices: 
       edges: []
@@ -173,7 +194,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a23ba607c8c60ee4c94de028b19cdf84
+    spriteID: fd9ae99623c95704389b03834615cb49
     internalID: 0
     vertices: []
     indices: 
@@ -181,8 +202,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      T_Icon_Coin: 687101282
-      T_Icon_Brake: -1057457332
+      T_BrakePad: -1456553955
+      T_Flash2: 777068323
+      T_Flash1: -744788036
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
