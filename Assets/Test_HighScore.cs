@@ -11,6 +11,8 @@ public class Test_HighScore : MonoBehaviour
     public int scoreInt;
 
     public TMP_Text CurrentScore;
+    public ParticleSystem HighRunEffect;
+    
 
     private SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
@@ -20,6 +22,9 @@ public class Test_HighScore : MonoBehaviour
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
 
         highScore = PlayerPrefs.GetInt("HighScore");
+        
+        
+        //HighRunEffect.
     }
 
     // Update is called once per frame
@@ -38,6 +43,15 @@ public class Test_HighScore : MonoBehaviour
 
             if(scoreInt >= highScore)
             {
+
+                if(HighRunEffect.isPlaying== false)
+                {
+                    HighRunEffect.Play();
+                }
+
+                
+                    
+                
                 highScore = scoreInt;
                 PlayerPrefs.SetInt("HighScore", highScore);
                 CurrentScore.color = new Color32(255,203,0,255);
@@ -51,6 +65,7 @@ public class Test_HighScore : MonoBehaviour
     {
         highScore = PlayerPrefs.GetInt("HighScore");
         CurrentScore.color = new Color32(255, 255, 255, 255);
+        HighRunEffect.Stop();
         score = 0;
         scoreInt = 0;
     }
