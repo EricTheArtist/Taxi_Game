@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpSystem : MonoBehaviour
+public class Mamello_PickUpSystem : MonoBehaviour
 {   
     [SerializeField] int passengerCount=0;
-    
     //[SerializeField]
     //List<int> passengers = new List<int>();
+    //[SerializeField] private GameObject pickUpPoint;
 
     //BreakSystem breakSystem;
     private SimpleInputNamespace.TestCharacterController controller;
     CurrencySystem currencySystem;
     private Animator animator;
-    private GameObject pickUpPoint;
 
     float CopChaseDuration = 8;
     bool CopIsChasing = false;
@@ -32,7 +31,7 @@ public class PickUpSystem : MonoBehaviour
 
     private void Update()
     {
-        CheckCopChase();
+        CheckCopChase();   
     }
 
     private void OnEnable()
@@ -55,9 +54,9 @@ public class PickUpSystem : MonoBehaviour
             {
                 AddPassenger();
                 used = true;
-                //other.gameObject.SetActive(false);
+                other.gameObject.SetActive(false);
             }
-
+           
         }
         if (other.tag == "Robot")
         {
@@ -73,13 +72,10 @@ public class PickUpSystem : MonoBehaviour
     {
         if (other.tag == "PickUpPoint")
         {
- 
             controller.breakButton.SetActive(true);
             controller.BreakInstruction.SetText("TAP!");
             used = false;
-            pickUpPoint = other.gameObject;
         }
-
         if (other.tag == "Robot")
         {
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
@@ -104,7 +100,6 @@ public class PickUpSystem : MonoBehaviour
                 controller.BreakPadUp();
             }
             //other.gameObject.SetActive(false);
-            Invoke("DeactivatePickUpPoint", 0.5f);
         }
         if (other.tag == "Robot")
         {
@@ -140,16 +135,7 @@ public class PickUpSystem : MonoBehaviour
         currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);
         currencySystem.main_amount += 3; //run amount is no longer being added to total at end of run, the total is being updated during the run and the run_amount is only being used on the game end screen
         Debug.Log("Passenger Picked Up");
+        //pickUpPointAnimator.SetTrigger("isPassengerBoarding");
         animator.SetTrigger("isGettingPassenger");
-
-        foreach (GameObject pickUpPoint in GameObject.FindGameObjectsWithTag("Stop"))
-        {
-            pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoarding");
-        }
-    }
-
-    void DeactivatePickUpPoint()
-    {
-        pickUpPoint.SetActive(false);
     }
 }
