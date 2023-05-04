@@ -11,6 +11,12 @@
         },
         {
             "m_Id": "df4e874781684e27a47cebeb2981cd83"
+        },
+        {
+            "m_Id": "080ea0ee5ab4414c85e53b31098623cc"
+        },
+        {
+            "m_Id": "7abb693b75024b91863eb366460886a3"
         }
     ],
     "m_Keywords": [],
@@ -110,6 +116,12 @@
         },
         {
             "m_Id": "b27c37235cc6449cb7e1c196b854397c"
+        },
+        {
+            "m_Id": "201d74e3971e4321bff1d18f91e324d7"
+        },
+        {
+            "m_Id": "8597c3413b274fa791f262d41a8dd783"
         }
     ],
     "m_GroupDatas": [],
@@ -155,6 +167,20 @@
                     "m_Id": "d98fbef8331b43f89646757ddd60ef6a"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "201d74e3971e4321bff1d18f91e324d7"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "2f398cc2f86d47f9bd5e489ac13a3a07"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -309,6 +335,20 @@
                     "m_Id": "9669d51b00394d08bf40a1a69d208357"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "8597c3413b274fa791f262d41a8dd783"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "11be19ab8cae484183a232faac81020b"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -701,6 +741,35 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "080ea0ee5ab4414c85e53b31098623cc",
+    "m_Guid": {
+        "m_GuidSerialized": "74b6c0f0-0b6e-4c91-acf9-b87b951b2926"
+    },
+    "m_Name": "Car_Tex",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Car_Tex",
+    "m_DefaultReferenceName": "_Car_Tex",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"b1c672a7900abf241afa27f3c6f6e661\",\"type\":3}}",
+        "m_Guid": ""
+    },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
+    "m_Modifiable": true,
+    "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "0bc917b06e694074a9c5aee571c17b11",
     "m_Id": 0,
@@ -976,6 +1045,41 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "201d74e3971e4321bff1d18f91e324d7",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -3693.0,
+            "y": 165.0,
+            "width": 127.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "dc674598fbcc413a8a3d38b2bed93619"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "080ea0ee5ab4414c85e53b31098623cc"
+    }
 }
 
 {
@@ -2218,6 +2322,35 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "7abb693b75024b91863eb366460886a3",
+    "m_Guid": {
+        "m_GuidSerialized": "405144d6-3db7-418f-bea5-2ef1aec0cad4"
+    },
+    "m_Name": "Car_Mask",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Car_Mask",
+    "m_DefaultReferenceName": "_Car_Mask",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"249be02bf841d3b4d9b3abf70ced17e3\",\"type\":3}}",
+        "m_Guid": ""
+    },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
+    "m_Modifiable": true,
+    "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "7d9ecf0277544fbaa421ce3a27dc8cf0",
     "m_Id": 0,
@@ -2300,6 +2433,41 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "8597c3413b274fa791f262d41a8dd783",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -3284.000244140625,
+            "y": -1142.0,
+            "width": 135.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "a5b7ef6c7a3a4b098311b3c50542d450"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "7abb693b75024b91863eb366460886a3"
     }
 }
 
@@ -2449,6 +2617,12 @@
         },
         {
             "m_Id": "df4e874781684e27a47cebeb2981cd83"
+        },
+        {
+            "m_Id": "080ea0ee5ab4414c85e53b31098623cc"
+        },
+        {
+            "m_Id": "7abb693b75024b91863eb366460886a3"
         }
     ]
 }
@@ -2736,6 +2910,19 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.BaseColor"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
+    "m_ObjectId": "a5b7ef6c7a3a4b098311b3c50542d450",
+    "m_Id": 0,
+    "m_DisplayName": "Car_Mask",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_BareResource": false
 }
 
 {
@@ -3495,6 +3682,19 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
+    "m_ObjectId": "dc674598fbcc413a8a3d38b2bed93619",
+    "m_Id": 0,
+    "m_DisplayName": "Car_Tex",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_BareResource": false
 }
 
 {

@@ -18,6 +18,7 @@ public class ShopUIManager : MonoBehaviour
 
     public GameObject Colour1Shop;
     public GameObject Colour2Shop;
+    public GameObject CarShop;
 
     public bool updatedV = true;
     public bool updatedH = true;
@@ -25,12 +26,19 @@ public class ShopUIManager : MonoBehaviour
     public Image colour1Sample;
     public Image colour2Sample;
     public Renderer TaxiMaterial;
+    public Texture2D[] CarBaseTex;
+    public Texture2D[] CarMaskTex;
+
+    public GameObject[] Cars;
+    int ActiveCar;
     // Start is called before the first frame update
     void Start()
     {
         Coins = PlayerPrefs.GetInt("Main Amount");
         updateCoinsText();
         refreshcolouronsamples();
+        ActiveCar = PlayerPrefs.GetInt("ActiveCar");
+        UpdateCars(ActiveCar);
     }
 
     // Update is called once per frame
@@ -143,10 +151,32 @@ public class ShopUIManager : MonoBehaviour
         Colour2Shop.SetActive(true);
     }
 
+    public void Button_OpenCars()
+    {
+        CarShop.SetActive(true);
+    }
     public void Button_ReturnToShopMain()
     {
         refreshcolouronsamples();
         Colour1Shop.SetActive(false);
         Colour2Shop.SetActive(false);
+        CarShop.SetActive(false);
+    }
+
+    public void UpdateCars(int CarIndex)
+    {
+        for (int i = 0; i < Cars.Length; i++)
+        {
+            if (i == CarIndex)
+            {
+                Cars[i].SetActive(true);
+                TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex",CarBaseTex[i]);
+                TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", CarMaskTex[i]);
+            }
+            else
+            {
+                Cars[i].SetActive(false);
+            }
+        }
     }
 }
