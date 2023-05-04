@@ -5,7 +5,9 @@ using UnityEngine;
 public class PickUpSystem : MonoBehaviour
 {   
     [SerializeField] int passengerCount=0;
-    
+    [SerializeField] GameObject passengerLeft;
+    [SerializeField] GameObject passengerRight;
+
     //[SerializeField]
     //List<int> passengers = new List<int>();
 
@@ -47,27 +49,6 @@ public class PickUpSystem : MonoBehaviour
             //PlayPoliceAnimation here
         }
     }
-    private void OnTriggerStay(Collider other)// If Player is within the pickup zone
-    {
-        if (controller.isBraking && other.tag=="PickUpPoint")//check if the player has stoped in the zone
-        {
-            if(used == false)
-            {
-                AddPassenger();
-                used = true;
-                //other.gameObject.SetActive(false);
-            }
-
-        }
-        if (other.tag == "Robot")
-        {
-            Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
-            if (TR.RedLightON == false)
-            {
-                controller.BreakInstruction.SetText("GO!");
-            }
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -77,7 +58,7 @@ public class PickUpSystem : MonoBehaviour
             controller.breakButton.SetActive(true);
             controller.BreakInstruction.SetText("TAP!");
             used = false;
-            pickUpPoint = other.gameObject;
+            pickUpPoint = other.transform.parent.gameObject;
         }
 
         if (other.tag == "Robot")
@@ -91,6 +72,37 @@ public class PickUpSystem : MonoBehaviour
             //Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
             //TR.CountoGreen();
 
+        }
+    }
+
+    private void OnTriggerStay(Collider other)// If Player is within the pickup zone
+    {
+        if (controller.isBraking && other.tag == "PickUpPoint")//check if the player has stoped in the zone
+        {
+            if (used == false)
+            {
+                AddPassenger();
+                
+                if (pickUpPoint.transform.position.x == -4)
+                {
+                    pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingLeft");
+                }
+
+                if (pickUpPoint.transform.position.x == 4)
+                {
+                    pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingRight");
+                }
+
+            }
+
+        }
+        if (other.tag == "Robot")
+        {
+            Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
+            if (TR.RedLightON == false)
+            {
+                controller.BreakInstruction.SetText("GO!");
+            }
         }
     }
 
@@ -141,11 +153,6 @@ public class PickUpSystem : MonoBehaviour
         currencySystem.main_amount += 3; //run amount is no longer being added to total at end of run, the total is being updated during the run and the run_amount is only being used on the game end screen
         Debug.Log("Passenger Picked Up");
         animator.SetTrigger("isGettingPassenger");
-
-        foreach (GameObject pickUpPoint in GameObject.FindGameObjectsWithTag("Stop"))
-        {
-            pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoarding");
-        }
     }
 
     void DeactivatePickUpPoint()
