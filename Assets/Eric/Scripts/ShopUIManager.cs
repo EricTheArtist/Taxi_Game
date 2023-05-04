@@ -31,6 +31,13 @@ public class ShopUIManager : MonoBehaviour
 
     public GameObject[] Cars;
     int ActiveCar;
+    public GameObject TyresFront;
+    public GameObject TyresBack;
+
+    public float[] TyresFrontZ;
+    public float[] TyresBackZ;
+
+    public float[] TyresScaleX;
     // Start is called before the first frame update
     void Start()
     {
@@ -154,6 +161,8 @@ public class ShopUIManager : MonoBehaviour
     public void Button_OpenCars()
     {
         CarShop.SetActive(true);
+        Colour1Shop.SetActive(false);
+        Colour2Shop.SetActive(false);
     }
     public void Button_ReturnToShopMain()
     {
@@ -172,6 +181,11 @@ public class ShopUIManager : MonoBehaviour
                 Cars[i].SetActive(true);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex",CarBaseTex[i]);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", CarMaskTex[i]);
+                TyresFront.transform.localPosition = new Vector3(0,-0.35f,TyresFrontZ[i]);
+                TyresBack.transform.localPosition = new Vector3(0, -0.35f, TyresBackZ[i]);
+
+                TyresFront.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
+                TyresBack.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
             }
             else
             {
