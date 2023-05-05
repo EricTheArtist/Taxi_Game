@@ -5,8 +5,6 @@ using UnityEngine;
 public class PickUpSystem : MonoBehaviour
 {   
     [SerializeField] int passengerCount=0;
-    [SerializeField] GameObject passengerLeft;
-    [SerializeField] GameObject passengerRight;
 
     //[SerializeField]
     //List<int> passengers = new List<int>();
@@ -71,7 +69,6 @@ public class PickUpSystem : MonoBehaviour
             }
             //Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
             //TR.CountoGreen();
-
         }
     }
 
@@ -82,20 +79,20 @@ public class PickUpSystem : MonoBehaviour
             if (used == false)
             {
                 AddPassenger();
-                
-                if (pickUpPoint.transform.position.x == -4)
+                used = true;
+
+                if (pickUpPoint.transform.position.x == -4f)//playing passenger boarding animations
                 {
                     pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingLeft");
                 }
 
-                if (pickUpPoint.transform.position.x == 4)
+                if (pickUpPoint.transform.position.x == 4f)
                 {
                     pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingRight");
                 }
-
             }
-
         }
+
         if (other.tag == "Robot")
         {
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
@@ -118,6 +115,7 @@ public class PickUpSystem : MonoBehaviour
             //other.gameObject.SetActive(false);
             Invoke("DeactivatePickUpPoint", 0.5f);
         }
+
         if (other.tag == "Robot")
         {
             controller.breakButton.SetActive(false);
