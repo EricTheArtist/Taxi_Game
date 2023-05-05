@@ -26,6 +26,7 @@ public class ShopUIManager : MonoBehaviour
     public Image colour1Sample;
     public Image colour2Sample;
     public Renderer TaxiMaterial;
+    public GameObject Slogan;
     public Texture2D[] CarBaseTex;
     public Texture2D[] CarMaskTex;
 
@@ -38,6 +39,8 @@ public class ShopUIManager : MonoBehaviour
     public float[] TyresBackZ;
 
     public float[] TyresScaleX;
+    public Vector3[] SloganPosition;
+    public float[] SloganXrotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -186,6 +189,9 @@ public class ShopUIManager : MonoBehaviour
 
                 TyresFront.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
                 TyresBack.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
+
+                Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
+                Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
             }
             else
             {

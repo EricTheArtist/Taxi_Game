@@ -12,11 +12,14 @@ public class Car_Settings_Updater : MonoBehaviour
 
     public GameObject TyresFront;
     public GameObject TyresBack;
+    public GameObject Slogan;
 
     public float[] TyresFrontZ;
     public float[] TyresBackZ;
 
     public float[] TyresScaleX;
+    public Vector3[] SloganPosition;
+    public float[] SloganXrotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,9 @@ public class Car_Settings_Updater : MonoBehaviour
 
                 TyresFront.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
                 TyresBack.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
+
+                Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
+                Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
             }
             else
             {
