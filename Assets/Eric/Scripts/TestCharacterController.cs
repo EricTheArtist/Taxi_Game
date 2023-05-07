@@ -47,6 +47,7 @@ namespace SimpleInputNamespace
         public TMP_Text BreakInstruction;
 
         private Animator animator;
+        public GameObject Qube;
 
 
         private void Start()
@@ -133,6 +134,8 @@ namespace SimpleInputNamespace
                 else
                 {
                     hMovement = SW.Angle * movementSpeed / 200;
+                    Debug.Log("Steering angle " + SW.Angle.ToString());
+                    Qube.transform.localEulerAngles = new Vector3(0, SW.Angle/3, 0);
                 }
             }
         }
@@ -167,6 +170,7 @@ namespace SimpleInputNamespace
                                 LerpSwipe = true;
                                 animator.SetTrigger("isSwervingRight 0");
                                 
+                                
                             }
 
                         }
@@ -177,6 +181,7 @@ namespace SimpleInputNamespace
                             LerpSwipe = true;
                             animator.SetTrigger("isSwervingLeft 0");
                             
+
                         }
                     }
                 }
@@ -193,6 +198,9 @@ namespace SimpleInputNamespace
                 {
                     //updates the position of the car with steering wheel included
                     transform.Translate(new Vector3(hMovement, 0, vMovement) * Time.deltaTime);
+                    //transform.RotateAround(transform.position, Vector3.up, SW.Angle/10 * Time.deltaTime);
+
+
                 }
                 else
                 {
