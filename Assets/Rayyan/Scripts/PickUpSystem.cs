@@ -80,16 +80,6 @@ public class PickUpSystem : MonoBehaviour
             {
                 AddPassenger();
                 used = true;
-
-                if (pickUpPoint.transform.position.x == -4f)//playing passenger boarding animations
-                {
-                    pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingLeft");
-                }
-
-                if (pickUpPoint.transform.position.x == 4f)
-                {
-                    pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingRight");
-                }
             }
         }
 
@@ -151,6 +141,24 @@ public class PickUpSystem : MonoBehaviour
         currencySystem.main_amount += 3; //run amount is no longer being added to total at end of run, the total is being updated during the run and the run_amount is only being used on the game end screen
         Debug.Log("Passenger Picked Up");
         animator.SetTrigger("isGettingPassenger");
+
+        Vector3 passengerStartPosition = pickUpPoint.transform.GetChild(1).localPosition;
+        //Debug.Log(passengerStartPosition);
+        Vector3 PassengerEndPosition = new Vector3(0f, pickUpPoint.transform.GetChild(1).localPosition.y, pickUpPoint.transform.GetChild(1).localPosition.z); //when move down on y-axis (off pavement), y pos \ition updates before the lero is called.
+        //Vector3 yPassengerEndPosition = new Vector3(0f, pickUpPoint.transform.GetChild(1).localPosition.y, pickUpPoint.transform.GetChild(1).localPosition.z);
+        //playing passenger boarding animations
+        pickUpPoint.transform.GetChild(1).GetComponent<Animator>().SetTrigger("isPassengerBoarding");
+        pickUpPoint.transform.GetChild(1).localPosition = Vector3.Lerp(passengerStartPosition, PassengerEndPosition, 1f);
+        //pickUpPoint.transform.GetChild(1).localPosition = Vector3.Lerp(passengerStartPosition, yPassengerEndPosition, 1f);
+
+        /*if (pickUpPoint.transform.position.x == -4f) 
+        {
+            pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingLeft");
+        }
+        if (pickUpPoint.transform.position.x == 4f)
+        {
+            pickUpPoint.GetComponent<Animator>().SetTrigger("isPassengerBoardingRight");
+        }*/
     }
 
     void DeactivatePickUpPoint()

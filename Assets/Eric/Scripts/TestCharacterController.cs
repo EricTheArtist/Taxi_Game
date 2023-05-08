@@ -9,7 +9,6 @@ namespace SimpleInputNamespace
 {
     public class TestCharacterController : MonoBehaviour
     {
-
         public SpawnManager spawnManager;
 
         public bool SteeringWheel;
@@ -48,6 +47,7 @@ namespace SimpleInputNamespace
 
         private Animator animator;
         public GameObject Qube;
+
 
 
         private void Start()
