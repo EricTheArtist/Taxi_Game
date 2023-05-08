@@ -4,30 +4,25 @@ using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
 {
-
     private void OnEnable()
     {
-        Vector3 leftLane = new Vector3(-1.27f, transform.GetChild(1).localPosition.y, transform.GetChild(1).localPosition.z);
-        Vector3 rightLane = new Vector3(1.27f, transform.GetChild(1).localPosition.y, transform.GetChild(1).localPosition.z);
 
-        Debug.Log(transform.GetChild(1).localPosition.x);
-        //transform.GetChild(1).localPosition = new Vector3(transform.localPosition.x, 5, transform.localPosition.z);
-        //transform.GetChild(1).localPosition = leftLane;
-        /*if (transform.position.x == -4f)
+        Vector3 leftLane = new Vector3(-1.27f, transform.localPosition.y, transform.localPosition.z);
+        Vector3 rightLane = new Vector3(1.27f, transform.localPosition.y, transform.localPosition.z);
+
+        if (transform.parent.position.x == -4f)
         {
+            transform.localPosition = leftLane;
             
-            //Debug.Log(transform.GetChild(1).position.x);
-            transform.GetChild(1).localPosition = leftLane;
-            //Debug.Log(transform.GetChild(1).localPosition.x);
-
+           //Debug.Log(transform.localPosition.x);
         }
 
-        if (transform.position.x == 4f)
-        {
 
-            //Debug.Log(transform.GetChild(1).position.x);
-           transform.GetChild(1).localPosition = rightLane;
-           //Debug.Log(transform.GetChild(1).localPosition.x);
-        }*/
+        if (transform.parent.position.x == 4f)
+        {
+            transform.localPosition = rightLane;
+           
+            //Debug.Log(transform.localPosition.x);
+        }
     }
 }
