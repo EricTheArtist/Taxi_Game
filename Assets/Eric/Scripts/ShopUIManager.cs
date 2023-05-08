@@ -95,7 +95,7 @@ public class ShopUIManager : MonoBehaviour
 
         //set positions
 
-        TaxiRankScene.transform.position = new Vector3(0, 0, 0);
+        TaxiRankScene.transform.position = new Vector3(0, -0.5f, -0.8f);
 
         updatedV = false;
         updatedH = true;

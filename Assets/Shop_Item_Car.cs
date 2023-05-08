@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class Shop_Item_Car : MonoBehaviour
 {
     public int Price;
@@ -15,6 +16,7 @@ public class Shop_Item_Car : MonoBehaviour
     public bool Premium = false;
     public GameObject car;
     public int CarIndex;
+    
 
 
     void Start()
