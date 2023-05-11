@@ -14,11 +14,10 @@ public class ShopUIManager : MonoBehaviour
     public GameObject PlayButton;
     public GameObject TaxiRankScene;
     public GameObject ModRidesHorizontal;
-    public GameObject ModRidesVertical;
+    //public GameObject ModRidesVertical;
 
-    public GameObject Colour1Shop;
-    public GameObject Colour2Shop;
-    public GameObject CarShop;
+    public GameObject[] Shops;
+    public Button[] Tabs;
 
     public bool updatedV = true;
     public bool updatedH = true;
@@ -41,14 +40,31 @@ public class ShopUIManager : MonoBehaviour
     public float[] TyresScaleX;
     public Vector3[] SloganPosition;
     public float[] SloganXrotation;
+
+    public float StanceMax;
+    public Slider StanceBar;
+    float[] stanceStarty;
+
+    public GameObject[] Wheelsleft;
+    public GameObject[] Wheelsright;
+
     // Start is called before the first frame update
     void Start()
     {
+        stanceStarty = new float[Cars.Length];
+        for (int i = 0; i < Cars.Length; i++)
+        {
+            stanceStarty[i] = Cars[i].transform.localPosition.y;
+        }
         Coins = PlayerPrefs.GetInt("Main Amount");
         updateCoinsText();
         refreshcolouronsamples();
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCars(ActiveCar);
+
+
+            
+
     }
 
     // Update is called once per frame
@@ -77,10 +93,36 @@ public class ShopUIManager : MonoBehaviour
         
     }
 
+    public void updatestance()
+    {
+        ActiveCar = PlayerPrefs.GetInt("ActiveCar");
+        float yheight = Mathf.Lerp(stanceStarty[ActiveCar], stanceStarty[ActiveCar] - 0.1f, StanceBar.value);
+        
+        
+        Cars[ActiveCar].transform.localPosition = new Vector3(Cars[ActiveCar].transform.localPosition.x, yheight, 
+                                                        Cars[ActiveCar].transform.localPosition.z);
+        for (int i = 0; i < Wheelsleft.Length; i++)
+        {
+            float wheelRotation = Mathf.Lerp(0, 20, StanceBar.value);
+            Wheelsleft[i].transform.localRotation = Quaternion.Euler(0, 180, wheelRotation);
+        }
+        for (int i = 0; i < Wheelsright.Length; i++)
+        {
+            float wheelRotation = Mathf.Lerp(0, 20, StanceBar.value);
+            Wheelsright[i].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
+        }
+
+
+
+
+
+    }
+
+
     void LayoutVertical()
     {
         ModRidesHorizontal.SetActive(false);
-        ModRidesVertical.SetActive(true);
+        //ModRidesVertical.SetActive(true);
 
         //sent ancorage
         RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
@@ -103,7 +145,7 @@ public class ShopUIManager : MonoBehaviour
     void LayoutHorizontal()
     {
         ModRidesHorizontal.SetActive(true);
-        ModRidesVertical.SetActive(false);
+        //ModRidesVertical.SetActive(false);
         //sent ancorage
         RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
         RT_Shop.anchorMin = new Vector2(1, 1);
@@ -139,7 +181,7 @@ public class ShopUIManager : MonoBehaviour
         }
     }
 
-    void refreshcolouronsamples()
+    public void refreshcolouronsamples()
     {
         colour1Sample.color = TaxiMaterial.sharedMaterial.GetColor("_Color");
         colour2Sample.color = TaxiMaterial.sharedMaterial.GetColor("_Color2");
@@ -180,32 +222,28 @@ public class ShopUIManager : MonoBehaviour
     
     }
 
-    public void Button_OpenColour1()
+    public void ShopTabClicked(int ButtonIndex)
     {
-        Colour1Shop.SetActive(true);
+        for (int i = 0; i < Shops.Length; i++)
+        { 
+            if(i == ButtonIndex)
+            {
+                Shops[i].SetActive(true);
+                Tabs[i].GetComponent<Image>().color = new Color32(127, 127, 127, 255); 
+            }
+            else
+            {
+                Shops[i].SetActive(false);
+                Tabs[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+
+        }
     }
 
-    public void Button_OpenColour2()
-    {
-        Colour2Shop.SetActive(true);
-    }
-
-    public void Button_OpenCars()
-    {
-        CarShop.SetActive(true);
-        Colour1Shop.SetActive(false);
-        Colour2Shop.SetActive(false);
-    }
-    public void Button_ReturnToShopMain()
-    {
-        refreshcolouronsamples();
-        Colour1Shop.SetActive(false);
-        Colour2Shop.SetActive(false);
-        CarShop.SetActive(false);
-    }
 
     public void UpdateCars(int CarIndex)
     {
+
         for (int i = 0; i < Cars.Length; i++)
         {
             if (i == CarIndex)
@@ -227,5 +265,7 @@ public class ShopUIManager : MonoBehaviour
                 Cars[i].SetActive(false);
             }
         }
+
+        updatestance();
     }
 }

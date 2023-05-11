@@ -57,6 +57,8 @@ public class Shop_Item_Colour : MonoBehaviour
         {
             TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor(shaderInput, Colour);
         }
+
+        SUIM.refreshcolouronsamples();
     }
 
     public void RealCurrencyColourPurchaseSucess()
@@ -64,5 +66,7 @@ public class Shop_Item_Colour : MonoBehaviour
         Owned = true;
         PriceBG.SetActive(false);
         PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
+
+        SUIM.refreshcolouronsamples();
     }
 }
