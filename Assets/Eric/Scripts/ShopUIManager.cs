@@ -35,18 +35,22 @@ public class ShopUIManager : MonoBehaviour
     public GameObject TyresBack;
 
     public float[] TyresFrontZ;
+    public Vector3[] TyresFrontPos;
+    public Vector3[] TyresBackPos;
     public float[] TyresBackZ;
 
     public float[] TyresScaleX;
     public Vector3[] SloganPosition;
     public float[] SloganXrotation;
+    public float[] SloganScale;
 
-    public float StanceMax;
+    public float StanceMax; //not currently used
     public Slider StanceBar;
     float[] stanceStarty;
 
     public GameObject[] Wheelsleft;
     public GameObject[] Wheelsright;
+    public float[] WheelScale;
 
     // Start is called before the first frame update
     void Start()
@@ -96,7 +100,7 @@ public class ShopUIManager : MonoBehaviour
     public void updatestance()
     {
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
-        float yheight = Mathf.Lerp(stanceStarty[ActiveCar], stanceStarty[ActiveCar] - 0.1f, StanceBar.value);
+        float yheight = Mathf.Lerp(stanceStarty[ActiveCar], stanceStarty[ActiveCar] - 0.1f, StanceBar.value); //some refrence seems to be missing here
         
         
         Cars[ActiveCar].transform.localPosition = new Vector3(Cars[ActiveCar].transform.localPosition.x, yheight, 
@@ -105,6 +109,7 @@ public class ShopUIManager : MonoBehaviour
         {
             float wheelRotation = Mathf.Lerp(0, 20, StanceBar.value);
             Wheelsleft[i].transform.localRotation = Quaternion.Euler(0, 180, wheelRotation);
+
         }
         for (int i = 0; i < Wheelsright.Length; i++)
         {
@@ -112,7 +117,7 @@ public class ShopUIManager : MonoBehaviour
             Wheelsright[i].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
         }
 
-
+        PlayerPrefs.SetFloat("Suspension", StanceBar.value);
 
 
 
@@ -251,11 +256,11 @@ public class ShopUIManager : MonoBehaviour
                 Cars[i].SetActive(true);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex",CarBaseTex[i]);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", CarMaskTex[i]);
-                TyresFront.transform.localPosition = new Vector3(0,-0.35f,TyresFrontZ[i]);
-                TyresBack.transform.localPosition = new Vector3(0, -0.35f, TyresBackZ[i]);
+                TyresFront.transform.localPosition = TyresFrontPos[i];
+                TyresBack.transform.localPosition = TyresBackPos[i];
 
-                TyresFront.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
-                TyresBack.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
+                TyresFront.transform.localScale = new Vector3(TyresScaleX[i], WheelScale[i], WheelScale[i]);
+                TyresBack.transform.localScale = new Vector3(TyresScaleX[i], WheelScale[i], WheelScale[i]);
 
                 Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);

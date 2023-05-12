@@ -14,15 +14,28 @@ public class Car_Settings_Updater : MonoBehaviour
     public GameObject TyresBack;
     public GameObject Slogan;
 
-    public float[] TyresFrontZ;
-    public float[] TyresBackZ;
+    public Vector3[] TyresFrontPos;
+    public Vector3[] TyresBackPos;
 
     public float[] TyresScaleX;
     public Vector3[] SloganPosition;
     public float[] SloganXrotation;
+
+    float[] stanceStarty;
+    public GameObject[] Wheelsleft;
+    public GameObject[] Wheelsright;
+    public float[] WheelScale;
     // Start is called before the first frame update
     void Start()
     {
+
+        stanceStarty = new float[Meshes.Length];
+        for (int i = 0; i < Meshes.Length; i++)
+        {
+            stanceStarty[i] = Meshes[i].transform.localPosition.y;
+        }
+
+
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCarsMain(ActiveCar);
     }
@@ -44,14 +57,48 @@ public class Car_Settings_Updater : MonoBehaviour
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex", _CarBaseTex[i]);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", _CarMaskTex[i]);
 
-                TyresFront.transform.localPosition = new Vector3(0, -0.3267f, TyresFrontZ[i]);
-                TyresBack.transform.localPosition = new Vector3(0, -0.3268f, TyresBackZ[i]);
+                TyresFront.transform.localPosition = TyresFrontPos[i];
+                TyresBack.transform.localPosition = TyresBackPos[i];
 
-                TyresFront.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
-                TyresBack.transform.localScale = new Vector3(TyresScaleX[i], 1, 1);
+                TyresFront.transform.localScale = new Vector3(TyresScaleX[i], WheelScale[i], WheelScale[i]);
+                TyresBack.transform.localScale = new Vector3(TyresScaleX[i], WheelScale[i], WheelScale[i]);
 
                 Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
+
+
+                float Stance = PlayerPrefs.GetFloat("Suspension");
+
+                float yheight = Mathf.Lerp(stanceStarty[CarIndex], stanceStarty[CarIndex] - 0.1f, Stance);
+
+
+                Meshes[i].transform.localPosition = new Vector3(Meshes[i].transform.localPosition.x, yheight,
+                                                                Meshes[i].transform.localPosition.z);
+
+                Debug.Log("Height: " + yheight.ToString());
+
+                for (int j = 0; j < Wheelsleft.Length; j++)
+                {
+                    float wheelRotation = Mathf.Lerp(0, 20, Stance);
+                    Wheelsleft[j].transform.localRotation = Quaternion.Euler(0, 180, wheelRotation);
+                }
+                for (int k = 0; k < Wheelsright.Length; k++)
+                {
+                    float wheelRotation = Mathf.Lerp(0, 20, Stance);
+                    Wheelsright[k].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
+                }
+
+                
+
+
+
+
+
+
+
+
+
+
             }
             else
             {
