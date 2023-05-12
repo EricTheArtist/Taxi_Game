@@ -20,6 +20,7 @@ public class Car_Settings_Updater : MonoBehaviour
     public float[] TyresScaleX;
     public Vector3[] SloganPosition;
     public float[] SloganXrotation;
+    public float[] SloganScale;
 
     float[] stanceStarty;
     public GameObject[] Wheelsleft;
@@ -52,21 +53,23 @@ public class Car_Settings_Updater : MonoBehaviour
         for (int i = 0; i < Meshes.Length; i++)
         {
             if (i == CarIndex)
-            {
+            {   //activates car mesh
                 Meshes[i].SetActive(true);
+                //sets materials
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex", _CarBaseTex[i]);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", _CarMaskTex[i]);
-
+                //sets tire position and scale
                 TyresFront.transform.localPosition = TyresFrontPos[i];
                 TyresBack.transform.localPosition = TyresBackPos[i];
 
                 TyresFront.transform.localScale = new Vector3(TyresScaleX[i], WheelScale[i], WheelScale[i]);
                 TyresBack.transform.localScale = new Vector3(TyresScaleX[i], WheelScale[i], WheelScale[i]);
-
+                // sets slogan position and scale
                 Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
+                Slogan.transform.localScale = new Vector3(SloganScale[i], SloganScale[i], SloganScale[i]);
 
-
+                //sets suspencion height
                 float Stance = PlayerPrefs.GetFloat("Suspension");
 
                 float yheight = Mathf.Lerp(stanceStarty[CarIndex], stanceStarty[CarIndex] - 0.1f, Stance);
@@ -75,7 +78,7 @@ public class Car_Settings_Updater : MonoBehaviour
                 Meshes[i].transform.localPosition = new Vector3(Meshes[i].transform.localPosition.x, yheight,
                                                                 Meshes[i].transform.localPosition.z);
 
-                Debug.Log("Height: " + yheight.ToString());
+                //sets wheel angle based on height
 
                 for (int j = 0; j < Wheelsleft.Length; j++)
                 {

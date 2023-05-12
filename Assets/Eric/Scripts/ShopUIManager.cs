@@ -264,6 +264,7 @@ public class ShopUIManager : MonoBehaviour
 
                 Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
+                Slogan.transform.localScale = new Vector3(SloganScale[i],SloganScale[i],SloganScale[i]);
             }
             else
             {
