@@ -19,10 +19,11 @@ public class Test_ObjectRotateOnDrag : MonoBehaviour
     // The horizontal distance between the initial and current touch positions
     private float horizontalDragDistance = 0f;
 
-    //float draglimit = 0; 
+    bool CanDrag; 
 
     void Update()
     {
+
         // Check if there is one touch point on the screen
         if (Input.touchCount == 1)
         {
@@ -39,6 +40,10 @@ public class Test_ObjectRotateOnDrag : MonoBehaviour
             // Check if the touch input has moved
             if (touch.phase == TouchPhase.Moved)
             {
+                if(CanDrag == true)
+                {
+
+
                 // Store the current touch position
                 currentTouchPosition = touch.position;
 
@@ -51,7 +56,19 @@ public class Test_ObjectRotateOnDrag : MonoBehaviour
                 //Debug.Log(horizontalDragDistance);
                 // Rotate the object around its Y-axis based on the rotation angle
                 transform.Rotate(new Vector3(0, -rotationAngle, 0));
+                }
+
             }
         }
+    }
+
+    public void PressingInRegion()
+    {
+        CanDrag = true;
+    }
+
+    public void StopPressingInRegion()
+    {
+        CanDrag = false;
     }
 }

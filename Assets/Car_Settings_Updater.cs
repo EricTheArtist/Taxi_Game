@@ -22,7 +22,8 @@ public class Car_Settings_Updater : MonoBehaviour
     public float[] SloganXrotation;
     public float[] SloganScale;
 
-    float[] stanceStarty;
+    float stanceStarty;
+    public GameObject CarChasisHolder;
     public GameObject[] Wheelsleft;
     public GameObject[] Wheelsright;
     public float[] WheelScale;
@@ -30,11 +31,9 @@ public class Car_Settings_Updater : MonoBehaviour
     void Start()
     {
 
-        stanceStarty = new float[Meshes.Length];
-        for (int i = 0; i < Meshes.Length; i++)
-        {
-            stanceStarty[i] = Meshes[i].transform.localPosition.y;
-        }
+
+            stanceStarty = CarChasisHolder.transform.localPosition.y;
+
 
 
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
@@ -50,6 +49,25 @@ public class Car_Settings_Updater : MonoBehaviour
 
     public void UpdateCarsMain(int CarIndex)
     {
+        //Sets suspension height
+        float Stance = PlayerPrefs.GetFloat("Suspension");
+
+        float yheight = Mathf.Lerp(stanceStarty, stanceStarty - 0.1f, Stance);
+        CarChasisHolder.transform.localPosition = new Vector3(CarChasisHolder.transform.localPosition.x, yheight,
+                                                CarChasisHolder.transform.localPosition.z);
+
+        //sets wheel angle based on suspension height
+        for (int j = 0; j < Wheelsleft.Length; j++)
+        {
+            float wheelRotation = Mathf.Lerp(0, 20, Stance);
+            Wheelsleft[j].transform.localRotation = Quaternion.Euler(0, 180, wheelRotation);
+        }
+        for (int k = 0; k < Wheelsright.Length; k++)
+        {
+            float wheelRotation = Mathf.Lerp(0, 20, Stance);
+            Wheelsright[k].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
+        }
+
         for (int i = 0; i < Meshes.Length; i++)
         {
             if (i == CarIndex)
@@ -68,37 +86,6 @@ public class Car_Settings_Updater : MonoBehaviour
                 Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
                 Slogan.transform.localScale = new Vector3(SloganScale[i], SloganScale[i], SloganScale[i]);
-
-                //sets suspencion height
-                float Stance = PlayerPrefs.GetFloat("Suspension");
-
-                float yheight = Mathf.Lerp(stanceStarty[CarIndex], stanceStarty[CarIndex] - 0.1f, Stance);
-
-
-                Meshes[i].transform.localPosition = new Vector3(Meshes[i].transform.localPosition.x, yheight,
-                                                                Meshes[i].transform.localPosition.z);
-
-                //sets wheel angle based on height
-
-                for (int j = 0; j < Wheelsleft.Length; j++)
-                {
-                    float wheelRotation = Mathf.Lerp(0, 20, Stance);
-                    Wheelsleft[j].transform.localRotation = Quaternion.Euler(0, 180, wheelRotation);
-                }
-                for (int k = 0; k < Wheelsright.Length; k++)
-                {
-                    float wheelRotation = Mathf.Lerp(0, 20, Stance);
-                    Wheelsright[k].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
-                }
-
-                
-
-
-
-
-
-
-
 
 
 

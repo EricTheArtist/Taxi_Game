@@ -46,7 +46,8 @@ public class ShopUIManager : MonoBehaviour
 
     public float StanceMax; //not currently used
     public Slider StanceBar;
-    float[] stanceStarty;
+    float stanceStarty;
+    public GameObject CarChasisHolder;
 
     public GameObject[] Wheelsleft;
     public GameObject[] Wheelsright;
@@ -54,12 +55,10 @@ public class ShopUIManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        stanceStarty = new float[Cars.Length];
-        for (int i = 0; i < Cars.Length; i++)
-        {
-            stanceStarty[i] = Cars[i].transform.localPosition.y;
-        }
+    {    
+            
+            stanceStarty = CarChasisHolder.transform.localPosition.y;
+        
         Coins = PlayerPrefs.GetInt("Main Amount");
         updateCoinsText();
         refreshcolouronsamples();
@@ -100,11 +99,11 @@ public class ShopUIManager : MonoBehaviour
     public void updatestance()
     {
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
-        float yheight = Mathf.Lerp(stanceStarty[ActiveCar], stanceStarty[ActiveCar] - 0.1f, StanceBar.value); //some refrence seems to be missing here
+        float yheight = Mathf.Lerp(stanceStarty, stanceStarty - 0.1f, StanceBar.value); //some refrence seems to be missing here
         
         
-        Cars[ActiveCar].transform.localPosition = new Vector3(Cars[ActiveCar].transform.localPosition.x, yheight, 
-                                                        Cars[ActiveCar].transform.localPosition.z);
+        CarChasisHolder.transform.localPosition = new Vector3(CarChasisHolder.transform.localPosition.x, yheight, 
+                                                        CarChasisHolder.transform.localPosition.z);
         for (int i = 0; i < Wheelsleft.Length; i++)
         {
             float wheelRotation = Mathf.Lerp(0, 20, StanceBar.value);
