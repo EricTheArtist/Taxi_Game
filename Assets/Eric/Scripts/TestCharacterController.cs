@@ -45,7 +45,7 @@ namespace SimpleInputNamespace
         public GameObject breakButton;
         public TMP_Text BreakInstruction;
 
-        private Animator animator;
+        public Animator animator;
         public GameObject Qube;
 
 

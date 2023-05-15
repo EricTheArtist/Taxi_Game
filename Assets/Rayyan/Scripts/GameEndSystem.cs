@@ -35,6 +35,9 @@ public class GameEndSystem : MonoBehaviour
 
     Test_HighScore THS;
 
+    private Animator CarAnim;
+    
+
     SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,8 @@ public class GameEndSystem : MonoBehaviour
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
+
+        CarAnim = controller.animator;
     }
 
     // Update is called once per frame
@@ -95,7 +100,7 @@ public class GameEndSystem : MonoBehaviour
     public void restart_button()
     {
         Debug.Log("Game Restarted");
-
+        
         // reset posion of enviroment (this can be done using the same approach as in the floating origin system)
         FloatingOrigin.resetToOrigin();
 
@@ -135,9 +140,13 @@ public class GameEndSystem : MonoBehaviour
     }
     public void play_button()
     {
+        CarAnim.SetBool("Play", true);
         welcome_ui_static.SetActive(false);
         welcome_ui_dynamic.SetActive(false);
-        restart_button();
+
+        Invoke("restart_button", 1);
+        
+
     }
 
     public void rank_button()
