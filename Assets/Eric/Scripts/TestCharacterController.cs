@@ -269,33 +269,24 @@ namespace SimpleInputNamespace
 
         public void BreakPadDown() //called on button press
         {
-            //if ((brakesAmount > 0) && (CanLerp == false)) //check that the player has not used all their breaks and is nit currently breaking
-            //{
 
-            //breakfinished = false;
             isBraking = true;
             _movementSpeed = 0f;
             _movementSpeed = movementSpeed; // saves the players speed
             movementSpeed = 0;
             
 
-            //CanLerp = true; // will trigger the lerp of the break that is being checkd for in update
 
-            //ReduceBrakes();
-
-            //}
 
         }
 
         public void BreakPadUp() //called on button release
         {
 
-            //if (CanLerp == false)
-            //{
+
             breakButton.SetActive(false); //break pad is re-enabled in the Pickup system
             resumedriving();
-            //}
-            //breakfinished = true;
+
             
             
 
@@ -317,7 +308,7 @@ namespace SimpleInputNamespace
 
         void resumedriving()
         {
-            //CanLerp = false;
+
             movementSpeed = _movementSpeed;
             isBraking = false;
 

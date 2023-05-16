@@ -35,8 +35,11 @@ public class GameEndSystem : MonoBehaviour
 
     Test_HighScore THS;
 
-    private Animator CarAnim;
-    
+    public Animator StartCarAnim;
+    public GameObject StartCar;
+
+    public ParticleSystem SmokeBurst;
+
 
     SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
@@ -47,7 +50,7 @@ public class GameEndSystem : MonoBehaviour
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
 
-        CarAnim = controller.animator;
+        
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class GameEndSystem : MonoBehaviour
             endgame = true;
             controller.game_over = true;
             Endgame();
+            SmokeBurst.Play();
         }
     }
     void Collison_Crash()
@@ -99,6 +103,11 @@ public class GameEndSystem : MonoBehaviour
     }
     public void restart_button()
     {
+
+        if (StartCar != null)
+        {
+            Destroy(StartCar);
+        }
         Debug.Log("Game Restarted");
         
         // reset posion of enviroment (this can be done using the same approach as in the floating origin system)
@@ -140,10 +149,11 @@ public class GameEndSystem : MonoBehaviour
     }
     public void play_button()
     {
-        CarAnim.SetBool("Play", true);
+        
         welcome_ui_static.SetActive(false);
         welcome_ui_dynamic.SetActive(false);
-
+        StartCarAnim.SetBool("Play", true);
+        SmokeBurst.Play();
         Invoke("restart_button", 1);
         
 
