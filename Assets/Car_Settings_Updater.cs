@@ -27,6 +27,8 @@ public class Car_Settings_Updater : MonoBehaviour
     public GameObject[] Wheelsleft;
     public GameObject[] Wheelsright;
     public float[] WheelScale;
+
+    public float WheelStartAngle = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +62,12 @@ public class Car_Settings_Updater : MonoBehaviour
         for (int j = 0; j < Wheelsleft.Length; j++)
         {
             float wheelRotation = Mathf.Lerp(0, 20, Stance);
-            Wheelsleft[j].transform.localRotation = Quaternion.Euler(0, 180, wheelRotation);
+            Wheelsleft[j].transform.localRotation = Quaternion.Euler(0, Wheelsleft[j].transform.localRotation.eulerAngles.y, wheelRotation);
         }
         for (int k = 0; k < Wheelsright.Length; k++)
         {
             float wheelRotation = Mathf.Lerp(0, 20, Stance);
-            Wheelsright[k].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
+            Wheelsright[k].transform.localRotation = Quaternion.Euler(0, Wheelsright[k].transform.localRotation.eulerAngles.y, wheelRotation);
         }
 
         for (int i = 0; i < Meshes.Length; i++)

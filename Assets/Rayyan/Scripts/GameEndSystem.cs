@@ -152,8 +152,13 @@ public class GameEndSystem : MonoBehaviour
         
         welcome_ui_static.SetActive(false);
         welcome_ui_dynamic.SetActive(false);
-        StartCarAnim.SetBool("Play", true);
-        SmokeBurst.Play();
+        if (StartCarAnim != null)
+        {
+            StartCarAnim.SetBool("Play", true);
+            SmokeBurst.Play();
+        }
+        
+        
         Invoke("restart_button", 1);
         
 

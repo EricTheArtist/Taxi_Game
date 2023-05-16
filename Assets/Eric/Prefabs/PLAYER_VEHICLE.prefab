@@ -141,7 +141,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689087711454147191}
-  m_LocalRotation: {x: -0, y: 0.7072302, z: 0.7069834, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.43999997, y: 0.00069999695, z: -0.000100016594}
   m_LocalScale: {x: 220, y: 220, z: 220}
   m_ConstrainProportionsScale: 0
@@ -149,7 +149,7 @@ Transform:
   - {fileID: 2034229551862328860}
   m_Father: {fileID: 825925823919123343}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -89.98, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &3140367296012019560
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689087711990724913}
-  m_LocalRotation: {x: -0, y: 0.7072302, z: 0.7069834, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.44, y: 0.00079998374, z: 0.00009995699}
   m_LocalScale: {x: 220, y: 220, z: 220}
   m_ConstrainProportionsScale: 0
@@ -233,7 +233,7 @@ Transform:
   - {fileID: 2034229550524496333}
   m_Father: {fileID: 6797246209301011878}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -89.98, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &3140367296549121070
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689087712929966363}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.438, y: 0.00079998374, z: 0.00009995699}
   m_LocalScale: {x: 220, y: 220, z: 220}
   m_ConstrainProportionsScale: 0
@@ -476,7 +476,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689087713125581824}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.438, y: 0.00069999695, z: -0.000100016594}
   m_LocalScale: {x: 220, y: 220, z: 220}
   m_ConstrainProportionsScale: 0
@@ -740,6 +740,9 @@ MonoBehaviour:
   run_curreny_text: {fileID: 0}
   FloatingOrigin: {fileID: 0}
   RS: {fileID: 0}
+  StartCarAnim: {fileID: 0}
+  StartCar: {fileID: 0}
+  SmokeBurst: {fileID: 0}
 --- !u!114 &6711505760930659472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +848,7 @@ MonoBehaviour:
   - 1
   - 0.9
   - 1.1
+  WheelStartAngle: 0
 --- !u!1 &3691509655238694763
 GameObject:
   m_ObjectHideFlags: 0
