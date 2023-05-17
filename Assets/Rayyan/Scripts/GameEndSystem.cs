@@ -86,6 +86,7 @@ public class GameEndSystem : MonoBehaviour
     void Endgame()
     {
         endgame_ui.SetActive(true);
+        welcome_ui_dynamic.SetActive(true);
         Endgame_Calculations();
         //call endgame calculations here
         //save players current amount
@@ -141,12 +142,6 @@ public class GameEndSystem : MonoBehaviour
         endgame_ui.SetActive(false);
     }
 
-    public void main_button()
-    {
-        welcome_ui_static.SetActive(true);
-        welcome_ui_dynamic.SetActive(true);
-        endgame_ui.SetActive(false);
-    }
     public void play_button()
     {
         
@@ -156,10 +151,15 @@ public class GameEndSystem : MonoBehaviour
         {
             StartCarAnim.SetBool("Play", true);
             SmokeBurst.Play();
+            Invoke("restart_button", 1);
+        }
+        else
+        {
+            restart_button();
         }
         
+
         
-        Invoke("restart_button", 1);
         
 
     }
