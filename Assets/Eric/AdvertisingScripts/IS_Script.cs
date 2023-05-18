@@ -14,6 +14,11 @@ string appkey = "";
 #endif
     void Start()
     {
+        //IronSource.Agent.setMetaData("is_test_suite", "enable");
+
+        //IronSource.Agent.init(appkey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.BANNER);
+
+
         IronSource.Agent.init(appkey);
         ShowFullAddButton.SetActive(false);
     }
@@ -69,6 +74,7 @@ string appkey = "";
     private void SdkInitializationCompletedEvent() 
     {
         IronSource.Agent.validateIntegration(); //integration tester remove for live build
+        //IronSource.Agent.launchTestSuite();
     }
 
     public void LoadFullAd()

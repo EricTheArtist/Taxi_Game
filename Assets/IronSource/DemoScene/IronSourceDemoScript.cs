@@ -14,14 +14,14 @@ public class IronSourceDemoScript : MonoBehaviour
     {
 
 #if UNITY_ANDROID
-        string appKey = "85460dcd";
+        string appKey = "19a7621a5";
 #elif UNITY_IPHONE
         string appKey = "8545d445";
 #else
         string appKey = "unexpected_platform";
 #endif
 
-
+        //IronSource.Agent.setMetaData("is_test_suite", "enable"); //test suite
 
         Debug.Log("unity-script: IronSource.Agent.validateIntegration");
         IronSource.Agent.validateIntegration();
@@ -227,6 +227,7 @@ public class IronSourceDemoScript : MonoBehaviour
     void SdkInitializationCompletedEvent()
     {
         Debug.Log("unity-script: I got SdkInitializationCompletedEvent");
+        //IronSource.Agent.launchTestSuite(); //test suite
     }
 
     #endregion
