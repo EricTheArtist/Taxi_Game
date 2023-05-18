@@ -16,14 +16,15 @@ public class Shop_Item_Car : MonoBehaviour
     public bool Premium = false;
     public GameObject car;
     public int CarIndex;
-    
 
+    ShopEffectManager SEM;
 
     void Start()
     {
         GameObject canvas;
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
+        SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
 
         if(PlayerPrefName == "Car00") //just for the starter vhecle
         {
@@ -56,11 +57,18 @@ public class Shop_Item_Car : MonoBehaviour
             PriceBG.SetActive(false); 
 
             PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0)); //sets ownwership in the player prefs
+
+            SEM.BoughtNewCar();
+
+            PlayerPrefs.SetInt("ActiveCar", CarIndex);
+            SUIM.UpdateCars(CarIndex);
         }
-        if (Owned == true) // if the player owns the item sets it to the active car
+        else if (Owned == true) // if the player owns the item sets it to the active car
         {
             PlayerPrefs.SetInt("ActiveCar", CarIndex);
             SUIM.UpdateCars(CarIndex);
+
+            SEM.SwitchedCars();
         }
     }
 
@@ -72,6 +80,8 @@ public class Shop_Item_Car : MonoBehaviour
         PlayerPrefs.SetInt("ActiveCar", CarIndex);
 
         SUIM.UpdateCars(CarIndex);
+
+        SEM.BoughtNewCar();
     }
 
 
