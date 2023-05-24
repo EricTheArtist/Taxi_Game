@@ -7,6 +7,7 @@ public class IS_Script : MonoBehaviour
 
     public GameObject ShowFullAddButton;
     public CurrencySystem CS;
+    public ShopUIManager SUIM;
 #if UNITY_ANDROID
     string appkey = "19a7621a5";
 #elif UNITY_IOS
@@ -186,7 +187,15 @@ string appkey = "";
     void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
         int currentcoins = PlayerPrefs.GetInt("Main Amount");
-        CS.Addition_Function(1,currentcoins);
+        if (CS != null)
+        {
+            CS.Addition_Function(500,currentcoins);
+        }
+        else if (SUIM != null)
+        {
+            SUIM.AddCoins(500);
+        }
+        
     }
     // The rewarded video ad was failed to show.
     void RewardedVideoOnAdShowFailedEvent(IronSourceError error, IronSourceAdInfo adInfo)

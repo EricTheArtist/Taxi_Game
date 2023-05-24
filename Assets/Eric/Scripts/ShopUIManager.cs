@@ -152,9 +152,9 @@ public class ShopUIManager : MonoBehaviour
         //ModRidesVertical.SetActive(false);
         //sent ancorage
         RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
-        RT_Shop.anchorMin = new Vector2(1, 1);
-        RT_Shop.anchorMax = new Vector2(1, 1);
-        RT_Shop.pivot = new Vector2(1, 1);
+        RT_Shop.anchorMin = new Vector2(1, 0.5f);
+        RT_Shop.anchorMax = new Vector2(1, 0.5f);
+        RT_Shop.pivot = new Vector2(1, 0.5f);
 
         RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
         RT_BackBTN.anchorMin = new Vector2(0, 0);
@@ -209,6 +209,13 @@ public class ShopUIManager : MonoBehaviour
     public void DeductCoins(int deductAmount) //public function that can be called when an item is purchased with coins
     {
         Coins = Coins - deductAmount;
+        PlayerPrefs.SetInt("Main Amount", Coins);
+        updateCoinsText();
+    }
+
+    public void AddCoins(int AddAmount)
+    {
+        Coins = Coins + AddAmount;
         PlayerPrefs.SetInt("Main Amount", Coins);
         updateCoinsText();
     }
