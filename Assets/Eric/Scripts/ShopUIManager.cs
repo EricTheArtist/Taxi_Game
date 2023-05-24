@@ -16,6 +16,8 @@ public class ShopUIManager : MonoBehaviour
     public GameObject ModRidesHorizontal;
     //public GameObject ModRidesVertical;
 
+    public FlexibleColorPicker FCP;
+    public Material UnderGlowMat;
     public GameObject[] Shops;
     public Button[] Tabs;
 
@@ -34,10 +36,10 @@ public class ShopUIManager : MonoBehaviour
     public GameObject TyresFront;
     public GameObject TyresBack;
 
-    public float[] TyresFrontZ;
+    
     public Vector3[] TyresFrontPos;
     public Vector3[] TyresBackPos;
-    public float[] TyresBackZ;
+    
 
     public float[] TyresScaleX;
     public Vector3[] SloganPosition;
@@ -74,7 +76,7 @@ public class ShopUIManager : MonoBehaviour
     void Update()
     {
         TestUILayout();
-
+        UnderGlowMat.color = FCP.color;
         
         if ( Screen.orientation == ScreenOrientation.Portrait)
         {
