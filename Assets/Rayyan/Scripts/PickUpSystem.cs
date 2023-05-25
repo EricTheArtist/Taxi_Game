@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PickUpSystem : MonoBehaviour
 {   
@@ -20,6 +21,9 @@ public class PickUpSystem : MonoBehaviour
 
     public GameObject Cops;
     bool used;
+
+    public UnityEvent EnterPassengerCollect;
+    public UnityEvent EnterRobot;
     
 
     // Start is called before the first frame update
@@ -57,6 +61,8 @@ public class PickUpSystem : MonoBehaviour
             controller.BreakInstruction.SetText("TAP!");
             used = false;
             pickUpPoint = other.transform.parent.gameObject;
+
+            EnterPassengerCollect.Invoke();
         }
 
         if (other.tag == "Robot")
@@ -66,9 +72,10 @@ public class PickUpSystem : MonoBehaviour
             {
                 controller.breakButton.SetActive(true);
                 controller.BreakInstruction.SetText("HOLD!");
+                EnterRobot.Invoke();
             }
-            //Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
-            //TR.CountoGreen();
+            
+
         }
     }
 
