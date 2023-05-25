@@ -179,6 +179,7 @@ public class GameEndSystem : MonoBehaviour
 
     public void shop_button()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
