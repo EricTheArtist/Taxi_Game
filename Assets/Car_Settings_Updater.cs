@@ -13,6 +13,7 @@ public class Car_Settings_Updater : MonoBehaviour
     public GameObject TyresFront;
     public GameObject TyresBack;
     public GameObject Slogan;
+    public GameObject NumberPlate;
 
     public Vector3[] TyresFrontPos;
     public Vector3[] TyresBackPos;
@@ -21,6 +22,8 @@ public class Car_Settings_Updater : MonoBehaviour
     public Vector3[] SloganPosition;
     public float[] SloganXrotation;
     public float[] SloganScale;
+
+    public Vector3[] NumberPlatePosition;
 
     float stanceStarty;
     public GameObject CarChasisHolder;
@@ -89,7 +92,7 @@ public class Car_Settings_Updater : MonoBehaviour
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
                 Slogan.transform.localScale = new Vector3(SloganScale[i], SloganScale[i], SloganScale[i]);
 
-
+                NumberPlate.transform.localPosition = new Vector3(NumberPlatePosition[i].x, NumberPlatePosition[i].y, NumberPlatePosition[i].z);
 
             }
             else

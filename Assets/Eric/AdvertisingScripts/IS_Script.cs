@@ -21,7 +21,11 @@ string appkey = "";
 
 
         IronSource.Agent.init(appkey);
-        ShowFullAddButton.SetActive(false);
+        if (ShowFullAddButton != null)
+        {
+            ShowFullAddButton.SetActive(false);
+        }
+        
     }
 
     private void OnEnable()
@@ -64,7 +68,7 @@ string appkey = "";
 
     public void LoadBannerAd()
     {
-        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
+        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
     }
 
     public void DestroyBannerAd()

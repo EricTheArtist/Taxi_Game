@@ -9,6 +9,7 @@ public class Slogan_Editor : MonoBehaviour
     public TMP_Text SloganOnCar;
     public TMP_InputField SloganInput;
     public GameObject Taxi;
+    public string PlayerPrefName;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,14 +33,14 @@ public class Slogan_Editor : MonoBehaviour
 
     public void SaveSlogan()
     {
-        PlayerPrefs.SetString("slogan",SloganInput.text);
+        PlayerPrefs.SetString(PlayerPrefName,SloganInput.text);
     }
 
     public void LoadSlogan()
     {
-        if(PlayerPrefs.GetString("slogan")!= null)
+        if(PlayerPrefs.GetString(PlayerPrefName)!= null)
         {
-            SloganOnCar.SetText(PlayerPrefs.GetString("slogan"));
+            SloganOnCar.SetText(PlayerPrefs.GetString(PlayerPrefName));
         }
         
     }

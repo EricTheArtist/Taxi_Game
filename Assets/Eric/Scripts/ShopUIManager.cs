@@ -13,13 +13,16 @@ public class ShopUIManager : MonoBehaviour
     public GameObject shopInterface;
     public GameObject PlayButton;
     public GameObject TaxiRankScene;
-    public GameObject ModRidesHorizontal;
-    //public GameObject ModRidesVertical;
+
+    public GameObject ColourPanel1;
+    public GameObject ColourPanel2;
 
     public FlexibleColorPicker FCP;
     public Material UnderGlowMat;
     public GameObject[] Shops;
     public Button[] Tabs;
+
+    public IS_Script ADscript;
 
     public bool updatedV = true;
     public bool updatedH = true;
@@ -46,6 +49,9 @@ public class ShopUIManager : MonoBehaviour
     public float[] SloganXrotation;
     public float[] SloganScale;
 
+    public GameObject NumberPlate;
+    public Vector3[] NumberPlatePos;
+
     public float StanceMax; //not currently used
     public Slider StanceBar;
     float stanceStarty;
@@ -67,7 +73,7 @@ public class ShopUIManager : MonoBehaviour
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCars(ActiveCar);
 
-
+        ADscript.LoadBannerAd();
             
 
     }
@@ -127,19 +133,12 @@ public class ShopUIManager : MonoBehaviour
 
     void LayoutVertical()
     {
-        ModRidesHorizontal.SetActive(false);
-        //ModRidesVertical.SetActive(true);
 
         //sent ancorage
         RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
         RT_Shop.anchorMin = new Vector2(0.5f, 0);
         RT_Shop.anchorMax = new Vector2(0.5f, 0);
         RT_Shop.pivot = new Vector2(0.5f, 0);
-
-        RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
-        RT_BackBTN.anchorMin = new Vector2(1, 1);
-        RT_BackBTN.anchorMax = new Vector2(1, 1);
-        RT_BackBTN.pivot = new Vector2(1, 1);
 
         //set positions
 
@@ -150,18 +149,12 @@ public class ShopUIManager : MonoBehaviour
     }
     void LayoutHorizontal()
     {
-        ModRidesHorizontal.SetActive(true);
-        //ModRidesVertical.SetActive(false);
+
         //sent ancorage
         RectTransform RT_Shop = shopInterface.GetComponent<RectTransform>();
         RT_Shop.anchorMin = new Vector2(1, 0.5f);
         RT_Shop.anchorMax = new Vector2(1, 0.5f);
         RT_Shop.pivot = new Vector2(1, 0.5f);
-
-        RectTransform RT_BackBTN = PlayButton.GetComponent<RectTransform>();
-        RT_BackBTN.anchorMin = new Vector2(0, 0);
-        RT_BackBTN.anchorMax = new Vector2(0, 0);
-        RT_BackBTN.pivot = new Vector2(0, 0);
 
         //set positions
         TaxiRankScene.transform.position = new Vector3(-1f, 0.3f, -4f);
@@ -194,6 +187,7 @@ public class ShopUIManager : MonoBehaviour
     }
     public void Button_Play()
     {
+        ADscript.DestroyBannerAd();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
@@ -273,6 +267,8 @@ public class ShopUIManager : MonoBehaviour
                 Slogan.transform.localPosition = new Vector3(SloganPosition[i].x, SloganPosition[i].y, SloganPosition[i].z);
                 Slogan.transform.localEulerAngles = new Vector3(SloganXrotation[i], 0, 0);
                 Slogan.transform.localScale = new Vector3(SloganScale[i],SloganScale[i],SloganScale[i]);
+
+                NumberPlate.transform.localPosition = new Vector3(NumberPlatePos[i].x, NumberPlatePos[i].y, NumberPlatePos[i].z);
             }
             else
             {
@@ -281,5 +277,31 @@ public class ShopUIManager : MonoBehaviour
         }
 
         updatestance();
+    }
+
+    public void ToggleColourPanel1()
+    {
+        ColourPanel2.SetActive(false);
+        if (ColourPanel1.activeInHierarchy)
+        {
+            ColourPanel1.SetActive(false);
+        }
+        else
+        {
+            ColourPanel1.SetActive(true);
+        }
+    }
+
+    public void ToggleColourPanel2()
+    {
+        ColourPanel1.SetActive(false);
+        if (ColourPanel2.activeInHierarchy)
+        {
+            ColourPanel2.SetActive(false);
+        }
+        else
+        {
+            ColourPanel2.SetActive(true);
+        }
     }
 }
