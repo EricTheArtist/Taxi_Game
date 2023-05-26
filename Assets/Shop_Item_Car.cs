@@ -62,6 +62,7 @@ public class Shop_Item_Car : MonoBehaviour
 
             PlayerPrefs.SetInt("ActiveCar", CarIndex);
             SUIM.UpdateCars(CarIndex);
+            SUIM.LockControl(false);
         }
         else if (Owned == true) // if the player owns the item sets it to the active car
         {
@@ -69,6 +70,13 @@ public class Shop_Item_Car : MonoBehaviour
             SUIM.UpdateCars(CarIndex);
 
             SEM.SwitchedCars();
+            SUIM.LockControl(false);
+        }
+        else if (Owned == false) //if they player does not own the car 
+        {
+            SUIM.UpdateCars(CarIndex);
+            SEM.SwitchedCars();
+            SUIM.LockControl(true);
         }
     }
 
@@ -82,6 +90,7 @@ public class Shop_Item_Car : MonoBehaviour
         SUIM.UpdateCars(CarIndex);
 
         SEM.BoughtNewCar();
+        SUIM.LockControl(false);
     }
 
 

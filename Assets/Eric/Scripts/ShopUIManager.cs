@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ShopUIManager : MonoBehaviour
 {
@@ -24,13 +25,14 @@ public class ShopUIManager : MonoBehaviour
 
     public IS_Script ADscript;
 
-    public bool updatedV = true;
-    public bool updatedH = true;
+    //public bool updatedV = true;
+    //public bool updatedH = true;
 
     public Image colour1Sample;
     public Image colour2Sample;
     public Renderer TaxiMaterial;
     public GameObject Slogan;
+    public GameObject LockIcon;
     public Texture2D[] CarBaseTex;
     public Texture2D[] CarMaskTex;
 
@@ -61,6 +63,39 @@ public class ShopUIManager : MonoBehaviour
     public GameObject[] Wheelsright;
     public float[] WheelScale;
 
+
+
+    RectTransform rectTransform;
+  
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+
+        SetOrientation();
+    }
+    void SetOrientation()
+    {
+        if (rectTransform == null) return;
+        bool verticalOrientation = rectTransform.rect.width < rectTransform.rect.height ? true : false;
+
+        if(verticalOrientation == true)
+        {
+            ADscript.LoadBannerAd(0);
+            LayoutVertical();
+        }
+        if(verticalOrientation == false)
+        {
+            ADscript.DestroyBannerAd();
+            LayoutHorizontal();
+        }
+    }
+    void OnRectTransformDimensionsChange()
+    {
+        SetOrientation();
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {    
@@ -73,7 +108,7 @@ public class ShopUIManager : MonoBehaviour
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCars(ActiveCar);
 
-        ADscript.LoadBannerAd();
+        
             
 
     }
@@ -84,6 +119,7 @@ public class ShopUIManager : MonoBehaviour
         TestUILayout();
         UnderGlowMat.color = FCP.color;
         
+        /* Was used to check layout
         if ( Screen.orientation == ScreenOrientation.Portrait)
         {
             if (updatedV == true)
@@ -98,9 +134,11 @@ public class ShopUIManager : MonoBehaviour
             if (updatedH == true)
             {
                 LayoutHorizontal();
+                
             }
 
         }
+        */
         
     }
 
@@ -141,11 +179,14 @@ public class ShopUIManager : MonoBehaviour
         RT_Shop.pivot = new Vector2(0.5f, 0);
 
         //set positions
+        if(TaxiRankScene!= null)
+        {
+            TaxiRankScene.transform.position = new Vector3(0, -0.5f, -0.8f);
+        }
+        
 
-        TaxiRankScene.transform.position = new Vector3(0, -0.5f, -0.8f);
-
-        updatedV = false;
-        updatedH = true;
+        //updatedV = false;
+        //updatedH = true;
     }
     void LayoutHorizontal()
     {
@@ -157,10 +198,14 @@ public class ShopUIManager : MonoBehaviour
         RT_Shop.pivot = new Vector2(1, 0.5f);
 
         //set positions
-        TaxiRankScene.transform.position = new Vector3(-1f, 0.3f, -4f);
+        if (TaxiRankScene != null)
+        { 
+            TaxiRankScene.transform.position = new Vector3(-1f, 0.3f, -4f);
+        }
+            
 
-        updatedH = false;
-        updatedV = true;
+        //updatedH = false;
+        //updatedV = true;
     }
 
 
@@ -277,6 +322,11 @@ public class ShopUIManager : MonoBehaviour
         }
 
         updatestance();
+    }
+
+    public void LockControl(bool LockStatus)
+    {
+        LockIcon.SetActive(LockStatus);
     }
 
     public void ToggleColourPanel1()

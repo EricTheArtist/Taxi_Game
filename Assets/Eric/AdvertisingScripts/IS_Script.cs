@@ -66,9 +66,17 @@ string appkey = "";
         IronSource.Agent.onApplicationPause(isPaused);
     }
 
-    public void LoadBannerAd()
+    public void LoadBannerAd(int top0bottom1)
     {
-        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+        if (top0bottom1 == 0)
+        {
+            IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+        }
+        else if(top0bottom1 == 1)
+        {
+            IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+        }
+        
     }
 
     public void DestroyBannerAd()

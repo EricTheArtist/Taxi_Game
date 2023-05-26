@@ -26,6 +26,9 @@ public class GameEndSystem : MonoBehaviour
     public GameObject settigns_ui_dynamic;
     CurrencySystem currency_system;
     public PickUpSystem PUS;
+    public IS_Script ISS_Ads;
+    int DeathCountForAd;
+    public int DeathsBetweenAds = 3;
 
     public TMP_Text Score_Text;
     public TMP_Text run_curreny_text;
@@ -53,7 +56,8 @@ public class GameEndSystem : MonoBehaviour
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
-
+        ISS_Ads.LoadBannerAd(1);
+        ISS_Ads.LoadFullAd();
         
     }
 
@@ -72,6 +76,14 @@ public class GameEndSystem : MonoBehaviour
             controller.game_over = true;
             Endgame();
             SmokeBurst.Play();
+
+            DeathCountForAd++;
+
+            if(DeathCountForAd == DeathsBetweenAds)
+            {
+                ISS_Ads.ShowFullAd();
+                DeathCountForAd = 0;
+            }
         }
     }
     void Collison_Crash()
@@ -173,8 +185,8 @@ public class GameEndSystem : MonoBehaviour
         {
             restart_button();
         }
-        
 
+        ISS_Ads.DestroyBannerAd();
         
         
 
