@@ -10,6 +10,7 @@ public class NarritiveSystem : MonoBehaviour
     public string NI_Welcome;
     public string NI_PassengerTut;
     public string NI_RobotTut;
+    public string NI_SteerringWheelTut;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,15 @@ public class NarritiveSystem : MonoBehaviour
             PlayerPrefs.SetInt("NI_EnterRobot", 1);
         }
 
+    }
+
+    public void NI_OpenSteeringwheel()
+    {
+        if (PlayerPrefs.GetInt("NI_SteeringWheeltut") == 0)
+        {
+            OpenInterface(NI_SteerringWheelTut);
+            PlayerPrefs.SetInt("NI_SteeringWheeltut", 1);
+        }
     }
 
 

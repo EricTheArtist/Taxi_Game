@@ -39,8 +39,7 @@ public class CurrencySystem : MonoBehaviour
         if (other.tag == "Coin" || other.tag == "Coin2")
         {
             run_amount=Addition_Function(Multiplier_Function(multiplier), run_amount);
-            // Debug.Log(Addition_Function(Multiplier_Function(multiplier), run_amount));
-            //Destroy(other.gameObject);
+
             other.gameObject.SetActive(false);
             main_amount++;
         }

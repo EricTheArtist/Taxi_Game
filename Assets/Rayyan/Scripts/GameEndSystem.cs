@@ -29,9 +29,13 @@ public class GameEndSystem : MonoBehaviour
 
     public TMP_Text Score_Text;
     public TMP_Text run_curreny_text;
+    public TMP_Text HighScore_text;
+
+    int HighScore;
 
     public Test_Floating_Origin FloatingOrigin;
     public RoadSpawner RS;
+    public HorizontalModeManager HMM;
 
     Test_HighScore THS;
 
@@ -91,10 +95,22 @@ public class GameEndSystem : MonoBehaviour
         //call endgame calculations here
         //save players current amount
     }
-    void Endgame_Calculations()
+    public void Endgame_Calculations()
     {
         run_curreny_text.SetText(currency_system.run_amount.ToString());
         Score_Text.SetText(THS.scoreInt.ToString());
+
+        
+        if (HMM.SteeringWheelActive == true)
+        {
+            HighScore = PlayerPrefs.GetInt("HighScoreSteering");
+        }
+        else
+        {
+            HighScore = PlayerPrefs.GetInt("HighScore");
+        }
+
+        HighScore_text.SetText(HighScore.ToString());
         PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
 
         currency_system.run_amount = 0;

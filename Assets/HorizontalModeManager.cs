@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+
+public class HorizontalModeManager : MonoBehaviour
+{
+
+    public Color32 ActiveColor;
+    public Color32 InactiveColor;
+
+    public Image SteerigActiveImage;
+    public bool SteeringWheelActive = false;
+
+    public UnityEvent Entersteering;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void ToggleSteerigwheel()
+    {
+
+
+        if (SteeringWheelActive == true)
+        {
+            Screen.orientation = ScreenOrientation.Portrait;
+            SteeringWheelActive = false;
+            SteerigActiveImage.color = InactiveColor;
+
+        }
+        else
+        {
+            Screen.orientation = ScreenOrientation.LandscapeLeft;
+            Entersteering.Invoke();
+            SteeringWheelActive = true;
+            SteerigActiveImage.color = ActiveColor;
+        }
+
+    }
+
+}

@@ -7,12 +7,13 @@ public class Test_HighScore : MonoBehaviour
 {
 
     float score;
-    int highScore;
+    int highScoreSwiping;
+    int highScoreSteering;
     public int scoreInt;
 
     public TMP_Text CurrentScore;
     public ParticleSystem HighRunEffect;
-    
+    public HorizontalModeManager HMM;
 
     private SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
@@ -21,8 +22,8 @@ public class Test_HighScore : MonoBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
 
-        highScore = PlayerPrefs.GetInt("HighScore");
-        
+        highScoreSwiping = PlayerPrefs.GetInt("HighScore");
+        highScoreSteering = PlayerPrefs.GetInt("HighScoreSteering");
         
         //HighRunEffect.
     }
@@ -41,7 +42,7 @@ public class Test_HighScore : MonoBehaviour
             score += (Time.deltaTime * controller.movementSpeed) /10; //calculates score based in how long the player has been alve for and what spped they atre going at
             scoreInt = (int)score;
 
-            if(scoreInt >= highScore)
+            if((scoreInt >= highScoreSwiping)&& HMM.SteeringWheelActive == false)
             {
 
                 if(HighRunEffect.isPlaying== false)
@@ -49,12 +50,22 @@ public class Test_HighScore : MonoBehaviour
                     HighRunEffect.Play();
                 }
 
-                
-                    
-                
-                highScore = scoreInt;
-                PlayerPrefs.SetInt("HighScore", highScore);
+                highScoreSwiping = scoreInt;
+                PlayerPrefs.SetInt("HighScore", highScoreSwiping);
                 CurrentScore.color = new Color32(255,203,0,255);
+            }
+            else if ((scoreInt >= highScoreSteering) && HMM.SteeringWheelActive == true)
+            {
+                if (HighRunEffect.isPlaying == false)
+                {
+                    HighRunEffect.Play();
+                }
+
+                highScoreSteering = scoreInt;
+                PlayerPrefs.SetInt("HighScoreSteering", highScoreSteering);
+                CurrentScore.color = new Color32(255, 203, 0, 255);
+
+
             }
             
 
@@ -63,7 +74,8 @@ public class Test_HighScore : MonoBehaviour
 
     public void ResetScore()
     {
-        highScore = PlayerPrefs.GetInt("HighScore");
+        highScoreSteering = PlayerPrefs.GetInt("HighScoreSteering");
+        highScoreSwiping = PlayerPrefs.GetInt("HighScore");
         CurrentScore.color = new Color32(255, 255, 255, 255);
         HighRunEffect.Stop();
         score = 0;

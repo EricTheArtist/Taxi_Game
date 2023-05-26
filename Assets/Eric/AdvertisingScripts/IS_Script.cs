@@ -190,10 +190,13 @@ string appkey = "";
     // When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback.
     void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
-        int currentcoins = PlayerPrefs.GetInt("Main Amount");
+        
         if (CS != null)
         {
-            CS.Addition_Function(500,currentcoins);
+            int currentcoins = PlayerPrefs.GetInt("Main Amount");
+            currentcoins += 500;
+            PlayerPrefs.SetInt("Main Amount", currentcoins);
+            
         }
         else if (SUIM != null)
         {
