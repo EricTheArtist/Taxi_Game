@@ -17118,6 +17118,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 150
   childrenCoin: []
+--- !u!114 &930167928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264973576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0e667e970c3664a908e815db655176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 264973576}
+  canUseAbility: 1
+  abilityType: 1
 --- !u!1 &933525543
 GameObject:
   m_ObjectHideFlags: 0
@@ -30049,11 +30064,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pothole
-      objectReference: {fileID: 0}
-    - target: {fileID: 2789912744645550197, guid: 2c5288d98e00a4945b7d6b7cf65710bb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2789912744645550201, guid: 2c5288d98e00a4945b7d6b7cf65710bb,
         type: 3}
