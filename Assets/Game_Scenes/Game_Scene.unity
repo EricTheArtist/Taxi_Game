@@ -1068,6 +1068,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1115,6 +1130,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104414310686563355, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1995571284987025714, guid: 176fa6346a6e62a4dbe4b32eb0042943, type: 3}
@@ -3043,6 +3068,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173130005}
   m_CullTransparentMesh: 1
+--- !u!1 &185317423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7353220202749501993, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+    type: 3}
+  m_PrefabInstance: {fileID: 1995571284136568169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203225030
 GameObject:
   m_ObjectHideFlags: 0
@@ -13275,12 +13306,12 @@ GameObject:
   - component: {fileID: 730202140}
   - component: {fileID: 730202139}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SteeringCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &730202139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13314,7 +13345,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730202138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20206,6 +20237,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188529602}
   m_CullTransparentMesh: 1
+--- !u!1 &1211041909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4302278161475937966, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+    type: 3}
+  m_PrefabInstance: {fileID: 1995571284136568169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1231595884
 GameObject:
   m_ObjectHideFlags: 0
@@ -25249,6 +25286,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684853311}
   m_CullTransparentMesh: 1
+--- !u!1 &1688096299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1451117038837983507, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+    type: 3}
+  m_PrefabInstance: {fileID: 1995571284136568169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1709723561
 GameObject:
   m_ObjectHideFlags: 0
@@ -29700,9 +29743,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
+      propertyPath: SteeringCar
+      value: 
+      objectReference: {fileID: 730202138}
+    - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
       propertyPath: breakButton
       value: 
       objectReference: {fileID: 765580205}
+    - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: SwipingCarWB
+      value: 
+      objectReference: {fileID: 1688096299}
+    - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: SwipingCarWF
+      value: 
+      objectReference: {fileID: 1211041909}
     - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: spawnManager
@@ -29713,6 +29771,11 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: SwipingCarBody
+      value: 
+      objectReference: {fileID: 185317423}
     - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: image_brakepad

@@ -21,10 +21,10 @@ string appkey = "";
 
 
         IronSource.Agent.init(appkey);
-        if (ShowFullAddButton != null)
-        {
-            ShowFullAddButton.SetActive(false);
-        }
+        //if (ShowFullAddButton != null)
+        //{
+        //   ShowFullAddButton.SetActive(false);
+        //}
         
     }
 
@@ -74,7 +74,7 @@ string appkey = "";
         }
         else if(top0bottom1 == 1)
         {
-            IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+            IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
         }
         
     }
