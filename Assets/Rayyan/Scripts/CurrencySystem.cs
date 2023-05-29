@@ -61,7 +61,7 @@ public class CurrencySystem : MonoBehaviour
         //if a coin multiplier is active, each coin earned will be multiuplied by that said multiplier.
         int coin_value = 1;
         int result = coin_value * coin_multiplier;
-
+        Debug.Log(result);
         return result;
     }
 

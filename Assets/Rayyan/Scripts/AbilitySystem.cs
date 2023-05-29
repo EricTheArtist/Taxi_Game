@@ -11,11 +11,12 @@ public class AbilitySystem : MonoBehaviour
     public GameObject player;
     public bool canUseAbility;
     //-------------------------------------------------------------
-    private TestCharacterController _controller;
-    
-    float temp = 0;// storage variable
+    // storage variable
+    private float tempFloat = 0;
+    private int tempInt = 0;
     //-------------------------------------------------------------
     private bool speedAbilityActive = false;
+    private bool armourAbilityActive = false;
     //-------------------------------------------------------------
     [Tooltip("current vehicle ability active")] 
     public enum AbilityType
@@ -26,10 +27,15 @@ public class AbilitySystem : MonoBehaviour
         DoubleCoins,
         Escapist
     }
-
     public AbilityType abilityType;
     //-------------------------------------------------------------
-
+    [Header("Ability Timers")]
+    public float SpeedAbilityTimer;
+    public float ArmourAbiltyTimer;
+    public float ArmourAbilityTimer;
+    //-------------------------------------------------------------
+    private CurrencySystem _currencySystem;
+    private TestCharacterController _controller;
     #endregion
     //-------------------------------------------------------------
     #region Start and Update
@@ -37,6 +43,7 @@ public class AbilitySystem : MonoBehaviour
     private void Start()
     {
         _controller= player.GetComponent<TestCharacterController>();
+        _currencySystem = player.GetComponent<CurrencySystem>();
     }
 
     private void Update()
@@ -62,19 +69,26 @@ public class AbilitySystem : MonoBehaviour
                 print("Normal Vehicle");
                 Debug.Log("Normal Vehicle");
                 break;
+            //--------------------------------------------------
             case AbilityType.SpeedBoost:
                 Debug.Log("Speedster Vehicle");
                 SpeedAbility();
                 break;
+            //--------------------------------------------------
             case AbilityType.Armour:
                 Debug.Log("Tank Vehicle");
+                ArmourAbilty();
                 break;
+            //--------------------------------------------------
             case AbilityType.DoubleCoins:
                 Debug.Log("Double Money Vehicle");
+                DoubleCoinsAbility();
                 break;
+            //--------------------------------------------------
             case AbilityType.Escapist:
                 Debug.Log("Escape Artist Vehicle");
                 break;
+            //--------------------------------------------------
     
         }
     }
@@ -88,57 +102,70 @@ public class AbilitySystem : MonoBehaviour
     void SpeedAbility()
     {
         float speedBoost = _controller.maxMovementSpeed;//set speedboost to the maximum capable speed
-        temp = _controller.movementSpeed;// Store current Movement speed to set back to when ability ends
-        //player.GetComponent<Collider>().enabled = false; //deactive collider to ignore all obstacles
+        tempFloat = _controller.movementSpeed;// Store current Movement speed to set back to when ability ends
         speedAbilityActive = true;
-        Physics.IgnoreCollision(tag[7], GetComponent<Collider>(),
+        Physics.IgnoreLayerCollision(6,3, true);//Disables collisions between player and obsticles
         _controller.movementSpeed = speedBoost; //set current speed to speedboost
-        Invoke("EndSpeedAbility",7);
+        Invoke("EndSpeedAbility",SpeedAbilityTimer);
     }
-/// <summary>
-/// Instead of disbaling the collider we should tell it to ignore certain layers
-/// Right now we can not pick up anyway coins or spawn the next block
-/// </summary>
     void EndSpeedAbility()
     {
         Debug.Log("End Speed Ability");
-        _controller.movementSpeed = temp;
+        _controller.movementSpeed = tempFloat;
         speedAbilityActive = false;
+        Physics.IgnoreLayerCollision(6,3, false);
         //player.GetComponent<Collider>().enabled = true;
     }
+
     #endregion
 
+    #region ArmourAbility
+
+    // use physic layer ignore again
+    void ArmourAbilty()
+    {
+        Debug.Log("Start Armour Ability");
+        armourAbilityActive = true;
+        Physics.IgnoreLayerCollision(6,3,true);
+        Invoke("EndArmourAbility", ArmourAbiltyTimer);
+    }
+
+    void EndArmourAbility()
+    {
+        Debug.Log("End Armour Ability");
+        armourAbilityActive = false;
+        Physics.IgnoreLayerCollision(6,3, false);
+    }
+
+    #endregion
+
+    #region DoubleCoinsAbility
+
+    void DoubleCoinsAbility()
+    {
+        Debug.Log("Double Coins Active");
+        tempInt = _currencySystem.multiplier;
+        _currencySystem.multiplier = 2 * _currencySystem.multiplier;
+        Invoke("EndDoubleCoinsAbility", ArmourAbilityTimer);
+    }
+    void EndDoubleCoinsAbility()
+    {
+        Debug.Log("Double Coins Inactive");
+        _currencySystem.multiplier = tempInt;
+    }
+
+    #endregion
     #endregion
     //-------------------------------------------------------------
-    
-    #region CollsionControl
 
-    /*private void OnCollisionEnter(Collision collision)
+    #region Collision Control
+
+    private void OnCollisionExit(Collision collision)
     {
-        if (speedAbilityActive)// if active ignore layers called Obstacles
-        {
-            if (collision.gameObject.layer == 6)
-            {
-                Debug.Log("Obstacles Hit");
-                GameObject temp = collision.gameObject;
-                Debug.Log(temp.name + " Collided with " + gameObject.name);
-                Physics.IgnoreCollision(temp.transform.GetComponent<Collider>(), GetComponent<Collider>(), true);
-            }
-        }
-        if (!speedAbilityActive)// if active ignore layers called Obstacles
-        {
-            if (collision.gameObject.layer == 6)
-            {
-                Debug.Log("Obstacles Hit");
-                GameObject temp = collision.gameObject;
-                Debug.Log(temp.name + " Collided with " + gameObject.name);
-                Physics.IgnoreCollision(temp.transform.GetComponent<Collider>(), GetComponent<Collider>(), false);
-            }
-        }
         
-        
-    }*/
+    }
 
     #endregion
+   
     
 }
