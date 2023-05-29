@@ -148,7 +148,7 @@ namespace SimpleInputNamespace
                 else
                 {
                     hMovement = SW.Angle * movementSpeed / 200;
-                    Debug.Log("Steering angle " + SW.Angle.ToString());
+                    //Debug.Log("Steering angle " + SW.Angle.ToString());
                     SteeringCar.transform.localEulerAngles = new Vector3(0, SW.Angle/3, 0);
                 }
             }
@@ -248,7 +248,7 @@ namespace SimpleInputNamespace
 
                         
                     }
-                    Debug.Log("Swipe Distance: " + swipeDistance.ToString());
+                    //Debug.Log("Swipe Distance: " + swipeDistance.ToString());
                     allowSwipe = false;
                 }
                 // Check for finger up
