@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class GoogleHandlerScript : MonoBehaviour
 {
-    private LeaderboardNames[] allLeaderboards;//Stores all LeaderBaords
+    [SerializeField]private LeaderboardNames[] allLeaderboards;//Stores all LeaderBaords
     private AchievementNames[] allAchievements;//Stores all Achievements
     private int indexNumberAchievements;
-    private int indexNumberLeaderboards;
+    [SerializeField]private int indexNumberLeaderboards;
 
     private Test_HighScore highScoreHandler;
 
