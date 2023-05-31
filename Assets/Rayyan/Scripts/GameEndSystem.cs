@@ -49,6 +49,9 @@ public class GameEndSystem : MonoBehaviour
 
 
     SimpleInputNamespace.TestCharacterController controller;
+
+    private GoogleHandlerScript googleHandlerScript;
+    [SerializeField] private GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +61,7 @@ public class GameEndSystem : MonoBehaviour
         controller.game_over = true;
         ISS_Ads.LoadBannerAd(1);
         ISS_Ads.LoadFullAd();
-        
+        googleHandlerScript = gameManager.GetComponent<GoogleHandlerScript>();
     }
 
     // Update is called once per frame
@@ -116,10 +119,13 @@ public class GameEndSystem : MonoBehaviour
         if (HMM.SteeringWheelActive == true)
         {
             HighScore = PlayerPrefs.GetInt("HighScoreSteering");
+            //call leaderboard submit score
+            googleHandlerScript.SwippingScoreHandler();
         }
         else
         {
             HighScore = PlayerPrefs.GetInt("HighScore");
+            googleHandlerScript.SwippingScoreHandler();
         }
 
         HighScore_text.SetText(HighScore.ToString());

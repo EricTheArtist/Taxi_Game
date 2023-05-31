@@ -55,16 +55,18 @@ public class GoogleHandlerScript : MonoBehaviour
             GleyGameServices.ScreenWriter.Write("Login success: " + success);
         }
 
-        void ShowLeaderboards()
+        public void ShowLeaderboards()
         {
             GameServices.Instance.ShowLeaderboadsUI();
             //GameServices.Instance.ShowSpecificLeaderboard(LeaderboardNames.TaxiRank);
         }
+        //show on new highscore
 
-        void SwippingScoreHandler()
+        public void SwippingScoreHandler()
         {
             if (GameServices.Instance.IsLoggedIn())
             {
+                swipingHighscore = PlayerPrefs.GetInt("HighScore");
                 GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
             }
             
@@ -72,6 +74,7 @@ public class GoogleHandlerScript : MonoBehaviour
         {
             if (GameServices.Instance.IsLoggedIn())
             {
+                swipingHighscore = PlayerPrefs.GetInt("HighScoreSteering");
                 GameServices.Instance.SubmitScore(steeringHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
             }
             
