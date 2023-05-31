@@ -110,7 +110,7 @@ public class AbilitySystem : MonoBehaviour
     }
     void EndSpeedAbility()
     {
-        Debug.Log("End Speed Ability");
+        //Debug.Log("End Speed Ability");
         _controller.movementSpeed = tempFloat;
         speedAbilityActive = false;
         Physics.IgnoreLayerCollision(6,3, false);
