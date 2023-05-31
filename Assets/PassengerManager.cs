@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
 {
+    public Animator CharacterAnimEric;
+    public Transform LeftStartPos;
+    public Transform RightStartPos;
+    public void PlayCharacterJump()
+    {
+       CharacterAnimEric.SetTrigger("isPassengerBoarding");
+    }
     private void OnEnable()
     {
 
@@ -12,17 +19,19 @@ public class PassengerManager : MonoBehaviour
 
         if (transform.parent.position.x == -4f)
         {
-            transform.localPosition = leftLane;
-            
-           //Debug.Log(transform.localPosition.x);
+            //transform.localPosition = leftLane;
+            transform.localPosition = LeftStartPos.localPosition;
+            transform.localRotation = LeftStartPos.localRotation;
+
         }
 
 
         if (transform.parent.position.x == 4f)
         {
-            transform.localPosition = rightLane;
-           
-            //Debug.Log(transform.localPosition.x);
+            //transform.localPosition = rightLane;
+            transform.localPosition = RightStartPos.localPosition;
+            transform.localRotation = RightStartPos.localRotation;
+
         }
     }
 }

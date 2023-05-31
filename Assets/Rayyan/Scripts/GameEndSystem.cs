@@ -123,7 +123,7 @@ public class GameEndSystem : MonoBehaviour
         }
 
         HighScore_text.SetText(HighScore.ToString());
-        PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
+        //PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
 
         currency_system.run_amount = 0;
         // reset the player's distance score

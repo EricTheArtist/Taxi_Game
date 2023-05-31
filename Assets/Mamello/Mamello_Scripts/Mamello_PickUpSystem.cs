@@ -132,8 +132,8 @@ public class Mamello_PickUpSystem : MonoBehaviour
     void AddPassenger()//Perhaps we can change this to read in a specific number of passengers as a point and add that same number
     {
         passengerCount++;//right now it one passenger per zone
-        currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);
-        currencySystem.main_amount += 3; //run amount is no longer being added to total at end of run, the total is being updated during the run and the run_amount is only being used on the game end screen
+        currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is just used for display at the end of a run
+        currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
         Debug.Log("Passenger Picked Up");
         //pickUpPointAnimator.SetTrigger("isPassengerBoarding");
         animator.SetTrigger("isGettingPassenger");

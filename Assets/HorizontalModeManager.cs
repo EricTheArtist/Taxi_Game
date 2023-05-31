@@ -17,7 +17,18 @@ public class HorizontalModeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(Screen.orientation == ScreenOrientation.Portrait)
+        {
+
+        }
+        else if(Screen.orientation == ScreenOrientation.LandscapeLeft)
+        {
+            ToggleSteerigwheel();
+        }
+        else if (Screen.orientation == ScreenOrientation.LandscapeRight)
+        {
+            ToggleSteerigwheel();
+        }
     }
 
     // Update is called once per frame

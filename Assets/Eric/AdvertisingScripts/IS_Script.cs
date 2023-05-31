@@ -8,6 +8,7 @@ public class IS_Script : MonoBehaviour
     public GameObject ShowFullAddButton;
     public CurrencySystem CS;
     public ShopUIManager SUIM;
+    public GameObject RewardRecievedScreen;
 #if UNITY_ANDROID
     string appkey = "19a7621a5";
 #elif UNITY_IOS
@@ -21,10 +22,10 @@ string appkey = "";
 
 
         IronSource.Agent.init(appkey);
-        if (ShowFullAddButton != null)
-        {
-            ShowFullAddButton.SetActive(false);
-        }
+        //if (ShowFullAddButton != null)
+        //{
+        //   ShowFullAddButton.SetActive(false);
+        //}
         
     }
 
@@ -74,7 +75,7 @@ string appkey = "";
         }
         else if(top0bottom1 == 1)
         {
-            IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+            IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
         }
         
     }
@@ -142,7 +143,7 @@ string appkey = "";
     // Invoked when the interstitial ad was loaded succesfully.
     void InterstitialOnAdReadyEvent(IronSourceAdInfo adInfo)
     {
-        ShowFullAddButton.SetActive(true);
+        //ShowFullAddButton.SetActive(true);
     }
     // Invoked when the initialization process has failed.
     void InterstitialOnAdLoadFailed(IronSourceError ironSourceError)
@@ -199,17 +200,19 @@ string appkey = "";
     void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
         
-        if (CS != null)
+        if (CS != null) //adding coins in game scene
         {
-            int currentcoins = PlayerPrefs.GetInt("Main Amount");
-            currentcoins += 500;
-            PlayerPrefs.SetInt("Main Amount", currentcoins);
-            
+            CS.Eric_AddCoins(500);
+            RewardRecievedScreen.SetActive(true);
+
         }
-        else if (SUIM != null)
+        else if (SUIM != null) //Adding coins in shop
         {
             SUIM.AddCoins(500);
+            RewardRecievedScreen.SetActive(true);
         }
+
+        
         
     }
     // The rewarded video ad was failed to show.

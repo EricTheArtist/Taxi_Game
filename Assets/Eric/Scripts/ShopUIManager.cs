@@ -98,9 +98,9 @@ public class ShopUIManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {    
-            
-            stanceStarty = CarChasisHolder.transform.localPosition.y;
+    {
+        Screen.orientation = ScreenOrientation.AutoRotation;
+        stanceStarty = CarChasisHolder.transform.localPosition.y;
         
         Coins = PlayerPrefs.GetInt("Main Amount");
         updateCoinsText();

@@ -31,7 +31,9 @@ namespace SimpleInputNamespace
         public float swipeThreshold = 20f;
         private bool LerpSwipe = false;
         private Vector2 fingerDownPosition;
-        private Vector2 fingerUpPosition;
+        //private Vector2 fingerUpPosition;
+        //private float swipeDistance;
+        private bool allowSwipe = true;
 
         [Header("Breaking")]
         private int brakesAmount = 100;
@@ -46,8 +48,11 @@ namespace SimpleInputNamespace
         public TMP_Text BreakInstruction;
 
         public Animator animator;
-        public GameObject Qube;
-
+        public GameObject SteeringCar;
+        public GameObject SwipingCarBody;
+        public GameObject SwipingCarWF;
+        public GameObject SwipingCarWB;
+        public GameObject SwipingShadow;
 
 
         private void Start()
@@ -68,13 +73,22 @@ namespace SimpleInputNamespace
             {
                 SteeringwheelUI.SetActive(true);
                 SteeringWheel = true;
-                
+
+                SteeringCar.SetActive(true);
+                SwipingCarBody.SetActive(false);
+                SwipingCarWB.SetActive(false);
+                SwipingCarWF.SetActive(false);
+                SwipingShadow.SetActive(false);
             }
             else
             {
                 SteeringwheelUI.SetActive(false);
                 SteeringWheel = false;
-                
+                SteeringCar.SetActive(false);
+                SwipingCarBody.SetActive(true);
+                SwipingCarWB.SetActive(true);
+                SwipingCarWF.SetActive(true);
+                SwipingShadow.SetActive(true);
             }
 
         }
@@ -134,14 +148,15 @@ namespace SimpleInputNamespace
                 else
                 {
                     hMovement = SW.Angle * movementSpeed / 200;
-                    Debug.Log("Steering angle " + SW.Angle.ToString());
-                    Qube.transform.localEulerAngles = new Vector3(0, SW.Angle/3, 0);
+                    //Debug.Log("Steering angle " + SW.Angle.ToString());
+                    SteeringCar.transform.localEulerAngles = new Vector3(0, SW.Angle/3, 0);
                 }
             }
         }
 
         void SwipingUpdate()
         {
+            /*
             if (Input.touchCount > 0 && SteeringWheel == false)
             {
                 Touch touch = Input.GetTouch(0);
@@ -186,6 +201,69 @@ namespace SimpleInputNamespace
                     }
                 }
             }
+
+            */
+
+
+
+
+
+            // Check for touch input
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                // Check for finger down
+                if (touch.phase == TouchPhase.Began)
+                {
+                    fingerDownPosition = touch.position;
+                }
+                    
+                
+                // Calculate swipe distance
+                float swipeDistance = touch.position.x - fingerDownPosition.x;
+
+                // Check for swipe
+                if (Mathf.Abs(swipeDistance) > swipeThreshold && allowSwipe == true)
+                {
+                    // Swipe detected, handle it here
+                    if (swipeDistance > 0 && LerpSwipe == false)
+                    {
+                        if (MoveFromLane < 4) //checks to make sure there is a lane to the right and that you are not busy moving lanes
+                        {
+                            MoveToLane = MoveFromLane + 1;
+                            LerpSwipe = true;
+                            animator.SetTrigger("isSwervingRight 0");
+
+
+                        }
+                        //Debug.Log("Swipe Right");
+                    }
+                    else if (MoveFromLane > 0 && LerpSwipe == false)
+                    {
+                        MoveToLane = MoveFromLane - 1;
+                        LerpSwipe = true;
+                        animator.SetTrigger("isSwervingLeft 0");
+                        //Debug.Log("Swiping Left");
+
+                        
+                    }
+                    //Debug.Log("Swipe Distance: " + swipeDistance.ToString());
+                    allowSwipe = false;
+                }
+                // Check for finger up
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    allowSwipe = true;
+
+                }
+            }
+
+
+
+
+
+
         }
 
         void MovementUpdate() //updates X and Z position based on if steeringwheel or swiping is being used
