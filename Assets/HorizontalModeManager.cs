@@ -14,6 +14,8 @@ public class HorizontalModeManager : MonoBehaviour
     public bool SteeringWheelActive = false;
 
     public UnityEvent Entersteering;
+
+    public SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class HorizontalModeManager : MonoBehaviour
 
     public void ToggleSteerigwheel()
     {
-
+        controller.ToggleSteeringWheel();
 
         if (SteeringWheelActive == true)
         {
