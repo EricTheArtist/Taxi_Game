@@ -23,6 +23,7 @@ public class CurrencySystem : MonoBehaviour
         run_amount = 0;
         multiplier = 1;
         main_amount = PlayerPrefs.GetInt("Main Amount");
+        RefreshCoinAmountDisplay();
     }
 
     // Update is called once per frame

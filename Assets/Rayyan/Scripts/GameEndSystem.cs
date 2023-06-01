@@ -87,6 +87,7 @@ public class GameEndSystem : MonoBehaviour
                 ISS_Ads.ShowFullAd();
                 DeathCountForAd = 0;
             }
+            other.gameObject.SetActive(false);
         }
     }
     void Collison_Crash()

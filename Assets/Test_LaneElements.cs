@@ -32,7 +32,7 @@ public class Test_LaneElements : MonoBehaviour
         {
             if(i != Openlane) // is the lane is not open set an obsticle to that lane
             {
-                SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-4f,4f)); //gives the obsticel a random position on the lane
+                SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-4f,7f)); //gives the obsticel a random position on the lane
 
                 
                 if(controller.isBraking == true) //The chance of an obsticle to spawn is based on the percent ratio of the current speed to max speed, meaning that at max speed 4 lanes will always have obsticles
