@@ -59,7 +59,7 @@ public class GameEndSystem : MonoBehaviour
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
-        ISS_Ads.LoadBannerAd(1);
+        ISS_Ads.LoadBannerAd(0);
         ISS_Ads.LoadFullAd();
         googleHandlerScript = gameManager.GetComponent<GoogleHandlerScript>();
     }

@@ -232,7 +232,7 @@ public class ShopUIManager : MonoBehaviour
     }
     public void Button_Play()
     {
-        ADscript.DestroyBannerAd();
+        //ADscript.DestroyBannerAd();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
