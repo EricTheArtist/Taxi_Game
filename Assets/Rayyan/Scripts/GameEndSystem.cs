@@ -121,7 +121,7 @@ public class GameEndSystem : MonoBehaviour
         {
             HighScore = PlayerPrefs.GetInt("HighScoreSteering");
             //call leaderboard submit score
-            googleHandlerScript.SwippingScoreHandler();
+            googleHandlerScript.SteeringScoreHandler();
         }
         else
         {

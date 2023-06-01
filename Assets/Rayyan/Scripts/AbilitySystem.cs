@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using SimpleInputNamespace;
 using UnityEngine;
 
@@ -11,28 +12,30 @@ public class AbilitySystem : MonoBehaviour
     public GameObject player;
     public bool canUseAbility;
     //-------------------------------------------------------------
-    // storage variable
+    // storage variabes
     private float tempFloat = 0;
     private int tempInt = 0;
     //-------------------------------------------------------------
     private bool speedAbilityActive = false;
     private bool armourAbilityActive = false;
     //-------------------------------------------------------------
-    [Tooltip("current vehicle ability active")] 
     public enum AbilityType
     {
         Normal,
         SpeedBoost,
         Armour,
         DoubleCoins,
-        Escapist
+        Escapist //for colddrink 
     }
+    [Tooltip("current vehicle ability active | Set here to change ability ")] 
     public AbilityType abilityType;
     //-------------------------------------------------------------
-    [Header("Ability Timers")]
+    [Header("Ability Timers")] 
+    public bool timerActive = false;
+    public float AbilityTimeLeft = 0;
     public float SpeedAbilityTimer;
     public float ArmourAbiltyTimer;
-    public float ArmourAbilityTimer;
+    public float DoubleCoinAbilityTimer;
     //-------------------------------------------------------------
     private CurrencySystem _currencySystem;
     private TestCharacterController _controller;
@@ -42,6 +45,7 @@ public class AbilitySystem : MonoBehaviour
 
     private void Start()
     {
+        canUseAbility = false;
         _controller= player.GetComponent<TestCharacterController>();
         _currencySystem = player.GetComponent<CurrencySystem>();
     }
@@ -53,6 +57,11 @@ public class AbilitySystem : MonoBehaviour
             canUseAbility = false;
             ActivateAbilty();
         }
+
+        if (timerActive)
+        {
+            StartTimer();
+        }
         
     }
 
@@ -60,37 +69,46 @@ public class AbilitySystem : MonoBehaviour
     //-------------------------------------------------------------
     #region AbilityHandler
 
-    void ActivateAbilty()
+    public void ActivateAbilty()
     {
-        int testFlag = 0;
-        switch (abilityType)
+       
+        if (canUseAbility)
         {
-            case AbilityType.Normal:
-                print("Normal Vehicle");
-                Debug.Log("Normal Vehicle");
-                break;
-            //--------------------------------------------------
-            case AbilityType.SpeedBoost:
-                Debug.Log("Speedster Vehicle");
-                SpeedAbility();
-                break;
-            //--------------------------------------------------
-            case AbilityType.Armour:
-                Debug.Log("Tank Vehicle");
-                ArmourAbilty();
-                break;
-            //--------------------------------------------------
-            case AbilityType.DoubleCoins:
-                Debug.Log("Double Money Vehicle");
-                DoubleCoinsAbility();
-                break;
-            //--------------------------------------------------
-            case AbilityType.Escapist:
-                Debug.Log("Escape Artist Vehicle");
-                break;
-            //--------------------------------------------------
+            canUseAbility = false;
+            switch (abilityType)
+            {
+                case AbilityType.Normal:
+                    print("Normal Vehicle");
+                    Debug.Log("Normal Vehicle");
+                    break;
+                //--------------------------------------------------
+                case AbilityType.SpeedBoost:
+                    Debug.Log("Speedster Vehicle");
+                    SpeedAbility();
+                    break;
+                //--------------------------------------------------
+                case AbilityType.Armour:
+                    Debug.Log("Tank Vehicle");
+                    ArmourAbilty();
+                    break;
+                //--------------------------------------------------
+                case AbilityType.DoubleCoins:
+                    Debug.Log("Double Money Vehicle");
+                    DoubleCoinsAbility();
+                    break;
+                //--------------------------------------------------
+                case AbilityType.Escapist:
+                    Debug.Log("Escape Artist Vehicle");
+                    break;
+                //--------------------------------------------------
     
+            }
         }
+        else
+        {
+            Debug.Log("Can Not Use Ability");
+        }
+        
     }
 
     #endregion
@@ -106,7 +124,9 @@ public class AbilitySystem : MonoBehaviour
         speedAbilityActive = true;
         Physics.IgnoreLayerCollision(6,3, true);//Disables collisions between player and obsticles
         _controller.movementSpeed = speedBoost; //set current speed to speedboost
-        Invoke("EndSpeedAbility",SpeedAbilityTimer);
+        AbilityTimeLeft = SpeedAbilityTimer;
+        timerActive = true;
+        Invoke("EndSpeedAbility",AbilityTimeLeft);
     }
     void EndSpeedAbility()
     {
@@ -127,7 +147,9 @@ public class AbilitySystem : MonoBehaviour
         Debug.Log("Start Armour Ability");
         armourAbilityActive = true;
         Physics.IgnoreLayerCollision(6,3,true);
-        Invoke("EndArmourAbility", ArmourAbiltyTimer);
+        AbilityTimeLeft = ArmourAbiltyTimer;
+        timerActive = true;
+        Invoke("EndArmourAbility",AbilityTimeLeft );
     }
 
     void EndArmourAbility()
@@ -146,7 +168,9 @@ public class AbilitySystem : MonoBehaviour
         Debug.Log("Double Coins Active");
         tempInt = _currencySystem.multiplier;
         _currencySystem.multiplier = 2 * _currencySystem.multiplier;
-        Invoke("EndDoubleCoinsAbility", ArmourAbilityTimer);
+        AbilityTimeLeft = DoubleCoinAbilityTimer;
+        timerActive = true;
+        Invoke("EndDoubleCoinsAbility", AbilityTimeLeft);
     }
     void EndDoubleCoinsAbility()
     {
@@ -160,12 +184,33 @@ public class AbilitySystem : MonoBehaviour
 
     #region Collision Control
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("AbilityPickup"))
+        {
+            canUseAbility = true;
+        }
     }
 
     #endregion
-   
+
+    #region Timer
+
+    void StartTimer()
+    {
+        if (AbilityTimeLeft > 0)
+        {
+            AbilityTimeLeft -= Time.deltaTime;
+           
+        }
+        else
+        {
+            timerActive = false;
+        }
+        //            AbilityTimeLeft -= Mathf.Lerp(startTime, 0, Time.deltaTime);
+
+    }
+
+    #endregion
     
 }

@@ -1,4 +1,4 @@
-﻿namespace GleyGameServices
+﻿ namespace GleyGameServices
 {
     using System.Collections.Generic;
     using System.Linq;

@@ -66,20 +66,33 @@ public class GoogleHandlerScript : MonoBehaviour
         {
             if (GameServices.Instance.IsLoggedIn())
             {
+                indexNumberLeaderboards = 0;
                 swipingHighscore = PlayerPrefs.GetInt("HighScore");
                 GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
             }
             
-        } void SteeringScoreHandler()
+        } 
+        public void SteeringScoreHandler()
         {
             if (GameServices.Instance.IsLoggedIn())
             {
-                swipingHighscore = PlayerPrefs.GetInt("HighScoreSteering");
+                indexNumberLeaderboards = 1;
+                steeringHighscore = PlayerPrefs.GetInt("HighScoreSteering");
                 GameServices.Instance.SubmitScore(steeringHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
             }
             
         }
-        
+        public void PassengerCountHandler()
+        {
+            if (GameServices.Instance.IsLoggedIn())
+            {
+                indexNumberLeaderboards = 2;
+                long passengerCount = 0;
+                passengerCount = PlayerPrefs.GetInt("");//add passenger count prefs
+                GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
+            }
+            
+        }
         private void ScoreSubmitted(bool success, GameServicesError error)
         {
             if (success)
