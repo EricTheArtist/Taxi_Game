@@ -24,6 +24,9 @@ public class PickUpSystem : MonoBehaviour
 
     public UnityEvent EnterPassengerCollect;
     public UnityEvent EnterRobot;
+
+    public ParticleSystem CoinEffect;
+    public ParticleSystem CoinsEffect;
     
 
     // Start is called before the first frame update
@@ -63,6 +66,10 @@ public class PickUpSystem : MonoBehaviour
             pickUpPoint = other.transform.parent.gameObject;
 
             EnterPassengerCollect.Invoke();
+
+            currencySystem.run_amount = currencySystem.Addition_Function(1, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
+            currencySystem.Eric_AddCoins(1); //adds 3 coins to the players saved coins
+            CoinEffect.Play();
         }
 
         if (other.tag == "Robot")
@@ -83,6 +90,7 @@ public class PickUpSystem : MonoBehaviour
     {
         if (controller.isBraking && other.tag == "PickUpPoint")//check if the player has stoped in the zone
         {
+            passengerCount++;//right now it one passenger per zone
             if (used == false)
             {
                 AddPassenger();
@@ -104,6 +112,7 @@ public class PickUpSystem : MonoBehaviour
     {
         if (other.tag == "PickUpPoint")
         {
+            
             controller.breakButton.SetActive(false);
             if (controller.isBraking) // if the player is still holding down the break pad after exiting the pickup zone, they are forced to continue driving
             {
@@ -143,12 +152,12 @@ public class PickUpSystem : MonoBehaviour
 
     void AddPassenger()//Perhaps we can change this to read in a specific number of passengers as a point and add that same number
     {
-        passengerCount++;//right now it one passenger per zone
+        //passengerCount++;//right now it one passenger per zone
         currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
         currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
         Debug.Log("Passenger Picked Up");
-        animator.SetTrigger("isGettingPassenger");
-
+        //animator.SetTrigger("isGettingPassenger");
+        CoinsEffect.Play();
         pickUpPoint.transform.GetChild(1).GetComponent<PassengerManager>().PlayCharacterJump();
 
 
@@ -164,6 +173,7 @@ public class PickUpSystem : MonoBehaviour
 
     void DeactivatePickUpPoint()
     {
+
         pickUpPoint.SetActive(false);
     }
 }
