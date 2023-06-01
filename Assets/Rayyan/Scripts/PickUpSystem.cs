@@ -75,7 +75,7 @@ public class PickUpSystem : MonoBehaviour
         if (other.tag == "Robot")
         {
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
-            if(TR.RedLightON == true)
+            if(TR.RedLightON == true && CopIsChasing == false)
             {
                 controller.breakButton.SetActive(true);
                 controller.BreakInstruction.SetText("HOLD!");
