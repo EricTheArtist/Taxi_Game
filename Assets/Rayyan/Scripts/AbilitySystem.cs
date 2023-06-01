@@ -10,6 +10,7 @@ public class AbilitySystem : MonoBehaviour
     #region Varibales
 
     public GameObject player;
+    public GameObject AbilityButton;
     public bool canUseAbility;
     //-------------------------------------------------------------
     // storage variabes
@@ -75,6 +76,7 @@ public class AbilitySystem : MonoBehaviour
         if (canUseAbility)
         {
             canUseAbility = false;
+            AbilityButton.SetActive(false);
             switch (abilityType)
             {
                 case AbilityType.Normal:
@@ -189,6 +191,7 @@ public class AbilitySystem : MonoBehaviour
         if (other.gameObject.CompareTag("AbilityPickup"))
         {
             canUseAbility = true;
+            AbilityButton.SetActive(true);
         }
     }
 

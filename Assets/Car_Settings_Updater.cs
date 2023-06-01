@@ -32,6 +32,12 @@ public class Car_Settings_Updater : MonoBehaviour
     public float[] WheelScale;
 
     public float WheelStartAngle = 0;
+
+
+    public GameObject[] RimTransform;
+    public GameObject[] RimPrefabs;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +49,7 @@ public class Car_Settings_Updater : MonoBehaviour
 
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCarsMain(ActiveCar);
+        UpdateRims();
     }
 
     // Update is called once per frame
@@ -99,6 +106,16 @@ public class Car_Settings_Updater : MonoBehaviour
             {
                 Meshes[i].SetActive(false);
             }
+        }
+    }
+
+    public void UpdateRims()
+    {
+        for (int j = 0; j < RimTransform.Length; j++)
+        {
+            
+            int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+            Instantiate(RimPrefabs[activerim], RimTransform[j].transform);
         }
     }
 }

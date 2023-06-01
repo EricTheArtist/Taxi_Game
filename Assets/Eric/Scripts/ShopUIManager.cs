@@ -18,6 +18,8 @@ public class ShopUIManager : MonoBehaviour
     public GameObject ColourPanel1;
     public GameObject ColourPanel2;
 
+    public GameObject RimsPanel;
+
     public FlexibleColorPicker FCP;
     public Material UnderGlowMat;
     public GameObject[] Shops;
@@ -63,6 +65,10 @@ public class ShopUIManager : MonoBehaviour
     public GameObject[] Wheelsright;
     public float[] WheelScale;
 
+    public GameObject[] RimTransform;
+    public GameObject[] RimPrefabs;
+    public GameObject[] LastRims;
+
 
 
     RectTransform rectTransform;
@@ -107,7 +113,7 @@ public class ShopUIManager : MonoBehaviour
         refreshcolouronsamples();
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCars(ActiveCar);
-
+        UpdateRims();
         
             
 
@@ -314,15 +320,30 @@ public class ShopUIManager : MonoBehaviour
                 Slogan.transform.localScale = new Vector3(SloganScale[i],SloganScale[i],SloganScale[i]);
 
                 NumberPlate.transform.localPosition = new Vector3(NumberPlatePos[i].x, NumberPlatePos[i].y, NumberPlatePos[i].z);
+
             }
             else
             {
                 Cars[i].SetActive(false);
             }
+
         }
 
         updatestance();
     }
+
+    public void UpdateRims()
+    {
+        for (int j = 0; j < RimTransform.Length; j++)
+        {
+            Destroy(LastRims[j]);
+            int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+            LastRims[j] = Instantiate(RimPrefabs[activerim], RimTransform[j].transform);
+        }
+    }
+
+
+
 
     public void LockControl(bool LockStatus)
     {
@@ -352,6 +373,19 @@ public class ShopUIManager : MonoBehaviour
         else
         {
             ColourPanel2.SetActive(true);
+        }
+    }
+    public void ToggleRimsPanel()
+    {
+        ColourPanel1.SetActive(false);
+        ColourPanel1.SetActive(false);
+        if (RimsPanel.activeInHierarchy)
+        {
+            RimsPanel.SetActive(false);
+        }
+        else
+        {
+            RimsPanel.SetActive(true);
         }
     }
 }
