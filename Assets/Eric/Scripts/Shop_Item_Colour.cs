@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Purchasing;
 
 public class Shop_Item_Colour : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Shop_Item_Colour : MonoBehaviour
     public string shaderInput = "_Color";
 
     public bool Premium = false;
+    public IAPButton ThisIAPButoon; 
     
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,10 @@ public class Shop_Item_Colour : MonoBehaviour
         if(Owned == true)
         {
             PriceBG.SetActive(false);
+            if (ThisIAPButoon != null)
+            {
+              
+            }
         }
     }
 

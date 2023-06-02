@@ -4211,7 +4211,7 @@ PrefabInstance:
     - target: {fileID: 6184393351770325311, guid: 36e63dadafdabd441a8b27da56823def,
         type: 3}
       propertyPath: PlayerPrefName
-      value: Car02
+      value: Car01Premium
       objectReference: {fileID: 0}
     - target: {fileID: 7259731580320073824, guid: 36e63dadafdabd441a8b27da56823def,
         type: 3}
@@ -4404,7 +4404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productId: com.vetkoekstudios.taxiranked.car01
   buttonType: 0
-  consumePurchase: 1
+  consumePurchase: 0
   onTransactionsRestored:
     m_PersistentCalls:
       m_Calls: []
@@ -16236,7 +16236,7 @@ RectTransform:
   m_Children:
   - {fileID: 1430928209}
   m_Father: {fileID: 2051236334}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21657,7 +21657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productId: com.vetkoekstudios.taxiranked.colour01
   buttonType: 0
-  consumePurchase: 1
+  consumePurchase: 0
   onTransactionsRestored:
     m_PersistentCalls:
       m_Calls: []
@@ -28623,7 +28623,7 @@ RectTransform:
   m_Children:
   - {fileID: 1569713501}
   m_Father: {fileID: 2051236334}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -30601,7 +30601,7 @@ RectTransform:
   - {fileID: 638593260}
   - {fileID: 1275018501}
   m_Father: {fileID: 2051236334}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -37163,7 +37163,7 @@ RectTransform:
   - {fileID: 1536905160}
   - {fileID: 1065627747}
   m_Father: {fileID: 2051236334}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -51746,10 +51746,10 @@ RectTransform:
   m_Children:
   - {fileID: 60876439}
   - {fileID: 1037712349}
+  - {fileID: 1347447218}
   - {fileID: 1656912018}
   - {fileID: 706593734}
   - {fileID: 1250695572}
-  - {fileID: 1347447218}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56244,7 +56244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productId: com.vetkoekstudios.taxiranked.rims01
   buttonType: 0
-  consumePurchase: 1
+  consumePurchase: 0
   onTransactionsRestored:
     m_PersistentCalls:
       m_Calls: []
@@ -61076,6 +61076,7 @@ MonoBehaviour:
   TaxiMaterial: {fileID: 1689087711836408721}
   shaderInput: _Color
   Premium: 1
+  ThisIAPButoon: {fileID: 0}
 --- !u!33 &3140367294972390965
 MeshFilter:
   m_ObjectHideFlags: 0
