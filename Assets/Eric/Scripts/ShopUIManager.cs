@@ -269,7 +269,7 @@ public class ShopUIManager : MonoBehaviour
 
     public bool CheckForEnoughMoney(int Cost) //Public function that must be called each time the player attempts to but something with coins
     {
-        if(Cost < Coins)
+        if(Cost <= Coins)
         {
             return true;
         }

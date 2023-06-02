@@ -2376,7 +2376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -71.20993, y: -100}
+  m_AnchoredPosition: {x: -71.20993, y: -345}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &152109022
@@ -5574,8 +5574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 478.70422, y: -1170.8492}
-  m_SizeDelta: {x: 957.40845, y: 317.3855}
+  m_AnchoredPosition: {x: 408.8644, y: -1411.9812}
+  m_SizeDelta: {x: 817.7288, y: 386.28036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468912909
 MonoBehaviour:
@@ -18800,7 +18800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -252}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1012695453
@@ -19189,7 +19189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1049276815}
         m_TargetAssemblyTypeName: ExternalPurchaseNotice, Assembly-CSharp
         m_MethodName: CloseExternalPurchaseNotice
         m_Mode: 1
@@ -19353,8 +19353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 478.70422, y: -158.69275}
-  m_SizeDelta: {x: 957.40845, y: 317.3855}
+  m_AnchoredPosition: {x: 408.8644, y: -193.14018}
+  m_SizeDelta: {x: 817.7288, y: 386.28036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047238941
 MonoBehaviour:
@@ -19447,8 +19447,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 478.70422, y: -833.46375}
-  m_SizeDelta: {x: 957.40845, y: 317.3855}
+  m_AnchoredPosition: {x: 408.8644, y: -1005.7009}
+  m_SizeDelta: {x: 817.7288, y: 386.28036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047946019
 MonoBehaviour:
@@ -19512,8 +19512,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049276817}
-  - component: {fileID: 1049276816}
   - component: {fileID: 1049276815}
+  - component: {fileID: 1049276818}
   m_Layer: 0
   m_Name: IAPRestoreAndListner
   m_TagString: Untagged
@@ -19537,50 +19537,6 @@ MonoBehaviour:
   ProductName: {fileID: 918178664}
   run_amount_text: {fileID: 280704592}
   run_amount_shadow: {fileID: 347231058}
---- !u!114 &1049276816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049276814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7dd963c1a8b427b96975fa211478a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  consumePurchase: 0
-  dontDestroyOnLoad: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1049276815}
-        m_TargetAssemblyTypeName: ExternalPurchaseNotice, Assembly-CSharp
-        m_MethodName: externalPurchaseSucced
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1049276815}
-        m_TargetAssemblyTypeName: ExternalPurchaseNotice, Assembly-CSharp
-        m_MethodName: ExternalCoinsProduct5000
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1049276817
 Transform:
   m_ObjectHideFlags: 0
@@ -19597,6 +19553,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049276818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049276814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7dd963c1a8b427b96975fa211478a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumePurchase: 1
+  dontDestroyOnLoad: 1
+  onProductsFetched:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1049276815}
+        m_TargetAssemblyTypeName: ExternalPurchaseNotice, Assembly-CSharp
+        m_MethodName: ExternalCoinsProduct5000
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1052601487
 GameObject:
   m_ObjectHideFlags: 0
@@ -30279,8 +30270,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 478.70422, y: -496.07825}
-  m_SizeDelta: {x: 957.40845, y: 317.3855}
+  m_AnchoredPosition: {x: 408.8644, y: -599.42053}
+  m_SizeDelta: {x: 817.7288, y: 386.28036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090262458
 MonoBehaviour:

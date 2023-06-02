@@ -1,37 +1,28 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Samples.Purchasing.Core.FetchingAdditionalProducts
+namespace Samples.Purchasing.Core.BuyingConsumables
 {
-    public class FetchingAdditionalProducts : MonoBehaviour, IStoreListener
+    public class BuyingConsumables : MonoBehaviour, IStoreListener
     {
-        IStoreController m_StoreController;
+        IStoreController m_StoreController; // The Unity Purchasing system.
 
+        //Your products IDs. They should match the ids of your products in your store.
         public string goldProductId = "com.mycompany.mygame.gold1";
-        public ProductType goldType = ProductType.Consumable;
-
-        //This product will only be fetched once the FetchAdditionalProducts button is clicked
         public string diamondProductId = "com.mycompany.mygame.diamond1";
-        public ProductType diamondType = ProductType.Consumable;
 
         public Text GoldCountText;
         public Text DiamondCountText;
-
-        public GameObject additionalProductsPanel;
-        public Button fetchAdditionalProductsButton;
 
         int m_GoldCount;
         int m_DiamondCount;
 
         void Start()
         {
-            additionalProductsPanel.SetActive(false);
-
             InitializePurchasing();
-
             UpdateUI();
         }
 
@@ -39,44 +30,12 @@ namespace Samples.Purchasing.Core.FetchingAdditionalProducts
         {
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
-            //Add product that will be purchasable and indicate its type.
-            //This product will be fetched on initialize.
-            builder.AddProduct(goldProductId, goldType);
+            //Add products that will be purchasable and indicate its type.
+            builder.AddProduct(goldProductId, ProductType.Consumable);
+            builder.AddProduct(diamondProductId, ProductType.Consumable);
 
+            
             UnityPurchasing.Initialize(this, builder);
-        }
-
-        public void FetchAdditionalProducts()
-        {
-            var additionalProductsToFetch = new HashSet<ProductDefinition>
-            {
-                new ProductDefinition(diamondProductId, diamondType)
-            };
-
-            Debug.Log($"Fetching additional products in progress");
-
-            m_StoreController.FetchAdditionalProducts(additionalProductsToFetch,
-                () =>
-                {
-                    //Additional products fetched, they can now be purchased.
-                    Debug.Log($"Successfully fetched additional products");
-
-                    //We active the UI associated with the fetched product.
-                    additionalProductsPanel.SetActive(true);
-
-                    fetchAdditionalProductsButton.interactable = false;
-                },
-                (reason, message) =>
-                {
-                    var errorMessage = $"Fetching additional products failed: {reason.ToString()}.";
-
-                    if (message != null)
-                    {
-                        errorMessage += $" More details: {message}";
-                    }
-
-                    Debug.LogError(errorMessage);
-                });
         }
 
         public void BuyGold()
@@ -97,7 +56,19 @@ namespace Samples.Purchasing.Core.FetchingAdditionalProducts
 
         public void OnInitializeFailed(InitializationFailureReason error)
         {
-            Debug.Log($"In-App Purchasing initialize failed: {error}");
+            OnInitializeFailed(error, null);
+        }
+
+        public void OnInitializeFailed(InitializationFailureReason error, string message)
+        {
+            var errorMessage = $"Purchasing failed to initialize. Reason: {error}.";
+
+            if (message != null)
+            {
+                errorMessage += $" More details: {message}";
+            }
+
+            Debug.Log(errorMessage);
         }
 
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
