@@ -22,6 +22,7 @@ public class ShopUIManager : MonoBehaviour
 
     public FlexibleColorPicker FCP;
     public Material UnderGlowMat;
+    public Color DefaultUnderglow;
     public GameObject[] Shops;
     public Button[] Tabs;
 
@@ -35,6 +36,7 @@ public class ShopUIManager : MonoBehaviour
     public Renderer TaxiMaterial;
     public GameObject Slogan;
     public GameObject LockIcon;
+    public Slider StanceSlider;
     public Texture2D[] CarBaseTex;
     public Texture2D[] CarMaskTex;
 
@@ -114,9 +116,26 @@ public class ShopUIManager : MonoBehaviour
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCars(ActiveCar);
         UpdateRims();
-        
-            
 
+        // recalling the stance save
+        float savedStance = PlayerPrefs.GetFloat("Suspension");
+        StanceSlider.value = savedStance;
+        Debug.Log("Stance save: " + savedStance);
+
+
+        //recalling the underglow save
+        Color Underglow;
+        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("UnderglowSave"), out Underglow);
+        if (Underglow.r == 1 && Underglow.g == 1 && Underglow.b == 1)
+        {
+            FCP.color = DefaultUnderglow;
+        }
+        else
+        {
+            FCP.color = new Color(Underglow.r, Underglow.g, Underglow.b, 0.5f);
+        }
+        
+        
     }
 
     // Update is called once per frame
@@ -125,34 +144,19 @@ public class ShopUIManager : MonoBehaviour
         TestUILayout();
         UnderGlowMat.color = FCP.color;
         
-        /* Was used to check layout
-        if ( Screen.orientation == ScreenOrientation.Portrait)
-        {
-            if (updatedV == true)
-            {
-                LayoutVertical();
-            }
 
-
-        }
-        else
-        {
-            if (updatedH == true)
-            {
-                LayoutHorizontal();
-                
-            }
-
-        }
-        */
         
     }
 
     public void updatestance()
     {
+
+
+
+
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         float yheight = Mathf.Lerp(stanceStarty, stanceStarty - 0.1f, StanceBar.value); //some refrence seems to be missing here
-        
+        //Debug.Log("SnanceValue: " + StanceBar.value);
         
         CarChasisHolder.transform.localPosition = new Vector3(CarChasisHolder.transform.localPosition.x, yheight, 
                                                         CarChasisHolder.transform.localPosition.z);
@@ -168,9 +172,9 @@ public class ShopUIManager : MonoBehaviour
             Wheelsright[i].transform.localRotation = Quaternion.Euler(0, 0, wheelRotation);
         }
 
-        PlayerPrefs.SetFloat("Suspension", StanceBar.value);
+     
 
-
+    
 
     }
 
@@ -240,6 +244,8 @@ public class ShopUIManager : MonoBehaviour
     {
         //ADscript.DestroyBannerAd();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+        PlayerPrefs.SetFloat("Suspension", StanceBar.value);
+        PlayerPrefs.SetString("UnderglowSave", ColorUtility.ToHtmlStringRGBA(FCP.color));
     }
 
     void RefreshCoinValue()
