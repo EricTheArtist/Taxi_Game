@@ -50,6 +50,12 @@ public class Car_Settings_Updater : MonoBehaviour
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCarsMain(ActiveCar);
         UpdateRims();
+        Color Colourbottom;
+        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("ColourBottomSave"), out Colourbottom);
+        Color Colourtop;
+        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("ColourTopSave"), out Colourtop);
+        TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Colourbottom);
+        TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color2", Colourtop);
     }
 
     // Update is called once per frame

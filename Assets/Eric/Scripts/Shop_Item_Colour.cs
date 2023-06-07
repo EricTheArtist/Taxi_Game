@@ -62,6 +62,16 @@ public class Shop_Item_Colour : MonoBehaviour
         if (Owned == true)
         {
             TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor(shaderInput, Colour);
+            
+            if(shaderInput == "_Color")
+            {
+                PlayerPrefs.SetString("ColourBottomSave", ColorUtility.ToHtmlStringRGB(Colour));
+            }
+            else
+            {
+                PlayerPrefs.SetString("ColourTopSave", ColorUtility.ToHtmlStringRGB(Colour));
+            }
+            
         }
 
         SUIM.refreshcolouronsamples();
