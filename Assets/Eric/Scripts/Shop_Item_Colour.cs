@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Purchasing;
 
 public class Shop_Item_Colour : MonoBehaviour
 {
@@ -20,10 +19,12 @@ public class Shop_Item_Colour : MonoBehaviour
     public GameObject TaxiMaterial;
 
     public string shaderInput = "_Color";
+    public string productID;
 
     public bool Premium = false;
-    public IAPButton ThisIAPButoon; 
-    
+    public NonConsumablePurchasing NCP;
+
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -33,17 +34,16 @@ public class Shop_Item_Colour : MonoBehaviour
         ColourSample.color = Colour;
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
 
-        if(Premium == false)
+
+
+        if (Premium == false)
         {
             Price_Text.SetText(Price.ToString());
         }
         if(Owned == true)
         {
             PriceBG.SetActive(false);
-            if (ThisIAPButoon != null)
-            {
-              
-            }
+
         }
     }
 
@@ -72,7 +72,10 @@ public class Shop_Item_Colour : MonoBehaviour
         Owned = true;
         PriceBG.SetActive(false);
         PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
-
         SUIM.refreshcolouronsamples();
+        NCP.BuyProduct(productID);
     }
+
+
+
 }

@@ -20,7 +20,9 @@ public class GoogleHandlerScript : MonoBehaviour
     private bool isLoggedInCheck = false;
     [SerializeField] private GameObject Player;
     private void Start()
-    {   
+    {
+
+        
         //call login method
         if (!GameServices.Instance.IsLoggedIn())
         {
@@ -66,9 +68,10 @@ public class GoogleHandlerScript : MonoBehaviour
         {
             if (GameServices.Instance.IsLoggedIn())
             {
-                indexNumberLeaderboards = 0;
+                indexNumberLeaderboards = 3;
                 swipingHighscore = PlayerPrefs.GetInt("HighScore");
                 GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
+                //Debug.Log("Board Index: " + indexNumberLeaderboards + allLeaderboards[indexNumberLeaderboards]);
             }
             
         } 
@@ -76,7 +79,7 @@ public class GoogleHandlerScript : MonoBehaviour
         {
             if (GameServices.Instance.IsLoggedIn())
             {
-                indexNumberLeaderboards = 1;
+                indexNumberLeaderboards = 2;
                 steeringHighscore = PlayerPrefs.GetInt("HighScoreSteering");
                 GameServices.Instance.SubmitScore(steeringHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
             }
@@ -86,7 +89,7 @@ public class GoogleHandlerScript : MonoBehaviour
         {
             if (GameServices.Instance.IsLoggedIn())
             {
-                indexNumberLeaderboards = 2;
+                indexNumberLeaderboards = 1;
                 long passengerCount = 0;
                 passengerCount = PlayerPrefs.GetInt("");//add passenger count prefs
                 GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
