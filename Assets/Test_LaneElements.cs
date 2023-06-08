@@ -8,6 +8,7 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject[] SpawnedObsticles;
     public GameObject spawnedcoins;
     public GameObject spawnedpassengerpickup;
+    public GameObject abilityObject;
 
     float ChanceToSawn;
     private SimpleInputNamespace.TestCharacterController controller;
@@ -15,12 +16,14 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject RobotComponent;
     public bool RobotEnabled;
     float RobotSpawnChance = 0.8f;
-
+    float AbilitySpawnChance = 0.9f;
+    AbilitySystem AS;
 
     void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
+        AS = Player.GetComponent<AbilitySystem>();
         RobotComponent.SetActive(false);
     }
 
@@ -59,15 +62,23 @@ public class Test_LaneElements : MonoBehaviour
                     child.gameObject.SetActive(true);
                 }
             }
-            else // if tthe lase is open spawn coins
+            else // if tthe lase is open spawn coins or ability pickup
             {
-
-                spawnedcoins.transform.localPosition = Lanes[i];
-                spawnedcoins.SetActive(true);
-                foreach (Transform child in spawnedcoins.transform)
+                if(Random.value > AbilitySpawnChance && AS.CanSpawnPickup == true)
                 {
-                    child.gameObject.SetActive(true);
+                    abilityObject.transform.localPosition = Lanes[i];
+                    abilityObject.SetActive(true);
                 }
+                else
+                {
+                    spawnedcoins.transform.localPosition = Lanes[i];
+                    spawnedcoins.SetActive(true);
+                    foreach (Transform child in spawnedcoins.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+
             }
             
         }
@@ -106,6 +117,8 @@ public class Test_LaneElements : MonoBehaviour
         {
             spawnedpassengerpickup.SetActive(false);
         }
+
+        abilityObject.SetActive(false);
 
         RobotComponent.SetActive(false);
 

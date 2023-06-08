@@ -93,7 +93,7 @@ public class Shop_Item_Car : MonoBehaviour
     public void RealCurrencyCarPurchaseSucess() // called by the IAP button when a payment is sucessful
     {
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-        if (Owned == true)
+        if (Owned == true && NCP.ProductIDfromButton == MyCarProductID)
         {
             PriceBG.SetActive(false);
         

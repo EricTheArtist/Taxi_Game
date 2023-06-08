@@ -87,7 +87,7 @@ public class Shop_Item_Colour : MonoBehaviour
     {
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
         Debug.Log("Owned Check" + PlayerPrefName + Owned);
-        if(Owned == true)
+        if(Owned == true && NCP.ProductIDfromButton == MyproductID)
         {
             PriceBG.SetActive(false);
             SUIM.refreshcolouronsamples();

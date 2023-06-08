@@ -36,7 +36,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     public string ProductIDRims01 = "com.vetkoekstudios.taxiranked.rims01";
 
 
-    string ProductIDfromButton;
+    public string ProductIDfromButton;
 
     public Text myText;
 

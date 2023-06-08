@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using SimpleInputNamespace;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class AbilitySystem : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class AbilitySystem : MonoBehaviour
     public GameObject player;
     public GameObject AbilityButton;
     public bool canUseAbility;
+    public GameObject CooldownBar;
     //-------------------------------------------------------------
     // storage variabes
     private float tempFloat = 0;
@@ -37,15 +40,60 @@ public class AbilitySystem : MonoBehaviour
     public float SpeedAbilityTimer;
     public float ArmourAbiltyTimer;
     public float DoubleCoinAbilityTimer;
+    float totalTime;//used to calculate timer bar
     //-------------------------------------------------------------
     private CurrencySystem _currencySystem;
     private TestCharacterController _controller;
+    //-------------------------------------------------------------
+    //for checking which car is selected
+    int Carindex;
+    public TMP_Text Ability_Text;
+    public bool CanSpawnPickup;
     #endregion
     //-------------------------------------------------------------
     #region Start and Update
 
     private void Start()
     {
+        //setting which ability should be acive based on what car is selected
+        Carindex = PlayerPrefs.GetInt("ActiveCar");
+
+        if(Carindex == 2 || Carindex == 5) //golf or BMW
+        {
+            abilityType = AbilityType.SpeedBoost;
+            Ability_Text.SetText("BOOST");
+            CanSpawnPickup = true;
+        }
+        if(Carindex == 4) //police truck
+        {
+            abilityType = AbilityType.Escapist;
+            Ability_Text.SetText("NO POLICE");
+            CanSpawnPickup = true;
+        }
+        if(Carindex == 3) //landcruiser
+        {
+            abilityType = AbilityType.Armour;
+            Ability_Text.SetText("SHIELD");
+            CanSpawnPickup = true;
+        }
+        if (Carindex == 1) //Quantum
+        {
+            abilityType = AbilityType.DoubleCoins;
+            Ability_Text.SetText("2 x COINS");
+            CanSpawnPickup = true;
+        }
+        if (Carindex == 0)
+        {
+            CanSpawnPickup = false;
+            Debug.Log("NoAcive Ability, Car Index: " + Carindex);
+        }
+
+
+
+
+
+
+
         canUseAbility = false;
         _controller= player.GetComponent<TestCharacterController>();
         _currencySystem = player.GetComponent<CurrencySystem>();
@@ -76,7 +124,8 @@ public class AbilitySystem : MonoBehaviour
         if (canUseAbility)
         {
             canUseAbility = false;
-            AbilityButton.SetActive(false);
+            Button AB = AbilityButton.GetComponent<Button>();
+            AB.interactable = false;
             switch (abilityType)
             {
                 case AbilityType.Normal:
@@ -121,13 +170,14 @@ public class AbilitySystem : MonoBehaviour
     // Provide speed Boost | Enable Rockets GameObject | Disable Collider
     void SpeedAbility()
     {
-        float speedBoost = _controller.maxMovementSpeed;//set speedboost to the maximum capable speed
+        float speedBoost = _controller.movementSpeed + 15;//set speedboost to current speed plus an amount
         tempFloat = _controller.movementSpeed;// Store current Movement speed to set back to when ability ends
         speedAbilityActive = true;
         Physics.IgnoreLayerCollision(6,3, true);//Disables collisions between player and obsticles
         _controller.movementSpeed = speedBoost; //set current speed to speedboost
         AbilityTimeLeft = SpeedAbilityTimer;
         timerActive = true;
+        totalTime = SpeedAbilityTimer;
         Invoke("EndSpeedAbility",AbilityTimeLeft);
     }
     void EndSpeedAbility()
@@ -137,6 +187,8 @@ public class AbilitySystem : MonoBehaviour
         speedAbilityActive = false;
         Physics.IgnoreLayerCollision(6,3, false);
         //player.GetComponent<Collider>().enabled = true;
+        AbilityButton.SetActive(false);
+        CanSpawnPickup = true;
     }
 
     #endregion
@@ -151,6 +203,7 @@ public class AbilitySystem : MonoBehaviour
         Physics.IgnoreLayerCollision(6,3,true);
         AbilityTimeLeft = ArmourAbiltyTimer;
         timerActive = true;
+        totalTime = ArmourAbiltyTimer;
         Invoke("EndArmourAbility",AbilityTimeLeft );
     }
 
@@ -159,6 +212,8 @@ public class AbilitySystem : MonoBehaviour
         Debug.Log("End Armour Ability");
         armourAbilityActive = false;
         Physics.IgnoreLayerCollision(6,3, false);
+        AbilityButton.SetActive(false);
+        CanSpawnPickup = true;
     }
 
     #endregion
@@ -172,12 +227,16 @@ public class AbilitySystem : MonoBehaviour
         _currencySystem.multiplier = 2 * _currencySystem.multiplier;
         AbilityTimeLeft = DoubleCoinAbilityTimer;
         timerActive = true;
+        totalTime = DoubleCoinAbilityTimer;
         Invoke("EndDoubleCoinsAbility", AbilityTimeLeft);
+
+        CanSpawnPickup = true;
     }
     void EndDoubleCoinsAbility()
     {
         Debug.Log("Double Coins Inactive");
         _currencySystem.multiplier = tempInt;
+        AbilityButton.SetActive(false);
     }
 
     #endregion
@@ -190,8 +249,17 @@ public class AbilitySystem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("AbilityPickup"))
         {
-            canUseAbility = true;
-            AbilityButton.SetActive(true);
+            if (timerActive == false)
+            {
+                canUseAbility = true;
+                AbilityButton.SetActive(true);
+                Button AB = AbilityButton.GetComponent<Button>();
+                AB.interactable = true;
+                CanSpawnPickup = false;
+            }
+ 
+
+            other.gameObject.SetActive(false);
         }
     }
 
@@ -204,10 +272,11 @@ public class AbilitySystem : MonoBehaviour
         if (AbilityTimeLeft > 0)
         {
             AbilityTimeLeft -= Time.deltaTime;
-           
+            CooldownBar.transform.localScale = new Vector3(AbilityTimeLeft/totalTime,1,1);
         }
         else
         {
+            CooldownBar.transform.localScale = new Vector3(1, 1, 1);
             timerActive = false;
         }
         //            AbilityTimeLeft -= Mathf.Lerp(startTime, 0, Time.deltaTime);

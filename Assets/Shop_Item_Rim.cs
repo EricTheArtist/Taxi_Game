@@ -93,7 +93,7 @@ public class Shop_Item_Rim : MonoBehaviour
     {
 
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-        if(Owned == true)
+        if(Owned == true && NCS.ProductIDfromButton == MyRimProductID)
         {
             PriceBG.SetActive(false);
             PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
