@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Shop_Item_Rim : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class Shop_Item_Rim : MonoBehaviour
     ShopUIManager SUIM;
     public GameObject PriceBG;
     public string PlayerPrefName;
+    public string MyRimProductID;
+    public Text RealMoneyPrice;
     public bool Premium = false;
     public int RimIndex;
 
     ShopEffectManager SEM;
+    NonConsumablePurchasing NCS;
 
     void Start()
     {
@@ -22,7 +26,7 @@ public class Shop_Item_Rim : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
-
+        NCS = canvas.GetComponent<NonConsumablePurchasing>();
         if (PlayerPrefName == "Rim01") //just for the starter vhecle
         {
             PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
@@ -30,6 +34,11 @@ public class Shop_Item_Rim : MonoBehaviour
 
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0); // checks to see if the player already owns the rims
 
+
+        if(Premium == true)
+        {
+            RealMoneyPrice.text = NCS.priceString(MyRimProductID);
+        }
         if (Premium == false) // if the item is not costing real money it sets the price in coins
         {
             Price_Text.SetText(Price.ToString());
@@ -47,6 +56,10 @@ public class Shop_Item_Rim : MonoBehaviour
 
     public void Button_Clicked_Rims()
     {
+        if(Premium == true && Owned == false)
+        {
+            NCS.BuyProduct(MyRimProductID);
+        }
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false) // if the player has enough money and does not own the item
         {
             Owned = true;
@@ -78,14 +91,23 @@ public class Shop_Item_Rim : MonoBehaviour
 
     public void RealCurrencyRimsPurchaseSucess() // called by the IAP button when a payment is sucessful
     {
-        Owned = true;
-        PriceBG.SetActive(false);
-        PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
-        PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
 
-        SUIM.UpdateRims();
+        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+        if(Owned == true)
+        {
+            PriceBG.SetActive(false);
+            PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
+            SUIM.UpdateRims();
 
-        SEM.BoughtNewCar();
+            SEM.BoughtNewCar();
+
+        }
+        
+        
+        
+        
+
+
         //SUIM.LockControl(false);
     }
 

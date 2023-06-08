@@ -17,7 +17,11 @@ public class Shop_Item_Car : MonoBehaviour
     public GameObject car;
     public int CarIndex;
 
+    public string MyCarProductID;
+    public Text LocalisedPrice;
+
     ShopEffectManager SEM;
+    NonConsumablePurchasing NCP;
 
     void Start()
     {
@@ -25,6 +29,7 @@ public class Shop_Item_Car : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
+        NCP = canvas.GetComponent<NonConsumablePurchasing>();
 
         if(PlayerPrefName == "Car00") //just for the starter vhecle
         {
@@ -33,6 +38,11 @@ public class Shop_Item_Car : MonoBehaviour
         
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0); // checks to see if the player already owns the car
 
+
+        if(Premium == true)
+        {
+            LocalisedPrice.text = NCP.priceString(MyCarProductID);
+        }
         if (Premium == false) // if the item is not costing real money it sets the price in coins
         {
             Price_Text.SetText(Price.ToString());   
@@ -82,15 +92,21 @@ public class Shop_Item_Car : MonoBehaviour
 
     public void RealCurrencyCarPurchaseSucess() // called by the IAP button when a payment is sucessful
     {
-        Owned = true;
-        PriceBG.SetActive(false);
-        PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
-        PlayerPrefs.SetInt("ActiveCar", CarIndex);
+        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+        if (Owned == true)
+        {
+            PriceBG.SetActive(false);
+        
+            PlayerPrefs.SetInt("ActiveCar", CarIndex);
 
-        SUIM.UpdateCars(CarIndex);
+            SUIM.UpdateCars(CarIndex);
 
-        SEM.BoughtNewCar();
-        SUIM.LockControl(false);
+            SEM.BoughtNewCar();
+            SUIM.LockControl(false);
+        }
+
+        
+
     }
 
 

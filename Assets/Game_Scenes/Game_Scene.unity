@@ -19514,6 +19514,7 @@ GameObject:
   - component: {fileID: 1049276817}
   - component: {fileID: 1049276815}
   - component: {fileID: 1049276818}
+  - component: {fileID: 1049276819}
   m_Layer: 0
   m_Name: IAPRestoreAndListner
   m_TagString: Untagged
@@ -19575,7 +19576,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1049276815}
         m_TargetAssemblyTypeName: ExternalPurchaseNotice, Assembly-CSharp
-        m_MethodName: ExternalCoinsProduct5000
+        m_MethodName: externalPurchaseSucced
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19588,6 +19589,21 @@ MonoBehaviour:
   onPurchaseFailed:
     m_PersistentCalls:
       m_Calls: []
+  onPurchaseDetailedFailedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1049276819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049276814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d070cf48df2d4d3db819987c544aa328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1052601487
 GameObject:
   m_ObjectHideFlags: 0

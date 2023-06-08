@@ -7,8 +7,13 @@ using UnityEngine.UI;
 using UnityEngine.Purchasing.Security;
 using Unity.Services.Analytics;
 using Unity.Services.Core;
+using UnityEngine.Purchasing.Extension;
+using UnityEngine.Events;
 
-public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
+
+
+
+public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
 {
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
@@ -16,15 +21,33 @@ public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
 
     IGooglePlayStoreExtensions m_GooglePlayStoreExtensions;
 
-    public static string GOLD_50 = "gold50";
+    public static string ProductIDCoinsTiny = "com.vetkoekstudios.taxiranked.coinstiny";
+    public static string ProductIDCoinsSmall = "com.vetkoekstudios.taxiranked.coinssmall";
+    public static string ProductIDCoinsMedium = "com.vetkoekstudios.taxiranked.coinsmediumv2";
+    public static string ProductIDCoinsLarge = "com.vetkoekstudios.taxiranked.coinslargev2";
+    public static string ProductIDCoinsExtraLarge = "com.vetkoekstudios.taxiranked.coinsextralargev2";
+    public static string ProductIDCoinsMassive = "com.vetkoekstudios.taxiranked.coinsmassivev2";
+
     public string ProductIDColour01 = "com.vetkoekstudios.taxiranked.colour01";
     public string ProductIDColour02 = "com.vetkoekstudios.taxiranked.colour02";
+    public string ProductIDColour03 = "com.vetkoekstudios.taxiranked.colour03";
+    public string ProductIDColour04 = "com.vetkoekstudios.taxiranked.colour04";
 
-    public static string MYSUB = "mysub";
+    public string ProductIDRims01 = "com.vetkoekstudios.taxiranked.rims01";
+
+
+    string ProductIDfromButton;
 
     public Text myText;
 
     private bool return_complete = true;
+
+    public UnityEvent SucessfullPurchase;
+
+    int CurrentBalance;
+    int NewBalance;
+    public ShopUIManager SUIM;
+    int payoutREF;
 
     async void Start()
     {
@@ -39,9 +62,14 @@ public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
         }
 
         MyAction += myFunction;
+
+        InitializePurchasing();
     }
 
-
+    public string priceString(string ProductID)
+    {
+        return m_StoreController.products.WithID(ProductID).metadata.localizedPriceString;
+    }
 
     public void InitializePurchasing()
     {
@@ -55,12 +83,24 @@ public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
         builder.Configure<IGooglePlayConfiguration>().SetDeferredPurchaseListener(OnDeferredPurchase);
         builder.Configure<IGooglePlayConfiguration>().SetQueryProductDetailsFailedListener(MyAction);
 
-        builder.AddProduct(GOLD_50, ProductType.Consumable);
+        builder.AddProduct(ProductIDCoinsTiny, ProductType.Consumable);
+        builder.AddProduct(ProductIDCoinsSmall, ProductType.Consumable);
+        builder.AddProduct(ProductIDCoinsMedium, ProductType.Consumable);
+        builder.AddProduct(ProductIDCoinsLarge, ProductType.Consumable);
+        builder.AddProduct(ProductIDCoinsExtraLarge, ProductType.Consumable);
+        builder.AddProduct(ProductIDCoinsMassive, ProductType.Consumable);
+
+
+
         builder.AddProduct(ProductIDColour01, ProductType.NonConsumable);
         builder.AddProduct(ProductIDColour02, ProductType.NonConsumable);
-        builder.AddProduct(MYSUB, ProductType.Subscription);
+        builder.AddProduct(ProductIDColour03, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDColour04, ProductType.NonConsumable);
+
+        builder.AddProduct(ProductIDRims01, ProductType.NonConsumable);
 
         UnityPurchasing.Initialize(this, builder);
+        
     }
 
     private event System.Action<int> MyAction;
@@ -84,14 +124,18 @@ public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
         BuyProductID(ProductIDColour01);
     }
 
-    public void BuyGold50()
+    public void BuyGold(string ProductID, int payout)
     {
-        BuyProductID(GOLD_50);
+        BuyProductID(ProductID);
+        ProductIDfromButton = ProductID;
+        UnityEngine.Purchasing.Product productREF = m_StoreController.products.WithID(ProductIDfromButton);
+        payoutREF = payout;
     }
 
     public void BuyProduct(string ProductID)
     {
         BuyProductID(ProductID);
+        ProductIDfromButton = ProductID;
     }
 
     public void CompletePurchase()
@@ -199,8 +243,44 @@ public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
         }
         if (return_complete)
         {
+            
+
+                //handles currency payout
+                CurrentBalance = PlayerPrefs.GetInt("Main Amount");
+                NewBalance = CurrentBalance + payoutREF;
+                PlayerPrefs.SetInt("Main Amount", NewBalance);
+                SUIM.updateCoinsText();
+                payoutREF = 0;
+
+            //handles colour purchase
+            if(ProductIDfromButton == ProductIDColour01)
+            {
+                PlayerPrefs.SetInt("Colour01_Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDColour02)
+            {
+                PlayerPrefs.SetInt("Colour02_Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDColour03)
+            {
+                PlayerPrefs.SetInt("Colour03_Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDColour04)
+            {
+                PlayerPrefs.SetInt("Colour04_Premium", (true ? 1 : 0));
+            }
+
+            //handles rims purchase
+            if (ProductIDfromButton == ProductIDRims01)
+            {
+                PlayerPrefs.SetInt("Rim01Premium", (true ? 1 : 0));
+            }
+
+
+            SucessfullPurchase.Invoke();
             MyDebug(string.Format("ProcessPurchase: Complete. Product:" + args.purchasedProduct.definition.id + " - " + test_product.transactionID.ToString()));
             return PurchaseProcessingResult.Complete;
+            
         }
         else
         {
@@ -236,5 +316,10 @@ public class NonConsumablePurchasing : MonoBehaviour, IStoreListener
     public void OnInitializeFailed(InitializationFailureReason error, string message)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void OnPurchaseFailed(UnityEngine.Purchasing.Product product, PurchaseFailureDescription failureDescription)
+    {
+        MyDebug(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureDescription));
     }
 }
