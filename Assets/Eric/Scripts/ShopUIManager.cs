@@ -19,6 +19,7 @@ public class ShopUIManager : MonoBehaviour
     public GameObject ColourPanel2;
 
     public GameObject RimsPanel;
+    public GameObject StatsPanel;
 
     public FlexibleColorPicker FCP;
     public Material UnderGlowMat;
@@ -392,6 +393,18 @@ public class ShopUIManager : MonoBehaviour
         else
         {
             RimsPanel.SetActive(true);
+        }
+    }
+
+    public void ToggleStatsPanel()
+    {
+        if (StatsPanel.activeInHierarchy)
+        {
+            StatsPanel.SetActive(false);
+        }
+        else
+        {
+            StatsPanel.SetActive(true);
         }
     }
 }
