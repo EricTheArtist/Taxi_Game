@@ -124,8 +124,7 @@ public class AbilitySystem : MonoBehaviour
         if (canUseAbility)
         {
             canUseAbility = false;
-            Button AB = AbilityButton.GetComponent<Button>();
-            AB.interactable = false;
+
             switch (abilityType)
             {
                 case AbilityType.Normal:
@@ -251,11 +250,11 @@ public class AbilitySystem : MonoBehaviour
         {
             if (timerActive == false)
             {
+                
                 canUseAbility = true;
                 AbilityButton.SetActive(true);
-                Button AB = AbilityButton.GetComponent<Button>();
-                AB.interactable = true;
                 CanSpawnPickup = false;
+                ActivateAbilty();
             }
  
 
