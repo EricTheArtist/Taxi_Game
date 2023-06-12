@@ -69,8 +69,79 @@ public class AchievmentHandler : MonoBehaviour
     //test Achievement function
     public void TestAchievement()
     {
-        GameServices.Instance.SubmitAchievement(AchievementNames.TheBusBoy, AchievementSUbmitted);
+        GameServices.Instance.SubmitAchievement(AchievementNames.TestAchievment, AchievementSUbmitted);
     }
     
+    //Each Achievement Must meet Certain Conditions for them to be completed
+    //This section will handle and keep track of those conditions
+
+    #region MyAchievements
+
+    #region TheBusBoy
+    //Collect Over 100 Coins in One Run
+    //Call this when ending the run.
+    public void TheBusBoyAchievement()
+    {
+        GameServices.Instance.SubmitAchievement(AchievementNames.TheBusBoy, AchievementSUbmitted);
+    }
+    #endregion
+
+    #region ThisIsTaxiRanked
+    //Call After crashing for the first time 
+    public void ThisIsTaxiRankedAchievement()
+    {
+        GameServices.Instance.SubmitAchievement(AchievementNames.ThisIsTaxiRanked, AchievementSUbmitted);
+    }
+
+    #endregion
+
+    #region PimpMyTaxi
+
+    
+
+    #endregion
+
+    #region NothingAColdrinkCantFix
+
+    
+
+    #endregion
+
+    #region OShameAskies
+
+    
+
+    #endregion
+
+    #region Robot,DriverISaidRoobot
+
+    
+
+    #endregion
+
+    #region Skebenga
+
+    
+
+    #endregion
+
+    #region HeyWenaVoestek
+
+    
+
+    #endregion
+
+    #region AreYouDenJas
+
+    
+
+    #endregion
+
+    #region BizaAmaphoyisa
+
+    
+
+    #endregion
+    #endregion
     
 }
