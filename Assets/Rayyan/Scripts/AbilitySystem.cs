@@ -182,7 +182,8 @@ public class AbilitySystem : MonoBehaviour
     void EndSpeedAbility()
     {
         //Debug.Log("End Speed Ability");
-        _controller.movementSpeed = tempFloat;
+         _controller.movementSpeed = tempFloat;//lerp this value
+       //_controller.movementSpeed = Mathf.Lerp(_controller.movementSpeed, tempFloat, 0.25f);//here is the lerp;
         speedAbilityActive = false;
         Physics.IgnoreLayerCollision(6,3, false);
         //player.GetComponent<Collider>().enabled = true;
