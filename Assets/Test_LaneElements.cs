@@ -15,9 +15,18 @@ public class Test_LaneElements : MonoBehaviour
 
     public GameObject RobotComponent;
     public bool RobotEnabled;
+    public bool AbilityEnabled;
     float RobotSpawnChance = 0.8f;
     float AbilitySpawnChance = 0.9f;
     AbilitySystem AS;
+
+    public GameObject AbilityObjectSpeedBoost;
+    public GameObject AbilityObjectShield;
+    public GameObject AbilityObject2X;
+    public GameObject AbilityObjectCooldrink;
+    public GameObject AbilityObjectCoolerbox;
+
+
 
     void Start()
     {
@@ -25,6 +34,45 @@ public class Test_LaneElements : MonoBehaviour
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
         AS = Player.GetComponent<AbilitySystem>();
         RobotComponent.SetActive(false);
+
+        if (AbilityEnabled == false)
+        {
+            Destroy(abilityObject);
+        }
+        if (RobotEnabled == false)
+        {
+            Destroy(RobotComponent);
+        }
+        if(AbilityEnabled == true)
+        {
+            int Carindex = PlayerPrefs.GetInt("ActiveCar");
+
+            if (Carindex == 2 || Carindex == 5) //golf or BMW
+            {
+                AbilityObjectSpeedBoost.SetActive(true);
+            }
+            if (Carindex == 4) //police truck
+            {
+                AbilityObjectCooldrink.SetActive(true);
+            }
+            if (Carindex == 3) //landcruiser
+            {
+                AbilityObjectShield.SetActive(true);
+            }
+            if (Carindex == 1) //Quantum
+            {
+                AbilityObject2X.SetActive(true);
+            }
+            if (Carindex == 0)
+            {
+
+            }
+
+
+
+
+
+        }
     }
 
     public void OnTranslatePosition( int Openlane)
@@ -64,7 +112,7 @@ public class Test_LaneElements : MonoBehaviour
             }
             else // if tthe lase is open spawn coins or ability pickup
             {
-                if(Random.value > AbilitySpawnChance && AS.CanSpawnPickup == true)
+                if(Random.value > AbilitySpawnChance && AS.CanSpawnPickup == true && AbilityEnabled == true)
                 {
                     abilityObject.transform.localPosition = Lanes[i];
                     abilityObject.SetActive(true);
@@ -118,9 +166,21 @@ public class Test_LaneElements : MonoBehaviour
             spawnedpassengerpickup.SetActive(false);
         }
 
-        abilityObject.SetActive(false);
+        if (AbilityEnabled == true)
+        {
+            abilityObject.SetActive(false);
+        }
+        if (RobotEnabled == true)
+        {
+            RobotComponent.SetActive(false);
+        }
 
-        RobotComponent.SetActive(false);
+
+
+
+        
+
+        
 
     }
 

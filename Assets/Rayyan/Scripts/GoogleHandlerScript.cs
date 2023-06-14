@@ -70,10 +70,10 @@ public class GoogleHandlerScript : MonoBehaviour
             {
                 indexNumberLeaderboards = 3;
                 swipingHighscore = PlayerPrefs.GetInt("HighScore");
-                GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
+                //GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                //Eric Try this line of code below, so call the leaderbaord by name instead of index.
                //I have commented the same lines to use in the other fucntions.
-               //GameServices.Instance.SubmitScore(swipingHighscore,LeaderboardNames.SwipingDistance, ScoreSubmitted);
+               GameServices.Instance.SubmitScore(swipingHighscore,LeaderboardNames.SwipingDistance, ScoreSubmitted);
                //Debug.Log("Board Index: " + indexNumberLeaderboards + allLeaderboards[indexNumberLeaderboards]);
             }
             
@@ -84,8 +84,8 @@ public class GoogleHandlerScript : MonoBehaviour
             {
                 indexNumberLeaderboards = 2;
                 steeringHighscore = PlayerPrefs.GetInt("HighScoreSteering");
-                GameServices.Instance.SubmitScore(steeringHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
-                //GameServices.Instance.SubmitScore(steeringHighscore,LeaderboardNames.SteeringDistance, ScoreSubmitted);
+                //GameServices.Instance.SubmitScore(steeringHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
+                GameServices.Instance.SubmitScore(steeringHighscore,LeaderboardNames.SteeringDistance, ScoreSubmitted);
             }
             
         }
@@ -96,8 +96,8 @@ public class GoogleHandlerScript : MonoBehaviour
                 indexNumberLeaderboards = 1;
                 long passengerCount = 0;
                 passengerCount = PlayerPrefs.GetInt("");//add passenger count prefs
-                GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
-                //GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.PassengersCount, ScoreSubmitted);
+                //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
+                GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.PassengersCount, ScoreSubmitted);
             }
             
         }
