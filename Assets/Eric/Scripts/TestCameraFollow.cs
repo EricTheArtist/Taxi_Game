@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class TestCameraFollow : MonoBehaviour
 {
-    private Transform player;
+    public Transform player;
 
     public float yOffset = 3f;
     public float zOffset = -10;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("PLAYER_VEHICLE").transform;
+        if(player == null)
+        {
+               player = GameObject.Find("PLAYER_VEHICLE").transform;
+        }
+       
     }
 
     // Update is called once per frame

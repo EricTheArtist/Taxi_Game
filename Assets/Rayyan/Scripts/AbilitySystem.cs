@@ -63,24 +63,36 @@ public class AbilitySystem : MonoBehaviour
             abilityType = AbilityType.SpeedBoost;
             Ability_Text.SetText("BOOST");
             CanSpawnPickup = true;
+
+            //sets value of ability timer
+            SpeedAbilityTimer = PlayerPrefs.GetFloat("Ability_Speed");
+
         }
         if(Carindex == 4) //police truck
         {
             abilityType = AbilityType.Escapist;
             Ability_Text.SetText("NO POLICE");
             CanSpawnPickup = true;
+
+
         }
         if(Carindex == 3) //landcruiser
         {
             abilityType = AbilityType.Armour;
             Ability_Text.SetText("SHIELD");
             CanSpawnPickup = true;
+
+            //sets value of ability timer
+            ArmourAbiltyTimer = PlayerPrefs.GetFloat("Ability_Armour");
         }
         if (Carindex == 1) //Quantum
         {
             abilityType = AbilityType.DoubleCoins;
             Ability_Text.SetText("2 x COINS");
             CanSpawnPickup = true;
+
+            //sets value of ability timer
+            DoubleCoinAbilityTimer = PlayerPrefs.GetFloat("Ability_Double");
         }
         if (Carindex == 0)
         {

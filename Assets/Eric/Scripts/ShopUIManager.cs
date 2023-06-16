@@ -72,7 +72,7 @@ public class ShopUIManager : MonoBehaviour
     public GameObject[] RimPrefabs;
     public GameObject[] LastRims;
 
-
+    AbilityUpgrader AU;
 
     RectTransform rectTransform;
   
@@ -110,7 +110,9 @@ public class ShopUIManager : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.AutoRotation;
         stanceStarty = CarChasisHolder.transform.localPosition.y;
-        
+
+        AU = gameObject.GetComponent<AbilityUpgrader>();
+
         Coins = PlayerPrefs.GetInt("Main Amount");
         updateCoinsText();
         refreshcolouronsamples();
@@ -308,6 +310,7 @@ public class ShopUIManager : MonoBehaviour
 
     public void UpdateCars(int CarIndex)
     {
+        AU.ChangeUIforCar(CarIndex);
 
         for (int i = 0; i < Cars.Length; i++)
         {
