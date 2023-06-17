@@ -16,15 +16,19 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject RobotComponent;
     public bool RobotEnabled;
     public bool AbilityEnabled;
+    public bool LuncboxEnabled;
+    bool CanCollectLunchbox;
+    float LunchboxSpawnChance = 0.8f;
     float RobotSpawnChance = 0.8f;
-    float AbilitySpawnChance = 0.9f;
+    float AbilitySpawnChance = 0.8f;
     AbilitySystem AS;
+    BasicDailyReward BDR;
 
     public GameObject AbilityObjectSpeedBoost;
     public GameObject AbilityObjectShield;
     public GameObject AbilityObject2X;
     public GameObject AbilityObjectCooldrink;
-    public GameObject AbilityObjectCoolerbox;
+    public GameObject ObjectCoolerbox;
 
 
 
@@ -33,6 +37,8 @@ public class Test_LaneElements : MonoBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
         AS = Player.GetComponent<AbilitySystem>();
+        BDR = GameObject.FindGameObjectWithTag("RewardCheck").GetComponent<BasicDailyReward>();
+        CanCollectLunchbox = BDR.CanClaimReward();
         RobotComponent.SetActive(false);
 
         if (AbilityEnabled == false)
@@ -42,6 +48,11 @@ public class Test_LaneElements : MonoBehaviour
         if (RobotEnabled == false)
         {
             Destroy(RobotComponent);
+        }
+        if (LuncboxEnabled == false)
+        {
+            Destroy(ObjectCoolerbox);
+            CanCollectLunchbox = false;
         }
         if(AbilityEnabled == true)
         {
@@ -67,17 +78,19 @@ public class Test_LaneElements : MonoBehaviour
             {
 
             }
-
-
-
-
-
         }
+
     }
 
     public void OnTranslatePosition( int Openlane)
     {
         DestroyLast();
+
+        if(LuncboxEnabled == true)
+        {
+            CanCollectLunchbox = BDR.CanClaimReward(); //checks to see if lunchbox has been collected yet
+        }
+        
 
         for (int i = 0; i < Lanes.Length; i++) // loops through all the lanes
         {
@@ -117,6 +130,11 @@ public class Test_LaneElements : MonoBehaviour
                     abilityObject.transform.localPosition = Lanes[i];
                     abilityObject.SetActive(true);
                 }
+                else if(Random.value > LunchboxSpawnChance && CanCollectLunchbox == true)
+                {
+                    ObjectCoolerbox.transform.localPosition = Lanes[i];
+                    ObjectCoolerbox.SetActive(true);
+                }
                 else
                 {
                     spawnedcoins.transform.localPosition = Lanes[i];
@@ -151,6 +169,7 @@ public class Test_LaneElements : MonoBehaviour
                 selectedObject.SetActive(false);
             }
         }
+        /*
         if(spawnedcoins!= null)
         {
             foreach (Transform child in spawnedcoins.transform)
@@ -161,6 +180,7 @@ public class Test_LaneElements : MonoBehaviour
 
             spawnedcoins.SetActive(false);
         }
+        */
         if(spawnedpassengerpickup != null)
         {
             spawnedpassengerpickup.SetActive(false);
@@ -174,7 +194,10 @@ public class Test_LaneElements : MonoBehaviour
         {
             RobotComponent.SetActive(false);
         }
-
+        if (LuncboxEnabled == true)
+        {
+            ObjectCoolerbox.SetActive(false);
+        }
 
 
 

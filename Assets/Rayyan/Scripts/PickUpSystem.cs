@@ -27,6 +27,8 @@ public class PickUpSystem : MonoBehaviour
 
     public ParticleSystem CoinEffect;
     public ParticleSystem CoinsEffect;
+
+    BasicDailyReward BDR;
     
 
     // Start is called before the first frame update
@@ -35,6 +37,7 @@ public class PickUpSystem : MonoBehaviour
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         currencySystem = gameObject.GetComponent<CurrencySystem>();
         animator = GetComponent<Animator>();
+        BDR = GameObject.FindGameObjectWithTag("RewardCheck").GetComponent<BasicDailyReward>();
     }
 
     private void Update()
@@ -83,6 +86,12 @@ public class PickUpSystem : MonoBehaviour
             }
             
 
+        }
+
+        if (other.tag == "LunchBox")
+        {
+            BDR.ButtonClaimReward();
+            other.gameObject.SetActive(false);
         }
     }
 
