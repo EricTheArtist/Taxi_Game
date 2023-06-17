@@ -68,7 +68,7 @@ public class PickUpSystem : MonoBehaviour
             EnterPassengerCollect.Invoke();
 
             currencySystem.run_amount = currencySystem.Addition_Function(1, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
-            currencySystem.Eric_AddCoins(1); //adds 3 coins to the players saved coins
+            currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
             CoinEffect.Play();
         }
 
@@ -79,7 +79,7 @@ public class PickUpSystem : MonoBehaviour
             {
                 controller.breakButton.SetActive(true);
                 controller.BreakInstruction.SetText("HOLD!");
-                EnterRobot.Invoke();
+                EnterRobot.Invoke(); //event used for tutorial
             }
             
 
@@ -105,6 +105,10 @@ public class PickUpSystem : MonoBehaviour
             {
                 controller.BreakInstruction.SetText("GO!");
             }
+            else if (controller.isBraking == false)
+            {
+                controller.breakButton.SetActive(true);
+            }
         }
     }
 
@@ -126,7 +130,7 @@ public class PickUpSystem : MonoBehaviour
         {
             controller.breakButton.SetActive(false);
             Test_Robot TR =  other.gameObject.GetComponent<Test_Robot>();
-            if(TR.RedLightON == true)
+            if(TR.RedLightON == true && CopIsChasing == false) // starts the cop chase if the player exits the robot while it it is red
             {
                 controller.movementSpeed += 10;
                 CopIsChasing = true;
@@ -154,7 +158,7 @@ public class PickUpSystem : MonoBehaviour
     {
         //passengerCount++;//right now it one passenger per zone
         currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
-        currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
+        currencySystem.Eric_AddCoins(7); //adds 7 coins to the players saved coins
         Debug.Log("Passenger Picked Up");
         //animator.SetTrigger("isGettingPassenger");
         CoinsEffect.Play();

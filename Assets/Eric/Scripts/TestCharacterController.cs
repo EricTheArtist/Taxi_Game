@@ -111,9 +111,6 @@ namespace SimpleInputNamespace
             //increases the movement speed over time
             IncrementSpeed();
 
-
-            ManageBrakeSystem(); // temporary system for Input of testing breaks on PC 
-
             //LerpBreaking(); // checks for lerping if the break has been pressed 
 
         }
@@ -156,57 +153,6 @@ namespace SimpleInputNamespace
 
         void SwipingUpdate()
         {
-            /*
-            if (Input.touchCount > 0 && SteeringWheel == false)
-            {
-                Touch touch = Input.GetTouch(0);
-
-                // Check for finger down
-                if (touch.phase == TouchPhase.Began)
-                {
-                    fingerDownPosition = touch.position;
-                }
-
-                // Check for finger up this means this logic 
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    fingerUpPosition = touch.position;
-
-                    // Check for swipe
-                    if (Mathf.Abs(fingerUpPosition.x - fingerDownPosition.x) > swipeThreshold)
-                    {
-                        // Swipe detected, handle it here
-                        if (fingerUpPosition.x - fingerDownPosition.x > 0 && LerpSwipe == false)
-                        {
-                            //Debug.Log("Swiped Right");
-                            if (MoveFromLane < 4) //checks to make sure there is a lane to the right and that you are not busy moving lanes
-                            {
-                                MoveToLane = MoveFromLane + 1;
-                                LerpSwipe = true;
-                                animator.SetTrigger("isSwervingRight 0");
-                                
-                                
-                            }
-
-                        }
-                        else if (MoveFromLane > 0 && LerpSwipe == false) //checks to make sure there is a lane to the left and that you are not busy moving lanes
-                        {
-                            //Debug.Log("Swiped Left");
-                            MoveToLane = MoveFromLane - 1;
-                            LerpSwipe = true;
-                            animator.SetTrigger("isSwervingLeft 0");
-                            
-
-                        }
-                    }
-                }
-            }
-
-            */
-
-
-
-
 
             // Check for touch input
             if (Input.touchCount > 0)
@@ -339,7 +285,6 @@ namespace SimpleInputNamespace
             }
             if (other.gameObject.tag == "Pothole")
             {
-                //ReduceBrakes();
                 //play animation
             }
 
@@ -352,9 +297,6 @@ namespace SimpleInputNamespace
             _movementSpeed = 0f;
             _movementSpeed = movementSpeed; // saves the players speed
             movementSpeed = 0;
-            
-
-
 
         }
 
@@ -365,23 +307,6 @@ namespace SimpleInputNamespace
             breakButton.SetActive(false); //break pad is re-enabled in the Pickup system
             resumedriving();
 
-            
-            
-
-        }
-
-        void ReduceBrakes()
-        {
-            int brakeDamage = 1;
-            if (brakesAmount >= 0)
-            {
-                brakesAmount -= brakeDamage;
-                
-            }
-            else
-            {
-                brakesAmount = 0;
-            }
         }
 
         void resumedriving()
@@ -389,20 +314,9 @@ namespace SimpleInputNamespace
 
             movementSpeed = _movementSpeed;
             isBraking = false;
-
-            
-            
+         
         }
-        void IncreaseBrake()
-        {
-            int restoreDamage = 1;
-            if (brakesAmount <= 3)
-            {
-                brakesAmount += restoreDamage;
-                //ManageBrakePads();
-            }
 
-        }
 
         void LerpBreaking()
         {
@@ -424,19 +338,6 @@ namespace SimpleInputNamespace
             }
         }
 
-        void ManageBrakeSystem() // temporary system
-        {
-            if (Input.GetKeyDown(KeyCode.B) && brakesAmount > 0)
-            {
-                //Debug.Log("You Are Braking");
-                BreakPadDown();
-            }
-            if (Input.GetKeyUp(KeyCode.B) && brakesAmount >= 0)
-            {
-                //Debug.Log("You Are Not Braking");
-                BreakPadUp();
-            }
-        }
 
 
 
