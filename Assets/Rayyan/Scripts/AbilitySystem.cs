@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,8 @@ public class AbilitySystem : MonoBehaviour
         SpeedBoost,
         Armour,
         DoubleCoins,
-        Escapist //for colddrink 
+        Escapist, //for colddrink 
+        Flying
     }
     [Tooltip("current vehicle ability active | Set here to change ability ")] 
     public AbilityType abilityType;
@@ -189,13 +190,15 @@ public class AbilitySystem : MonoBehaviour
         AbilityTimeLeft = SpeedAbilityTimer;
         timerActive = true;
         totalTime = SpeedAbilityTimer;
+        Debug.Log("This is Start of Speed Ab move speed: "+_controller._movementSpeed);
         Invoke("EndSpeedAbility",AbilityTimeLeft);
     }
     void EndSpeedAbility()
     {
         //Debug.Log("End Speed Ability");
-        // _controller.movementSpeed = tempFloat;//lerp this value
-       _controller.movementSpeed = Mathf.Lerp(_controller.movementSpeed, tempFloat, 0.25f);//here is the lerp;
+         _controller.movementSpeed = tempFloat;//lerp this value
+       //_controller.movementSpeed = Mathf.Lerp(_controller.movementSpeed, tempFloat, 0.25f);//here is the lerp;
+       Debug.Log("This is End of Speed Ab move speed: "+_controller._movementSpeed);
         speedAbilityActive = false;
         Physics.IgnoreLayerCollision(6,3, false);
         //player.GetComponent<Collider>().enabled = true;
