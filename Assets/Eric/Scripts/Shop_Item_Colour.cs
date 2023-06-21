@@ -61,11 +61,12 @@ public class Shop_Item_Colour : MonoBehaviour
     {
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false)
         {
-            Owned = true;
-            SUIM.DeductCoins(Price);
-            PriceBG.SetActive(false);
+            SUIM.OpenPurchaseDialouge(Price,PlayerPrefName,100,100);
+            //Owned = true;
+            //SUIM.DeductCoins(Price);
+            //PriceBG.SetActive(false);
 
-            PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
+            //PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
         }
         if (Owned == true)
         {
@@ -96,8 +97,6 @@ public class Shop_Item_Colour : MonoBehaviour
 
         }
 
-        
-
     }
 
     void SaveMyColor()
@@ -117,6 +116,18 @@ public class Shop_Item_Colour : MonoBehaviour
         TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor(shaderInput, Colour);
     }
 
+    public void PurchaseEvent()
+    {
+        bool PrviousOwner = Owned;
+
+        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+        
+        if(PrviousOwner == false && Owned == true)
+        {
+            PriceBG.SetActive(false);
+        }
+
+    }
 
 
 }

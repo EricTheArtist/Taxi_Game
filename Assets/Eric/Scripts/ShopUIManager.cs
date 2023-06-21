@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class ShopUIManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class ShopUIManager : MonoBehaviour
 
     public GameObject RimsPanel;
     public GameObject StatsPanel;
+
+    public GameObject PurchaseDialouge;
 
     public FlexibleColorPicker FCP;
     public Material UnderGlowMat;
@@ -75,7 +78,17 @@ public class ShopUIManager : MonoBehaviour
     AbilityUpgrader AU;
 
     RectTransform rectTransform;
-  
+    ShopEffectManager SEM;
+
+    public UnityEvent PurchaseSucess;
+    public TMP_Text P_Text_amount;
+    int P_Price;
+    string P_Playerprefname;
+    int P_CarIndex;
+    int P_Rimindex;
+
+
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -108,6 +121,7 @@ public class ShopUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
         Screen.orientation = ScreenOrientation.AutoRotation;
         stanceStarty = CarChasisHolder.transform.localPosition.y;
 
@@ -410,4 +424,38 @@ public class ShopUIManager : MonoBehaviour
             StatsPanel.SetActive(true);
         }
     }
+
+    public void OpenPurchaseDialouge(int price, string PlayerPrefname,int carindex, int rimindex) //if car index or rim index ar 100 they will be considered as null
+    {
+        PurchaseDialouge.SetActive(true);
+        P_Text_amount.SetText(price.ToString());
+        P_Price = price;
+        P_Playerprefname = PlayerPrefname;
+        P_CarIndex = carindex;
+        P_Rimindex = rimindex;
+    }
+
+    public void ProcessPurchase()
+    {
+        DeductCoins(P_Price);
+        PlayerPrefs.SetInt(P_Playerprefname, (true ? 1 : 0));
+
+        if(P_CarIndex != 100)
+        {
+            PlayerPrefs.SetInt("ActiveCar", P_CarIndex);
+            UpdateCars(P_CarIndex);
+            SEM.BoughtNewCar();
+            LockControl(false);
+        }
+        if(P_Rimindex != 100)
+        {
+            PlayerPrefs.SetInt("ActiveRimIndex", P_Rimindex);
+            UpdateRims();
+            SEM.BoughtNewCar();
+        }
+        PurchaseDialouge.SetActive(false);
+        PurchaseSucess.Invoke();
+
+    }
+
 }

@@ -35,11 +35,26 @@ public class UnlockButtonPurchase : MonoBehaviour
     {
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false) // if the player has enough money and does not own the item
         {
-            Owned = true;
-            SUIM.DeductCoins(Price);
+            SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, 100, 100);
 
-            PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0)); //sets ownwership in the player prefs
+            //Owned = true;
+            //SUIM.DeductCoins(Price);
+
+            //PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0)); //sets ownwership in the player prefs
+            //Destroy(gameObject);
+        }
+    }
+
+    public void PurchaseEvent()
+    {
+        bool PrviousOwner = Owned;
+
+        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+
+        if (PrviousOwner == false && Owned == true)
+        {
             Destroy(gameObject);
         }
+
     }
 }

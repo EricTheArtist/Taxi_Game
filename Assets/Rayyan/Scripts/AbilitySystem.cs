@@ -41,10 +41,12 @@ public class AbilitySystem : MonoBehaviour
     public float SpeedAbilityTimer;
     public float ArmourAbiltyTimer;
     public float DoubleCoinAbilityTimer;
+    public bool CanEscapeCop = false;
     float totalTime;//used to calculate timer bar
     //-------------------------------------------------------------
     private CurrencySystem _currencySystem;
     private TestCharacterController _controller;
+    private PickUpSystem _PickupSystem;
     //-------------------------------------------------------------
     //for checking which car is selected
     int Carindex;
@@ -56,6 +58,7 @@ public class AbilitySystem : MonoBehaviour
 
     private void Start()
     {
+        _PickupSystem = gameObject.GetComponent<PickUpSystem>();
         //setting which ability should be acive based on what car is selected
         Carindex = PlayerPrefs.GetInt("ActiveCar");
 
@@ -162,6 +165,7 @@ public class AbilitySystem : MonoBehaviour
                 //--------------------------------------------------
                 case AbilityType.Escapist:
                     Debug.Log("Escape Artist Vehicle");
+                    EscapeCopsAbility();
                     break;
                 //--------------------------------------------------
     
@@ -251,6 +255,25 @@ public class AbilitySystem : MonoBehaviour
     {
         Debug.Log("Double Coins Inactive");
         _currencySystem.multiplier = tempInt;
+        AbilityButton.SetActive(false);
+    }
+
+    #endregion
+    #region EscapCops
+
+    void EscapeCopsAbility()
+    {
+        CanEscapeCop = true;
+        if(_PickupSystem.CopIsChasing == true)
+        {
+            _PickupSystem.CancelCopChase();
+            UseEscapeCopsAbility();
+        }
+    }
+
+    public void UseEscapeCopsAbility()
+    {
+        CanEscapeCop = false;
         AbilityButton.SetActive(false);
     }
 

@@ -62,17 +62,19 @@ public class Shop_Item_Car : MonoBehaviour
     {
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false) // if the player has enough money and does not own the item
         {
-            Owned = true;
-            SUIM.DeductCoins(Price);
-            PriceBG.SetActive(false); 
+            SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, CarIndex, 100);
 
-            PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0)); //sets ownwership in the player prefs
+            //Owned = true;
+            //SUIM.DeductCoins(Price);
+            //PriceBG.SetActive(false); 
 
-            SEM.BoughtNewCar();
+            //PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0)); //sets ownwership in the player prefs
 
-            PlayerPrefs.SetInt("ActiveCar", CarIndex);
-            SUIM.UpdateCars(CarIndex);
-            SUIM.LockControl(false);
+            //SEM.BoughtNewCar();
+
+            //PlayerPrefs.SetInt("ActiveCar", CarIndex);
+            //SUIM.UpdateCars(CarIndex);
+            //SUIM.LockControl(false);
         }
         else if (Owned == true) // if the player owns the item sets it to the active car
         {
@@ -108,6 +110,20 @@ public class Shop_Item_Car : MonoBehaviour
         
 
     }
+
+    public void PurchaseEvent()
+    {
+        bool PrviousOwner = Owned;
+
+        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+
+        if (PrviousOwner == false && Owned == true)
+        {
+            PriceBG.SetActive(false);
+        }
+
+    }
+
 
 
 

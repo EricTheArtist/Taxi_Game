@@ -118,6 +118,7 @@ public class Test_LaneElements : MonoBehaviour
 
                 spawnedpassengerpickup.transform.localPosition = Lanes[i];
                 spawnedpassengerpickup.SetActive(true);
+                spawnedcoins.SetActive(false);
                 foreach (Transform child in spawnedpassengerpickup.transform)
                 {
                     child.gameObject.SetActive(true);

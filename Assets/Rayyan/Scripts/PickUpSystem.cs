@@ -17,7 +17,7 @@ public class PickUpSystem : MonoBehaviour
     private GameObject pickUpPoint;
 
     float CopChaseDuration = 8;
-    bool CopIsChasing = false;
+    public bool CopIsChasing = false;
 
     public GameObject Cops;
     bool used;
@@ -29,11 +29,13 @@ public class PickUpSystem : MonoBehaviour
     public ParticleSystem CoinsEffect;
 
     BasicDailyReward BDR;
+    AbilitySystem ABS;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        ABS = gameObject.GetComponent<AbilitySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         currencySystem = gameObject.GetComponent<CurrencySystem>();
         animator = GetComponent<Animator>();
@@ -139,7 +141,7 @@ public class PickUpSystem : MonoBehaviour
         {
             controller.breakButton.SetActive(false);
             Test_Robot TR =  other.gameObject.GetComponent<Test_Robot>();
-            if(TR.RedLightON == true && CopIsChasing == false) // starts the cop chase if the player exits the robot while it it is red
+            if(TR.RedLightON == true && CopIsChasing == false && ABS.CanEscapeCop == false) // starts the cop chase if the player exits the robot while it it is red
             {
                 controller.movementSpeed += 10;
                 CopIsChasing = true;

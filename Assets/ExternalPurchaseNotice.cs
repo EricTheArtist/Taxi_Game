@@ -64,7 +64,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
         }
         if (product.definition.id == "com.vetkoekstudios.taxiranked.rims01")
         {
-            PlayerPrefs.SetInt("Rim05Premium", (true ? 1 : 0));
+            PlayerPrefs.SetInt("Rim01Premium", (true ? 1 : 0));
             ProductName.SetText("Rims product Restored");
         }
         if (product.definition.id == "com.vetkoekstudios.taxiranked.car01")
