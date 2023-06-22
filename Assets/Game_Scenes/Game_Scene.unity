@@ -17612,7 +17612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &876328442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19302,7 +19302,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '"Ekse, driver, <br>we''re getting bored of the <b>same old ride</b>. When
+    are you adding another car to your fleet?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e986445ac2ce8c42aa1de7ca15318bd, type: 2}
   m_sharedMaterial: {fileID: -5402781702067669879, guid: 8e986445ac2ce8c42aa1de7ca15318bd,
@@ -19330,8 +19331,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -31159,14 +31160,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialougeText: {fileID: 933525545}
   NarritiveInterface: {fileID: 876328441}
-  NI_Welcome: So you think you have what it takes to be a taxi driver? Well you can
-    have my old one, swipe left or right to steer. Good luck!
-  NI_PassengerTut: To pick up passengers just drive through the green pickup zone.
-    If you tap the screen at the same time you double your coins!
-  NI_RobotTut: When you approach a robot, pay attention to the colour. If it is red,
-    make sure to press and hold unitl it goes green.
-  NI_SteerringWheelTut: Use the steering wheel if you are up for a challenge. Swiping
-    and steering high scores are ranked seperatley.
+  NI_Welcome: Heita. Think you can rule the rank? <br>You'll need a taxi to <b>rank
+    up</b>. I'll start you with this Skorokoro. Good luck getting far with this <b>scrap</b>.
+  NI_PassengerTut: <b>Pick up passengers</b> <br> to multiply your coins. Taxis don't
+    come cheap,  my laatjie.
+  NI_RobotTut: "Driver, you know what to do <br>at a <b>red robot</b> neh? I don\u2019t
+    wanna be late for work!"
+  NI_SteerringWheelTut: 
+  NI_1stCrash: Surprised you got far with that Skorokoro. Come <b>upgrade</b> it
+    at the store.
+  crash: 
+  NI_ShopWelcome: Adding <b>any car</b> <br>to your taxi fleet? Crazy idea, my laatjie.
+    At least <b>customize</b> them so passengers know the difference.
+  NI_CaughtByCop: You'll need a faster car to outrun me... <br>Yoh - I'm tired; a
+    <b>cold drink</b> would <i>help</i>.
+  NI_1stHighScoreUploadedToLeaderboard: Moving up the ranks, my laatjie. <br><b>Show
+    off</b> your custom "taxis" on the <b>leaderboard</b>; let the others know who
+    really rules the rank.
+  NI_1st5KCoins: Ekse, driver, <br>we're getting bored of the <b>same old ride</b>.
+    When are you adding another car to your fleet?
 --- !u!4 &1881841152
 Transform:
   m_ObjectHideFlags: 0

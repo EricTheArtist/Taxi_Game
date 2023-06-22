@@ -11,6 +11,13 @@ public class NarritiveSystem : MonoBehaviour
     public string NI_PassengerTut;
     public string NI_RobotTut;
     public string NI_SteerringWheelTut;
+    public string NI_1stCrash;
+    public string crash;
+    public string NI_ShopWelcome;
+    public string NI_CaughtByCop;
+    public string NI_1stHighScoreUploadedToLeaderboard;
+    public string NI_1st5KCoins; 
+
 
     // Start is called before the first frame update
     void Start()
