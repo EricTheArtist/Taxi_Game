@@ -61,6 +61,10 @@ public class AbilityUpgrader : MonoBehaviour
             CurrentAbilityValSpeed = 3f;
             CurrentAbilityValArmour = 3f;
             CurrentAbilityValDouble = 6f;
+
+            PlayerPrefs.SetFloat("Ability_Speed",CurrentAbilityValSpeed);
+            PlayerPrefs.SetFloat("Ability_Armour", CurrentAbilityValArmour);
+            PlayerPrefs.SetFloat("Ability_Double", CurrentAbilityValDouble);
         }
     }
 

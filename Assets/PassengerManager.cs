@@ -20,7 +20,7 @@ public class PassengerManager : MonoBehaviour
         //Vector3 leftLane = new Vector3(-1.27f, transform.localPosition.y, transform.localPosition.z);
         //Vector3 rightLane = new Vector3(1.27f, transform.localPosition.y, transform.localPosition.z);
 
-        if (transform.parent.position.x == -4f)
+        if (transform.parent.position.x < -1f)
         {
             //transform.localPosition = leftLane;
             transform.localPosition = LeftStartPos.localPosition;
@@ -29,7 +29,7 @@ public class PassengerManager : MonoBehaviour
         }
 
 
-        if (transform.parent.position.x == 4f)
+        if (transform.parent.position.x > 1f)
         {
             //transform.localPosition = rightLane;
             transform.localPosition = RightStartPos.localPosition;

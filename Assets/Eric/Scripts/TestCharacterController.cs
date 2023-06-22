@@ -134,19 +134,25 @@ namespace SimpleInputNamespace
             //Code for steering wheel
             if (SteeringWheel == true)
             {
-                if (transform.position.x > 4.2f && SW.Angle > 0) //the 4.2 is the cordinqate position of the edge of the road
+                if (transform.position.x > 4.2f && SW.Angle >= 0) //the 4.2 is the cordinqate position of the edge of the road
                 {
-                    hMovement = 0 * movementSpeed / 100;
+                    hMovement = 0;
+                    SteeringCar.transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
-                else if (transform.position.x < -4.2f && SW.Angle < 0)
+                else if (transform.position.x < -4.2f && SW.Angle <= 0)
                 {
-                    hMovement = 0 * movementSpeed / 100;
+                    hMovement = 0;
+                    SteeringCar.transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
-                else
+                else if(SW.Angle!=0)
                 {
-                    hMovement = SW.Angle * movementSpeed / 200;
+                    hMovement = Mathf.Sign(SW.Angle) * movementSpeed/3; 
                     //Debug.Log("Steering angle " + SW.Angle.ToString());
                     SteeringCar.transform.localEulerAngles = new Vector3(0, SW.Angle/3, 0);
+                }
+                else if(SW.Angle == 0)
+                {
+                    hMovement = 0;
                 }
             }
         }

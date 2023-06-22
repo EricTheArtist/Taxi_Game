@@ -71,6 +71,7 @@ public class AbilitySystem : MonoBehaviour
             //sets value of ability timer
             SpeedAbilityTimer = PlayerPrefs.GetFloat("Ability_Speed");
 
+
         }
         if(Carindex == 4) //police truck
         {
