@@ -46,7 +46,7 @@ public class GameEndSystem : MonoBehaviour
     public GameObject StartCar;
 
     public ParticleSystem SmokeBurst;
-
+    public GameObject RewardHomeScreenButton;
 
     SimpleInputNamespace.TestCharacterController controller;
 
@@ -196,8 +196,9 @@ public class GameEndSystem : MonoBehaviour
         }
 
         ISS_Ads.DestroyBannerAd();
-        
-        
+        RewardHomeScreenButton.SetActive(false);
+
+
 
     }
 
