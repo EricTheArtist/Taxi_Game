@@ -28,7 +28,7 @@ public class GameEndSystem : MonoBehaviour
     public PickUpSystem PUS;
     public IS_Script ISS_Ads;
     int DeathCountForAd;
-    public int DeathsBetweenAds = 3;
+    public int DeathsBetweenAds = 5;
 
     public TMP_Text Score_Text;
     public TMP_Text run_curreny_text;
@@ -75,29 +75,40 @@ public class GameEndSystem : MonoBehaviour
     {
         if (other.gameObject.tag =="Obstruction")
         {
-            AudioCrashSound.Play();
-            Debug.Log("Hit and Endgame");
-            endgame = true;
-            controller.game_over = true;
-            Endgame();
-            SmokeBurst.Play();
-
-            DeathCountForAd++;
-
-            if(DeathCountForAd == DeathsBetweenAds)
-            {
-                ISS_Ads.ShowFullAd();
-                DeathCountForAd = 0;
-            }
+            Collison_Crash();
             other.gameObject.SetActive(false);
         }
     }
     void Collison_Crash()
     {
+        AudioCrashSound.Play();
+        Debug.Log("Hit and Endgame");
+        endgame = true;
+        controller.game_over = true;
+        Endgame();
+        SmokeBurst.Play();
 
+        DeathCountForAd++;
+
+        if (DeathCountForAd == DeathsBetweenAds)
+        {
+            ISS_Ads.ShowFullAd();
+            DeathCountForAd = 0;
+        }
     }
-    void Collision_Stun()
+    public void Collision_CopCatch()
     {
+        endgame = true;
+        controller.game_over = true;
+        Endgame();
+        DeathCountForAd++;
+
+        if (DeathCountForAd == DeathsBetweenAds)
+        {
+            ISS_Ads.ShowFullAd();
+            DeathCountForAd = 0;
+        }
+
 
     }
     void Stun_Timer()

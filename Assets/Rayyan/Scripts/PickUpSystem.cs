@@ -30,6 +30,7 @@ public class PickUpSystem : MonoBehaviour
 
     BasicDailyReward BDR;
     AbilitySystem ABS;
+    GameEndSystem GES;
     public AudioSource AudioCoincollect;
     public AudioSource AudioPassengerTap;
 
@@ -40,6 +41,7 @@ public class PickUpSystem : MonoBehaviour
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         currencySystem = gameObject.GetComponent<CurrencySystem>();
         animator = GetComponent<Animator>();
+        GES = gameObject.GetComponent<GameEndSystem>();
         BDR = GameObject.FindGameObjectWithTag("RewardCheck").GetComponent<BasicDailyReward>();
     }
 
@@ -80,12 +82,14 @@ public class PickUpSystem : MonoBehaviour
 
         if (other.tag == "Robot")
         {
+            used = false;
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
             if(TR.RedLightON == true && CopIsChasing == false)
             {
                 controller.breakButton.SetActive(true);
                 controller.BreakInstruction.SetText("HOLD!");
                 EnterRobot.Invoke(); //event used for tutorial
+                ABS.CancelSpeedAbility();
             }
             
 
@@ -120,6 +124,11 @@ public class PickUpSystem : MonoBehaviour
             else if (controller.isBraking == false)
             {
                 controller.breakButton.SetActive(true);
+            }
+            else if (controller.isBraking == true && used == false)
+            {
+                GES.Collision_CopCatch();
+                used = true;
             }
         }
     }

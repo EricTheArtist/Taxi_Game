@@ -59,7 +59,7 @@ public class Test_Robot : MonoBehaviour
         {
             RedLight.SetActive(true);
             GreenLight.SetActive(false);
-            ImageBAR.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+            ImageBAR.GetComponent<Image>().color = new Color32(255, 0, 0, 132);
             RobotTextObject.SetActive(true);
 
             Donecounting = false;

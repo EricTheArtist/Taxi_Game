@@ -198,6 +198,12 @@ public class AbilitySystem : MonoBehaviour
         Debug.Log("This is Start of Speed Ab move speed: "+_controller._movementSpeed);
         Invoke("EndSpeedAbility",AbilityTimeLeft);
     }
+
+    public void CancelSpeedAbility()
+    {
+        CancelInvoke("EndSpeedAbility");
+        EndSpeedAbility();
+    }
     void EndSpeedAbility()
     {
         //Debug.Log("End Speed Ability");

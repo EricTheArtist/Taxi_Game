@@ -13,7 +13,7 @@ public class AbilityUpgrader : MonoBehaviour
 
     public GameObject AbilityBar;
 
-    float MaxAbilityTime = 21;
+    float MaxAbilityTime = 10;
 
     float CurrentAbilityValSpeed;
     float CurrentAbilityValArmour;
@@ -104,7 +104,7 @@ public class AbilityUpgrader : MonoBehaviour
             UpgradeButtonText.SetText("PASSIVE");
             CanUpgrade = false;
 
-            TimeToUpgrade = 21;
+            TimeToUpgrade = 10;
             SetIcon(4);
         }
         if (carIndex == 3) //landcruiser
@@ -139,7 +139,7 @@ public class AbilityUpgrader : MonoBehaviour
             AbilityTitle.SetText("NO ABILITY");
             SecondsValue.SetText("N/A");
             AbilityBar.transform.localScale = new Vector3(MaxAbilityTime/ MaxAbilityTime, 1, 1);
-            TimeToUpgrade = 21;
+            TimeToUpgrade = 10;
             UpgradeButtonText.SetText("");
             CanUpgrade = false;
 
@@ -164,7 +164,7 @@ public class AbilityUpgrader : MonoBehaviour
         if(SUIM.CheckForEnoughMoney(UpgradeCostInt) == true && CanUpgrade == true)
         {
             SUIM.DeductCoins(UpgradeCostInt);
-            NewTimeVal = TimeToUpgrade + 3;
+            NewTimeVal = TimeToUpgrade + 1;
 
             if (CarINDEX == 2 || CarINDEX == 5) //golf or BMW
             {
