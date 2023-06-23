@@ -47,6 +47,7 @@ public class GameEndSystem : MonoBehaviour
 
     public ParticleSystem SmokeBurst;
     public GameObject RewardHomeScreenButton;
+    public AudioSource AudioCrashSound;
 
     SimpleInputNamespace.TestCharacterController controller;
 
@@ -74,6 +75,7 @@ public class GameEndSystem : MonoBehaviour
     {
         if (other.gameObject.tag =="Obstruction")
         {
+            AudioCrashSound.Play();
             Debug.Log("Hit and Endgame");
             endgame = true;
             controller.game_over = true;

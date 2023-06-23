@@ -35,6 +35,10 @@ namespace SimpleInputNamespace
         //private float swipeDistance;
         private bool allowSwipe = true;
 
+        public ParticleSystem DriftingSmokeL;
+        public ParticleSystem DriftingSmokeR;
+
+
         [Header("Breaking")]
         private int brakesAmount = 100;
         public float _movementSpeed; //is used by lane spawner if the taxi is busy breaking
@@ -186,7 +190,8 @@ namespace SimpleInputNamespace
                             MoveToLane = MoveFromLane + 1;
                             LerpSwipe = true;
                             animator.SetTrigger("isSwervingRight 0");
-
+                            DriftingSmokeL.Play();
+                            DriftingSmokeR.Play();
 
                         }
                         //Debug.Log("Swipe Right");
@@ -197,8 +202,9 @@ namespace SimpleInputNamespace
                         LerpSwipe = true;
                         animator.SetTrigger("isSwervingLeft 0");
                         //Debug.Log("Swiping Left");
+                        DriftingSmokeL.Play();
+                        DriftingSmokeR.Play();
 
-                        
                     }
                     //Debug.Log("Swipe Distance: " + swipeDistance.ToString());
                     allowSwipe = false;
@@ -273,6 +279,9 @@ namespace SimpleInputNamespace
                 //Debug.Log("Swiped Right");
                 MoveToLane = MoveFromLane + 1;
                 LerpSwipe = true;
+                DriftingSmokeL.Play();
+                DriftingSmokeR.Play();
+
 
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) && MoveFromLane > 0 && LerpSwipe == false)
@@ -280,6 +289,9 @@ namespace SimpleInputNamespace
                 //Debug.Log("Swiped Left");
                 MoveToLane = MoveFromLane - 1;
                 LerpSwipe = true;
+                DriftingSmokeL.Play();
+                DriftingSmokeR.Play();
+
             }
         }
 
