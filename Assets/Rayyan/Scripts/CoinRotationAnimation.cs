@@ -25,6 +25,7 @@ public class CoinRotationAnimation : MonoBehaviour
     {
         GameObject[] parentCoinRow = GameObject.FindGameObjectsWithTag("CoinRow");
         PickUps = GameObject.FindGameObjectsWithTag("AbilityPickup");
+        //PickUps = GameObject.FindGameObjectsWithTag("LunchBox");
         childrenCoin = GameObject.FindGameObjectsWithTag("Coin");
         
         for(int i=0; i< parentCoinRow.Length; i++)
