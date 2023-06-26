@@ -21,9 +21,11 @@ public class PickUpSystem : MonoBehaviour
 
     public GameObject Cops;
     bool used;
+    public bool stoppedAtRed = false; //set true when the character stops at a red light while being chased by the police
 
     public UnityEvent EnterPassengerCollect;
     public UnityEvent EnterRobot;
+    public UnityEvent CaughtAtRobot;
 
     public ParticleSystem CoinEffect;
     public ParticleSystem CoinsEffect;
@@ -82,7 +84,7 @@ public class PickUpSystem : MonoBehaviour
 
         if (other.tag == "Robot")
         {
-            used = false;
+            
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
             if(TR.RedLightON == true && CopIsChasing == false)
             {
@@ -117,18 +119,24 @@ public class PickUpSystem : MonoBehaviour
         if (other.tag == "Robot")
         {
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
-            if (TR.RedLightON == false)
+            if (TR.RedLightON == false) //if the light is green 
             {
                 controller.BreakInstruction.SetText("GO!");
             }
-            else if (controller.isBraking == false)
+            if (controller.isBraking == false && TR.RedLightON == false) //if the player is moving and the light is green 
+            {
+                controller.breakButton.SetActive(false);
+            }
+            if (controller.isBraking == false && stoppedAtRed == false && TR.RedLightON == true) // if the player is moving and the red light is on
             {
                 controller.breakButton.SetActive(true);
             }
-            else if (controller.isBraking == true && used == false)
+            else if (controller.isBraking == true && stoppedAtRed == false && CopIsChasing == true) // if the player brakes and they are being chased by the cop
             {
                 GES.Collision_CopCatch();
-                used = true;
+                stoppedAtRed = true;
+                CaughtAtRobot.Invoke();
+                //invoke get caught by cop for narritive
             }
         }
     }

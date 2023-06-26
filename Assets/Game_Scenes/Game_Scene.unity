@@ -587,8 +587,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 71, y: 211}
-  m_SizeDelta: {x: 400, y: 600}
+  m_AnchoredPosition: {x: 71, y: 323.1}
+  m_SizeDelta: {x: 800, y: 800}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &12375792
 MonoBehaviour:
@@ -618,15 +618,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 78e62300560b5154abca8d934543501a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b281facffcc98db48bb42227737c4e22, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4221,7 +4221,7 @@ PrefabInstance:
     - target: {fileID: 8855390910692630304, guid: 63c6e8bb1de6360499c2ef581e2d1d7a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8855390910692630304, guid: 63c6e8bb1de6360499c2ef581e2d1d7a,
         type: 3}
@@ -18527,7 +18527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &876328442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20129,6 +20129,7 @@ MonoBehaviour:
   passengerCount: 0
   CopIsChasing: 0
   Cops: {fileID: 1134887933}
+  stoppedAtRed: 0
   EnterPassengerCollect:
     m_PersistentCalls:
       m_Calls:
@@ -20154,6 +20155,21 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CaughtAtRobot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1881841150}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -32867,9 +32883,10 @@ MonoBehaviour:
     don't come cheap,  my laatjie.
   NI_RobotTut: "Driver, you know what to do <br>at a <b>red robot</b> neh? Hold to
     stop. I don\u2019t wanna be late for work!"
-  NI_SteerringWheelTut: 
-  NI_1stCrash: Surprised you got far with that Skorokoro. Come <b>upgrade</b> it
-    at the store.
+  NI_SteerringWheelTut: You can use the steering wheel instead of swiping if you
+    are up for a challenge, the high score is ranked seperatly.
+  NI_1stCrash: Surprised you got far with that Skorokoro. When you have some earnings,
+    come find a <b>upgrade</b> at the store.
   crash: 
   NI_ShopWelcome: Adding <b>any car</b> <br>to your taxi fleet? Crazy idea, my laatjie.
     At least <b>customize</b> them so passengers know the difference.
@@ -35562,7 +35579,7 @@ PrefabInstance:
     - target: {fileID: 418098851986244590, guid: 0f7a042fd546d7c40a8b5e54e5862450,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 418098851986244590, guid: 0f7a042fd546d7c40a8b5e54e5862450,
         type: 3}
@@ -36009,7 +36026,7 @@ PrefabInstance:
     - target: {fileID: 333824581099290121, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 386141658317513931, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -36064,7 +36081,7 @@ PrefabInstance:
     - target: {fileID: 1129739129749937321, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1129739129749937321, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -36311,6 +36328,26 @@ PrefabInstance:
       propertyPath: RewardHomeScreenButton
       value: 
       objectReference: {fileID: 423473304}
+    - target: {fileID: 1995571284987025675, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: CrashEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025675, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: CrashEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025675, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: CrashEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1881841150}
+    - target: {fileID: 1995571284987025675, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: CrashEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1995571284987025715, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_Name
@@ -36769,7 +36806,7 @@ PrefabInstance:
     - target: {fileID: 6498044541367709647, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6705476581479587354, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}

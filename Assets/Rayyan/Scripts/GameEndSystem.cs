@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Events;
 
 public class GameEndSystem : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class GameEndSystem : MonoBehaviour
 
     SimpleInputNamespace.TestCharacterController controller;
 
+    public UnityEvent CrashEvent;
+
     private GoogleHandlerScript googleHandlerScript;
     [SerializeField] private GameObject gameManager;
     // Start is called before the first frame update
@@ -75,6 +78,7 @@ public class GameEndSystem : MonoBehaviour
     {
         if (other.gameObject.tag =="Obstruction")
         {
+            CrashEvent.Invoke();
             Collison_Crash();
             other.gameObject.SetActive(false);
         }
@@ -160,7 +164,10 @@ public class GameEndSystem : MonoBehaviour
             Destroy(StartCar);
         }
         Debug.Log("Game Restarted");
-        
+
+        //reset if the player died by stoping at a red light while being chased by police
+        PUS.stoppedAtRed = false;
+
         // reset posion of enviroment (this can be done using the same approach as in the floating origin system)
         FloatingOrigin.resetToOrigin();
 

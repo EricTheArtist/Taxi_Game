@@ -7,15 +7,15 @@ public class NarritiveSystem : MonoBehaviour
 {
     public TMP_Text DialougeText;
     public GameObject NarritiveInterface;
-    public string NI_Welcome;
-    public string NI_PassengerTut;
-    public string NI_RobotTut;
-    public string NI_SteerringWheelTut;
-    public string NI_1stCrash;
+    public string NI_Welcome; //has function
+    public string NI_PassengerTut; //has function
+    public string NI_RobotTut; //has function
+    public string NI_SteerringWheelTut; //has function
+    public string NI_1stCrash; //has function
     public string crash;
     public string NI_ShopWelcome;
-    public string NI_CaughtByCop;
-    public string NI_1stHighScoreUploadedToLeaderboard;
+    public string NI_CaughtByCop; //has function
+    public string NI_1stHighScoreUploadedToLeaderboard; //this currently happens when they crash for first time
     public string NI_1st5KCoins; 
 
 
@@ -59,6 +59,21 @@ public class NarritiveSystem : MonoBehaviour
             OpenInterface(NI_SteerringWheelTut);
             PlayerPrefs.SetInt("NI_SteeringWheeltut", 1);
         }
+    }
+
+    public void NI_Crashed()
+    {
+        if (PlayerPrefs.GetInt("NI_1stCrash") == 0)
+        {
+            OpenInterface(NI_1stCrash);
+            PlayerPrefs.SetInt("NI_1stCrash", 1);
+        }
+        
+    }
+
+    public void NI_CaughtAtRobot()
+    {
+        OpenInterface(NI_CaughtByCop);
     }
 
 

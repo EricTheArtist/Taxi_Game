@@ -201,8 +201,17 @@ public class AbilitySystem : MonoBehaviour
 
     public void CancelSpeedAbility()
     {
-        CancelInvoke("EndSpeedAbility");
-        EndSpeedAbility();
+        if(speedAbilityActive == true)
+        {
+            CancelInvoke("EndSpeedAbility");
+            //EndSpeedAbility();
+
+            speedAbilityActive = false;
+            Physics.IgnoreLayerCollision(6, 3, false);
+            AbilityButton.SetActive(false);
+            CanSpawnPickup = true;
+        }
+
     }
     void EndSpeedAbility()
     {
