@@ -4221,7 +4221,7 @@ PrefabInstance:
     - target: {fileID: 8855390910692630304, guid: 63c6e8bb1de6360499c2ef581e2d1d7a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8855390910692630304, guid: 63c6e8bb1de6360499c2ef581e2d1d7a,
         type: 3}
@@ -15747,6 +15747,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710746322}
   m_CullTransparentMesh: 1
+--- !u!198 &723359878 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6760889504731439026, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+    type: 3}
+  m_PrefabInstance: {fileID: 69568536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730011480
 GameObject:
   m_ObjectHideFlags: 0
@@ -18527,7 +18533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &876328442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32874,6 +32880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fa118ffcfe7014ea42b0523eacf073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PromptImage: {fileID: 12375793}
+  C_TaxiBoss: {fileID: 21300000, guid: b281facffcc98db48bb42227737c4e22, type: 3}
+  C_ShopOwner: {fileID: 21300000, guid: ccf88d89c51f68a468a4271e65c88adb, type: 3}
+  C_Police: {fileID: 21300000, guid: b1a950b9055fc6349bf2b8901d0f2791, type: 3}
   DialougeText: {fileID: 933525545}
   NarritiveInterface: {fileID: 876328441}
   NI_Welcome: Heita. Think you can rule the rank? <br>You'll need a taxi to <b>rank
@@ -33974,6 +33984,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973759368}
   m_CullTransparentMesh: 1
+--- !u!198 &1994918708 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6705476581479587354, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+    type: 3}
+  m_PrefabInstance: {fileID: 69568536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006392578
 GameObject:
   m_ObjectHideFlags: 0
@@ -35579,7 +35595,7 @@ PrefabInstance:
     - target: {fileID: 418098851986244590, guid: 0f7a042fd546d7c40a8b5e54e5862450,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 418098851986244590, guid: 0f7a042fd546d7c40a8b5e54e5862450,
         type: 3}
@@ -36026,7 +36042,7 @@ PrefabInstance:
     - target: {fileID: 333824581099290121, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 386141658317513931, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -36081,7 +36097,7 @@ PrefabInstance:
     - target: {fileID: 1129739129749937321, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1129739129749937321, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -36453,6 +36469,16 @@ PrefabInstance:
       propertyPath: maxMovementSpeed
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: SteeringDriftingSmokeL
+      value: 
+      objectReference: {fileID: 1994918708}
+    - target: {fileID: 1995571284987025718, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: SteeringDriftingSmokeR
+      value: 
+      objectReference: {fileID: 723359878}
     - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
@@ -36698,6 +36724,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3336049731755936456, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3691509655238694763, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_Layer
@@ -36806,7 +36837,7 @@ PrefabInstance:
     - target: {fileID: 6498044541367709647, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6705476581479587354, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -36876,6 +36907,11 @@ PrefabInstance:
     - target: {fileID: 7642072837435318969, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7762804922960754622, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8174082224639046517, guid: 176fa6346a6e62a4dbe4b32eb0042943,

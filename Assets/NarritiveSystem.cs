@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 public class NarritiveSystem : MonoBehaviour
 {
+    public Image PromptImage;
+    public Sprite C_TaxiBoss;
+    public Sprite C_ShopOwner;
+    public Sprite C_Police;
     public TMP_Text DialougeText;
     public GameObject NarritiveInterface;
     public string NI_Welcome; //has function
@@ -22,10 +26,11 @@ public class NarritiveSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("NI_Welcome")== 0)
+        
+        if (PlayerPrefs.GetInt("NI_Welcome")== 0)
         {
             PlayerPrefs.SetInt("NI_Welcome", 1);
-            OpenInterface(NI_Welcome);
+            OpenInterface(NI_Welcome,C_TaxiBoss);
         }
     }
 
@@ -35,7 +40,7 @@ public class NarritiveSystem : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("NI_PassengerTut") == 0)
         {
-            OpenInterface(NI_PassengerTut);
+            OpenInterface(NI_PassengerTut,C_TaxiBoss);
             PlayerPrefs.SetInt("NI_PassengerTut", 1);
         }
 
@@ -46,7 +51,7 @@ public class NarritiveSystem : MonoBehaviour
 
         if (PlayerPrefs.GetInt("NI_EnterRobot") == 0)
         {
-            OpenInterface(NI_RobotTut);
+            OpenInterface(NI_RobotTut, C_Police);
             PlayerPrefs.SetInt("NI_EnterRobot", 1);
         }
 
@@ -56,7 +61,7 @@ public class NarritiveSystem : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("NI_SteeringWheeltut") == 0)
         {
-            OpenInterface(NI_SteerringWheelTut);
+            OpenInterface(NI_SteerringWheelTut, C_TaxiBoss);
             PlayerPrefs.SetInt("NI_SteeringWheeltut", 1);
         }
     }
@@ -65,7 +70,7 @@ public class NarritiveSystem : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("NI_1stCrash") == 0)
         {
-            OpenInterface(NI_1stCrash);
+            OpenInterface(NI_1stCrash,C_ShopOwner);
             PlayerPrefs.SetInt("NI_1stCrash", 1);
         }
         
@@ -73,15 +78,16 @@ public class NarritiveSystem : MonoBehaviour
 
     public void NI_CaughtAtRobot()
     {
-        OpenInterface(NI_CaughtByCop);
+        OpenInterface(NI_CaughtByCop,C_Police);
     }
 
 
-    public void OpenInterface(string Text)
+    public void OpenInterface(string Text, Sprite Character)
     {
         Time.timeScale = 0f;
         NarritiveInterface.SetActive(true);
         DialougeText.SetText(Text);
+        PromptImage.sprite = Character;
     }
 
     public void CloseInterface()

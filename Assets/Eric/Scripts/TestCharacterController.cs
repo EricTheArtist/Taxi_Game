@@ -38,6 +38,9 @@ namespace SimpleInputNamespace
         public ParticleSystem DriftingSmokeL;
         public ParticleSystem DriftingSmokeR;
 
+        public ParticleSystem SteeringDriftingSmokeL;
+        public ParticleSystem SteeringDriftingSmokeR;
+
 
         [Header("Breaking")]
         private int brakesAmount = 100;
@@ -150,9 +153,21 @@ namespace SimpleInputNamespace
                 }
                 else if(SW.Angle!=0)
                 {
-                    hMovement = Mathf.Sign(SW.Angle) * movementSpeed/3; 
+                    hMovement = SW.Angle * movementSpeed/150; 
                     //Debug.Log("Steering angle " + SW.Angle.ToString());
-                    SteeringCar.transform.localEulerAngles = new Vector3(0, SW.Angle/3, 0);
+                    SteeringCar.transform.localEulerAngles = new Vector3(0, -SW.Angle/3, 0);
+                    if (SW.Angle > 0)
+                    {
+                        SteeringDriftingSmokeR.Play();
+                        SteeringDriftingSmokeL.Pause();
+                    }
+                    else
+                    {
+                        SteeringDriftingSmokeR.Pause();
+                        SteeringDriftingSmokeL.Play();
+                    }
+
+
                 }
                 else if(SW.Angle == 0)
                 {
@@ -190,7 +205,7 @@ namespace SimpleInputNamespace
                             MoveToLane = MoveFromLane + 1;
                             LerpSwipe = true;
                             animator.SetTrigger("isSwervingRight 0");
-                            DriftingSmokeL.Play();
+                            
                             DriftingSmokeR.Play();
 
                         }
@@ -203,7 +218,7 @@ namespace SimpleInputNamespace
                         animator.SetTrigger("isSwervingLeft 0");
                         //Debug.Log("Swiping Left");
                         DriftingSmokeL.Play();
-                        DriftingSmokeR.Play();
+                        
 
                     }
                     //Debug.Log("Swipe Distance: " + swipeDistance.ToString());
@@ -280,7 +295,7 @@ namespace SimpleInputNamespace
                 MoveToLane = MoveFromLane + 1;
                 LerpSwipe = true;
                 DriftingSmokeL.Play();
-                DriftingSmokeR.Play();
+                
 
 
             }
@@ -289,7 +304,6 @@ namespace SimpleInputNamespace
                 //Debug.Log("Swiped Left");
                 MoveToLane = MoveFromLane - 1;
                 LerpSwipe = true;
-                DriftingSmokeL.Play();
                 DriftingSmokeR.Play();
 
             }
