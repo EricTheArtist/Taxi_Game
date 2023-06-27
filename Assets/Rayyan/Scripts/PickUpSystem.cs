@@ -84,14 +84,14 @@ public class PickUpSystem : MonoBehaviour
 
         if (other.tag == "Robot")
         {
-            
+            ABS.CancelSpeedAbility();
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
             if(TR.RedLightON == true && CopIsChasing == false)
             {
                 controller.breakButton.SetActive(true);
                 controller.BreakInstruction.SetText("HOLD!");
                 EnterRobot.Invoke(); //event used for tutorial
-                ABS.CancelSpeedAbility();
+                
             }
             
 

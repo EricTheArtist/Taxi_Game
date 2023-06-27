@@ -158,13 +158,14 @@ namespace SimpleInputNamespace
                     SteeringCar.transform.localEulerAngles = new Vector3(0, -SW.Angle/3, 0);
                     if (SW.Angle > 0)
                     {
-                        SteeringDriftingSmokeR.Play();
-                        SteeringDriftingSmokeL.Pause();
+                        SteeringDriftingSmokeR.Pause();
+                        SteeringDriftingSmokeL.Play();
                     }
                     else
                     {
-                        SteeringDriftingSmokeR.Pause();
-                        SteeringDriftingSmokeL.Play();
+
+                        SteeringDriftingSmokeR.Play();
+                        SteeringDriftingSmokeL.Pause();
                     }
 
 
