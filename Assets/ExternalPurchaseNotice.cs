@@ -97,9 +97,14 @@ public class ExternalPurchaseNotice : MonoBehaviour
             PlayerPrefs.SetInt("Car01Premium", (true ? 1 : 0));
             ProductName.SetText("Car product Restored");
         }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.car02") //car 1 (not used)
+        {
+            PlayerPrefs.SetInt("Car02Premium", (true ? 1 : 0));
+            ProductName.SetText("Car product Restored");
+        }
 
 
-        
+
 
 
         // updates text on screen

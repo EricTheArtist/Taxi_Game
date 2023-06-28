@@ -60,6 +60,11 @@ public class Shop_Item_Car : MonoBehaviour
 
     public void Button_Clicked_Car()
     {
+
+        if (Premium == true && Owned == false)
+        {
+            NCP.BuyProduct(MyCarProductID);
+        }
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false) // if the player has enough money and does not own the item
         {
             SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, CarIndex, 100);

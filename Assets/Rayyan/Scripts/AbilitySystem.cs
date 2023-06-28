@@ -99,7 +99,7 @@ public class AbilitySystem : MonoBehaviour
             //sets value of ability timer
             DoubleCoinAbilityTimer = PlayerPrefs.GetFloat("Ability_Double");
         }
-        if (Carindex == 0)
+        if (Carindex == 0 || Carindex == 6)
         {
             CanSpawnPickup = false;
             Debug.Log("NoAcive Ability, Car Index: " + Carindex);

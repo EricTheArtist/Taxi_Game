@@ -134,7 +134,7 @@ public class AbilityUpgrader : MonoBehaviour
 
             SetIcon(1);
         }
-        if (carIndex == 0)
+        if (carIndex == 0 || carIndex == 6)
         {
             AbilityTitle.SetText("NO ABILITY");
             SecondsValue.SetText("N/A");
