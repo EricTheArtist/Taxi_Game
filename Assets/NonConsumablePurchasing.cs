@@ -34,6 +34,11 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     public string ProductIDColour04 = "com.vetkoekstudios.taxiranked.colour04";
 
     public string ProductIDRims01 = "com.vetkoekstudios.taxiranked.rims01";
+    public string ProductIDRims02 = "com.vetkoekstudios.taxiranked.rims02";
+    public string ProductIDRims03 = "com.vetkoekstudios.taxiranked.rims03";
+    public string ProductIDRims04 = "com.vetkoekstudios.taxiranked.rims04";
+    public string ProductIDRims05 = "com.vetkoekstudios.taxiranked.rims05";
+    public string ProductIDRims06 = "com.vetkoekstudios.taxiranked.rims06";
 
 
     public string ProductIDfromButton;
@@ -98,6 +103,11 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         builder.AddProduct(ProductIDColour04, ProductType.NonConsumable);
 
         builder.AddProduct(ProductIDRims01, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDRims02, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDRims03, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDRims04, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDRims05, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDRims06, ProductType.NonConsumable);
 
         UnityPurchasing.Initialize(this, builder);
         
@@ -275,6 +285,27 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
             {
                 PlayerPrefs.SetInt("Rim01Premium", (true ? 1 : 0));
             }
+            if (ProductIDfromButton == ProductIDRims02)
+            {
+                PlayerPrefs.SetInt("Rim02Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDRims03)
+            {
+                PlayerPrefs.SetInt("Rim03Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDRims04)
+            {
+                PlayerPrefs.SetInt("Rim04Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDRims05)
+            {
+                PlayerPrefs.SetInt("Rim05Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDRims06)
+            {
+                PlayerPrefs.SetInt("Rim06Premium", (true ? 1 : 0));
+            }
+
 
 
             SucessfullPurchase.Invoke();

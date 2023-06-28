@@ -26,7 +26,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
         
         CurrentBalance = PlayerPrefs.GetInt("Main Amount");
 
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.promocoin5000")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.promocoin5000") //5k coins promo
         {
             ProductName.SetText("5000 Coins Promo");
             var payout = product.definition.payout.quantity; // Assuming a single payout, retrieve the payout quantity
@@ -34,7 +34,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
             PlayerPrefs.SetInt("Main Amount", NewBalance);
 
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.preregister10000")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.preregister10000") //10k coins promo
         {
             ProductName.SetText("10000 Coins Pre-Registration Reward");
             var payout = product.definition.payout.quantity; // Assuming a single payout, retrieve the payout quantity
@@ -42,32 +42,57 @@ public class ExternalPurchaseNotice : MonoBehaviour
             PlayerPrefs.SetInt("Main Amount", NewBalance);
 
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour01")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour01") //colour 1 (not used)
         {
             PlayerPrefs.SetInt("Colour01_Premium", (true ? 1 : 0));
             ProductName.SetText("Colour product Restored");
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour02")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour02") //colour 2
         {
             PlayerPrefs.SetInt("Colour02_Premium", (true ? 1 : 0));
             ProductName.SetText("Colour product Restored");
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour03")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour03") //colour 3
         {
             PlayerPrefs.SetInt("Colour03_Premium", (true ? 1 : 0));
             ProductName.SetText("Colour product Restored");
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour04")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour04") //colour 4
         {
             PlayerPrefs.SetInt("Colour04_Premium", (true ? 1 : 0));
             ProductName.SetText("Colour product Restored");
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims01")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims01") //rims 1
         {
             PlayerPrefs.SetInt("Rim01Premium", (true ? 1 : 0));
             ProductName.SetText("Rims product Restored");
         }
-        if (product.definition.id == "com.vetkoekstudios.taxiranked.car01")
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims02") //rims 2
+        {
+            PlayerPrefs.SetInt("Rim02Premium", (true ? 1 : 0));
+            ProductName.SetText("Rims product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims03") //rims 3
+        {
+            PlayerPrefs.SetInt("Rim03Premium", (true ? 1 : 0));
+            ProductName.SetText("Rims product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims04") //rims 4
+        {
+            PlayerPrefs.SetInt("Rim04Premium", (true ? 1 : 0));
+            ProductName.SetText("Rims product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims05") //rims 5
+        {
+            PlayerPrefs.SetInt("Rim05Premium", (true ? 1 : 0));
+            ProductName.SetText("Rims product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.rims06") //rims 2
+        {
+            PlayerPrefs.SetInt("Rim06Premium", (true ? 1 : 0));
+            ProductName.SetText("Rims product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.car01") //car 1 (not used)
         {
             PlayerPrefs.SetInt("Car01Premium", (true ? 1 : 0));
             ProductName.SetText("Car product Restored");
