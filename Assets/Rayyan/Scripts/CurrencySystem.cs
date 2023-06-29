@@ -15,10 +15,11 @@ public class CurrencySystem : MonoBehaviour
     public TMP_Text run_amount_text;
     public TMP_Text run_amount_shadow;
 
-    public AudioSource Sound_CoinCollect;
+    
     public ParticleSystem Spark_CoinPickup;
 
     [SerializeField] private GameObject coinIcon;
+    [SerializeField] private AudioClip _coinCollectClip;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,8 @@ public class CurrencySystem : MonoBehaviour
         if (other.tag == "Coin" || other.tag == "Coin2")
         {
             run_amount=Addition_Function(Multiplier_Function(multiplier), run_amount); //not sure why we need such a complex function for this but run amount is only used for the display when the player crashes and should not be used for adding anyting to the saves coins
-            Sound_CoinCollect.Play();
+            
+            SoundManager.Instance.PlaySound(_coinCollectClip);
             Spark_CoinPickup.Play();
             other.gameObject.SetActive(false);
             Eric_AddCoins(1*multiplier); //adds the coins to the saved coins

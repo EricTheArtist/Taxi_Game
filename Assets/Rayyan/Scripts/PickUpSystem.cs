@@ -33,8 +33,9 @@ public class PickUpSystem : MonoBehaviour
     BasicDailyReward BDR;
     AbilitySystem ABS;
     GameEndSystem GES;
-    public AudioSource AudioCoincollect;
-    public AudioSource AudioPassengerTap;
+
+    [SerializeField] private AudioClip _coinCollectClip;
+    [SerializeField] private AudioClip _passengerCollectClip;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +70,8 @@ public class PickUpSystem : MonoBehaviour
     {
         if (other.tag == "PickUpPoint")
         {
-            AudioCoincollect.Play();
+            //AudioCoincollect.Play();
+            SoundManager.Instance.PlaySound(_coinCollectClip);
             controller.breakButton.SetActive(true);
             controller.BreakInstruction.SetText("TAP!");
             used = false;
@@ -185,7 +187,8 @@ public class PickUpSystem : MonoBehaviour
 
     void AddPassenger()//Perhaps we can change this to read in a specific number of passengers as a point and add that same number
     {
-        AudioPassengerTap.Play();
+        SoundManager.Instance.PlaySound(_passengerCollectClip);
+        
         //passengerCount++;//right now it one passenger per zone
         currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
         currencySystem.Eric_AddCoins(7); //adds 7 coins to the players saved coins

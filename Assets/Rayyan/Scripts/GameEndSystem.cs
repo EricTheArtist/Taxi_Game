@@ -48,7 +48,7 @@ public class GameEndSystem : MonoBehaviour
 
     public ParticleSystem SmokeBurst;
     public GameObject RewardHomeScreenButton;
-    public AudioSource AudioCrashSound;
+    //public AudioSource AudioCrashSound;
 
     SimpleInputNamespace.TestCharacterController controller;
 
@@ -56,6 +56,7 @@ public class GameEndSystem : MonoBehaviour
 
     private GoogleHandlerScript googleHandlerScript;
     [SerializeField] private GameObject gameManager;
+    [SerializeField] private AudioClip _crashSoundClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,7 +86,8 @@ public class GameEndSystem : MonoBehaviour
     }
     void Collison_Crash()
     {
-        AudioCrashSound.Play();
+        
+        SoundManager.Instance.PlaySound(_crashSoundClip);
         Debug.Log("Hit and Endgame");
         endgame = true;
         controller.game_over = true;

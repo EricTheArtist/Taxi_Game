@@ -87,8 +87,8 @@ public class ShopUIManager : MonoBehaviour
     int P_CarIndex;
     int P_Rimindex;
 
-    public AudioSource AudioPurchase;
-
+    
+    [SerializeField] private AudioClip _coinCollectClip;
 
 
     void Awake()
@@ -280,7 +280,7 @@ public class ShopUIManager : MonoBehaviour
 
     public void DeductCoins(int deductAmount) //public function that can be called when an item is purchased with coins
     {
-        AudioPurchase.Play();
+        SoundManager.Instance.PlaySound(_coinCollectClip);
         Coins = Coins - deductAmount;
         PlayerPrefs.SetInt("Main Amount", Coins);
         updateCoinsText();
