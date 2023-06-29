@@ -23,6 +23,7 @@ public class Test_LaneElements : MonoBehaviour
     float AbilitySpawnChance = 0.8f;
     AbilitySystem AS;
     BasicDailyReward BDR;
+    Test_HighScore THS;
 
     public GameObject AbilityObjectSpeedBoost;
     public GameObject AbilityObjectShield;
@@ -30,6 +31,10 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject AbilityObjectCooldrink;
     public GameObject ObjectCoolerbox;
 
+    public GameObject SceneryParentObject;
+    public GameObject[] SceneryPrefabs;
+    int ScoreThreshold = 100;
+    int SceneryPrefabIndex = 0;
 
 
     void Start()
@@ -37,6 +42,7 @@ public class Test_LaneElements : MonoBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
         AS = Player.GetComponent<AbilitySystem>();
+        THS = Player.GetComponent<Test_HighScore>();
         BDR = GameObject.FindGameObjectWithTag("RewardCheck").GetComponent<BasicDailyReward>();
         CanCollectLunchbox = BDR.CanClaimReward();
         RobotComponent.SetActive(false);
@@ -158,6 +164,33 @@ public class Test_LaneElements : MonoBehaviour
                 RobotComponent.SetActive(true);
             }
         }
+
+        if (THS.scoreInt > ScoreThreshold && SceneryPrefabs.Length>0)
+        {
+            int NumOfPrefabs = SceneryPrefabs.Length;
+
+            foreach (Transform child in SceneryParentObject.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            Instantiate(SceneryPrefabs[SceneryPrefabIndex], new Vector3(0, 0, 0), Quaternion.identity, SceneryParentObject.transform);
+            
+
+            if (SceneryPrefabIndex < NumOfPrefabs)
+            {
+                SceneryPrefabIndex++;
+            }
+            else
+            {
+                SceneryPrefabIndex = 0;
+            }
+            
+            ScoreThreshold += 100;
+        }
+        
+
+        
 
     }
 

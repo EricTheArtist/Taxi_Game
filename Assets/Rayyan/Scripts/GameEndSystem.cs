@@ -94,7 +94,7 @@ public class GameEndSystem : MonoBehaviour
 
         DeathCountForAd++;
 
-        if (DeathCountForAd == DeathsBetweenAds)
+        if (DeathCountForAd >= DeathsBetweenAds && THS.scoreInt > 300)
         {
             ISS_Ads.ShowFullAd();
             DeathCountForAd = 0;
