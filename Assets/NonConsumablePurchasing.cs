@@ -146,9 +146,10 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     }
 
     public void BuyProduct(string ProductID)
-    {
-        BuyProductID(ProductID);
+    {   
         ProductIDfromButton = ProductID;
+        BuyProductID(ProductID);
+        
     }
 
     public void CompletePurchase()

@@ -41,6 +41,8 @@ namespace SimpleInputNamespace
         public ParticleSystem SteeringDriftingSmokeL;
         public ParticleSystem SteeringDriftingSmokeR;
 
+        public ParticleSystem Speedlines;
+
 
         [Header("Breaking")]
         private int brakesAmount = 100;
@@ -130,8 +132,16 @@ namespace SimpleInputNamespace
                 
                     movementSpeed += Time.deltaTime/MovementIncrement;
                     //Debug.Log("Speed: " + movementSpeed);
-                
+                    
 
+            }
+            if(movementSpeed > (maxMovementSpeed / 2))
+            {
+                Speedlines.Play();
+            }
+            if(movementSpeed < (maxMovementSpeed / 2))
+            {
+                Speedlines.Stop();
             }
 
         }
