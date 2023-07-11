@@ -14138,6 +14138,7 @@ GameObject:
   - component: {fileID: 595571133}
   - component: {fileID: 595571132}
   - component: {fileID: 595571136}
+  - component: {fileID: 595571137}
   m_Layer: 5
   m_Name: Play_Button
   m_TagString: Untagged
@@ -14302,6 +14303,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToDisable: {fileID: 595571130}
+--- !u!114 &595571137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595571130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228a7bdea4b2e894bbd5f13eb2b7de5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scalingAnimationTime: 3
+  scalingAnimationSpeed: 10
+  scaleSizeMultiplier: 1.05
+  scalingRepeatable: 1
 --- !u!1 &601005445
 GameObject:
   m_ObjectHideFlags: 0
