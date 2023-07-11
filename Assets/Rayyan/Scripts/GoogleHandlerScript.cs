@@ -64,6 +64,18 @@ public class GoogleHandlerScript : MonoBehaviour
         }
         //show on new highscore
 
+        public void OverAllScoreHandler()
+        {
+            if (GameServices.Instance.IsLoggedIn())
+            {
+                indexNumberLeaderboards = 0;
+                long OverAllScore = 0;
+                OverAllScore = PlayerPrefs.GetInt("OverAllScore");
+                //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
+                GameServices.Instance.SubmitScore(OverAllScore,LeaderboardNames.TaxiRank , ScoreSubmitted);
+            }
+            
+        }
         public void SwippingScoreHandler()
         {
             if (GameServices.Instance.IsLoggedIn())
@@ -95,7 +107,7 @@ public class GoogleHandlerScript : MonoBehaviour
             {
                 indexNumberLeaderboards = 1;
                 long passengerCount = 0;
-                passengerCount = PlayerPrefs.GetInt("");//add passenger count prefs
+                passengerCount = PlayerPrefs.GetInt("MostPassengers");//add passenger count prefs
                 //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                 GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.PassengersCount, ScoreSubmitted);
             }

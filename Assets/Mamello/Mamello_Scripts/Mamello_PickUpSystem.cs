@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mamello_PickUpSystem : MonoBehaviour
 {   
-    [SerializeField] int passengerCount=0;
+    public int passengerCount=0;
     //[SerializeField]
     //List<int> passengers = new List<int>();
     //[SerializeField] private GameObject pickUpPoint;
@@ -19,11 +19,16 @@ public class Mamello_PickUpSystem : MonoBehaviour
 
     public GameObject Cops;
     bool used;
-    
 
+    public int greenLightPassed = 0;
+    public int copsEscaped = 0;
     // Start is called before the first frame update
     void Start()
     {
+        //setting passenger, copsEscaped and greenLight count to zero at the beginning of each run
+        passengerCount = 0;
+        copsEscaped = 0;
+        greenLightPassed = 0;
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         currencySystem = gameObject.GetComponent<CurrencySystem>();
         animator = GetComponent<Animator>();
@@ -112,6 +117,10 @@ public class Mamello_PickUpSystem : MonoBehaviour
                 Cops.SetActive(true);
                 Invoke("CopChase", CopChaseDuration);
             }
+            else
+            {
+                greenLightPassed++;
+            }
         }
     }
 
@@ -120,6 +129,7 @@ public class Mamello_PickUpSystem : MonoBehaviour
         CopIsChasing = false;
         controller.movementSpeed -= 10;
         Cops.SetActive(false);
+        copsEscaped++;
     }
 
     public void CancelCopChase()

@@ -32,6 +32,10 @@ public class SoundManager : MonoBehaviour
         {
             _effectsSource.mute = false;
         }
+        if (!PlayerPrefs.HasKey("SavedVolume"))
+        {
+            PlayerPrefs.SetInt("SavedVolume", 1);
+        }
 
         float savedVolume = PlayerPrefs.GetFloat("SavedVolume");
         ChangeMasterVolume(savedVolume);
