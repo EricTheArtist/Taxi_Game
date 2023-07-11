@@ -79,7 +79,7 @@ public class PickUpSystem : MonoBehaviour
 
             EnterPassengerCollect.Invoke();
 
-            currencySystem.run_amount = currencySystem.Addition_Function(1, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
+            currencySystem.run_amount = currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
             currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
             CoinEffect.Play();
         }
@@ -115,6 +115,7 @@ public class PickUpSystem : MonoBehaviour
             {
                 AddPassenger();
                 used = true;
+                
             }
         }
 
@@ -153,7 +154,6 @@ public class PickUpSystem : MonoBehaviour
             {
                 controller.BreakPadUp();
             }
-            //other.gameObject.SetActive(false);
             Invoke("DeactivatePickUpPoint", 0.5f);
         }
 
@@ -188,23 +188,11 @@ public class PickUpSystem : MonoBehaviour
     void AddPassenger()//Perhaps we can change this to read in a specific number of passengers as a point and add that same number
     {
         SoundManager.Instance.PlaySound(_passengerCollectClip);
-        
-        //passengerCount++;//right now it one passenger per zone
-        currencySystem.run_amount=currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
+        currencySystem.run_amount=currencySystem.Addition_Function(7, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
         currencySystem.Eric_AddCoins(7); //adds 7 coins to the players saved coins
         Debug.Log("Passenger Picked Up");
-        //animator.SetTrigger("isGettingPassenger");
         CoinsEffect.Play();
-        pickUpPoint.transform.GetChild(1).GetComponent<PassengerManager>().PlayCharacterJump();
-
-
-        //Vector3 passengerStartPosition = pickUpPoint.transform.GetChild(1).localPosition;
-
-        //Vector3 PassengerEndPosition = new Vector3(0f, pickUpPoint.transform.GetChild(1).localPosition.y, pickUpPoint.transform.GetChild(1).localPosition.z); //when move down on y-axis (off pavement), y pos \ition updates before the lero is called.
-
-        //pickUpPoint.transform.GetChild(1).GetComponent<Animator>().SetTrigger("isPassengerBoarding");
-        //pickUpPoint.transform.GetChild(1).localPosition = Vector3.Lerp(passengerStartPosition, PassengerEndPosition, 1f);
-
+        pickUpPoint.transform.GetChild(1).GetComponent<PassengerManager>().PlayCharacterJump(); //gets the passenger if it is the second child object of the pickup box
 
     }
 
