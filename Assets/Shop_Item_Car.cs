@@ -39,10 +39,6 @@ public class Shop_Item_Car : MonoBehaviour
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0); // checks to see if the player already owns the car
 
 
-        if(Premium == true)
-        {
-            LocalisedPrice.text = NCP.priceString(MyCarProductID);
-        }
         if (Premium == false) // if the item is not costing real money it sets the price in coins
         {
             Price_Text.SetText(Price.ToString());   
@@ -54,6 +50,10 @@ public class Shop_Item_Car : MonoBehaviour
             {
                 SUIM.UpdateCars(CarIndex);
             }
+        }
+        if (Premium == true)
+        {
+            LocalisedPrice.text = NCP.priceString(MyCarProductID);
         }
     }
 

@@ -35,10 +35,7 @@ public class Shop_Item_Rim : MonoBehaviour
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0); // checks to see if the player already owns the rims
 
 
-        if(Premium == true)
-        {
-            RealMoneyPrice.text = NCS.priceString(MyRimProductID);
-        }
+
         if (Premium == false) // if the item is not costing real money it sets the price in coins
         {
             Price_Text.SetText(Price.ToString());
@@ -50,6 +47,10 @@ public class Shop_Item_Rim : MonoBehaviour
             {
                 SUIM.UpdateRims();
             }
+        }
+        if (Premium == true)
+        {
+            RealMoneyPrice.text = NCS.priceString(MyRimProductID);
         }
     }
 

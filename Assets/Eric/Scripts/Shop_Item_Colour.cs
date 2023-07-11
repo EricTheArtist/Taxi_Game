@@ -38,10 +38,6 @@ public class Shop_Item_Colour : MonoBehaviour
         ColourSample.color = Colour;
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
 
-        if(Premium == true)
-        {
-            RealCurrencyPrice.text = NCP.priceString(MyproductID);
-        }
         
 
         if (Premium == false)
@@ -52,6 +48,10 @@ public class Shop_Item_Colour : MonoBehaviour
         {
             PriceBG.SetActive(false);
 
+        }
+        if (Premium == true)
+        {
+            RealCurrencyPrice.text = NCP.priceString(MyproductID);
         }
     }
 
