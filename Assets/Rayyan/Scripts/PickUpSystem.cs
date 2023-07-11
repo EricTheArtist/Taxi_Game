@@ -50,7 +50,7 @@ public class PickUpSystem : MonoBehaviour
 
     private void Update()
     {
-        CheckCopChase();
+        //CheckCopChase();
     }
 
     private void OnEnable()
@@ -115,7 +115,8 @@ public class PickUpSystem : MonoBehaviour
             {
                 AddPassenger();
                 used = true;
-                
+                controller.BreakPadUp();
+
             }
         }
 
