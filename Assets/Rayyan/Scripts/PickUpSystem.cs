@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,9 @@ using UnityEngine.Events;
 
 public class PickUpSystem : MonoBehaviour
 {   
-    [SerializeField] int passengerCount=0;
-
+   public int passengerCount=0;
+   public int greenLightPassed = 0;
+   public int copsEscaped = 0;
     //[SerializeField]
     //List<int> passengers = new List<int>();
 
@@ -40,12 +42,22 @@ public class PickUpSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        passengerCount = 0;
+        copsEscaped = 0;
+        greenLightPassed = 0;
         ABS = gameObject.GetComponent<AbilitySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         currencySystem = gameObject.GetComponent<CurrencySystem>();
         animator = GetComponent<Animator>();
         GES = gameObject.GetComponent<GameEndSystem>();
         BDR = GameObject.FindGameObjectWithTag("RewardCheck").GetComponent<BasicDailyReward>();
+    }
+
+    private void Awake()
+    {
+        passengerCount = 0;
+        copsEscaped = 0;
+        greenLightPassed = 0;
     }
 
     private void Update()
@@ -110,7 +122,7 @@ public class PickUpSystem : MonoBehaviour
     {
         if (controller.isBraking && other.tag == "PickUpPoint")//check if the player has stoped in the zone
         {
-            passengerCount++;//right now it one passenger per zone
+           //right now it one passenger per zone
             if (used == false)
             {
                 AddPassenger();
@@ -168,10 +180,19 @@ public class PickUpSystem : MonoBehaviour
                 CopIsChasing = true;
                 Cops.SetActive(true);
                 Invoke("CopChase", CopChaseDuration);
+                Invoke("Escaped", CopChaseDuration);
+            }
+            else
+            {
+                greenLightPassed++;
             }
         }
     }
 
+    void Escaped()
+    {
+        copsEscaped++;
+    }
     public void CopChase()
     {
         CopIsChasing = false;
@@ -188,6 +209,7 @@ public class PickUpSystem : MonoBehaviour
 
     void AddPassenger()//Perhaps we can change this to read in a specific number of passengers as a point and add that same number
     {
+        passengerCount++;
         SoundManager.Instance.PlaySound(_passengerCollectClip);
         currencySystem.run_amount=currencySystem.Addition_Function(7, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
         currencySystem.Eric_AddCoins(7); //adds 7 coins to the players saved coins
