@@ -34,11 +34,13 @@ public class Test_LaneElements : MonoBehaviour
     public GameObject SceneryParentObject;
     public GameObject[] SceneryPrefabs;
     public int ScoreThreshold = 20;
+    int ScoreThresholdStatic;
     int SceneryPrefabIndex = 0;
 
 
     void Start()
     {
+        ScoreThresholdStatic = ScoreThreshold;
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
         AS = Player.GetComponent<AbilitySystem>();
@@ -72,7 +74,7 @@ public class Test_LaneElements : MonoBehaviour
             {
                 AbilityObjectCooldrink.SetActive(true);
             }
-            if (Carindex == 3) //landcruiser
+            if (Carindex == 3 || Carindex == 6) //landcruiser
             {
                 AbilityObjectShield.SetActive(true);
             }
@@ -174,10 +176,10 @@ public class Test_LaneElements : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            Instantiate(SceneryPrefabs[SceneryPrefabIndex], new Vector3(0, 0, 0), Quaternion.identity, SceneryParentObject.transform);
+            Instantiate(SceneryPrefabs[SceneryPrefabIndex], SceneryParentObject.transform.position, Quaternion.identity, SceneryParentObject.transform);
             
 
-            if (SceneryPrefabIndex < NumOfPrefabs)
+            if (SceneryPrefabIndex < NumOfPrefabs-1)
             {
                 SceneryPrefabIndex++;
             }
@@ -186,7 +188,7 @@ public class Test_LaneElements : MonoBehaviour
                 SceneryPrefabIndex = 0;
             }
             
-            ScoreThreshold += 100;
+            ScoreThreshold += ScoreThresholdStatic;
         }
         
 
