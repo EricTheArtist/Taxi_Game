@@ -36,12 +36,20 @@ public class MusicControlls : MonoBehaviour
         if (PlayerPrefs.GetInt("EffectsVol") == 1)
         {
             EffectsColour = false;
-            EffectsBackPlate.color = InactiveColor;
+            if (EffectsBackPlate != null) 
+            {
+                EffectsBackPlate.color = InactiveColor;
+            }
+            
         }
         if (PlayerPrefs.GetInt("EffectsVol") == 0)
         {
             EffectsColour = true;
-            EffectsBackPlate.color = ActiveColor;
+            if (EffectsBackPlate != null) 
+            {
+                EffectsBackPlate.color = ActiveColor;
+            }
+            
         }
 
     }
