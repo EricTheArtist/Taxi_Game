@@ -62,6 +62,21 @@ public class ExternalPurchaseNotice : MonoBehaviour
             PlayerPrefs.SetInt("Colour04_Premium", (true ? 1 : 0));
             ProductName.SetText("Colour product Restored");
         }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour02top") //colour 2 top
+        {
+            PlayerPrefs.SetInt("Colour02_PremiumTop", (true ? 1 : 0));
+            ProductName.SetText("Colour product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour03top") //colour 3 top
+        {
+            PlayerPrefs.SetInt("Colour03_PremiumTop", (true ? 1 : 0));
+            ProductName.SetText("Colour product Restored");
+        }
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.colour04top") //colour 4 top
+        {
+            PlayerPrefs.SetInt("Colour04_PremiumTop", (true ? 1 : 0));
+            ProductName.SetText("Colour product Restored");
+        }
         if (product.definition.id == "com.vetkoekstudios.taxiranked.rims01") //rims 1
         {
             PlayerPrefs.SetInt("Rim01Premium", (true ? 1 : 0));

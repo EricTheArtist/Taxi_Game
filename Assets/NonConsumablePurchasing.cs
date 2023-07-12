@@ -33,6 +33,10 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     public string ProductIDColour03 = "com.vetkoekstudios.taxiranked.colour03";
     public string ProductIDColour04 = "com.vetkoekstudios.taxiranked.colour04";
 
+    public string ProductIDColour02Top = "com.vetkoekstudios.taxiranked.colour02top";
+    public string ProductIDColour03Top = "com.vetkoekstudios.taxiranked.colour03top";
+    public string ProductIDColour04Top = "com.vetkoekstudios.taxiranked.colour04top";
+
     public string ProductIDRims01 = "com.vetkoekstudios.taxiranked.rims01";
     public string ProductIDRims02 = "com.vetkoekstudios.taxiranked.rims02";
     public string ProductIDRims03 = "com.vetkoekstudios.taxiranked.rims03";
@@ -102,6 +106,10 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         builder.AddProduct(ProductIDColour02, ProductType.NonConsumable);
         builder.AddProduct(ProductIDColour03, ProductType.NonConsumable);
         builder.AddProduct(ProductIDColour04, ProductType.NonConsumable);
+
+        builder.AddProduct(ProductIDColour02Top, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDColour03Top, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDColour04Top, ProductType.NonConsumable);
 
         builder.AddProduct(ProductIDRims01, ProductType.NonConsumable);
         builder.AddProduct(ProductIDRims02, ProductType.NonConsumable);
@@ -282,6 +290,19 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
             if (ProductIDfromButton == ProductIDColour04)
             {
                 PlayerPrefs.SetInt("Colour04_Premium", (true ? 1 : 0));
+            }
+
+            if (ProductIDfromButton == ProductIDColour02Top)
+            {
+                PlayerPrefs.SetInt("Colour02_PremiumTop", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDColour03Top)
+            {
+                PlayerPrefs.SetInt("Colour03_PremiumTop", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDColour04Top)
+            {
+                PlayerPrefs.SetInt("Colour04_PremiumTop", (true ? 1 : 0));
             }
 
             //handles rims purchase
