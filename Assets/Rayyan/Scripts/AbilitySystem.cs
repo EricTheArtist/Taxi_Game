@@ -81,7 +81,7 @@ public class AbilitySystem : MonoBehaviour
 
 
         }
-        if(Carindex == 3) //landcruiser
+        if(Carindex == 3 || Carindex == 6) //landcruiser
         {
             abilityType = AbilityType.Armour;
             Ability_Text.SetText("SHIELD");
@@ -99,7 +99,7 @@ public class AbilitySystem : MonoBehaviour
             //sets value of ability timer
             DoubleCoinAbilityTimer = PlayerPrefs.GetFloat("Ability_Double");
         }
-        if (Carindex == 0 || Carindex == 6)
+        if (Carindex == 0)
         {
             CanSpawnPickup = false;
             Debug.Log("NoAcive Ability, Car Index: " + Carindex);
@@ -308,7 +308,6 @@ public class AbilitySystem : MonoBehaviour
                 CanSpawnPickup = false;
                 ActivateAbilty();
             }
- 
 
             other.gameObject.SetActive(false);
         }

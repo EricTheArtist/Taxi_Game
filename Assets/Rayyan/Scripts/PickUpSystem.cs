@@ -31,6 +31,7 @@ public class PickUpSystem : MonoBehaviour
 
     public ParticleSystem CoinEffect;
     public ParticleSystem CoinsEffect;
+    public ParticleSystem LunchboxEffect;
 
     BasicDailyReward BDR;
     AbilitySystem ABS;
@@ -115,6 +116,7 @@ public class PickUpSystem : MonoBehaviour
         {
             BDR.ButtonClaimReward();
             other.gameObject.SetActive(false);
+            LunchboxEffect.Play();
         }
     }
 
