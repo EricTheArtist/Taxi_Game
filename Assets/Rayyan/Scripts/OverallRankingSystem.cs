@@ -14,15 +14,21 @@ public class OverallRankingSystem : MonoBehaviour
     private float overAllScore;
 
     private CurrencySystem _currencySystem;
-    private Mamello_PickUpSystem _pickUpSystem;
+    private PickUpSystem _pickUpSystem;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         _currencySystem = player.GetComponent<CurrencySystem>();
-        _pickUpSystem = player.GetComponent<Mamello_PickUpSystem>();
+        _pickUpSystem = player.GetComponent<PickUpSystem>();
     }
 
+    public void ResetValues()
+    {
+        _pickUpSystem.passengerCount = 0;
+        _pickUpSystem.copsEscaped = 0;
+        _pickUpSystem.greenLightPassed = 0;
+    }
     public void ScoreCalculator()
     {
         //checks between the two distance scores and sets greatest one
@@ -103,7 +109,7 @@ public class OverallRankingSystem : MonoBehaviour
         //-----------------------------------------------------------------------------
         overAllScore = (longestDistance + mostPassengers + mostRunCoins + mostRunEscapes + mostGreenRobots)/5;
         PlayerPrefs.SetFloat("OverAllScore",overAllScore );
-
+        Debug.Log("OverAll Calculations Done");
        
        
     }

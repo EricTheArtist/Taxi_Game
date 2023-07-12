@@ -57,9 +57,13 @@ public class GameEndSystem : MonoBehaviour
     private GoogleHandlerScript googleHandlerScript;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private AudioClip _crashSoundClip;
+
+    private OverallRankingSystem _overallRankingSystem;
+    public GameObject GameManager;
     // Start is called before the first frame update
     void Start()
     {
+        _overallRankingSystem = GameManager.GetComponent<OverallRankingSystem>();
         THS = gameObject.GetComponent<Test_HighScore>();
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
@@ -127,6 +131,7 @@ public class GameEndSystem : MonoBehaviour
         endgame_ui.SetActive(true);
         welcome_ui_dynamic.SetActive(true);
         Endgame_Calculations();
+        _overallRankingSystem.ResetValues();
         //call endgame calculations here
         //save players current amount
     }
@@ -134,19 +139,23 @@ public class GameEndSystem : MonoBehaviour
     {
         run_curreny_text.SetText(currency_system.run_amount.ToString());
         Score_Text.SetText(THS.scoreInt.ToString());
-
+        _overallRankingSystem.ScoreCalculator();
         
         if (HMM.SteeringWheelActive == true)
         {
             HighScore = PlayerPrefs.GetInt("HighScoreSteering");
             //call leaderboard submit score
             googleHandlerScript.SteeringScoreHandler();
+            googleHandlerScript.PassengerCountHandler();
+            googleHandlerScript.OverAllScoreHandler();
             Debug.Log("Steeringscore pushed");
         }
         else
         {
             HighScore = PlayerPrefs.GetInt("HighScore");
             googleHandlerScript.SwippingScoreHandler();
+            googleHandlerScript.PassengerCountHandler();
+            googleHandlerScript.OverAllScoreHandler();
             Debug.Log("Swipingscore pushed");
         }
 
