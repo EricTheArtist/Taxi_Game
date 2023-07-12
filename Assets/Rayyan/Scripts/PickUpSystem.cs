@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class PickUpSystem : MonoBehaviour
 {   
    public int passengerCount=0;
    public int greenLightPassed = 0;
    public int copsEscaped = 0;
+
+    public int TotalPassengerCount = 0;
+    public TMP_Text PassengerCountText;
     //[SerializeField]
     //List<int> passengers = new List<int>();
 
@@ -43,6 +47,8 @@ public class PickUpSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TotalPassengerCount = PlayerPrefs.GetInt("TotalPassengerCount");
+        PassengerCountText.SetText(TotalPassengerCount.ToString());
         passengerCount = 0;
         copsEscaped = 0;
         greenLightPassed = 0;
@@ -212,6 +218,9 @@ public class PickUpSystem : MonoBehaviour
     void AddPassenger()//Perhaps we can change this to read in a specific number of passengers as a point and add that same number
     {
         passengerCount++;
+        TotalPassengerCount++;
+        PlayerPrefs.SetInt("TotalPassengerCount", TotalPassengerCount);
+        PassengerCountText.SetText(TotalPassengerCount.ToString());
         SoundManager.Instance.PlaySound(_passengerCollectClip);
         currencySystem.run_amount=currencySystem.Addition_Function(7, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
         currencySystem.Eric_AddCoins(7); //adds 7 coins to the players saved coins
