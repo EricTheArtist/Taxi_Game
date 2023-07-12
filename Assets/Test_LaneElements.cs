@@ -33,7 +33,7 @@ public class Test_LaneElements : MonoBehaviour
 
     public GameObject SceneryParentObject;
     public GameObject[] SceneryPrefabs;
-    int ScoreThreshold = 100;
+    public int ScoreThreshold = 20;
     int SceneryPrefabIndex = 0;
 
 
