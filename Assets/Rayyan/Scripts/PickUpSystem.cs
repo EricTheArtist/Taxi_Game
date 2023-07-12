@@ -184,11 +184,16 @@ public class PickUpSystem : MonoBehaviour
             Test_Robot TR =  other.gameObject.GetComponent<Test_Robot>();
             if(TR.RedLightON == true && CopIsChasing == false && ABS.CanEscapeCop == false) // starts the cop chase if the player exits the robot while it it is red
             {
+
                 controller.movementSpeed += 10;
                 CopIsChasing = true;
                 Cops.SetActive(true);
                 Invoke("CopChase", CopChaseDuration);
                 Invoke("Escaped", CopChaseDuration);
+            }
+            if (ABS.CanEscapeCop == true && TR.RedLightON == true)
+            {
+                ABS.UseEscapeCopsAbility();
             }
             else
             {

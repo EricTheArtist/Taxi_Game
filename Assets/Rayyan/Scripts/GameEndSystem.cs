@@ -53,6 +53,7 @@ public class GameEndSystem : MonoBehaviour
     SimpleInputNamespace.TestCharacterController controller;
 
     public UnityEvent CrashEvent;
+    public UnityEvent CopCrashEvent;
 
     private GoogleHandlerScript googleHandlerScript;
     [SerializeField] private GameObject gameManager;
@@ -83,9 +84,17 @@ public class GameEndSystem : MonoBehaviour
     {
         if (other.gameObject.tag =="Obstruction")
         {
-            CrashEvent.Invoke();
+            
             Collison_Crash();
             other.gameObject.SetActive(false);
+            if (PUS.CopIsChasing == true)
+            {
+                CopCrashEvent.Invoke();
+            }
+            else
+            {
+                CrashEvent.Invoke();
+            }
         }
     }
     void Collison_Crash()

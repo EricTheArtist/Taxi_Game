@@ -107,7 +107,7 @@ public class AbilityUpgrader : MonoBehaviour
             TimeToUpgrade = 10;
             SetIcon(4);
         }
-        if (carIndex == 3) //landcruiser
+        if (carIndex == 3 || carIndex == 6) //landcruiser
         {
 
             AbilityTitle.SetText("SHIELD");
@@ -134,7 +134,7 @@ public class AbilityUpgrader : MonoBehaviour
 
             SetIcon(1);
         }
-        if (carIndex == 0 || carIndex == 6)
+        if (carIndex == 0)
         {
             AbilityTitle.SetText("NO ABILITY");
             SecondsValue.SetText("N/A");

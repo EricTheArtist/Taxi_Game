@@ -20,7 +20,8 @@ public class NarritiveSystem : MonoBehaviour
     public string NI_ShopWelcome;
     public string NI_CaughtByCop; //has function
     public string NI_1stHighScoreUploadedToLeaderboard; //this currently happens when they crash for first time
-    public string NI_1st5KCoins; 
+    public string NI_1st5KCoins;
+    public string NI_CrashWithCop;
 
 
     // Start is called before the first frame update
@@ -79,6 +80,11 @@ public class NarritiveSystem : MonoBehaviour
     public void NI_CaughtAtRobot()
     {
         OpenInterface(NI_CaughtByCop,C_Police);
+    }
+
+    public void NI_CrashWithCopChase()
+    {
+        OpenInterface(NI_CrashWithCop,C_Police);
     }
 
 
