@@ -167,6 +167,11 @@ public class Test_LaneElements : MonoBehaviour
             }
         }
 
+        if (THS.scoreInt < 50)
+        {
+            ScoreThreshold = ScoreThresholdStatic;
+        }
+
         if (THS.scoreInt > ScoreThreshold && SceneryPrefabs.Length>0)
         {
             int NumOfPrefabs = SceneryPrefabs.Length;
@@ -186,6 +191,7 @@ public class Test_LaneElements : MonoBehaviour
             else
             {
                 SceneryPrefabIndex = 0;
+                
             }
             
             ScoreThreshold += ScoreThresholdStatic;

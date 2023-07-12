@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
         }
         if (!PlayerPrefs.HasKey("SavedVolume"))
         {
-            PlayerPrefs.SetInt("SavedVolume", 1);
+            PlayerPrefs.SetFloat("SavedVolume", 1);
         }
 
         float savedVolume = PlayerPrefs.GetFloat("SavedVolume");
