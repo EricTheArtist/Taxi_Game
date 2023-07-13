@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
 {
-    public Animator CharacterAnimEric;
+    //public Animator CharacterAnimEric;
     public Transform LeftStartPos;
     public Transform RightStartPos;
 
