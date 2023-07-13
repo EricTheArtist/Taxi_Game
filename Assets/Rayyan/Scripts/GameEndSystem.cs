@@ -225,7 +225,7 @@ public class GameEndSystem : MonoBehaviour
     public void play_button()
     {
         
-        welcome_ui_static.SetActive(false);
+        //welcome_ui_static.SetActive(false);
         welcome_ui_dynamic.SetActive(false);
         if (StartCarAnim != null)
         {
