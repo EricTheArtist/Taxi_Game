@@ -61,9 +61,11 @@ public class GameEndSystem : MonoBehaviour
 
     private OverallRankingSystem _overallRankingSystem;
     public GameObject GameManager;
+    AbilitySystem ABS;
     // Start is called before the first frame update
     void Start()
     {
+        ABS = gameObject.GetComponent<AbilitySystem>();
         _overallRankingSystem = GameManager.GetComponent<OverallRankingSystem>();
         THS = gameObject.GetComponent<Test_HighScore>();
         currency_system = GetComponent<CurrencySystem>();
@@ -86,6 +88,7 @@ public class GameEndSystem : MonoBehaviour
         {
             
             Collison_Crash();
+            Handheld.Vibrate();
             other.gameObject.SetActive(false);
             if (PUS.CopIsChasing == true)
             {
@@ -99,7 +102,7 @@ public class GameEndSystem : MonoBehaviour
     }
     void Collison_Crash()
     {
-        
+        ABS.UseEscapeCopsAbility();
         SoundManager.Instance.PlaySound(_crashSoundClip);
         Debug.Log("Hit and Endgame");
         endgame = true;
