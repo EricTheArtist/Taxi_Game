@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ExternalPurchaseNotice : MonoBehaviour
 {
+    public static ExternalPurchaseNotice NoticeInstance;
     public GameObject Notice;
 
     
@@ -15,9 +17,31 @@ public class ExternalPurchaseNotice : MonoBehaviour
     public TMP_Text run_amount_text;
     public TMP_Text run_amount_shadow;
 
-    void Start()
+    private void Start()
     {
-        
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+
+    }
+
+    private void ChangedActiveScene(Scene current, Scene next)
+    {
+        run_amount_text = GameObject.FindGameObjectWithTag("CurrencyText").GetComponent<TMP_Text>();
+        run_amount_shadow = GameObject.FindGameObjectWithTag("CurrencyShadow").GetComponent<TMP_Text>();
+    }
+
+
+    private void Awake()
+    {
+
+        if (NoticeInstance == null)
+        {
+            NoticeInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void externalPurchaseSucced(Product product)
