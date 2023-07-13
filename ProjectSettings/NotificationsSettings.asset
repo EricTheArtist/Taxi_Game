@@ -29,14 +29,35 @@
             "m_Keys": [
                 "UnityNotificationAndroidRescheduleOnDeviceRestart",
                 "UnityNotificationAndroidUseCustomActivity",
-                "UnityNotificationAndroidCustomActivityString"
+                "UnityNotificationAndroidCustomActivityString",
+                "UnityNotificationAndroidScheduleExactAlarms"
             ],
             "m_Values": [
                 "False",
                 "False",
-                "com.unity3d.player.UnityPlayerActivity"
+                "com.unity3d.player.UnityPlayerActivity",
+                "0"
             ]
         },
-        "DrawableResources": []
+        "DrawableResources": [
+            {
+                "Id": "icon_small",
+                "Type": 0,
+                "Asset": {
+                    "fileID": 2800000,
+                    "guid": "abd0e463ef200774c9a5668ba9068207",
+                    "type": 3
+                }
+            },
+            {
+                "Id": "icon_large",
+                "Type": 1,
+                "Asset": {
+                    "fileID": 2800000,
+                    "guid": "074a1c22255ec3a4daf9ac3d912ad25a",
+                    "type": 3
+                }
+            }
+        ]
     }
 }
