@@ -141,6 +141,7 @@ public class GameEndSystem : MonoBehaviour
     void Endgame()
     {
         endgame_ui.SetActive(true);
+        controller.breakButton.SetActive(false);
         welcome_ui_dynamic.SetActive(true);
         Endgame_Calculations();
         _overallRankingSystem.ResetValues();
@@ -187,7 +188,7 @@ public class GameEndSystem : MonoBehaviour
             Destroy(StartCar);
         }
         Debug.Log("Game Restarted");
-
+        endgame = false;
         //reset if the player died by stoping at a red light while being chased by police
         PUS.stoppedAtRed = false;
 

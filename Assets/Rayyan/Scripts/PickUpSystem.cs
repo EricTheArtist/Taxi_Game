@@ -151,7 +151,7 @@ public class PickUpSystem : MonoBehaviour
             {
                 controller.breakButton.SetActive(false);
             }
-            if (controller.isBraking == false && stoppedAtRed == false && TR.RedLightON == true) // if the player is moving and the red light is on
+            if (controller.isBraking == false && stoppedAtRed == false && TR.RedLightON == true && !GES.endgame) // if the player is moving and the red light is on
             {
                 controller.breakButton.SetActive(true);
             }

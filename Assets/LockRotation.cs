@@ -22,6 +22,6 @@ public class LockRotation : MonoBehaviour
 
     private void OnDisable()
     {
-        //SoundManager.Instance.
+        SoundManager.Instance.StopSound();
     }
 }

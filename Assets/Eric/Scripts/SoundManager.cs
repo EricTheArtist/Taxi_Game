@@ -47,6 +47,11 @@ public class SoundManager : MonoBehaviour
         _effectsSource.PlayOneShot(clip);
     }
 
+    public void StopSound()
+    {
+        _effectsSource.Stop();
+    }
+
     public void ChangeMasterVolume(float value)
     {
         AudioListener.volume = value;
