@@ -29,8 +29,8 @@ public class AndroidNotificationHandler : MonoBehaviour
     //setup for the actual notification that is going to be sent
     var notification = new AndroidNotification();
     notification.Title = "Howzit Bra!";
-    notification.Text = "People are late for work! Theres no taxis in the street";
-    notification.FireTime = System.DateTime.Now.AddSeconds(10); //sent within 10 seconds of exiting app
+    notification.Text = "Your daily skaftin is waiting for you! Come find it on the road.";
+    notification.FireTime = System.DateTime.Now.AddHours(24); //sent within 24 hours of exiting app
     notification.SmallIcon = "my_custom_icon_id";
     notification.LargeIcon = "my_custom_large_icon_id";
 
