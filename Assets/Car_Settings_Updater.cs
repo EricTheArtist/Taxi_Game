@@ -36,7 +36,10 @@ public class Car_Settings_Updater : MonoBehaviour
 
     public GameObject[] RimTransform;
     public GameObject[] RimPrefabs;
-    
+
+    public GameObject[] TankRimTransform;
+    public GameObject[] LastTankRims;
+
 
     // Start is called before the first frame update
     void Start()
@@ -122,6 +125,16 @@ public class Car_Settings_Updater : MonoBehaviour
             
             int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
             Instantiate(RimPrefabs[activerim], RimTransform[j].transform);
+        }
+
+        if (ActiveCar == 6) //if tank enabled
+        {
+        for (int k = 0; k < TankRimTransform.Length; k++)
+        {
+            Destroy(LastTankRims[k]);
+            int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+            LastTankRims[k] = Instantiate(RimPrefabs[activerim], TankRimTransform[k].transform);
+        }
         }
     }
 }

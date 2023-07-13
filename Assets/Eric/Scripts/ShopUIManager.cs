@@ -75,6 +75,9 @@ public class ShopUIManager : MonoBehaviour
     public GameObject[] RimPrefabs;
     public GameObject[] LastRims;
 
+    public GameObject[] TankRimTransform;
+    public GameObject[] LastTankRims;
+
     AbilityUpgrader AU;
 
     RectTransform rectTransform;
@@ -367,6 +370,15 @@ public class ShopUIManager : MonoBehaviour
             int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
             LastRims[j] = Instantiate(RimPrefabs[activerim], RimTransform[j].transform);
         }
+        //if (ActiveCar == 6) //if tank enabled
+        //{
+            for (int k = 0; k <TankRimTransform.Length; k++)
+            {
+                Destroy(LastTankRims[k]);
+                int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+                LastTankRims[k] = Instantiate(RimPrefabs[activerim], TankRimTransform[k].transform);
+            }
+        //}
     }
 
 
