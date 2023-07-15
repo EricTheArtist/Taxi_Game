@@ -6,12 +6,12 @@ public class OverallRankingSystem : MonoBehaviour
 {
 
     //Distance | Passenger Count | Coin Run Collection | Most Escapes | Green Robots 
-    private float longestDistance;
-    private float mostPassengers;
-    private float mostRunCoins;
-    private float mostRunEscapes;
-    private float mostGreenRobots;
-    private float overAllScore;
+    private int longestDistance;
+    private int mostPassengers;
+    private int mostRunCoins;
+    private int mostRunEscapes;
+    private int mostGreenRobots;
+    private int overAllScore;
 
     private CurrencySystem _currencySystem;
     private PickUpSystem _pickUpSystem;
@@ -34,13 +34,13 @@ public class OverallRankingSystem : MonoBehaviour
         //checks between the two distance scores and sets greatest one
         #region Set Longest Distance
 
-        if (PlayerPrefs.GetInt("HighsScore") > PlayerPrefs.GetInt("HighSocreSteering"))
+        if (PlayerPrefs.GetInt("HighScore") > PlayerPrefs.GetInt("HighScoreSteering"))
         {
             longestDistance = PlayerPrefs.GetInt("HighScore");
         }
         else
         {
-            longestDistance = PlayerPrefs.GetInt("HighScoreSteeringt");
+            longestDistance = PlayerPrefs.GetInt("HighScoreSteering");
         }
 
         #endregion
@@ -107,9 +107,31 @@ public class OverallRankingSystem : MonoBehaviour
         #endregion
         
         //-----------------------------------------------------------------------------
+        #region Sets Overall Highscore
+        
         overAllScore = (longestDistance + mostPassengers + mostRunCoins + mostRunEscapes + mostGreenRobots)/5;
-        PlayerPrefs.SetFloat("OverAllScore",overAllScore );
-        Debug.Log("OverAll Calculations Done");
+       /* Debug.Log("This is Green Lights: " +mostGreenRobots +" = "+ PlayerPrefs.GetInt("MostGreenLights") +
+                  "This is Escapes: " + mostRunEscapes +" = "+ PlayerPrefs.GetInt("MostEscapes")+
+                  "This Passengers: " + mostPassengers +" = "+ PlayerPrefs.GetInt("MostPassengers")+
+                  "This is Coins: " + mostRunCoins +" = "+  PlayerPrefs.GetInt("LongestCoinRun")+
+                  "This is Distance: " + longestDistance +" = "+ PlayerPrefs.GetInt("HighScore")
+        );
+        Debug.Log("OverAll Calculations Done: " +PlayerPrefs.GetInt("OverAllScore") + "||" + overAllScore);
+*/
+        if (PlayerPrefs.GetInt("OverAllScore") < overAllScore)
+        {
+            //Debug.Log("Setting new over all score: ");
+            PlayerPrefs.SetInt("OverAllScore", overAllScore);
+            overAllScore = PlayerPrefs.GetInt("OverAllScore");
+        }
+        else
+        {
+            overAllScore = PlayerPrefs.GetInt("OverAllScore");
+        }
+
+        #endregion
+        //PlayerPrefs.SetInt("OverAllScore",overAllScore );
+       // Debug.Log("OverAll Calculations Done: " +PlayerPrefs.GetInt("OverAllScore") + "||" + overAllScore);
        
        
     }

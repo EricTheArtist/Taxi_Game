@@ -153,22 +153,19 @@ public class GameEndSystem : MonoBehaviour
         run_curreny_text.SetText(currency_system.run_amount.ToString());
         Score_Text.SetText(THS.scoreInt.ToString());
         _overallRankingSystem.ScoreCalculator();
-        
+        googleHandlerScript.PassengerCountHandler();
+        googleHandlerScript.OverAllScoreHandler();
         if (HMM.SteeringWheelActive == true)
         {
             HighScore = PlayerPrefs.GetInt("HighScoreSteering");
             //call leaderboard submit score
             googleHandlerScript.SteeringScoreHandler();
-            googleHandlerScript.PassengerCountHandler();
-            googleHandlerScript.OverAllScoreHandler();
             Debug.Log("Steeringscore pushed");
         }
         else
         {
             HighScore = PlayerPrefs.GetInt("HighScore");
             googleHandlerScript.SwippingScoreHandler();
-            googleHandlerScript.PassengerCountHandler();
-            googleHandlerScript.OverAllScoreHandler();
             Debug.Log("Swipingscore pushed");
         }
 

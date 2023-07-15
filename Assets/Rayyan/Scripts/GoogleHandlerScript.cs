@@ -66,6 +66,7 @@ public class GoogleHandlerScript : MonoBehaviour
 
         public void OverAllScoreHandler()
         {
+            Debug.Log("Check and Add Overall Highscore");
             if (GameServices.Instance.IsLoggedIn())
             {
                 indexNumberLeaderboards = 0;
@@ -77,7 +78,8 @@ public class GoogleHandlerScript : MonoBehaviour
             
         }
         public void SwippingScoreHandler()
-        {
+        { 
+            Debug.Log("Check and Add Swipping Highscore");
             if (GameServices.Instance.IsLoggedIn())
             {
                 indexNumberLeaderboards = 3;
@@ -92,6 +94,7 @@ public class GoogleHandlerScript : MonoBehaviour
         } 
         public void SteeringScoreHandler()
         {
+            Debug.Log("Check and Add Steering Highscore");
             if (GameServices.Instance.IsLoggedIn())
             {
                 indexNumberLeaderboards = 2;
@@ -103,11 +106,14 @@ public class GoogleHandlerScript : MonoBehaviour
         }
         public void PassengerCountHandler()
         {
+            
+            Debug.Log("Check and Add Passenger Collected Highscore");
             if (GameServices.Instance.IsLoggedIn())
             {
                 indexNumberLeaderboards = 1;
                 long passengerCount = 0;
                 passengerCount = PlayerPrefs.GetInt("MostPassengers");//add passenger count prefs
+                //Debug.Log("GoogleHandler Passenger Count: " + passengerCount);
                 //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                 GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.PassengersCount, ScoreSubmitted);
             }
