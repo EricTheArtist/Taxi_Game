@@ -25,7 +25,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
 
     private void ChangedActiveScene(Scene current, Scene next)
     {
-        run_amount_text = GameObject.FindGameObjectWithTag("CurrencyText").GetComponent<TMP_Text>();
+        run_amount_text = GameObject.FindGameObjectWithTag("CurrencyText").GetComponent<TMP_Text>(); //do not worry of null refrence
         run_amount_shadow = GameObject.FindGameObjectWithTag("CurrencyShadow").GetComponent<TMP_Text>();
     }
 
