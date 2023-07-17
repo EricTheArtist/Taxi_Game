@@ -13,6 +13,7 @@ public class LoadingScreen : MonoBehaviour
         LoadImage.color = Color.black;
         Invoke("EndLoading", 2);
     }
+    
 
     void EndLoading()
     {

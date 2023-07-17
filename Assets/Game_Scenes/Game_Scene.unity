@@ -2446,7 +2446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48.000305}
+  m_AnchoredPosition: {x: 0, y: -48.000244}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &143137370
@@ -5990,6 +5990,7 @@ GameObject:
   - component: {fileID: 362088069}
   - component: {fileID: 362088068}
   - component: {fileID: 362088074}
+  - component: {fileID: 362088075}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6108,6 +6109,42 @@ MonoBehaviour:
   Paused: 0
   WelcomeMenu: {fileID: 0}
   PauseMenu: {fileID: 1549937502}
+--- !u!114 &362088075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362088067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8cbafc09bfdb86479e1319b49e49c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveColor:
+    serializedVersion: 2
+    rgba: 4280205366
+  InactiveColor:
+    serializedVersion: 2
+    rgba: 4280821948
+  SteerigActiveImage: {fileID: 530541189}
+  SteeringWheelActive: 0
+  Entersteering:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1881841151}
+        m_TargetAssemblyTypeName: NarritiveSystem, Assembly-CSharp
+        m_MethodName: NI_OpenSteeringwheel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  controller: {fileID: 930167903}
 --- !u!1 &370260116
 GameObject:
   m_ObjectHideFlags: 0
@@ -13128,7 +13165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530541184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8cbafc09bfdb86479e1319b49e49c1c, type: 3}
   m_Name: 
@@ -13216,7 +13253,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 530541186}
+      - m_Target: {fileID: 362088075}
         m_TargetAssemblyTypeName: HorizontalModeManager, Assembly-CSharp
         m_MethodName: ToggleSteerigwheel
         m_Mode: 1
@@ -18254,7 +18291,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: If this screen does not close after 5s please close and restart the app.
+  m_text: If this screen does not close after 20s please try close and restart the
+    app.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
