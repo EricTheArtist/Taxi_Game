@@ -6,7 +6,7 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     public List<GameObject> roads;
-    private float offset = 20f;
+    private float offset = 10f;
     int clearLane = 2;
     Test_LaneElements TLE;
     void Start()
