@@ -32,7 +32,7 @@ public class Test_Robot : MonoBehaviour
             Countdown -= Time.deltaTime;
         }
         
-        CountdownInt = (int)Countdown;
+        CountdownInt = (int)Countdown + 1;
         RobotText.SetText(CountdownInt.ToString());
         if(Countdown < 0 && Donecounting == false)
         {
