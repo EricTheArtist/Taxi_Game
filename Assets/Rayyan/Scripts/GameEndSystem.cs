@@ -62,6 +62,7 @@ public class GameEndSystem : MonoBehaviour
     private OverallRankingSystem _overallRankingSystem;
     public GameObject GameManager;
     AbilitySystem ABS;
+    public Camera MainCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -183,6 +184,7 @@ public class GameEndSystem : MonoBehaviour
         if (StartCar != null)
         {
             Destroy(StartCar);
+            MainCam.fieldOfView = 100;
         }
         Debug.Log("Game Restarted");
         endgame = false;
