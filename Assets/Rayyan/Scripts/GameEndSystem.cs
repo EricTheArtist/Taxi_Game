@@ -27,7 +27,7 @@ public class GameEndSystem : MonoBehaviour
     public GameObject settigns_ui_dynamic;
     CurrencySystem currency_system;
     public PickUpSystem PUS;
-    public IS_Script ISS_Ads;
+    //public IS_Script ISS_Ads;
     int DeathCountForAd;
     public int DeathsBetweenAds = 5;
 
@@ -72,8 +72,8 @@ public class GameEndSystem : MonoBehaviour
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
-        ISS_Ads.LoadBannerAd(0);
-        ISS_Ads.LoadFullAd();
+        //ISS_Ads.LoadBannerAd(0);
+        //ISS_Ads.LoadFullAd();
         googleHandlerScript = gameManager.GetComponent<GoogleHandlerScript>();
     }
 
@@ -115,7 +115,7 @@ public class GameEndSystem : MonoBehaviour
 
         if (DeathCountForAd >= DeathsBetweenAds && THS.scoreInt > 300)
         {
-            ISS_Ads.ShowFullAd();
+            //ISS_Ads.ShowFullAd();
             DeathCountForAd = 0;
         }
     }
@@ -128,7 +128,7 @@ public class GameEndSystem : MonoBehaviour
 
         if (DeathCountForAd == DeathsBetweenAds)
         {
-            ISS_Ads.ShowFullAd();
+            //ISS_Ads.ShowFullAd();
             DeathCountForAd = 0;
         }
 
@@ -238,7 +238,7 @@ public class GameEndSystem : MonoBehaviour
             restart_button();
         }
 
-        ISS_Ads.DestroyBannerAd();
+        //ISS_Ads.DestroyBannerAd();
         RewardHomeScreenButton.SetActive(false);
 
 

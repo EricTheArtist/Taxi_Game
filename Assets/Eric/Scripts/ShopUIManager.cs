@@ -30,7 +30,7 @@ public class ShopUIManager : MonoBehaviour
     public GameObject[] Shops;
     public Button[] Tabs;
 
-    public IS_Script ADscript;
+    //public IS_Script ADscript;
 
     //public bool updatedV = true;
     //public bool updatedH = true;
@@ -107,12 +107,12 @@ public class ShopUIManager : MonoBehaviour
 
         if(verticalOrientation == true)
         {
-            ADscript.LoadBannerAd(0);
+            //ADscript.LoadBannerAd(0);
             LayoutVertical();
         }
         if(verticalOrientation == false)
         {
-            ADscript.DestroyBannerAd();
+            //ADscript.DestroyBannerAd();
             LayoutHorizontal();
         }
     }

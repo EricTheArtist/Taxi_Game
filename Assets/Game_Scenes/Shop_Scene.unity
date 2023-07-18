@@ -18515,7 +18515,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1911911327}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: ShowRewardAd
         m_Mode: 1
@@ -28818,7 +28818,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &897515428
 PrefabInstance:
@@ -41954,7 +41954,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322222878
 GameObject:
@@ -43267,7 +43267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -417.5}
+  m_AnchoredPosition: {x: 30, y: -229}
   m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1349863433
@@ -52858,7 +52858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1656912013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66174,54 +66174,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908775062}
   m_CullTransparentMesh: 1
---- !u!1 &1911911326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1911911328}
-  - component: {fileID: 1911911327}
-  m_Layer: 0
-  m_Name: IS_Script
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1911911327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911911326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f95aac65eac61445a60c8482512a7c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowFullAddButton: {fileID: 0}
-  CS: {fileID: 0}
-  SUIM: {fileID: 2051236335}
-  RewardRecievedScreen: {fileID: 1250695568}
---- !u!4 &1911911328
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911911326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1918871, y: -1.1495049, z: 9.204252}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1914842906
 GameObject:
   m_ObjectHideFlags: 0
@@ -71533,7 +71485,6 @@ MonoBehaviour:
   - {fileID: 562928553}
   - {fileID: 51333853}
   - {fileID: 1144159467}
-  ADscript: {fileID: 1911911327}
   colour1Sample: {fileID: 1662871313}
   colour2Sample: {fileID: 875144740}
   TaxiMaterial: {fileID: 896256058938567236}
