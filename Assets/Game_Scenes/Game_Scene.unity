@@ -1875,50 +1875,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108931834}
   m_CullTransparentMesh: 1
---- !u!1 &118738832
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 118738834}
-  - component: {fileID: 118738833}
-  m_Layer: 0
-  m_Name: IS_Script
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &118738833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118738832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f95aac65eac61445a60c8482512a7c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &118738834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118738832}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1918871, y: -1.1495049, z: 9.204252}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119996079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,7 +2398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48.000122}
+  m_AnchoredPosition: {x: 0, y: -48.000366}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &143137370
@@ -7095,7 +7051,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &455611063
 GameObject:
@@ -14490,7 +14446,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &608831345
 PrefabInstance:
@@ -15390,7 +15346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118738833}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: LoadFullAd
         m_Mode: 1
@@ -15745,7 +15701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &681402645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16948,7 +16904,7 @@ Transform:
   m_Children:
   - {fileID: 1475542823}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730440465
 GameObject:
@@ -17776,7 +17732,7 @@ PrefabInstance:
     - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1995571284987025719, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -20880,7 +20836,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118738833}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: DestroyBannerAd
         m_Mode: 1
@@ -21262,7 +21218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118738833}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: ShowRewardAd
         m_Mode: 1
@@ -22775,7 +22731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 930167926}
   yOffset: 3
-  zOffset: -7
+  zOffset: -5
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24620,7 +24576,7 @@ Transform:
   m_Children:
   - {fileID: 738359913}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1049276818
 MonoBehaviour:
@@ -28410,7 +28366,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118738833}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: LoadBannerAd
         m_Mode: 1
@@ -36220,7 +36176,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 118738833}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: ShowFullAd
         m_Mode: 1
@@ -44108,7 +44064,7 @@ Transform:
   - {fileID: 2026213849}
   - {fileID: 1068393839}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683465646
 GameObject:
@@ -49462,7 +49418,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 118738833}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
         m_MethodName: ShowRewardAd
         m_Mode: 1
@@ -51194,8 +51150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -28.4, y: 119}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -3, y: 88}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839549840
 MonoBehaviour:
@@ -51731,7 +51687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1883413606
 GameObject:
@@ -59907,7 +59863,7 @@ PrefabInstance:
     - target: {fileID: 1616665674677100007, guid: b70ffac58e80c1847a8cdb8d49ad9d8d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1616665674677100007, guid: b70ffac58e80c1847a8cdb8d49ad9d8d,
         type: 3}
@@ -60172,7 +60128,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ISS_Ads
       value: 
-      objectReference: {fileID: 118738833}
+      objectReference: {fileID: 0}
     - target: {fileID: 1995571284987025675, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: MainCam
