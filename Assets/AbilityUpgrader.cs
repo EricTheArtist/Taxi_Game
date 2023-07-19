@@ -76,7 +76,7 @@ public class AbilityUpgrader : MonoBehaviour
         
 
 
-        if (carIndex == 2 || carIndex == 5) //golf or BMW
+        if (carIndex == 2 || carIndex == 5 ||carIndex == 7) //golf or BMW
         {
 
             //Set title text
