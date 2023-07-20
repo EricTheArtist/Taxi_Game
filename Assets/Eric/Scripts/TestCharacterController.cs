@@ -13,7 +13,7 @@ namespace SimpleInputNamespace
 
         public bool SteeringWheel;
         public bool game_over;
-        public float movementSpeed = 10f; // speed of forward movement and of horizontal movement when using steering wheel
+        public float movementSpeed; // speed of forward movement and of horizontal movement when using steering wheel
         public float maxMovementSpeed = 40f;
         public float MovementIncrement = 4;
         [Header("Steering Wheel")]

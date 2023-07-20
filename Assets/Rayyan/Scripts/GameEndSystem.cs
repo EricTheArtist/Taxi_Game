@@ -206,7 +206,7 @@ public class GameEndSystem : MonoBehaviour
         //THS.ResetScore();
 
         // reset the momentum of the player
-        controller.movementSpeed = 10f;
+        controller.movementSpeed = 5f;
 
         // reset the obsticle spawning system
         RS.ClearRoads();
