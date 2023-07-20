@@ -90,7 +90,7 @@ public class AbilitySystem : MonoBehaviour
             //sets value of ability timer
             ArmourAbiltyTimer = PlayerPrefs.GetFloat("Ability_Armour");
         }
-        if (Carindex == 1) //Quantum
+        if (Carindex == 1 || Carindex == 8) //Quantum
         {
             abilityType = AbilityType.DoubleCoins;
             Ability_Text.SetText("2 x COINS");

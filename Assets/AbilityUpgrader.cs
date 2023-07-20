@@ -121,7 +121,7 @@ public class AbilityUpgrader : MonoBehaviour
             SetIcon(3);
 
         }
-        if (carIndex == 1) //Quantum
+        if (carIndex == 1 || carIndex == 8) //Quantum
         {
 
             AbilityTitle.SetText("2X COINS");
@@ -166,7 +166,7 @@ public class AbilityUpgrader : MonoBehaviour
             SUIM.DeductCoins(UpgradeCostInt);
             NewTimeVal = TimeToUpgrade + 1;
 
-            if (CarINDEX == 2 || CarINDEX == 5) //golf or BMW
+            if (CarINDEX == 2 || CarINDEX == 5 || CarINDEX == 7) //golf or BMW
             {
                 PlayerPrefs.SetFloat("Ability_Speed", NewTimeVal);
             }
@@ -174,11 +174,11 @@ public class AbilityUpgrader : MonoBehaviour
             {
 
             }
-            if (CarINDEX == 3) //landcruiser
+            if (CarINDEX == 3 || CarINDEX == 6) //landcruiser
             {
                 PlayerPrefs.SetFloat("Ability_Armour", NewTimeVal);
             }
-            if (CarINDEX == 1) //Quantum
+            if (CarINDEX == 1 || CarINDEX == 8) //Quantum
             {
                 PlayerPrefs.SetFloat("Ability_Double", NewTimeVal);
             }

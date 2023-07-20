@@ -10,6 +10,10 @@ using UnityEngine.Events;
 public class ShopUIManager : MonoBehaviour
 {
     public int Coins;
+    public int Passengers;
+    public Color CoinsCol;
+    public Color PassengerCol;
+
     public TMP_Text coins_amount_text;
     public TMP_Text coins_amount_shadow;
     public GameObject shopInterface;
@@ -133,6 +137,8 @@ public class ShopUIManager : MonoBehaviour
         AU = gameObject.GetComponent<AbilityUpgrader>();
 
         Coins = PlayerPrefs.GetInt("Main Amount");
+        Passengers = PlayerPrefs.GetInt("TotalPassengerCount");
+
         updateCoinsText();
         refreshcolouronsamples();
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
@@ -289,6 +295,13 @@ public class ShopUIManager : MonoBehaviour
         updateCoinsText();
     }
 
+    public void DeductPassengers(int deductAmount)
+    {
+        SoundManager.Instance.PlaySound(_coinCollectClip);
+        Passengers = Passengers - deductAmount;
+        PlayerPrefs.SetInt("TotalPassengerCount", Passengers);
+    }
+
     public void AddCoins(int AddAmount)
     {
         Coins = Coins + AddAmount;
@@ -307,6 +320,18 @@ public class ShopUIManager : MonoBehaviour
             return false;
         }
     
+    }
+    public bool CheckForEnoughPassengers(int Cost) //Public function that must be called each time the player attempts to but something with coins
+    {
+        if (Cost <= Passengers)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     public void ShopTabClicked(int ButtonIndex)
@@ -443,16 +468,33 @@ public class ShopUIManager : MonoBehaviour
     public void OpenPurchaseDialouge(int price, string PlayerPrefname,int carindex, int rimindex) //if car index or rim index ar 100 they will be considered as null
     {
         PurchaseDialouge.SetActive(true);
-        P_Text_amount.SetText(price.ToString());
+        P_Text_amount.SetText(price.ToString()); 
         P_Price = price;
         P_Playerprefname = PlayerPrefname;
         P_CarIndex = carindex;
         P_Rimindex = rimindex;
+
+        if (carindex == 8)
+        {
+            P_Text_amount.color = PassengerCol;
+        }
+        else
+        {
+            P_Text_amount.color = CoinsCol;
+        }
     }
 
     public void ProcessPurchase()
     {
-        DeductCoins(P_Price);
+        if(P_CarIndex == 8) // for buying with passengers
+        {
+            DeductPassengers(P_Price);
+        }
+        if(P_CarIndex!= 8)
+        {
+            DeductCoins(P_Price);
+        }
+        
         PlayerPrefs.SetInt(P_Playerprefname, (true ? 1 : 0));
 
         if(P_CarIndex != 100)
