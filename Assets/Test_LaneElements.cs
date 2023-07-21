@@ -98,65 +98,9 @@ public class Test_LaneElements : MonoBehaviour
         {
             CanCollectLunchbox = BDR.CanClaimReward(); //checks to see if lunchbox has been collected yet
         }
+
         
-
-        for (int i = 0; i < Lanes.Length; i++) // loops through all the lanes
-        {
-            if(i != Openlane) // is the lane is not open set an obsticle to that lane
-            {
-                SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-4f,7f)); //gives the obsticel a random position on the lane
-
-                
-                if(controller.isBraking == true) //The chance of an obsticle to spawn is based on the percent ratio of the current speed to max speed, meaning that at max speed 4 lanes will always have obsticles
-                {
-                    ChanceToSawn = 1 - (controller._movementSpeed / controller.maxMovementSpeed);
-                }
-                if(controller.isBraking == false)
-                {
-                    ChanceToSawn = 1 - (controller.movementSpeed / controller.maxMovementSpeed);
-                }
-                //Debug.Log("Obsticle spawn probability: " + ChanceToSawn);
-                if (Random.value > ChanceToSawn) 
-                {
-                    SpawnedObsticles[i].SetActive(true);
-                } 
-            }
-            else if((i == 0 && i == Openlane)||(i == 4 && i == Openlane)) // is the lane is onpen and on the edge place a passender pickup
-            {
-
-                spawnedpassengerpickup.transform.localPosition = Lanes[i];
-                spawnedpassengerpickup.SetActive(true);
-                spawnedcoins.SetActive(false);
-                foreach (Transform child in spawnedpassengerpickup.transform)
-                {
-                    child.gameObject.SetActive(true);
-                }
-            }
-            else // if tthe lase is open spawn coins or ability pickup
-            {
-                if(Random.value > AbilitySpawnChance && AS.CanSpawnPickup == true && AbilityEnabled == true)
-                {
-                    abilityObject.transform.localPosition = Lanes[i];
-                    abilityObject.SetActive(true);
-                }
-                else if(Random.value > LunchboxSpawnChance && CanCollectLunchbox == true)
-                {
-                    ObjectCoolerbox.transform.localPosition = Lanes[i];
-                    ObjectCoolerbox.SetActive(true);
-                }
-                else
-                {
-                    spawnedcoins.transform.localPosition = Lanes[i];
-                    spawnedcoins.SetActive(true);
-                    foreach (Transform child in spawnedcoins.transform)
-                    {
-                        child.gameObject.SetActive(true);
-                    }
-                }
-
-            }
-            
-        }
+        
 
         if(RobotEnabled== true)
         {
@@ -196,11 +140,78 @@ public class Test_LaneElements : MonoBehaviour
             
             ScoreThreshold += ScoreThresholdStatic;
         }
-        
+
+        StartCoroutine(GenerateLaneContent(Openlane));
 
         
 
     }
+
+
+    IEnumerator GenerateLaneContent(int Openlane)
+    {
+        for (int i = 0; i < Lanes.Length; i++) // loops through all the lanes
+        {
+            if (i != Openlane) // is the lane is not open set an obsticle to that lane
+            {
+                SpawnedObsticles[i].transform.localPosition = new Vector3(Lanes[i].x, Lanes[i].y + 0.5f, Random.Range(-4f, 7f)); //gives the obsticel a random position on the lane
+
+
+                if (controller.isBraking == true) //The chance of an obsticle to spawn is based on the percent ratio of the current speed to max speed, meaning that at max speed 4 lanes will always have obsticles
+                {
+                    ChanceToSawn = 1 - (controller._movementSpeed / controller.maxMovementSpeed);
+                }
+                if (controller.isBraking == false)
+                {
+                    ChanceToSawn = 1 - (controller.movementSpeed / controller.maxMovementSpeed);
+                }
+                //Debug.Log("Obsticle spawn probability: " + ChanceToSawn);
+                if (Random.value > ChanceToSawn)
+                {
+                    SpawnedObsticles[i].SetActive(true);
+                }
+            }
+            else if ((i == 0 && i == Openlane) || (i == 4 && i == Openlane)) // is the lane is onpen and on the edge place a passender pickup
+            {
+
+                spawnedpassengerpickup.transform.localPosition = Lanes[i];
+                spawnedpassengerpickup.SetActive(true);
+                spawnedcoins.SetActive(false);
+                foreach (Transform child in spawnedpassengerpickup.transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+            else // if tthe lase is open spawn coins or ability pickup
+            {
+                if (Random.value > AbilitySpawnChance && AS.CanSpawnPickup == true && AbilityEnabled == true)
+                {
+                    abilityObject.transform.localPosition = Lanes[i];
+                    abilityObject.SetActive(true);
+                }
+                else if (Random.value > LunchboxSpawnChance && CanCollectLunchbox == true)
+                {
+                    ObjectCoolerbox.transform.localPosition = Lanes[i];
+                    ObjectCoolerbox.SetActive(true);
+                }
+                else
+                {
+                    spawnedcoins.transform.localPosition = Lanes[i];
+                    spawnedcoins.SetActive(true);
+                    foreach (Transform child in spawnedcoins.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+
+            }
+
+
+            yield return null;
+        }
+    }
+
+
 
     public void DestroyLast() // deactivatets all pickup and obsticle objects
     {
