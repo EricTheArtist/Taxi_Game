@@ -65,7 +65,15 @@ public class CurrencySystem : MonoBehaviour
     public void Eric_DeductCoins(int deductAmount) //all coin deduction in the game scene must run through this function
     {
         Coins = PlayerPrefs.GetInt("Main Amount");
-        Coins = Coins - deductAmount;
+        if (deductAmount > Coins)
+        {
+            Coins = 0;
+        }
+        else
+        {
+            Coins = Coins - deductAmount;
+        }
+        
         PlayerPrefs.SetInt("Main Amount", Coins);
         RefreshCoinAmountDisplay();
     }

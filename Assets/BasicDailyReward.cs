@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class BasicDailyReward : MonoBehaviour
 {
@@ -57,32 +58,7 @@ public class BasicDailyReward : MonoBehaviour
 
     }
 
-
-    public void ButtonClaimReward()
-    {
-        GrantReward();
-    }
-
-    public bool CanClaimReward()
-    {
-        // Calculate the time difference between now and the last rewarded time
-        TimeSpan timeSinceLastReward = DateTime.Now - lastRewardTime;
-
-        // Check if at least 24 hours have passed
-        return timeSinceLastReward.TotalHours >= 24;
-    }
-
-    private void GrantReward()
-    {
-        //Set reward claim button active 
-        RewardNotifiyerIcon.SetActive(true);
-        PlayerPrefs.SetInt("RewardPendingOpen", (true ? 1 : 0));
-        // Update the last rewarded time to the current time
-        lastRewardTime = DateTime.Now;
-        PlayerPrefs.SetString("LastRewardTime", lastRewardTime.ToString());
-    }
-
-    public void OpenUnlockScreen()
+    public void OpenUnlockScreen() //reward button toggle
     {
         if (UnlockScreen.activeInHierarchy)
         {
@@ -91,14 +67,26 @@ public class BasicDailyReward : MonoBehaviour
         else
         {
             UnlockScreen.SetActive(true);
-            updateUnlockInfo();
+            updateUnlockInfo(); // refreshes dispaly depending on if a reward is avalable
+
+            StartCoroutine(GetSeverTime());
         }
         
     }
 
+    public void ButtonClaimReward()
+    {
+        //Set reward claim button active 
+        RewardNotifiyerIcon.SetActive(true);
+        PlayerPrefs.SetInt("RewardPendingOpen", (true ? 1 : 0));
+        // Update the last rewarded time to the current time
+        lastRewardTime = DateTime.Now;
+        PlayerPrefs.SetString("LastRewardTime", lastRewardTime.ToString());
+    }
+    
     void updateUnlockInfo()
     {
-        bool CanClaim = CanClaimReward();
+        bool CanClaim = CanClaimReward(); //checks time difference
         bool Pending = (PlayerPrefs.GetInt("RewardPendingOpen") != 0);
         if (CanClaim == true)
         {
@@ -116,6 +104,19 @@ public class BasicDailyReward : MonoBehaviour
             RewardUnlockButton.SetActive(false);
         }
     }
+
+
+    public bool CanClaimReward()
+    {
+
+
+        // Calculate the time difference between now and the last rewarded time
+        TimeSpan timeSinceLastReward = DateTime.Now - lastRewardTime;
+
+        // Check if at least 24 hours have passed
+        return timeSinceLastReward.TotalHours >= 24;
+    }
+
 
     public void ButtonOpenLunchbox()
     {
@@ -188,6 +189,39 @@ public class BasicDailyReward : MonoBehaviour
         PlayerPrefs.SetInt(PaintRewardPlayerPrefs[ColourIndex], (true ? 1 : 0));
     }
 
+    private IEnumerator GetSeverTime()
+    {
+        string url = "https://timechecktaxiranked.000webhostapp.com/severtime.php";
 
+        UnityWebRequest webReq = UnityWebRequest.Get(url);
+
+        webReq.timeout = 5;
+
+        yield return webReq.SendWebRequest();
+
+        string timeAsString = webReq.downloadHandler.text;
+
+        if(DateTime.TryParse(timeAsString, out DateTime serverTime))
+        {
+            TimeSpan timedifferencefromsever = DateTime.Now - serverTime;
+
+            // Check if at least 24 hours have passed
+            if( timedifferencefromsever.TotalHours >= 48)
+            {
+                UnlockScreen.SetActive(true);
+                RewardInfroText.SetText("Time traveling detected, 5000 coin fee has been applied.");
+                CS.Eric_DeductCoins(5000);
+            }
+
+
+
+            Debug.Log("Reward Severtime: " + serverTime);
+        }
+        else
+        {
+            Debug.Log("No sever respone");
+        }
+
+    }
 
 }
