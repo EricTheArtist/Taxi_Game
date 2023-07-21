@@ -16,9 +16,19 @@ public class UpdatePrompt : MonoBehaviour
 
     private AppUpdateManager _appUpdateManager;
 
+    private void Awake()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            this._appUpdateManager = new AppUpdateManager();
+        }
+    }
+
     private void Start()
     {
         StartCoroutine(CheckUpdates());
+        //Initiate Class
+        //_appUpdateManager = new AppUpdateManager();
     }
 
     IEnumerator CheckUpdates()
@@ -27,6 +37,11 @@ public class UpdatePrompt : MonoBehaviour
             _appUpdateManager.GetAppUpdateInfo();
         yield return appUpdateInfo;
 
+        if(appUpdateInfo.Error == AppUpdateErrorCode.ErrorUnknown)
+        {
+            inAppUpdateStatus.text = "Some Errors Have Occured";
+            print("Some Errors Have Occured");
+        }
         if (appUpdateInfo.IsSuccessful)
         {
             var appUpdateResult = appUpdateInfo.GetResult();
@@ -45,12 +60,12 @@ public class UpdatePrompt : MonoBehaviour
         }
     }
 
-    IEnumerator StartImmediateUpdate(AppUpdateInfo _appUpdateInfo, AppUpdateOptions appUpdateOptions)
+    IEnumerator StartImmediateUpdate(AppUpdateInfo appUpdateInfo_i, AppUpdateOptions appUpdateOptions_i)
     {
-        var startUpdareRequest = _appUpdateManager.StartUpdate(
-            _appUpdateInfo,
-            appUpdateOptions
+        var startUpdateRequest = _appUpdateManager.StartUpdate(
+            appUpdateInfo_i,
+            appUpdateOptions_i
         );
-        yield return startUpdareRequest;
+        yield return startUpdateRequest;
     }
 }
