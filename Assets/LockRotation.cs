@@ -15,7 +15,7 @@ public class LockRotation : MonoBehaviour
         gameObject.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z -2.5f); 
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         SoundManager.Instance.PlaySound(policesirenClip);
     }

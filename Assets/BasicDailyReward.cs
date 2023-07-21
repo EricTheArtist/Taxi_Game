@@ -123,7 +123,7 @@ public class BasicDailyReward : MonoBehaviour
         RewardNotifiyerIcon.SetActive(false);
         updateUnlockInfo();
         OpenUnlockScreen();
-        LunchBoxOBJ = Instantiate(LunchboxAnimationObject, new Vector3(0, 1.43f, -6.13f), Quaternion.identity);
+        LunchBoxOBJ = Instantiate(LunchboxAnimationObject, new Vector3(0, 1.43f, -3.9f), Quaternion.identity);
         //grant reward of coins etc...
         Invoke("ShowRewards", 3);
         

@@ -62,10 +62,14 @@ public class GameEndSystem : MonoBehaviour
     private OverallRankingSystem _overallRankingSystem;
     public GameObject GameManager;
     AbilitySystem ABS;
+    Car_Settings_Updater CSU;
     public Camera MainCam;
+
+    float RestartSpeed = 10f;
     // Start is called before the first frame update
     void Start()
     {
+        CSU = gameObject.GetComponent<Car_Settings_Updater>();
         ABS = gameObject.GetComponent<AbilitySystem>();
         _overallRankingSystem = GameManager.GetComponent<OverallRankingSystem>();
         THS = gameObject.GetComponent<Test_HighScore>();
@@ -87,7 +91,9 @@ public class GameEndSystem : MonoBehaviour
     {
         if (other.gameObject.tag =="Obstruction")
         {
-            
+            RestartSpeed = 10f;
+            CSU.CarChasisHolder.SetActive(false);
+            CSU.Drivechain.SetActive(true);
             Collison_Crash();
             Handheld.Vibrate();
             other.gameObject.SetActive(false);
@@ -104,6 +110,7 @@ public class GameEndSystem : MonoBehaviour
     void Collison_Crash()
     {
         ABS.UseEscapeCopsAbility();
+
         SoundManager.Instance.PlaySound(_crashSoundClip);
         Debug.Log("Hit and Endgame");
         endgame = true;
@@ -185,7 +192,11 @@ public class GameEndSystem : MonoBehaviour
         {
             Destroy(StartCar);
             MainCam.fieldOfView = 100;
+            RestartSpeed = 5f;
         }
+
+        CSU.CarChasisHolder.SetActive(true);
+        CSU.Drivechain.SetActive(false);
         Debug.Log("Game Restarted");
         endgame = false;
         //reset if the player died by stoping at a red light while being chased by police
@@ -206,7 +217,8 @@ public class GameEndSystem : MonoBehaviour
         //THS.ResetScore();
 
         // reset the momentum of the player
-        controller.movementSpeed = 5f;
+        controller.movementSpeed = RestartSpeed;
+        
 
         // reset the obsticle spawning system
         RS.ClearRoads();

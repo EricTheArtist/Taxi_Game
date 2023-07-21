@@ -40,6 +40,8 @@ public class Car_Settings_Updater : MonoBehaviour
     public GameObject[] TankRimTransform;
     public GameObject[] LastTankRims;
 
+    public GameObject Drivechain;
+
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +96,7 @@ public class Car_Settings_Updater : MonoBehaviour
             if (i == CarIndex)
             {   //activates car mesh
                 Meshes[i].SetActive(true);
+                
                 //sets materials
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex", _CarBaseTex[i]);
                 TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", _CarMaskTex[i]);
