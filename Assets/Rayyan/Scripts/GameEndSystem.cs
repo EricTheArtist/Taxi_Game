@@ -92,7 +92,12 @@ public class GameEndSystem : MonoBehaviour
         if (other.gameObject.tag =="Obstruction")
         {
             RestartSpeed = 10f;
-            CSU.CarChasisHolder.SetActive(false);
+
+            if (controller.SteeringWheel == false)
+            { 
+                CSU.CarChasisHolder.SetActive(false);
+            }
+                
             CSU.Drivechain.SetActive(true);
             Collison_Crash();
             Handheld.Vibrate();
@@ -195,7 +200,11 @@ public class GameEndSystem : MonoBehaviour
             RestartSpeed = 5f;
         }
 
-        CSU.CarChasisHolder.SetActive(true);
+        if (controller.SteeringWheel == false)
+        {
+            CSU.CarChasisHolder.SetActive(true);
+        }
+        
         CSU.Drivechain.SetActive(false);
         Debug.Log("Game Restarted");
         endgame = false;
