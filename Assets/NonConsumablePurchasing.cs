@@ -13,6 +13,7 @@ using UnityEngine.Events;
 
 
 
+
 public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
 {
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
@@ -255,7 +256,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         test_product = args.purchasedProduct;
 
         //var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
-        //var result = validator.Validate(args.purchasedProduct.receipt);
+        //var result = validator.Validate(args.purchasedProduct.receipt); //validate puchase
         //MyDebug("Validate = " + result.ToString());
 
         if (m_GooglePlayStoreExtensions.IsPurchasedProductDeferred(test_product))

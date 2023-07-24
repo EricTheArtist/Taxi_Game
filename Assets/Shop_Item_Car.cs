@@ -60,7 +60,7 @@ public class Shop_Item_Car : MonoBehaviour
 
     public void Button_Clicked_Car()
     {
-
+        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
         if (Premium == true && Owned == false)
         {
             NCP.BuyProduct(MyCarProductID);
@@ -68,13 +68,19 @@ public class Shop_Item_Car : MonoBehaviour
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false && CarIndex!= 8) // if the player has enough money and does not own the item
         {
 
-                SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, CarIndex, 100);
+            SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, CarIndex, 100);
 
         }
         if (SUIM.CheckForEnoughPassengers(Price) == true && Owned == false && Premium == false && CarIndex == 8)
         {
-                SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, CarIndex, 100);
+            SUIM.OpenPurchaseDialouge(Price, PlayerPrefName, CarIndex, 100);
 
+        }
+        if (Owned == false) //if they player does not own the car 
+        {
+            SUIM.UpdateCars(CarIndex);
+            SEM.SwitchedCars();
+            SUIM.LockControl(true);
         }
         else if (Owned == true) // if the player owns the item sets it to the active car
         {
@@ -84,15 +90,10 @@ public class Shop_Item_Car : MonoBehaviour
             SEM.SwitchedCars();
             SUIM.LockControl(false);
         }
-        else if (Owned == false) //if they player does not own the car 
-        {
-            SUIM.UpdateCars(CarIndex);
-            SEM.SwitchedCars();
-            SUIM.LockControl(true);
-        }
+
     }
 
-    public void RealCurrencyCarPurchaseSucess() // called by the IAP button when a payment is sucessful
+    public void RealCurrencyCarPurchaseSucess() // subscribed to event called by NonConsumablePurchasing when a payment is sucessful
     {
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
         if (Owned == true && NCP.ProductIDfromButton == MyCarProductID)
