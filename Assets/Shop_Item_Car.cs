@@ -95,9 +95,11 @@ public class Shop_Item_Car : MonoBehaviour
 
     public void RealCurrencyCarPurchaseSucess() // subscribed to event called by NonConsumablePurchasing when a payment is sucessful
     {
-        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-        if (Owned == true && NCP.ProductIDfromButton == MyCarProductID)
+        if (isActiveAndEnabled)
         {
+            Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+            if (Owned == true && NCP.ProductIDfromButton == MyCarProductID)
+            {
             PriceBG.SetActive(false);
         
             PlayerPrefs.SetInt("ActiveCar", CarIndex);
@@ -106,7 +108,9 @@ public class Shop_Item_Car : MonoBehaviour
 
             SEM.BoughtNewCar();
             SUIM.LockControl(false);
+            }
         }
+
 
         
 

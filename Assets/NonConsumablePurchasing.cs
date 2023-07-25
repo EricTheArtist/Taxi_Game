@@ -255,10 +255,11 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     {
         test_product = args.purchasedProduct;
 
-        //var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
-        //var result = validator.Validate(args.purchasedProduct.receipt); //validate puchase
+#if !UNITY_EDITOR
+        var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
+        var result = validator.Validate(args.purchasedProduct.receipt); //validate puchase
         //MyDebug("Validate = " + result.ToString());
-
+#endif
         if (m_GooglePlayStoreExtensions.IsPurchasedProductDeferred(test_product))
         {
             //The purchase is Deferred.

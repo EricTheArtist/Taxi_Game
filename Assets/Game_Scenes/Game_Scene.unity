@@ -24971,6 +24971,7 @@ GameObject:
   - component: {fileID: 1049276815}
   - component: {fileID: 1049276818}
   - component: {fileID: 1049276819}
+  - component: {fileID: 1049276820}
   m_Layer: 0
   m_Name: IAPRestoreAndListner
   m_TagString: Untagged
@@ -25017,7 +25018,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049276814}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7dd963c1a8b427b96975fa211478a1, type: 3}
   m_Name: 
@@ -25060,6 +25061,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070cf48df2d4d3db819987c544aa328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1049276820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049276814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca99bed164ef644a9d26626359c5c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProductIDColour01: com.vetkoekstudios.taxiranked.colour01
+  ProductIDColour02: com.vetkoekstudios.taxiranked.colour02
+  ProductIDColour03: com.vetkoekstudios.taxiranked.colour03
+  ProductIDColour04: com.vetkoekstudios.taxiranked.colour04
+  ProductIDColour02Top: com.vetkoekstudios.taxiranked.colour02top
+  ProductIDColour03Top: com.vetkoekstudios.taxiranked.colour03top
+  ProductIDColour04Top: com.vetkoekstudios.taxiranked.colour04top
+  ProductIDRims01: com.vetkoekstudios.taxiranked.rims01
+  ProductIDRims02: com.vetkoekstudios.taxiranked.rims02
+  ProductIDRims03: com.vetkoekstudios.taxiranked.rims03
+  ProductIDRims04: com.vetkoekstudios.taxiranked.rims04
+  ProductIDRims05: com.vetkoekstudios.taxiranked.rims05
+  ProductIDRims06: com.vetkoekstudios.taxiranked.rims06
+  ProductIDCar02: com.vetkoekstudios.taxiranked.car02
+  ProductIDCar03: com.vetkoekstudios.taxiranked.car03
 --- !u!1 &1052601487
 GameObject:
   m_ObjectHideFlags: 0
