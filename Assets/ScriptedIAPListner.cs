@@ -40,7 +40,7 @@ public class ScriptedIAPListner : MonoBehaviour, IDetailedStoreListener
 
     public string ProductIDCar02 = "com.vetkoekstudios.taxiranked.car02";
     public string ProductIDCar03 = "com.vetkoekstudios.taxiranked.car03";
-    public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car03";
+    public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car04";
 
     //refrence to purchase notice
     ExternalPurchaseNotice EPN;

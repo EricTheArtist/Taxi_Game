@@ -62,7 +62,7 @@ public class AbilitySystem : MonoBehaviour
         //setting which ability should be acive based on what car is selected
         Carindex = PlayerPrefs.GetInt("ActiveCar");
 
-        if(Carindex == 2 || Carindex == 5 || Carindex == 7) //golf or BMW or delorian
+        if(Carindex == 2 || Carindex == 5 || Carindex == 7 || Carindex == 9) //golf or BMW or delorian or golf7
         {
             abilityType = AbilityType.SpeedBoost;
             Ability_Text.SetText("BOOST");
@@ -90,7 +90,7 @@ public class AbilitySystem : MonoBehaviour
             //sets value of ability timer
             ArmourAbiltyTimer = PlayerPrefs.GetFloat("Ability_Armour");
         }
-        if (Carindex == 1 || Carindex == 8) //Quantum
+        if (Carindex == 1 || Carindex == 8) //Quantum or hance
         {
             abilityType = AbilityType.DoubleCoins;
             Ability_Text.SetText("2 x COINS");

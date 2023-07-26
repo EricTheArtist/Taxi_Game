@@ -66,7 +66,7 @@ public class Test_LaneElements : MonoBehaviour
         {
             int Carindex = PlayerPrefs.GetInt("ActiveCar");
 
-            if (Carindex == 2 || Carindex == 5 || Carindex == 7) //golf or BMW
+            if (Carindex == 2 || Carindex == 5 || Carindex == 7 || Carindex == 9) //golf or BMW or delorian or golf 7
             {
                 AbilityObjectSpeedBoost.SetActive(true);
             }
@@ -78,7 +78,7 @@ public class Test_LaneElements : MonoBehaviour
             {
                 AbilityObjectShield.SetActive(true);
             }
-            if (Carindex == 1 || Carindex == 8) //Quantum
+            if (Carindex == 1 || Carindex == 8) //Quantum or hance
             {
                 AbilityObject2X.SetActive(true);
             }

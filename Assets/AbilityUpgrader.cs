@@ -76,7 +76,7 @@ public class AbilityUpgrader : MonoBehaviour
         
 
 
-        if (carIndex == 2 || carIndex == 5 ||carIndex == 7) //golf or BMW
+        if (carIndex == 2 || carIndex == 5 ||carIndex == 7 || carIndex == 9) //golf or BMW or delorian or golf 7
         {
 
             //Set title text
@@ -166,7 +166,7 @@ public class AbilityUpgrader : MonoBehaviour
             SUIM.DeductCoins(UpgradeCostInt);
             NewTimeVal = TimeToUpgrade + 1;
 
-            if (CarINDEX == 2 || CarINDEX == 5 || CarINDEX == 7) //golf or BMW
+            if (CarINDEX == 2 || CarINDEX == 5 || CarINDEX == 7 || CarINDEX == 9) //golf or BMW or delorian or golf 7
             {
                 PlayerPrefs.SetFloat("Ability_Speed", NewTimeVal);
             }
@@ -178,7 +178,7 @@ public class AbilityUpgrader : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("Ability_Armour", NewTimeVal);
             }
-            if (CarINDEX == 1 || CarINDEX == 8) //Quantum
+            if (CarINDEX == 1 || CarINDEX == 8) //Quantum or hance
             {
                 PlayerPrefs.SetFloat("Ability_Double", NewTimeVal);
             }
