@@ -73,6 +73,50 @@ public class ExternalPurchaseNotice : MonoBehaviour
             PlayerPrefs.SetInt("Main Amount", NewBalance);
 
         }
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.coinstiny") //40k coins
+        {
+            ProductName.SetText("40 000 Coins");
+            NewBalance = CurrentBalance + 40000;
+            PlayerPrefs.SetInt("Main Amount", NewBalance);
+        }
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.coinssmall") //90k coins
+        {
+            ProductName.SetText("90 000 Coins");
+            NewBalance = CurrentBalance + 90000;
+            PlayerPrefs.SetInt("Main Amount", NewBalance);
+        }
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.coinsmediumv2") //200k coins
+        {
+            ProductName.SetText("200 000 Coins");
+            NewBalance = CurrentBalance + 200000;
+            PlayerPrefs.SetInt("Main Amount", NewBalance);
+        }
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.coinslargev2") //420k coins
+        {
+            ProductName.SetText("420 000 Coins");
+            NewBalance = CurrentBalance + 420000;
+            PlayerPrefs.SetInt("Main Amount", NewBalance);
+        }
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.coinsextralargev2") //850k coins
+        {
+            ProductName.SetText("850 000 Coins");
+            NewBalance = CurrentBalance + 850000;
+            PlayerPrefs.SetInt("Main Amount", NewBalance);
+        }
+
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.coinsmassivev2") //1750k coins
+        {
+            ProductName.SetText("1 730 000 Coins");
+            NewBalance = CurrentBalance + 1730000;
+            PlayerPrefs.SetInt("Main Amount", NewBalance);
+        }
+
+
         if (product.definition.id == "com.vetkoekstudios.taxiranked.colour01") //colour 1 (not used)
         {
             PlayerPrefs.SetInt("Colour01_Premium", (true ? 1 : 0));
