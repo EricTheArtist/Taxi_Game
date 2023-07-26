@@ -94,17 +94,20 @@ public class Shop_Item_Rim : MonoBehaviour
 
     public void RealCurrencyRimsPurchaseSucess() // called by the IAP button when a payment is sucessful
     {
-
-        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-        if(Owned == true && NCS.ProductIDfromButton == MyRimProductID)
+        if (isActiveAndEnabled)
         {
-            PriceBG.SetActive(false);
-            PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
-            SUIM.UpdateRims();
+            Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+            if(Owned == true && NCS.ProductIDfromButton == MyRimProductID)
+            {
+                PriceBG.SetActive(false);
+                PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
+                SUIM.UpdateRims();
 
-            SEM.BoughtNewCar();
+                SEM.BoughtNewCar();
 
+            }
         }
+
         
         
         

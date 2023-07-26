@@ -5289,7 +5289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451117038837983507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.31, z: -0.695}
+  m_LocalPosition: {x: 0, y: -0.31, z: -0.644}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15762,6 +15762,7 @@ MonoBehaviour:
   - {fileID: 304901633050992530}
   - {fileID: 666301632520877936}
   - {fileID: 4817613022617475352}
+  - {fileID: 7157282791396406345}
   _CarBaseTex:
   - {fileID: 2800000, guid: b1c672a7900abf241afa27f3c6f6e661, type: 3}
   - {fileID: 2800000, guid: 5a2e2628762599645b086f1dca82b797, type: 3}
@@ -15772,6 +15773,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 332104e77f812444bb30d56fea7c9998, type: 3}
   - {fileID: 2800000, guid: c87f63bafc5722749ad808e41e98ed48, type: 3}
   - {fileID: 2800000, guid: 3308fa23d8a2bfb45afcfde1ce95d084, type: 3}
+  - {fileID: 2800000, guid: 8109784175eebe647a919b7a8132896c, type: 3}
   _CarMaskTex:
   - {fileID: 2800000, guid: 249be02bf841d3b4d9b3abf70ced17e3, type: 3}
   - {fileID: 2800000, guid: daf0891e9474e074baa391b083294d8f, type: 3}
@@ -15782,6 +15784,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: d4e5515b5ea1f7a4099beef598493a7b, type: 3}
   - {fileID: 2800000, guid: 2049de661ea033c48b509a86b78d3d6a, type: 3}
   - {fileID: 2800000, guid: 958c37f555b6e8645846aab945517591, type: 3}
+  - {fileID: 2800000, guid: ba03a66a866cb7240935ce36712d00fb, type: 3}
   TaxiMaterial: {fileID: 896256060650039391}
   TyresFront: {fileID: 4302278161475937966}
   TyresBack: {fileID: 1451117038837983507}
@@ -15797,6 +15800,7 @@ MonoBehaviour:
   - {x: 0, y: -0.31, z: 0.759}
   - {x: 0, y: -0.31, z: 0.764}
   - {x: 0, y: -0.31, z: 0.764}
+  - {x: 0, y: -0.31, z: 0.683}
   TyresBackPos:
   - {x: 0, y: -0.3267, z: -0.6331}
   - {x: 0, y: -0.3267, z: -0.748}
@@ -15807,6 +15811,7 @@ MonoBehaviour:
   - {x: 0, y: -0.31, z: -0.723}
   - {x: 0, y: -0.31, z: -0.695}
   - {x: 0, y: -0.31, z: -0.695}
+  - {x: 0, y: -0.31, z: -0.644}
   TyresScaleX:
   - 1
   - 0.88
@@ -15816,6 +15821,7 @@ MonoBehaviour:
   - 0.9
   - 0.9
   - 0.8
+  - 0.9
   - 0.9
   SloganPosition:
   - {x: 0, y: 0.333, z: -1.204}
@@ -15827,6 +15833,7 @@ MonoBehaviour:
   - {x: 0, y: 0.202, z: -2.006}
   - {x: 0, y: -0.169, z: -1.199}
   - {x: 0, y: 0.349, z: -1.21}
+  - {x: 0, y: 0.145, z: -0.863}
   SloganXrotation:
   - 15
   - 15
@@ -15837,6 +15844,7 @@ MonoBehaviour:
   - 0
   - 0
   - 14
+  - 41
   SloganScale:
   - 0.01
   - 0.01
@@ -15847,6 +15855,7 @@ MonoBehaviour:
   - 0.008
   - 0.008
   - 0.008
+  - 0.007
   NumberPlatePosition:
   - {x: 0, y: -0.061, z: -1.261}
   - {x: 0, y: -0.0874, z: -1.2493}
@@ -15857,6 +15866,7 @@ MonoBehaviour:
   - {x: 0, y: -0.057, z: -1.839}
   - {x: 0, y: -0.015, z: -1.2}
   - {x: 0, y: 0.0044, z: -1.234}
+  - {x: 0, y: -0.219, z: -0.98}
   CarChasisHolder: {fileID: 7353220202749501993}
   Wheelsleft:
   - {fileID: 1689087711454147191}
@@ -15874,6 +15884,7 @@ MonoBehaviour:
   - 1
   - 1
   - 1.1
+  - 1
   WheelStartAngle: 0
   RimTransform:
   - {fileID: 1689087712504900277}
@@ -16228,18 +16239,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3691509655238694763}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: -1.21}
-  m_LocalScale: {x: 0.008, y: 0.008, z: 0.008}
+  m_LocalRotation: {x: 0.35020736, y: 0, z: 0, w: 0.9366722}
+  m_LocalPosition: {x: 0, y: 0, z: -0.863}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1421491509592586688}
   m_Father: {fileID: 1129739129749937321}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 41, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.349}
+  m_AnchoredPosition: {x: 0, y: 0.145}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &312133058792596146
@@ -21466,7 +21477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4302278161475937966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.31, z: 0.764}
+  m_LocalPosition: {x: 0, y: -0.31, z: 0.683}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21535,17 +21546,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4788487874157199397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.234}
+  m_LocalPosition: {x: 0, y: 0, z: -0.98}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9107214237194035906}
   m_Father: {fileID: 1129739129749937321}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0044}
+  m_AnchoredPosition: {x: 0, y: -0.219}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5451223280795006216
@@ -21642,7 +21653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5300817199522988962
 Transform:
   m_ObjectHideFlags: 0
@@ -41506,6 +41517,89 @@ Transform:
   m_Father: {fileID: 6536045620038535484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7157282791396406345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7500769831298445043}
+  - component: {fileID: 6897207849417285974}
+  - component: {fileID: 8670338265617618332}
+  m_Layer: 0
+  m_Name: Me_Car_Golf7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7500769831298445043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157282791396406345}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.426, z: 0}
+  m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1129739129749937321}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6897207849417285974
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157282791396406345}
+  m_Mesh: {fileID: -9209436179416378997, guid: dbf060161c61afd43b36259e969711f9, type: 3}
+--- !u!23 &8670338265617618332
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157282791396406345}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7ce6d86b6e4f6f04988f3f8af3db3765, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7230555178722319658
 GameObject:
   m_ObjectHideFlags: 0
@@ -46441,6 +46535,7 @@ Transform:
   - {fileID: 1976808702161467017}
   - {fileID: 177044880258444746}
   - {fileID: 5300817199522988962}
+  - {fileID: 7500769831298445043}
   - {fileID: 7309136311133791756}
   - {fileID: 7085794413769865478}
   m_Father: {fileID: 1995571284987025719}

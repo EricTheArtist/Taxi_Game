@@ -86,6 +86,8 @@ public class Shop_Item_Colour : MonoBehaviour
 
     public void RealCurrencyColourPurchaseSucess()
     {
+        if (isActiveAndEnabled)
+        {
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
         Debug.Log("Owned Check" + PlayerPrefName + Owned);
         if(Owned == true && NCP.ProductIDfromButton == MyproductID)
@@ -96,6 +98,8 @@ public class Shop_Item_Colour : MonoBehaviour
             SaveMyColor();
 
         }
+        }
+
 
     }
 
