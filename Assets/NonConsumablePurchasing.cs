@@ -388,7 +388,11 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     private void MyDebug(string debug)
     {
         Debug.Log(debug);
-        myText.text += "\r\n" + debug;
+        if(myText != null)
+        {
+            myText.text += "\r\n" + debug;
+        }
+        
     }
 
     public void OnInitializeFailed(InitializationFailureReason error, string message)
