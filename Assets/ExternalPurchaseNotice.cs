@@ -53,6 +53,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
 
     public void externalPurchaseSucced(Product product)
     {
+        
         Notice.SetActive(true);
         
         CurrentBalance = PlayerPrefs.GetInt("Main Amount");

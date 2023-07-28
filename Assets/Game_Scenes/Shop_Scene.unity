@@ -2955,7 +2955,6 @@ GameObject:
   - component: {fileID: 62917560}
   - component: {fileID: 62917559}
   - component: {fileID: 62917558}
-  - component: {fileID: 62917557}
   - component: {fileID: 62917556}
   m_Layer: 5
   m_Name: Currency_Massive
@@ -3015,45 +3014,6 @@ MonoBehaviour:
   NCP: {fileID: 2051236336}
   ProductID: com.vetkoekstudios.taxiranked.coinsmassivev2
   PriceTag: {fileID: 1614644410}
---- !u!114 &62917557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62917554}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: com.vetkoekstudios.taxiranked.coinsmassivev2
-  buttonType: 0
-  consumePurchase: 1
-  onTransactionsRestored:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 62917556}
-        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
-        m_MethodName: CoinPurchaseSucess
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 1614644410}
 --- !u!114 &62917558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35130,7 +35090,6 @@ GameObject:
   - component: {fileID: 1079241278}
   - component: {fileID: 1079241277}
   - component: {fileID: 1079241276}
-  - component: {fileID: 1079241275}
   - component: {fileID: 1079241274}
   m_Layer: 5
   m_Name: Currency_Medium
@@ -35186,45 +35145,6 @@ MonoBehaviour:
   NCP: {fileID: 2051236336}
   ProductID: com.vetkoekstudios.taxiranked.coinsmediumv2
   PriceTag: {fileID: 2016155615}
---- !u!114 &1079241275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079241272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: com.vetkoekstudios.taxiranked.coinsmassivev2
-  buttonType: 0
-  consumePurchase: 1
-  onTransactionsRestored:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1079241274}
-        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
-        m_MethodName: CoinPurchaseSucess
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 2016155615}
 --- !u!114 &1079241276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39265,7 +39185,6 @@ GameObject:
   - component: {fileID: 1225176152}
   - component: {fileID: 1225176151}
   - component: {fileID: 1225176150}
-  - component: {fileID: 1225176149}
   - component: {fileID: 1225176148}
   m_Layer: 5
   m_Name: Currency_Large
@@ -39322,45 +39241,6 @@ MonoBehaviour:
   NCP: {fileID: 2051236336}
   ProductID: com.vetkoekstudios.taxiranked.coinslargev2
   PriceTag: {fileID: 1802406569}
---- !u!114 &1225176149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225176146}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: com.vetkoekstudios.taxiranked.coinsmassivev2
-  buttonType: 0
-  consumePurchase: 1
-  onTransactionsRestored:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1225176148}
-        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
-        m_MethodName: CoinPurchaseSucess
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 1802406569}
 --- !u!114 &1225176150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39824,7 +39704,6 @@ GameObject:
   - component: {fileID: 1230759325}
   - component: {fileID: 1230759324}
   - component: {fileID: 1230759323}
-  - component: {fileID: 1230759322}
   - component: {fileID: 1230759321}
   m_Layer: 5
   m_Name: Currency_small
@@ -39880,45 +39759,6 @@ MonoBehaviour:
   NCP: {fileID: 2051236336}
   ProductID: com.vetkoekstudios.taxiranked.coinssmall
   PriceTag: {fileID: 1898078476}
---- !u!114 &1230759322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230759319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: com.vetkoekstudios.taxiranked.coinsmassivev2
-  buttonType: 0
-  consumePurchase: 1
-  onTransactionsRestored:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1230759321}
-        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
-        m_MethodName: CoinPurchaseSucess
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 1898078476}
 --- !u!114 &1230759323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42810,7 +42650,6 @@ GameObject:
   - component: {fileID: 1322222884}
   - component: {fileID: 1322222883}
   - component: {fileID: 1322222882}
-  - component: {fileID: 1322222881}
   - component: {fileID: 1322222880}
   m_Layer: 5
   m_Name: Currency_ExtraLarge
@@ -42868,45 +42707,6 @@ MonoBehaviour:
   NCP: {fileID: 2051236336}
   ProductID: com.vetkoekstudios.taxiranked.coinsextralargev2
   PriceTag: {fileID: 1118295890}
---- !u!114 &1322222881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322222878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: com.vetkoekstudios.taxiranked.coinsmassivev2
-  buttonType: 0
-  consumePurchase: 1
-  onTransactionsRestored:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1322222880}
-        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
-        m_MethodName: CoinPurchaseSucess
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 1118295890}
 --- !u!114 &1322222882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89291,7 +89091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &7259731580459954685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -89393,7 +89193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7259731580459954682}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b79b5624d944058bd39aad2b90fb275, type: 3}
   m_Name: 
@@ -90477,7 +90277,6 @@ GameObject:
   - component: {fileID: 7337296424044160560}
   - component: {fileID: 7337296424044160561}
   - component: {fileID: 7337296424044160566}
-  - component: {fileID: 7337296424044160568}
   - component: {fileID: 7337296424044160569}
   m_Layer: 5
   m_Name: Currency_tiny
@@ -90530,45 +90329,6 @@ RectTransform:
   m_AnchoredPosition: {x: -170, y: 206.00005}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7337296424044160568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7337296424044160564}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: com.vetkoekstudios.taxiranked.coinsmassivev2
-  buttonType: 0
-  consumePurchase: 1
-  onTransactionsRestored:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7337296424044160569}
-        m_TargetAssemblyTypeName: Shop_Item_coins, Assembly-CSharp
-        m_MethodName: CoinPurchaseSucess
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 1920341416}
 --- !u!114 &7337296424044160569
 MonoBehaviour:
   m_ObjectHideFlags: 0

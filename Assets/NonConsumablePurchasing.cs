@@ -77,6 +77,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         MyAction += myFunction;
 
         InitializePurchasing();
+
     }
 
     public string priceString(string ProductID)
@@ -152,10 +153,11 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
 
     public void BuyGold(string ProductID, int payout)
     {
-        BuyProductID(ProductID);
+        
         ProductIDfromButton = ProductID;
         UnityEngine.Purchasing.Product productREF = m_StoreController.products.WithID(ProductIDfromButton);
         payoutREF = payout;
+        BuyProductID(ProductID);
     }
 
     public void BuyProduct(string ProductID)
