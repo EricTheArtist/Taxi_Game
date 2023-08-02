@@ -205,12 +205,14 @@ public class BasicDailyReward : MonoBehaviour
         {
             TimeSpan timedifferencefromsever = DateTime.Now - serverTime;
 
-            // Check if at least 24 hours have passed
+            // Check if at least 48 hours have passed
             if( timedifferencefromsever.TotalHours >= 48)
             {
                 UnlockScreen.SetActive(true);
                 RewardInfroText.SetText("Time traveling detected, 5000 coin fee has been applied.");
                 CS.Eric_DeductCoins(5000);
+                lastRewardTime = DateTime.Now;
+                PlayerPrefs.SetString("LastRewardTime", lastRewardTime.ToString());
             }
 
 
