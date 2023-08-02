@@ -14,6 +14,7 @@ public class Shop_Item_Car : MonoBehaviour
     public GameObject PriceBG;
     public string PlayerPrefName;
     public bool Premium = false;
+    public bool HWProduct = false;
     public GameObject car;
     public int CarIndex;
 
@@ -22,6 +23,7 @@ public class Shop_Item_Car : MonoBehaviour
 
     ShopEffectManager SEM;
     NonConsumablePurchasing NCP;
+    public HW_IAP_Manager HWIAPM;
 
     void Start()
     {
@@ -29,7 +31,14 @@ public class Shop_Item_Car : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
-        NCP = canvas.GetComponent<NonConsumablePurchasing>();
+        if (HWProduct == false)
+        {
+            NCP = canvas.GetComponent<NonConsumablePurchasing>();
+        }
+        if (HWProduct == true && HWIAPM == null)
+        {
+            HWIAPM = GameObject.Find("HuaweiIAPManager").GetComponent<HW_IAP_Manager>();
+        }
 
         if(PlayerPrefName == "Car00") //just for the starter vhecle
         {
@@ -51,9 +60,13 @@ public class Shop_Item_Car : MonoBehaviour
                 SUIM.UpdateCars(CarIndex);
             }
         }
-        if (Premium == true)
+        if (Premium == true &&HWProduct==false)
         {
             LocalisedPrice.text = NCP.priceString(MyCarProductID);
+        }
+        if(Premium == true && HWProduct == true)
+        {
+            LocalisedPrice.text = HWIAPM.HWpriceString(MyCarProductID);
         }
     }
 
@@ -63,7 +76,15 @@ public class Shop_Item_Car : MonoBehaviour
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
         if (Premium == true && Owned == false)
         {
-            NCP.BuyProduct(MyCarProductID);
+            if(HWProduct == false)
+            {
+                NCP.BuyProduct(MyCarProductID);
+            }
+            else if(HWProduct == true)
+            {
+                HWIAPM.PurchaseProduct(MyCarProductID);
+            }
+            
         }
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false && CarIndex!= 8) // if the player has enough money and does not own the item
         {
@@ -97,22 +118,30 @@ public class Shop_Item_Car : MonoBehaviour
     {
         if (isActiveAndEnabled)
         {
-            Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-            if (Owned == true && NCP.ProductIDfromButton == MyCarProductID)
+            string ProductIDfromPurchaser = "0";
+            if(HWProduct == false)
             {
-            PriceBG.SetActive(false);
+                ProductIDfromPurchaser = NCP.ProductIDfromButton;
+            }
+            if(HWProduct == true)
+            {
+                ProductIDfromPurchaser = HWIAPM.LastProductID;
+            }
+            
+            Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+            if (Owned == true && ProductIDfromPurchaser == MyCarProductID)
+            {
+                PriceBG.SetActive(false);
         
-            PlayerPrefs.SetInt("ActiveCar", CarIndex);
+                PlayerPrefs.SetInt("ActiveCar", CarIndex);
 
-            SUIM.UpdateCars(CarIndex);
+                SUIM.UpdateCars(CarIndex);
 
-            SEM.BoughtNewCar();
-            SUIM.LockControl(false);
+                SEM.BoughtNewCar();
+                SUIM.LockControl(false);
             }
         }
-
-
-        
+ 
 
     }
 

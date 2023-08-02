@@ -19,6 +19,8 @@ public class Shop_Item_Rim : MonoBehaviour
 
     ShopEffectManager SEM;
     NonConsumablePurchasing NCS;
+    public HW_IAP_Manager HWIAPM;
+    public bool HWProduct = false;
 
     void Start()
     {
@@ -26,7 +28,15 @@ public class Shop_Item_Rim : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
-        NCS = canvas.GetComponent<NonConsumablePurchasing>();
+        if(HWProduct == false)
+        {
+            NCS = canvas.GetComponent<NonConsumablePurchasing>();
+        }
+        if (HWProduct == true && HWIAPM == null)
+        {
+            HWIAPM = GameObject.Find("HuaweiIAPManager").GetComponent<HW_IAP_Manager>();
+        }
+
         if (PlayerPrefName == "Rim01") //just for the starter vhecle
         {
             PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
@@ -48,9 +58,13 @@ public class Shop_Item_Rim : MonoBehaviour
                 SUIM.UpdateRims();
             }
         }
-        if (Premium == true)
+        if (Premium == true && HWProduct == false)
         {
             RealMoneyPrice.text = NCS.priceString(MyRimProductID);
+        }
+        if (Premium == true && HWProduct == true)
+        {
+            RealMoneyPrice.text = HWIAPM.HWpriceString(MyRimProductID);
         }
     }
 
@@ -59,7 +73,15 @@ public class Shop_Item_Rim : MonoBehaviour
     {
         if(Premium == true && Owned == false)
         {
-            NCS.BuyProduct(MyRimProductID);
+            if (HWProduct == false)
+            {
+                NCS.BuyProduct(MyRimProductID);
+            }
+            else if (HWProduct == true)
+            {
+                HWIAPM.PurchaseProduct(MyRimProductID);
+            }
+            
         }
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false) // if the player has enough money and does not own the item
         {
@@ -96,8 +118,20 @@ public class Shop_Item_Rim : MonoBehaviour
     {
         if (isActiveAndEnabled)
         {
+            string ProductIDfromPurchaser = "0";
+            if (HWProduct == false)
+            {
+                ProductIDfromPurchaser = NCS.ProductIDfromButton;
+            }
+            if (HWProduct == true)
+            {
+                ProductIDfromPurchaser = HWIAPM.LastProductID;
+            }
+
+
+
             Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-            if(Owned == true && NCS.ProductIDfromButton == MyRimProductID)
+            if(Owned == true && ProductIDfromPurchaser == MyRimProductID)
             {
                 PriceBG.SetActive(false);
                 PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);

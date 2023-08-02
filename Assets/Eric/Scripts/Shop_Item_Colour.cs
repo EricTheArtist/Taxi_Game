@@ -29,6 +29,9 @@ public class Shop_Item_Colour : MonoBehaviour
     public bool TestWithoutIAPButton = false;
 
     public Text RealCurrencyPrice;
+
+    public HW_IAP_Manager HWIAPM;
+    public bool HWProduct = false;
     // Start is called before the first frame update
     void Start()
     {   
@@ -37,8 +40,11 @@ public class Shop_Item_Colour : MonoBehaviour
         SUIM = canvas.GetComponent<ShopUIManager>();
         ColourSample.color = Colour;
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+        if (HWProduct == true && HWIAPM == null)
+        {
+            HWIAPM = GameObject.Find("HuaweiIAPManager").GetComponent<HW_IAP_Manager>();
+        }
 
-        
 
         if (Premium == false)
         {
@@ -49,9 +55,13 @@ public class Shop_Item_Colour : MonoBehaviour
             PriceBG.SetActive(false);
 
         }
-        if (Premium == true)
+        if (Premium == true && HWProduct == false)
         {
             RealCurrencyPrice.text = NCP.priceString(MyproductID);
+        }
+        if(Premium == true &&  HWProduct == true)
+        {
+            RealCurrencyPrice.text = HWIAPM.HWpriceString(MyproductID);
         }
     }
 
@@ -77,7 +87,15 @@ public class Shop_Item_Colour : MonoBehaviour
         }
         if(Premium == true && TestWithoutIAPButton == true && Owned == false)
         {
-            NCP.BuyProduct(MyproductID);
+            if(HWProduct == false)
+            {
+                NCP.BuyProduct(MyproductID);
+            }
+            else if(HWProduct == true)
+            {
+                HWIAPM.PurchaseProduct(MyproductID);
+            }
+
         }
 
 
@@ -88,16 +106,28 @@ public class Shop_Item_Colour : MonoBehaviour
     {
         if (isActiveAndEnabled)
         {
-        Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
-        Debug.Log("Owned Check" + PlayerPrefName + Owned);
-        if(Owned == true && NCP.ProductIDfromButton == MyproductID)
-        {
-            PriceBG.SetActive(false);
-            SUIM.refreshcolouronsamples();
-            ApplyColour();
-            SaveMyColor();
+            Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
+            Debug.Log("Owned Check" + PlayerPrefName + Owned);
 
-        }
+            string ProductIDfromPurchaser = "0";
+            if (HWProduct == false)
+            {
+                ProductIDfromPurchaser = NCP.ProductIDfromButton;
+            }
+            if (HWProduct == true)
+            {
+                ProductIDfromPurchaser = HWIAPM.LastProductID;
+            }
+
+
+            if (Owned == true && ProductIDfromPurchaser == MyproductID)
+            {
+                PriceBG.SetActive(false);
+                SUIM.refreshcolouronsamples();
+                ApplyColour();
+                SaveMyColor();
+
+            }
         }
 
 

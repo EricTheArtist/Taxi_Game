@@ -404,4 +404,6 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     {
         MyDebug(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureDescription));
     }
+
+    
 }
