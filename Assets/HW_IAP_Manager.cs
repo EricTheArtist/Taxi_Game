@@ -9,8 +9,12 @@ using HuaweiMobileServices.Utils;
 
 using UnityEngine.Events;
 
+using TMPro;
+using UnityEngine.UI;
+
 public class HW_IAP_Manager : MonoBehaviour
 {
+    public TMP_Text DebugText;
     // Please insert your products via custom editor. You can find it in Huawei > Kit Settings > IAP tab.
 
     //public static Action<string> IAPLog;
@@ -55,6 +59,11 @@ public class HW_IAP_Manager : MonoBehaviour
     int NewBalance;
     public ShopUIManager SUIM;
 
+    void MyDebug(string message)
+    {
+        DebugText.SetText(message);
+    }
+
     #region Singleton
 
     public static HW_IAP_Manager Instance { get; private set; }
@@ -93,13 +102,14 @@ public class HW_IAP_Manager : MonoBehaviour
     void Awake()
     {
         Singleton();
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        //Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     void Start()
     {
         // Uncomment below if InitializeOnStart is not enabled in Huawei > Kit Settings > IAP tab.
-        //HMSIAPManager.Instance.InitializeIAP();
+        HMSIAPManager.Instance.InitializeIAP();
+        MyDebug("Calling initialize");
     }
 
     #endregion
@@ -110,10 +120,10 @@ public class HW_IAP_Manager : MonoBehaviour
     }
 
 
-    public void InitializeIAP()
+    public void InitializeIAP() //not called
     {
         Debug.Log($"InitializeIAP");
-
+        
         HMSIAPManager.Instance.InitializeIAP();
     }
 
@@ -152,9 +162,12 @@ public class HW_IAP_Manager : MonoBehaviour
 
     }
 
+
     public void PurchaseProduct(string productID)
     {
         Debug.Log($"PurchaseProduct");
+        MyDebug("Purchase request: " + productID);
+
         LastProductID = productID;
         HMSIAPManager.Instance.PurchaseProduct(productID);
     }
@@ -291,19 +304,19 @@ public class HW_IAP_Manager : MonoBehaviour
 
     private void OnInitializeIAPFailure(HMSException obj)
     {
-        //IAPLog?.Invoke("IAP is not ready.");
+        MyDebug("Initialisation failed: " + obj.ToString());
     }
 
     private void OnInitializeIAPSuccess()
     {
-        //IAPLog?.Invoke("IAP is ready.");
+        MyDebug("Initialisation Suceeded");
 
         RestoreProducts();
     }
 
     private void OnBuyProductFailure(int code)
     {
-        //IAPLog?.Invoke("Purchase Fail.");
+        MyDebug("Purchase failed: " + code.ToString());
     }
 
     #endregion

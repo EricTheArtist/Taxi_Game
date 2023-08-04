@@ -102,7 +102,7 @@ public class ShopUIManager : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
 
-        SetOrientation();
+        //SetOrientation();
     }
     void SetOrientation()
     {
@@ -122,7 +122,7 @@ public class ShopUIManager : MonoBehaviour
     }
     void OnRectTransformDimensionsChange()
     {
-        SetOrientation();
+        //SetOrientation();
     }
 
 
@@ -131,7 +131,7 @@ public class ShopUIManager : MonoBehaviour
     void Start()
     {
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
-        Screen.orientation = ScreenOrientation.AutoRotation;
+        //Screen.orientation = ScreenOrientation.AutoRotation;
         stanceStarty = CarChasisHolder.transform.localPosition.y;
 
         AU = gameObject.GetComponent<AbilityUpgrader>();
@@ -169,7 +169,7 @@ public class ShopUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TestUILayout();
+        //TestUILayout();
         UnderGlowMat.color = FCP.color;
         
 
