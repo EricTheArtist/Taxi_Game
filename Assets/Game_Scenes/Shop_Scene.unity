@@ -47631,6 +47631,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1481841783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481841786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6184393351770325311, guid: 36e63dadafdabd441a8b27da56823def,
+    type: 3}
+  m_PrefabInstance: {fileID: 1481841783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386a29b19bf0a144db6d639afcf2ce29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482286228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5919527301836750254, guid: ca83c1718363c044c87bfd309bd5003f,
@@ -73129,6 +73141,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2111314440}
+        m_TargetAssemblyTypeName: Shop_Item_Car, Assembly-CSharp
+        m_MethodName: PurchaseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1481841786}
         m_TargetAssemblyTypeName: Shop_Item_Car, Assembly-CSharp
         m_MethodName: PurchaseEvent
         m_Mode: 1
