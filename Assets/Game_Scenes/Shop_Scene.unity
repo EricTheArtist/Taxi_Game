@@ -18820,9 +18820,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IS_Script, Assembly-CSharp
-        m_MethodName: ShowRewardAd
+      - m_Target: {fileID: 1656912019}
+        m_TargetAssemblyTypeName: IS_MainScript, Assembly-CSharp
+        m_MethodName: ShowFullAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23607,7 +23607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &713216681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53852,13 +53852,14 @@ GameObject:
   - component: {fileID: 1656912015}
   - component: {fileID: 1656912014}
   - component: {fileID: 1656912013}
+  - component: {fileID: 1656912019}
   m_Layer: 5
   m_Name: RewaredADbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1656912013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54003,9 +54004,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -230.00006}
+  m_AnchoredPosition: {x: 30, y: -429.4}
   m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1656912019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656912012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135581e64774bd249a58c549a7118ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SUIM: {fileID: 2051236335}
+  RewardRecievedScreen: {fileID: 1250695568}
 --- !u!1 &1660559593
 GameObject:
   m_ObjectHideFlags: 0
