@@ -24,6 +24,7 @@ public class HW_IAP_Manager : MonoBehaviour
     List<InAppPurchaseData> activeSubscriptions = new List<InAppPurchaseData>();
 
     public UnityEvent SucessfullHWPurchase;
+    public UnityEvent InitializationEvent;
     public string LastProductID;
 
 
@@ -312,6 +313,8 @@ public class HW_IAP_Manager : MonoBehaviour
         MyDebug("Initialisation Suceeded");
 
         RestoreProducts();
+
+        InitializationEvent.Invoke();
     }
 
     private void OnBuyProductFailure(int code)

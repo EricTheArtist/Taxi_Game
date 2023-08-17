@@ -163,5 +163,9 @@ public class Shop_Item_Colour : MonoBehaviour
 
     }
 
+    public void HwColorInitialisedEvent()
+    {
+        RealCurrencyPrice.text = HWIAPM.HWpriceString(MyproductID);
+    }
 
 }

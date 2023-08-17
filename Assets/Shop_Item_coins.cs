@@ -41,4 +41,9 @@ public class Shop_Item_coins : MonoBehaviour
             PriceTag.text = HWIAPM.HWpriceString(ProductID);
         }
     }
+
+    public void HwCoinsInitialisedEvent()
+    {
+        PriceTag.text = HWIAPM.HWpriceString(ProductID);
+    }
 }

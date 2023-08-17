@@ -158,6 +158,10 @@ public class Shop_Item_Car : MonoBehaviour
 
     }
 
+    public void HwCarInitialisedEvent()
+    {
+        LocalisedPrice.text = HWIAPM.HWpriceString(MyCarProductID);
+    }
 
 
 

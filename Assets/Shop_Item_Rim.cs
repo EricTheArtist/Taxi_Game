@@ -165,5 +165,10 @@ public class Shop_Item_Rim : MonoBehaviour
 
     }
 
+    public void HwRimInitialisedEvent()
+    {
+        RealMoneyPrice.text = HWIAPM.HWpriceString(MyRimProductID);
+    }
+
 
 }
