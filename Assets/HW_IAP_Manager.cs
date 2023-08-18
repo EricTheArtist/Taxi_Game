@@ -109,8 +109,8 @@ public class HW_IAP_Manager : MonoBehaviour
     void Start()
     {
         // Uncomment below if InitializeOnStart is not enabled in Huawei > Kit Settings > IAP tab.
-        HMSIAPManager.Instance.InitializeIAP();
-        MyDebug("Calling initialize");
+        //HMSIAPManager.Instance.InitializeIAP();
+        //MyDebug("Calling initialize");
     }
 
     #endregion
