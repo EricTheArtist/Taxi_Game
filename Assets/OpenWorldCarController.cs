@@ -27,12 +27,12 @@ namespace SimpleInputNamespace
         bool SmokeR;
         bool SmokeL;
 
-        Rigidbody m_Rigidbody;
+        //Rigidbody m_Rigidbody;
         public TMP_Text SpeedText;
 
         void Start()
         {
-            m_Rigidbody = GetComponent<Rigidbody>();
+            //m_Rigidbody = GetComponent<Rigidbody>();
         }
         void Update()
         {
@@ -115,15 +115,15 @@ namespace SimpleInputNamespace
             //Vector3 movement = transform.forward * moveSpeed; // Calculate the movement vector in the object's forward direction
             //movement *= Time.fixedDeltaTime; // Scale the movement by the fixed time step
             //transform.position += movement; // Move the object in the calculated direction
-            m_Rigidbody.AddForce(transform.forward * moveSpeed);
-
+            //m_Rigidbody.AddForce(transform.forward * moveSpeed);
+            
 
 
         }
 
         void SterringWheelforce()
         {
-            transform.Rotate(Vector3.up * (SWOW.Angle / 100) * (moveSpeed/10)); // Rotate the object around its up axis
+            //transform.Rotate(Vector3.up * (SWOW.Angle / 100) * (moveSpeed/10)); // Rotate the object around its up axis
         }
 
         void DriftingSmokeControl()
