@@ -285,4 +285,10 @@ public class GameEndSystem : MonoBehaviour
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
+    public void OpenWorld_button()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
 }

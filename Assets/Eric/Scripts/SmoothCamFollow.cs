@@ -9,7 +9,7 @@ public class SmoothCamFollow : MonoBehaviour
     public Vector3 dist;
     public Transform lookTarget;
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         Vector3 dPos = cameraTarget.position + dist;
         Vector3 sPos = Vector3.Lerp(transform.position, dPos, sSpeed * Time.deltaTime);
