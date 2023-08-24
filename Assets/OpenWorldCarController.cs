@@ -27,20 +27,14 @@ namespace SimpleInputNamespace
         bool SmokeR;
         bool SmokeL;
 
-        //Rigidbody m_Rigidbody;
-        public TMP_Text SpeedText;
 
-        void Start()
-        {
-            //m_Rigidbody = GetComponent<Rigidbody>();
-        }
+
+
+
         void Update()
         {
-            //arrowInput = SimpleInput.GetAxis("Vertical"); // Get the horizontal input value from the player
 
-            SpeedText.SetText(moveSpeed.ToString());
-                DriftingSmokeControl();
- 
+            DriftingSmokeControl();
 
             if (Input.GetKeyDown(KeyCode.W)) // Check if the player pressed the 'w' key
             {
@@ -64,7 +58,6 @@ namespace SimpleInputNamespace
         {
             WheelL.transform.localEulerAngles = new Vector3(0, 180+(SWOW.Angle/5), 0);
             WheelR.transform.localEulerAngles = new Vector3(0, 0+ (SWOW.Angle/5), 0);
-            //arrowInput = SimpleInput.GetAxis("Vertical"); // Get the horizontal input value from the player
 
 
             if (isMovingforward) // Check input for forward
@@ -78,7 +71,6 @@ namespace SimpleInputNamespace
                     moveSpeed = maxSpeed;
                 }
 
-                SterringWheelforce();
 
             }
             else if (isMovingbackward) // check input for reverse
@@ -91,19 +83,19 @@ namespace SimpleInputNamespace
                 {
                     moveSpeed = -maxReverse;
                 }
-                SterringWheelforce();
+
             }
             else
             {
                 if(moveSpeed > 1)
                 {
                     moveSpeed = moveSpeed - (Time.deltaTime + acceleration);
-                    SterringWheelforce();
+
                 }
                 else if (moveSpeed < -1)
                 {
                     moveSpeed = moveSpeed + (Time.deltaTime + acceleration);
-                    SterringWheelforce();
+
                 }
                 else
                 {
@@ -112,19 +104,9 @@ namespace SimpleInputNamespace
                 
             }
 
-            //Vector3 movement = transform.forward * moveSpeed; // Calculate the movement vector in the object's forward direction
-            //movement *= Time.fixedDeltaTime; // Scale the movement by the fixed time step
-            //transform.position += movement; // Move the object in the calculated direction
-            //m_Rigidbody.AddForce(transform.forward * moveSpeed);
-            
-
-
         }
 
-        void SterringWheelforce()
-        {
-            //transform.Rotate(Vector3.up * (SWOW.Angle / 100) * (moveSpeed/10)); // Rotate the object around its up axis
-        }
+
 
         void DriftingSmokeControl()
         {
