@@ -94,7 +94,7 @@ public class AbilityUpgrader : MonoBehaviour
             SetIcon(2);
 
         }
-        if (carIndex == 4) //police truck
+        if (carIndex == 4|| carIndex == 11) //police truck
         {
 
             AbilityTitle.SetText("NO POLICE");
@@ -170,7 +170,7 @@ public class AbilityUpgrader : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("Ability_Speed", NewTimeVal);
             }
-            if (CarINDEX == 4) //police truck
+            if (CarINDEX == 4 || CarINDEX == 11) //police truck or police golf
             {
 
             }

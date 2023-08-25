@@ -48,6 +48,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     public string ProductIDCar02 = "com.vetkoekstudios.taxiranked.car02";
     public string ProductIDCar03 = "com.vetkoekstudios.taxiranked.car03";
     public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car04";
+    public string ProductIDCar05 = "com.vetkoekstudios.taxiranked.car05";
 
     public string ProductIDfromButton;
 
@@ -125,6 +126,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         builder.AddProduct(ProductIDCar02, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar03, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar04, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDCar05, ProductType.NonConsumable);
 
         UnityPurchasing.Initialize(this, builder);
         
@@ -351,6 +353,10 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
             if (ProductIDfromButton == ProductIDCar04)
             {
                 PlayerPrefs.SetInt("Car04Premium", (true ? 1 : 0));
+            }
+            if (ProductIDfromButton == ProductIDCar05)
+            {
+                PlayerPrefs.SetInt("Car05Premium", (true ? 1 : 0));
             }
 
 

@@ -41,6 +41,7 @@ public class ScriptedIAPListner : MonoBehaviour, IDetailedStoreListener
     public string ProductIDCar02 = "com.vetkoekstudios.taxiranked.car02";
     public string ProductIDCar03 = "com.vetkoekstudios.taxiranked.car03";
     public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car04";
+    public string ProductIDCar05 = "com.vetkoekstudios.taxiranked.car05";
 
     //refrence to purchase notice
     ExternalPurchaseNotice EPN;
@@ -105,6 +106,7 @@ public class ScriptedIAPListner : MonoBehaviour, IDetailedStoreListener
         builder.AddProduct(ProductIDCar02, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar03, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar04, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDCar05, ProductType.NonConsumable);
 
         UnityPurchasing.Initialize(this, builder);
 

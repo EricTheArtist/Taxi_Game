@@ -73,7 +73,7 @@ public class AbilitySystem : MonoBehaviour
 
 
         }
-        if(Carindex == 4) //police truck
+        if(Carindex == 4 || Carindex == 11) //police truck
         {
             abilityType = AbilityType.Escapist;
             Ability_Text.SetText("NO POLICE");

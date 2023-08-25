@@ -70,7 +70,7 @@ public class Test_LaneElements : MonoBehaviour
             {
                 AbilityObjectSpeedBoost.SetActive(true);
             }
-            if (Carindex == 4) //police truck
+            if (Carindex == 4 || Carindex == 11) //police truck
             {
                 AbilityObjectCooldrink.SetActive(true);
             }
