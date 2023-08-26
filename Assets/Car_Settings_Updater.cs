@@ -42,16 +42,26 @@ public class Car_Settings_Updater : MonoBehaviour
 
     public GameObject Drivechain;
 
+    public bool OpenWorldCarDisplay = false;
+
+    public int CarIndex;
 
     // Start is called before the first frame update
     void Start()
     {
 
-
+        if (OpenWorldCarDisplay)
+        {
             stanceStarty = CarChasisHolder.transform.localPosition.y;
+            ActiveCar = CarIndex;
+            UpdateCarsMain(ActiveCar);
+            UpdateRims();
 
 
-
+        }
+        else
+        {
+        stanceStarty = CarChasisHolder.transform.localPosition.y;
         ActiveCar = PlayerPrefs.GetInt("ActiveCar");
         UpdateCarsMain(ActiveCar);
         UpdateRims();
@@ -61,6 +71,8 @@ public class Car_Settings_Updater : MonoBehaviour
         ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("ColourTopSave"), out Colourtop);
         TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Colourbottom);
         TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color2", Colourtop);
+        }
+
     }
 
     // Update is called once per frame

@@ -9,7 +9,11 @@ public class PlayButtonSound : MonoBehaviour
 
     public void PlayButtonSound1()
     {
-        SoundManager.Instance.PlaySound(ButtonSound1);
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(ButtonSound1);
+        }
+        
     }
 
 }
