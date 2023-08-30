@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenWorldPassenger : MonoBehaviour
+public class OpenWorldDropOff : MonoBehaviour
 {
-    bool consumed = false;
-    public GameObject loadbar;
+    bool consumed = true;
+    public GameObject Dropoffloadbar;
     public int CoinsPayout;
     bool carInside;
     float t;
     public GameObject passenger;
-    public GameObject passengerPickupIcon;
-    public float cooldowntime = 15;
-    public OpenWorldDropOff OWDO;
+    public GameObject passengerDropoffIcon;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && consumed == false)
+        if (other.tag == "Player" && consumed == false)
         {
             carInside = true;
             //start timer
@@ -28,23 +26,23 @@ public class OpenWorldPassenger : MonoBehaviour
         {
             //cancel timer
             carInside = false;
-            loadbar.transform.localScale = new Vector3(0, 5, 5);
+            Dropoffloadbar.transform.localScale = new Vector3(0, 1, 1);
             t = 0.0f;
         }
     }
 
     private void Update()
     {
-        if(carInside == true)
+        if (carInside == true)
         {
-            loadbar.transform.localScale = new Vector3(Mathf.Lerp(0, 25, t), 5, 5);
+            Dropoffloadbar.transform.localScale = new Vector3(Mathf.Lerp(0, 5, t), 1, 1);
 
 
             t += 0.5f * Time.deltaTime;
 
             if (t > 1.0f)
             {
-                PassengerCollected();
+                PassengerDropped();
                 consumed = true;
                 carInside = false;
                 t = 0.0f;
@@ -52,22 +50,20 @@ public class OpenWorldPassenger : MonoBehaviour
         }
     }
 
-    void PassengerCollected()
+    void PassengerDropped()
     {
-        passenger.SetActive(false);
-        passengerPickupIcon.SetActive(false);
-        OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
-        Invoke("ReactivatePassenger", cooldowntime);
-        OWDO.ReactivatePassenger();
-    }
-
-    void ReactivatePassenger()
-    {
-        loadbar.transform.localScale = new Vector3(0, 5, 5);
         passenger.SetActive(true);
-        passengerPickupIcon.SetActive(true);
-        consumed = false;
+        passengerDropoffIcon.SetActive(false);
+        OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
         
     }
 
+    public void ReactivatePassenger()
+    {
+        Dropoffloadbar.transform.localScale = new Vector3(0, 1, 1);
+        passenger.SetActive(false);
+        passengerDropoffIcon.SetActive(true);
+        consumed = false;
+
+    }
 }
