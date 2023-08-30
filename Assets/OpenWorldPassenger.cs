@@ -10,6 +10,7 @@ public class OpenWorldPassenger : MonoBehaviour
     bool carInside;
     float t;
     public GameObject passenger;
+    public GameObject passengerPickupIcon;
     public float cooldowntime = 15;
     private void OnTriggerEnter(Collider other)
     {
@@ -26,7 +27,7 @@ public class OpenWorldPassenger : MonoBehaviour
         {
             //cancel timer
             carInside = false;
-            loadbar.transform.localScale = new Vector3(0, 1, 1);
+            loadbar.transform.localScale = new Vector3(0, 5, 5);
             t = 0.0f;
         }
     }
@@ -35,7 +36,7 @@ public class OpenWorldPassenger : MonoBehaviour
     {
         if(carInside == true)
         {
-            loadbar.transform.localScale = new Vector3(Mathf.Lerp(0, 5, t), 1, 1);
+            loadbar.transform.localScale = new Vector3(Mathf.Lerp(0, 25, t), 5, 5);
 
 
             t += 0.5f * Time.deltaTime;
@@ -53,14 +54,16 @@ public class OpenWorldPassenger : MonoBehaviour
     void PassengerCollected()
     {
         passenger.SetActive(false);
+        passengerPickupIcon.SetActive(false);
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
         Invoke("ReactivatePassenger", cooldowntime);
     }
 
     void ReactivatePassenger()
     {
-        loadbar.transform.localScale = new Vector3(0, 1, 1);
+        loadbar.transform.localScale = new Vector3(0, 5, 5);
         passenger.SetActive(true);
+        passengerPickupIcon.SetActive(true);
         consumed = false;
         
     }
