@@ -11,6 +11,11 @@ public class OpenWorldCrashDetection : MonoBehaviour
         {
             OpenWorldGameOver.OWGOInstance.GameOver();
         }
+        if(other.gameObject.tag == "XPcollider")
+        {
+            other.tag = "Pothole";
+            PlayerLevelSystem.PLSinstance.AddXP(1);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

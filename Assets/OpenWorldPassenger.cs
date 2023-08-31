@@ -59,6 +59,7 @@ public class OpenWorldPassenger : MonoBehaviour
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
         Invoke("ReactivatePassenger", cooldowntime);
         OWDO.ReactivatePassenger();
+        PlayerLevelSystem.PLSinstance.AddXP(10);
     }
 
     void ReactivatePassenger()
