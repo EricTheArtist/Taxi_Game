@@ -6800,7 +6800,7 @@ GameObject:
   - component: {fileID: 362088075}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainCNV
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28704,12 +28704,8 @@ GameObject:
   - component: {fileID: 1144613103}
   - component: {fileID: 1144613109}
   - component: {fileID: 1144613108}
-  - component: {fileID: 1144613107}
-  - component: {fileID: 1144613106}
-  - component: {fileID: 1144613105}
-  - component: {fileID: 1144613104}
   m_Layer: 5
-  m_Name: SettingsBG
+  m_Name: AccountBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28736,60 +28732,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 3000, y: 3000}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1144613104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144613102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c5a9cd30072f14db5e134093fb2e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 1640226872}
---- !u!114 &1144613105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144613102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c64101668191f47963da51d07b38bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1144613106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144613102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b42b4146b15ba86418e7ea1e30d2d9a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BrakePad: {fileID: 301347783}
-  SteeringWheel: {fileID: 1613467835}
---- !u!114 &1144613107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144613102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef4bcc8fa0fefe45954dcecddbccb6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MyHighScore: {fileID: 0}
-  Rank_ui_Static: {fileID: 1819925462}
-  Rank_ui_Dynamic: {fileID: 1012695451}
 --- !u!114 &1144613108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39370,6 +39312,8 @@ MonoBehaviour:
   PlayerLevel: 0
   PlayerCurrentXP: 0
   XPtoNextLevel: 0
+  UIXPNotification: {fileID: 8515121347926018174, guid: 33530b1b7125a2346bc2892fe366b661,
+    type: 3}
 --- !u!4 &1457717109
 Transform:
   m_ObjectHideFlags: 0

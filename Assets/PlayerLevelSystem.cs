@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLevelSystem : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerLevelSystem : MonoBehaviour
     public int PlayerCurrentXP;
     public int XPtoNextLevel;
 
+    public GameObject UIXPNotification;
+    
     private void Awake()
     {
         if (PLSinstance == null)
@@ -25,8 +28,12 @@ public class PlayerLevelSystem : MonoBehaviour
 
     private void Start()
     {
+
+
         PlayerCurrentXP = PlayerPrefs.GetInt("CurrentXP");
         PlayerLevel = PlayerPrefs.GetInt("PlayerLevel");
+
+        
 
         if (PlayerPrefs.HasKey("XPtoNextLevel"))
         {
@@ -40,7 +47,8 @@ public class PlayerLevelSystem : MonoBehaviour
         }
     }
 
-    
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -57,6 +65,13 @@ public class PlayerLevelSystem : MonoBehaviour
     
     public void AddXP(int XP)
     {
+
+
+        GameObject xpnotice = Instantiate(UIXPNotification, new Vector3(0, 0, 0), Quaternion.identity) as GameObject; 
+       
+        XPNotice notice = xpnotice.GetComponent<XPNotice>();
+        notice.SetXPValue(XP);
+
         PlayerCurrentXP += XP;
         PlayerPrefs.SetInt("CurrentXP",PlayerCurrentXP);
 
