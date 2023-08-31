@@ -39,6 +39,15 @@ public class AndroidNotificationHandler : MonoBehaviour
             Description = "Reminder notifications 2",
         };
         AndroidNotificationCenter.RegisterNotificationChannel(channel2);
+
+        var channel3 = new AndroidNotificationChannel()
+        {
+            Id = "channel_id3",
+            Name = "Notification Channel 3",
+            Importance = Importance.Default,
+            Description = "Reminder notifications 3",
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(channel3);
         #endregion
 
         //setup for the actual notification that is going to be sent
@@ -62,7 +71,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         notification2.LargeIcon = "my_custom_large_icon_id";
 
         //Send Notification
-        var id2 = AndroidNotificationCenter.SendNotification(notification2, "channel_id");
+        var id2 = AndroidNotificationCenter.SendNotification(notification2, "channel_id2");
 
         
         //setup for the actual notification that is going to be sent
@@ -74,7 +83,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         notification3.LargeIcon = "my_custom_large_icon_id";
 
         //Send Notification
-        var id3 = AndroidNotificationCenter.SendNotification(notification3, "channel_id");
+        var id3 = AndroidNotificationCenter.SendNotification(notification3, "channel_id3");
         
         //if the script is run and a message is already scheduled, cancel it and reschedule another message
         if (AndroidNotificationCenter.CheckScheduledNotificationStatus(id) == NotificationStatus.Scheduled)
@@ -92,7 +101,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         if (AndroidNotificationCenter.CheckScheduledNotificationStatus(id3) == NotificationStatus.Scheduled)
         {
             AndroidNotificationCenter.CancelNotification(id3);
-            AndroidNotificationCenter.SendNotification(notification3, "channel_id");
+            AndroidNotificationCenter.SendNotification(notification3, "channel_id3");
         }
         
     }
