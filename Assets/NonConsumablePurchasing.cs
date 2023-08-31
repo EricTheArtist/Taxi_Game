@@ -362,6 +362,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
 
 
             SucessfullPurchase.Invoke();
+            PlayerLevelSystem.PLSinstance.AddXP(50);
             MyDebug(string.Format("ProcessPurchase: Complete. Product:" + args.purchasedProduct.definition.id + " - " + test_product.transactionID.ToString()));
             return PurchaseProcessingResult.Complete;
             

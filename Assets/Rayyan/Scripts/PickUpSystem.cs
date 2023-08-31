@@ -101,6 +101,7 @@ public class PickUpSystem : MonoBehaviour
             currencySystem.run_amount = currencySystem.Addition_Function(3, currencySystem.run_amount);//this var is only used for display purposes at the end of a run
             currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
             CoinEffect.Play();
+            PlayerLevelSystem.PLSinstance.AddXP(5);
         }
 
         if (other.tag == "Robot")
@@ -123,6 +124,7 @@ public class PickUpSystem : MonoBehaviour
             BDR.ButtonClaimReward();
             other.gameObject.SetActive(false);
             LunchboxEffect.Play();
+            PlayerLevelSystem.PLSinstance.AddXP(45);
         }
     }
 
@@ -180,6 +182,7 @@ public class PickUpSystem : MonoBehaviour
 
         if (other.tag == "Robot")
         {
+            PlayerLevelSystem.PLSinstance.AddXP(10);
             controller.breakButton.SetActive(false);
             Test_Robot TR =  other.gameObject.GetComponent<Test_Robot>();
             if(TR.RedLightON == true && CopIsChasing == false && ABS.CanEscapeCop == false) // starts the cop chase if the player exits the robot while it it is red
@@ -199,6 +202,7 @@ public class PickUpSystem : MonoBehaviour
             {
                 greenLightPassed++;
             }
+
         }
     }
 
@@ -211,6 +215,7 @@ public class PickUpSystem : MonoBehaviour
         CopIsChasing = false;
         controller.movementSpeed -= 10;
         Cops.SetActive(false);
+        PlayerLevelSystem.PLSinstance.AddXP(20);
     }
 
     public void CancelCopChase()
@@ -231,6 +236,7 @@ public class PickUpSystem : MonoBehaviour
         currencySystem.Eric_AddCoins(7); //adds 7 coins to the players saved coins
         Debug.Log("Passenger Picked Up");
         CoinsEffect.Play();
+        PlayerLevelSystem.PLSinstance.AddXP(10);
         pickUpPoint.transform.GetChild(1).GetComponent<PassengerManager>().PlayCharacterJump(); //gets the passenger if it is the second child object of the pickup box
 
     }

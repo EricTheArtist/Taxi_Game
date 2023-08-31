@@ -210,6 +210,7 @@ string appkey = "";
         {
             SUIM.AddCoins(500);
             RewardRecievedScreen.SetActive(true);
+            PlayerLevelSystem.PLSinstance.AddXP(10);
         }
 
 

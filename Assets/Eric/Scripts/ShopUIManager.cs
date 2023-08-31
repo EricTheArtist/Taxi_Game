@@ -516,6 +516,7 @@ public class ShopUIManager : MonoBehaviour
         }
         PurchaseDialouge.SetActive(false);
         PurchaseSucess.Invoke();
+        PlayerLevelSystem.PLSinstance.AddXP(35);
 
     }
 

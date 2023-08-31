@@ -14,11 +14,12 @@ public class LevelUIManager : MonoBehaviour
     public TMP_Text XPProgression;
     public GameObject ProgressBar;
     // Start is called before the first frame update
-    void Start()
+
+
+    private void OnEnable()
     {
         IconLevel.SetText(PlayerPrefs.GetInt("PlayerLevel").ToString());
     }
-
     // Update is called once per frame
     void Update()
     {

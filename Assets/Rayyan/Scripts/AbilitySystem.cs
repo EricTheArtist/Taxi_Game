@@ -302,7 +302,7 @@ public class AbilitySystem : MonoBehaviour
         {
             if (timerActive == false)
             {
-                
+                PlayerLevelSystem.PLSinstance.AddXP(15);
                 canUseAbility = true;
                 AbilityButton.SetActive(true);
                 CanSpawnPickup = false;

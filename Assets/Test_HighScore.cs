@@ -48,6 +48,7 @@ public class Test_HighScore : MonoBehaviour
                 if(HighRunEffect.isPlaying== false)
                 {
                     HighRunEffect.Play();
+                    PlayerLevelSystem.PLSinstance.AddXP(50);
                 }
 
                 highScoreSwiping = scoreInt;
@@ -59,6 +60,7 @@ public class Test_HighScore : MonoBehaviour
                 if (HighRunEffect.isPlaying == false)
                 {
                     HighRunEffect.Play();
+                    PlayerLevelSystem.PLSinstance.AddXP(50);
                 }
 
                 highScoreSteering = scoreInt;
