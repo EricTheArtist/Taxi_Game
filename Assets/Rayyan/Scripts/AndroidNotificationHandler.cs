@@ -54,7 +54,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         var notification = new AndroidNotification();
         notification.Title = "Howzit Bra!";
         notification.Text = "Your daily skaftin is waiting for you! Come find it on the road.";
-        notification.FireTime = System.DateTime.Now.AddMinutes(2); //sent within 24 hours of exiting app
+        notification.FireTime = System.DateTime.Now.AddMinutes(1); //sent within 24 hours of exiting app
         notification.SmallIcon = "my_custom_icon_id";
         notification.LargeIcon = "my_custom_large_icon_id";
 
@@ -88,21 +88,15 @@ public class AndroidNotificationHandler : MonoBehaviour
         //if the script is run and a message is already scheduled, cancel it and reschedule another message
         if (AndroidNotificationCenter.CheckScheduledNotificationStatus(id) == NotificationStatus.Scheduled)
         {
-            AndroidNotificationCenter.CancelNotification(id);
+            AndroidNotificationCenter.CancelAllNotifications();
             AndroidNotificationCenter.SendNotification(notification, "channel_id");
-        }
-        
-        if (AndroidNotificationCenter.CheckScheduledNotificationStatus(id2) == NotificationStatus.Scheduled)
-        {
-            AndroidNotificationCenter.CancelNotification(id2);
             AndroidNotificationCenter.SendNotification(notification2, "channel_id2");
-        }
-        
-        if (AndroidNotificationCenter.CheckScheduledNotificationStatus(id3) == NotificationStatus.Scheduled)
-        {
-            AndroidNotificationCenter.CancelNotification(id3);
             AndroidNotificationCenter.SendNotification(notification3, "channel_id3");
         }
+    
         
-    }
+ 
+        
+        
+   }
 }
