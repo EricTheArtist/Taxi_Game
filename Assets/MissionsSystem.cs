@@ -26,8 +26,8 @@ public class MissionsSystem : MonoBehaviour
     enum MissionTypes { Passengers, Coins, Robots, Cops, Distance };
 
     MissionTypes[] Missions = {MissionTypes.Distance, MissionTypes.Cops, MissionTypes.Passengers};
-    
 
+    bool AllMissionsComplete = false;
 
     public bool[] MissionComplete;
     private void Awake()
@@ -49,7 +49,7 @@ public class MissionsSystem : MonoBehaviour
         SetMissions();
     }
 
-    public void AddPassenger()
+    public void AddPassenger() // set from pick up system
     {
         if ((Missions[0] == MissionTypes.Passengers && MissionComplete[1] == false) || (Missions[1] == MissionTypes.Passengers && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Passengers && MissionComplete[2] == false))
         {
@@ -58,7 +58,7 @@ public class MissionsSystem : MonoBehaviour
         
     }
 
-    public void AddCoins(int coins)
+    public void AddCoins(int coins) //set from game end system
     {
         if ((Missions[0] == MissionTypes.Coins && MissionComplete[1] == false) || (Missions[1] == MissionTypes.Coins && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Coins && MissionComplete[2] == false))
         {
@@ -66,7 +66,7 @@ public class MissionsSystem : MonoBehaviour
         }
     }
 
-    public void AddRobotPassed()
+    public void AddRobotPassed() //set from pick up system
     {
         if ((Missions[0] == MissionTypes.Robots && MissionComplete[1] == false) || (Missions[1] == MissionTypes.Robots && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Robots && MissionComplete[2] == false))
         {
@@ -74,7 +74,7 @@ public class MissionsSystem : MonoBehaviour
         }
     }
 
-    public void AddCopsEscaped()
+    public void AddCopsEscaped() // set from pick up system
     {
         if ((Missions[0] == MissionTypes.Cops && MissionComplete[1] == false) || (Missions[1] == MissionTypes.Cops && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Cops && MissionComplete[2] == false))
         {
@@ -82,7 +82,7 @@ public class MissionsSystem : MonoBehaviour
         }
     }
 
-    public void AddDistanceDriven(int distance)
+    public void AddDistanceDriven(int distance) // set from game end system
     {
         if ((Missions[0] == MissionTypes.Distance && MissionComplete[1] == false) || (Missions[1] == MissionTypes.Distance && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Distance && MissionComplete[2] == false))
         {
@@ -98,10 +98,81 @@ public class MissionsSystem : MonoBehaviour
             Missions[1] = MissionTypes.Coins;
             Missions[2] = MissionTypes.Robots;
         }
+        if(missionSet == 1)
+        {
+            Missions[0] = MissionTypes.Distance;
+            Missions[1] = MissionTypes.Cops;
+            Missions[2] = MissionTypes.Robots;
+        }
+        if (missionSet == 2)
+        {
+            Missions[0] = MissionTypes.Passengers;
+            Missions[1] = MissionTypes.Robots;
+            Missions[2] = MissionTypes.Cops;
+        }
+        if (missionSet == 3)
+        {
+            Missions[0] = MissionTypes.Distance;
+            Missions[1] = MissionTypes.Coins;
+            Missions[2] = MissionTypes.Passengers;
+        }
+        if (missionSet == 4)
+        {
+            Missions[0] = MissionTypes.Cops;
+            Missions[1] = MissionTypes.Coins;
+            Missions[2] = MissionTypes.Robots;
+        }
+        if (missionSet == 5)
+        {
+            Missions[0] = MissionTypes.Passengers;
+            Missions[1] = MissionTypes.Distance;
+            Missions[2] = MissionTypes.Coins;
+        }
+        if (missionSet == 6)
+        {
+            Missions[0] = MissionTypes.Coins;
+            Missions[1] = MissionTypes.Cops;
+            Missions[2] = MissionTypes.Robots;
+        }
+        if (missionSet == 7)
+        {
+            Missions[0] = MissionTypes.Passengers;
+            Missions[1] = MissionTypes.Coins;
+            Missions[2] = MissionTypes.Distance;
+        }
+        if (missionSet == 8)
+        {
+            Missions[0] = MissionTypes.Distance;
+            Missions[1] = MissionTypes.Cops;
+            Missions[2] = MissionTypes.Robots;
+        }
+        if (missionSet == 9)
+        {
+            Missions[0] = MissionTypes.Passengers;
+            Missions[1] = MissionTypes.Cops;
+            Missions[2] = MissionTypes.Coins;
+        }
+        if (missionSet == 10)
+        {
+            MissionText[0].SetText("All Missions Complete!");
+            MissionText[1].SetText("");
+            MissionText[2].SetText("");
+            AllMissionsComplete = true;
+        }
+        if(AllMissionsComplete == false)
+        {
+            CheckProgress();
+        }
+
     }
 
-    void CheckProgress()
+    public void CheckProgress()
     {
+        if(AllMissionsComplete == true)
+        {
+            return;
+        }
+
         for (int i = 0; i < Missions.Length; i++)
         {
             if (Missions[i] == MissionTypes.Passengers)
@@ -112,8 +183,9 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentPassengers = 0;
                     MissionText[i].SetText("Mission Complete!");
+                    PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
-                else
+                else if(MissionComplete[i] == false)
                 {
                     MissionText[i].SetText("Collect Passengers: " + CurrentPassengers +"/"+ PassengersCollected[missionSet]);
                 }
@@ -126,8 +198,9 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentCoins = 0;
                     MissionText[i].SetText("Mission Complete!");
+                    PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
-                else
+                else if (MissionComplete[i] == false)
                 {
                     MissionText[i].SetText("Collect Coins: " + CurrentCoins + "/" + CoinsCollected[missionSet]);
                 }
@@ -139,8 +212,9 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentRobotsDrivenPast = 0;
                     MissionText[i].SetText("Mission Complete!");
+                    PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
-                else
+                else if (MissionComplete[i] == false)
                 {
                     MissionText[i].SetText("Pass Robots: " + CurrentRobotsDrivenPast + "/" + RobotsDrivenPast[missionSet]);
                 }
@@ -152,10 +226,11 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentCopsEscaped = 0;
                     MissionText[i].SetText("Mission Complete!");
+                    PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
-                else
+                else if (MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Cops Escaped: " + CurrentCopsEscaped + "/" + CopsEscaped[missionSet]);
+                    MissionText[i].SetText("Escape Cops: " + CurrentCopsEscaped + "/" + CopsEscaped[missionSet]);
                 }
             }
             if (Missions[i] == MissionTypes.Distance)
@@ -165,16 +240,22 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentDistanceDriven = 0;
                     MissionText[i].SetText("Mission Complete!");
+                    PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
-                else
+                else if (MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Distance Traveled: " + CurrentDistanceDriven + "/" + DistanceDriven[missionSet]);
+                    MissionText[i].SetText("Travel Distance: " + CurrentDistanceDriven + "/" + DistanceDriven[missionSet]);
                 }
             }
         }
             
         
-
+        if(MissionComplete[0] == true && MissionComplete[1] == true && MissionComplete[2] == true)
+        {
+            missionSet++;
+            PlayerPrefs.SetInt("MissionSet", missionSet);
+            SetMissions();
+        }
         
 
 

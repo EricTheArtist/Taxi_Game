@@ -102,6 +102,7 @@ public class PickUpSystem : MonoBehaviour
             currencySystem.Eric_AddCoins(3); //adds 3 coins to the players saved coins
             CoinEffect.Play();
             PlayerLevelSystem.PLSinstance.AddXP(5);
+            MissionsSystem.MSinstance.AddPassenger();
         }
 
         if (other.tag == "Robot")
@@ -183,6 +184,7 @@ public class PickUpSystem : MonoBehaviour
         if (other.tag == "Robot")
         {
             PlayerLevelSystem.PLSinstance.AddXP(10);
+            MissionsSystem.MSinstance.AddRobotPassed();
             controller.breakButton.SetActive(false);
             Test_Robot TR =  other.gameObject.GetComponent<Test_Robot>();
             if(TR.RedLightON == true && CopIsChasing == false && ABS.CanEscapeCop == false) // starts the cop chase if the player exits the robot while it it is red
@@ -216,6 +218,7 @@ public class PickUpSystem : MonoBehaviour
         controller.movementSpeed -= 10;
         Cops.SetActive(false);
         PlayerLevelSystem.PLSinstance.AddXP(20);
+        MissionsSystem.MSinstance.AddCopsEscaped();
     }
 
     public void CancelCopChase()

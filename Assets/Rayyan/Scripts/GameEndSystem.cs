@@ -164,7 +164,9 @@ public class GameEndSystem : MonoBehaviour
     public void Endgame_Calculations()
     {
         run_curreny_text.SetText(currency_system.run_amount.ToString());
+        MissionsSystem.MSinstance.AddCoins(currency_system.run_amount); //mission tracking
         Score_Text.SetText(THS.scoreInt.ToString());
+        MissionsSystem.MSinstance.AddDistanceDriven(THS.scoreInt); //mission tracking
         _overallRankingSystem.ScoreCalculator();
         googleHandlerScript.PassengerCountHandler();
         googleHandlerScript.OverAllScoreHandler();

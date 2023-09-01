@@ -21,7 +21,7 @@ public class XPNotice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(0, 50, t), 0);
+        transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(0, 100, t), 0);
 
 
         t += 2 * Time.deltaTime;
