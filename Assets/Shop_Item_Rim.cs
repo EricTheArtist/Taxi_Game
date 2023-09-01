@@ -51,6 +51,21 @@ public class Shop_Item_Rim : MonoBehaviour
         if (Premium == true)
         {
             RealMoneyPrice.text = NCS.priceString(MyRimProductID);
+
+            if(NCS.CheckProductOwnership(MyRimProductID) == false)
+            {
+                Owned = false;
+                PlayerPrefs.SetInt(MyRimProductID, (false ? 1 : 0));
+                PriceBG.SetActive(true);
+            }
+            if(NCS.CheckProductOwnership(MyRimProductID) == true)
+            {
+                Owned = true;
+                PlayerPrefs.SetInt(MyRimProductID, (true ? 1 : 0));
+                PriceBG.SetActive(false);
+            }
+            
+            
         }
     }
 

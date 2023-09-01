@@ -81,6 +81,20 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
 
     }
 
+    public bool CheckProductOwnership(string productID)
+    {
+        UnityEngine.Purchasing.Product product = m_StoreController.products.WithID(productID);
+
+        if(product != null && !product.hasReceipt)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public string priceString(string ProductID)
     {
         return m_StoreController.products.WithID(ProductID).metadata.localizedPriceString;
