@@ -217,8 +217,12 @@ public class PickUpSystem : MonoBehaviour
         CopIsChasing = false;
         controller.movementSpeed -= 10;
         Cops.SetActive(false);
-        PlayerLevelSystem.PLSinstance.AddXP(20);
-        MissionsSystem.MSinstance.AddCopsEscaped();
+        if (!GES.endgame)
+        {
+            PlayerLevelSystem.PLSinstance.AddXP(20);
+            MissionsSystem.MSinstance.AddCopsEscaped();
+        }
+
     }
 
     public void CancelCopChase()
