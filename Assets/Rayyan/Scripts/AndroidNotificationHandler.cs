@@ -54,7 +54,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         var notification = new AndroidNotification();
         notification.Title = "Howzit Bra!";
         notification.Text = "Your daily skaftin is waiting for you! Come find it on the road.";
-        notification.FireTime = System.DateTime.Now.AddMinutes(1); //sent within 24 hours of exiting app
+        notification.FireTime = System.DateTime.Now.AddHours(24); //sent within 24 hours of exiting app
         notification.SmallIcon = "my_custom_icon_id";
         notification.LargeIcon = "my_custom_large_icon_id";
 
@@ -66,7 +66,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         var notification2 = new AndroidNotification();
         notification2.Title = "Hey man!";
         notification2.Text = "Passengers are needing a ride and will pay you!";
-        notification2.FireTime = System.DateTime.Now.AddMinutes(4); //sent within 24 hours of exiting app
+        notification2.FireTime = System.DateTime.Now.AddDays(3); //sent within 24 hours of exiting app
         notification2.SmallIcon = "my_custom_icon_id";
         notification2.LargeIcon = "my_custom_large_icon_id";
 
@@ -78,7 +78,7 @@ public class AndroidNotificationHandler : MonoBehaviour
         var notification3 = new AndroidNotification();
         notification3.Title = "What's up!";
         notification3.Text = "You need to drive your taxi soon or the battery is going to run flat!";
-        notification3.FireTime = System.DateTime.Now.AddMinutes(6); //sent within 24 hours of exiting app
+        notification3.FireTime = System.DateTime.Now.AddDays(7); //sent within 24 hours of exiting app
         notification3.SmallIcon = "my_custom_icon_id";
         notification3.LargeIcon = "my_custom_large_icon_id";
 
