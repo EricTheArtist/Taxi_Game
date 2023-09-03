@@ -69,7 +69,7 @@ public class BasicDailyReward : MonoBehaviour
             UnlockScreen.SetActive(true);
             updateUnlockInfo(); // refreshes dispaly depending on if a reward is avalable
 
-            StartCoroutine(GetSeverTime());
+            //StartCoroutine(GetSeverTime());
         }
         
     }
@@ -209,8 +209,8 @@ public class BasicDailyReward : MonoBehaviour
             if( timedifferencefromsever.TotalHours >= 48)
             {
                 UnlockScreen.SetActive(true);
-                RewardInfroText.SetText("Time traveling detected, 5000 coin fee has been applied.");
-                CS.Eric_DeductCoins(5000);
+                RewardInfroText.SetText("Time traveling detected, 500 coin fee has been applied.");
+                CS.Eric_DeductCoins(0);
                 lastRewardTime = DateTime.Now;
                 PlayerPrefs.SetString("LastRewardTime", lastRewardTime.ToString());
             }
