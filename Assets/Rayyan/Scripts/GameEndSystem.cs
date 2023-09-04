@@ -118,7 +118,13 @@ public class GameEndSystem : MonoBehaviour
     {
         ABS.UseEscapeCopsAbility();
 
-        SoundManager.Instance.PlaySound(_crashSoundClip);
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.StopSound();
+            SoundManager.Instance.PlaySound(_crashSoundClip);
+        }
+
+        
         Debug.Log("Hit and Endgame");
         endgame = true;
         controller.game_over = true;
@@ -270,6 +276,8 @@ public class GameEndSystem : MonoBehaviour
         RewardHomeScreenButton.SetActive(false);
 
         AdditionalAbilitybutton.SetActive(true);
+        ABS.AdditionalAbilityButton();
+        
 
     }
 

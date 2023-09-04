@@ -26,7 +26,11 @@ public class AbilitySystem : MonoBehaviour
     //AdditionalAbilityButton
     public GameObject[] AdditionalAbilities;
     int AdditionalAbilityIndex;
+    public GameObject SirensVFX;
+    public ParticleSystem ShootEffect;
     [SerializeField] private AudioClip HootSound;
+    [SerializeField] private AudioClip ShootSound;
+    [SerializeField] private AudioClip SirenSound;
     //-------------------------------------------------------------
     public enum AbilityType
     {
@@ -75,7 +79,7 @@ public class AbilitySystem : MonoBehaviour
 
             //sets value of ability timer
             SpeedAbilityTimer = PlayerPrefs.GetFloat("Ability_Speed");
-
+            AdditionalAbilityIndex = 0;
 
         }
         if(Carindex == 4 || Carindex == 11) //police truck
@@ -83,7 +87,7 @@ public class AbilitySystem : MonoBehaviour
             abilityType = AbilityType.Escapist;
             Ability_Text.SetText("NO POLICE");
             CanSpawnPickup = true;
-
+            AdditionalAbilityIndex = 2;
 
         }
         if(Carindex == 3 || Carindex == 6) //landcruiser or tank
@@ -91,16 +95,23 @@ public class AbilitySystem : MonoBehaviour
             abilityType = AbilityType.Armour;
             Ability_Text.SetText("SHIELD");
             CanSpawnPickup = true;
-
             //sets value of ability timer
             ArmourAbiltyTimer = PlayerPrefs.GetFloat("Ability_Armour");
+            if (Carindex == 6)
+            {
+                AdditionalAbilityIndex = 1;
+            }
+            else
+            {
+                AdditionalAbilityIndex = 0;
+            }
         }
         if (Carindex == 1 || Carindex == 8 || Carindex == 10) //Quantum or hance
         {
             abilityType = AbilityType.DoubleCoins;
             Ability_Text.SetText("2 x COINS");
             CanSpawnPickup = true;
-
+            AdditionalAbilityIndex = 0;
             //sets value of ability timer
             DoubleCoinAbilityTimer = PlayerPrefs.GetFloat("Ability_Double");
         }
@@ -110,11 +121,11 @@ public class AbilitySystem : MonoBehaviour
             Debug.Log("NoAcive Ability, Car Index: " + Carindex);
         }
 
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.StopSound();
 
-
-
-
-
+        }
 
         canUseAbility = false;
         _controller= player.GetComponent<TestCharacterController>();
@@ -340,11 +351,11 @@ public class AbilitySystem : MonoBehaviour
 
     #endregion
 
-    void AdditionalAbilityButton(int abilityindex)
+    public void AdditionalAbilityButton()
     {
         foreach(GameObject obj in AdditionalAbilities)
         {
-            if(System.Array.IndexOf(AdditionalAbilities,obj) == abilityindex)
+            if(System.Array.IndexOf(AdditionalAbilities,obj) == AdditionalAbilityIndex)
             {
                 obj.SetActive(true);
             }
@@ -364,6 +375,34 @@ public class AbilitySystem : MonoBehaviour
                 SoundManager.Instance.PlaySound(HootSound);
                 Handheld.Vibrate();
             }
+        }
+        if(AdditionalAbilityIndex == 1)
+        {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySound(ShootSound);
+                Handheld.Vibrate();
+                ShootEffect.Play();
+            }
+        }
+        if(AdditionalAbilityIndex == 2)
+        {
+            if (SoundManager.Instance != null)
+            {
+                if (SirensVFX.activeInHierarchy)
+                {
+                    SirensVFX.SetActive(false);
+                    SoundManager.Instance.StopSound();
+                }
+                else
+                {
+                    SoundManager.Instance.PlaySound(SirenSound);
+                    SirensVFX.SetActive(true);
+                }
+
+            }
+
+
         }
     }
     

@@ -150,7 +150,11 @@ public class ShopUIManager : MonoBehaviour
         StanceSlider.value = savedStance;
         Debug.Log("Stance save: " + savedStance);
 
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.StopSound();
 
+        }
         //recalling the underglow save
         Color Underglow;
         ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("UnderglowSave"), out Underglow);
@@ -162,6 +166,7 @@ public class ShopUIManager : MonoBehaviour
         {
             FCP.color = new Color(Underglow.r, Underglow.g, Underglow.b, 0.5f);
         }
+
         
         
     }
