@@ -23,6 +23,11 @@ public class AbilitySystem : MonoBehaviour
     private bool speedAbilityActive = false;
     private bool armourAbilityActive = false;
     //-------------------------------------------------------------
+    //AdditionalAbilityButton
+    public GameObject[] AdditionalAbilities;
+    int AdditionalAbilityIndex;
+    [SerializeField] private AudioClip HootSound;
+    //-------------------------------------------------------------
     public enum AbilityType
     {
         Normal,
@@ -334,5 +339,32 @@ public class AbilitySystem : MonoBehaviour
     }
 
     #endregion
+
+    void AdditionalAbilityButton(int abilityindex)
+    {
+        foreach(GameObject obj in AdditionalAbilities)
+        {
+            if(System.Array.IndexOf(AdditionalAbilities,obj) == abilityindex)
+            {
+                obj.SetActive(true);
+            }
+            else
+            {
+                Destroy(obj);
+            }
+        }
+    }
+
+    public void AdditinalAbility()
+    {
+        if(AdditionalAbilityIndex == 0)
+        {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySound(HootSound);
+                Handheld.Vibrate();
+            }
+        }
+    }
     
 }

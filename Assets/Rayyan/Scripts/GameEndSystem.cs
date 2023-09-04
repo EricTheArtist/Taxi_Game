@@ -66,6 +66,8 @@ public class GameEndSystem : MonoBehaviour
     public Camera MainCam;
 
     float RestartSpeed = 10f;
+
+    public GameObject AdditionalAbilitybutton;
     // Start is called before the first frame update
     void Start()
     {
@@ -154,6 +156,7 @@ public class GameEndSystem : MonoBehaviour
     void Endgame()
     {
         endgame_ui.SetActive(true);
+        AdditionalAbilitybutton.SetActive(false);
         controller.breakButton.SetActive(false);
         welcome_ui_dynamic.SetActive(true);
         Endgame_Calculations();
@@ -243,6 +246,8 @@ public class GameEndSystem : MonoBehaviour
 
         //open the game over UI
         endgame_ui.SetActive(false);
+
+        AdditionalAbilitybutton.SetActive(true);
     }
 
     public void play_button()
@@ -264,7 +269,7 @@ public class GameEndSystem : MonoBehaviour
         //ISS_Ads.DestroyBannerAd();
         RewardHomeScreenButton.SetActive(false);
 
-
+        AdditionalAbilitybutton.SetActive(true);
 
     }
 
