@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SimpleInputNamespace;
+using TMPro;
 
 namespace KartGame.KartSystems {
 
@@ -15,11 +16,22 @@ namespace KartGame.KartSystems {
         bool Forward;
         bool Reverse;
 
+        
+
+        public Rigidbody ThisRB;
+
         public override InputData GenerateInput() {
 
             if (SWOW.Angle!=0)
             {
-                Steering = Mathf.Sign(SWOW.Angle);
+                if(ThisRB.velocity.magnitude > 0.5)
+                {
+                    Steering = (SWOW.Angle / 360);
+                }
+                else
+                {
+                    Steering = 0;
+                }
             }
             if (SWOW.Angle == 0)
             {
@@ -31,7 +43,7 @@ namespace KartGame.KartSystems {
                 Brake = Reverse,//Input.GetKey(KeyCode.S),
                 TurnInput = Steering
 
-                //TurnInput = Input.GetAxis("Horizontal")
+                
             };
         }
 

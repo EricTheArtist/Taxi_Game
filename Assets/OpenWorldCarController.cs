@@ -56,8 +56,8 @@ namespace SimpleInputNamespace
         }
         void FixedUpdate()
         {
-            WheelL.transform.localEulerAngles = new Vector3(0, 180+(SWOW.Angle/5), 0);
-            WheelR.transform.localEulerAngles = new Vector3(0, 0+ (SWOW.Angle/5), 0);
+            WheelL.transform.localEulerAngles = new Vector3(0, 180+(SWOW.Angle/5), WheelL.transform.localRotation.eulerAngles.z);
+            WheelR.transform.localEulerAngles = new Vector3(0, 0+ (SWOW.Angle/5), WheelR.transform.localRotation.eulerAngles.z);
 
 
             if (isMovingforward) // Check input for forward
@@ -136,7 +136,7 @@ namespace SimpleInputNamespace
         public void ButtonForward()
         {
             isMovingforward = true;
-            Debug.Log("Forward");
+            //Debug.Log("Forward");
         }
 
         public void ButtonForwardUp()
