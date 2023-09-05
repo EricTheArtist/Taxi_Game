@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 766926d118c2b074394a4efaa381c5ad,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1219,6 +1220,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034229552122928826, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034229552122928826, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034229552122928826, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034229552122928826, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034229552122928826, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034229552122928826, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522514682395467675, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
@@ -65853,7 +65884,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -82386,7 +82417,7 @@ GameObject:
   - component: {fileID: 715666232507521028}
   - component: {fileID: 4485960371845552033}
   - component: {fileID: 1848061863255188331}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tyre01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82937,7 +82968,7 @@ GameObject:
   - component: {fileID: 418098851624641668}
   - component: {fileID: 418098851624641670}
   - component: {fileID: 418098851624641669}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Rim01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83019,7 +83050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418098851919297784}
   - component: {fileID: 418098851919297785}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: OpenWorldPolice
   m_TagString: Obstruction
   m_Icon: {fileID: 0}
@@ -83078,7 +83109,7 @@ GameObject:
   - component: {fileID: 418098852144837318}
   - component: {fileID: 418098852144837304}
   - component: {fileID: 418098852144837319}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tyre01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83154,7 +83185,7 @@ GameObject:
   - component: {fileID: 418098852201952205}
   - component: {fileID: 418098852201952207}
   - component: {fileID: 418098852201952206}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tyre01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83238,7 +83269,7 @@ GameObject:
   - component: {fileID: 418098852252143545}
   - component: {fileID: 418098852252143547}
   - component: {fileID: 418098852252143546}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tyre01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83322,7 +83353,7 @@ GameObject:
   - component: {fileID: 418098852355557865}
   - component: {fileID: 418098852355557867}
   - component: {fileID: 418098852355557866}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Rim01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83405,7 +83436,7 @@ GameObject:
   - component: {fileID: 418098852689670377}
   - component: {fileID: 418098852689670379}
   - component: {fileID: 418098852689670378}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Rim01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103143,7 +103174,7 @@ GameObject:
   - component: {fileID: 1450205689282949158}
   - component: {fileID: 2562532731845803907}
   - component: {fileID: 318355589172955977}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Me_Car_Police
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103814,7 +103845,7 @@ GameObject:
   - component: {fileID: 2469744434180035990}
   - component: {fileID: 1578952500596415027}
   - component: {fileID: 3606652843170426617}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Rim01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108714,6 +108745,7 @@ MonoBehaviour:
   AccelerateButtonName: Accelerate
   BrakeButtonName: Brake
   SWOW: {fileID: 2138555042}
+  ThisRB: {fileID: 4798456705546257107}
 --- !u!4 &4798456705546257106
 Transform:
   m_ObjectHideFlags: 0
