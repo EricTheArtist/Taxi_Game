@@ -55,7 +55,11 @@ public class OpenWorldDropOff : MonoBehaviour
         passenger.SetActive(true);
         passengerDropoffIcon.SetActive(false);
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
-        PlayerLevelSystem.PLSinstance.AddXP(10);
+        OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
+        if (PlayerLevelSystem.PLSinstance != null)
+        {
+            PlayerLevelSystem.PLSinstance.AddXP(10);
+        }
     }
 
     public void ReactivatePassenger()

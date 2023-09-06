@@ -16,6 +16,12 @@ public class OpenWorldCurrencyManager : MonoBehaviour
     int coins;
     int passengers;
 
+    public ParticleSystem CoinSpark;
+    public ParticleSystem MultipleCoinsEffect;
+    public ParticleSystem SingleCoinEffect;
+    [SerializeField] private AudioClip CoinCollectClip;
+    [SerializeField] private AudioClip CoinsCollectClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +54,25 @@ public class OpenWorldCurrencyManager : MonoBehaviour
         coins += NumberOfCoins;
         PlayerPrefs.SetInt("Main Amount",coins);
         RefreshUIAmounts();
+    }
+
+    public void PlayCoinCollectVFX()
+    {
+        CoinSpark.Play();
+        SingleCoinEffect.Play();
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(CoinCollectClip);
+        }
+    }
+
+    public void PlayPassengerCollectDropVFX()
+    {
+        MultipleCoinsEffect.Play();
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(CoinsCollectClip);
+        }
     }
 
     public void IncrementPassengers(int NumberOfPassengers)

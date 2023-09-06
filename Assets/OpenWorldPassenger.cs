@@ -13,11 +13,14 @@ public class OpenWorldPassenger : MonoBehaviour
     public GameObject passengerPickupIcon;
     public float cooldowntime = 15;
     public OpenWorldDropOff OWDO;
+
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && consumed == false)
         {
             carInside = true;
+            
             //start timer
         }
     }
@@ -57,9 +60,14 @@ public class OpenWorldPassenger : MonoBehaviour
         passenger.SetActive(false);
         passengerPickupIcon.SetActive(false);
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
+        OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
         Invoke("ReactivatePassenger", cooldowntime);
         OWDO.ReactivatePassenger();
-        PlayerLevelSystem.PLSinstance.AddXP(10);
+        if(PlayerLevelSystem.PLSinstance!= null)
+        {
+            PlayerLevelSystem.PLSinstance.AddXP(10);
+        }
+        
     }
 
     void ReactivatePassenger()

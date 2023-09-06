@@ -25,8 +25,10 @@ public class OpenWorldCoin : MonoBehaviour
             Coin.SetActive(false);
 
             OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(1);
+            OpenWorldCurrencyManager.OWCMInstance.PlayCoinCollectVFX();
 
             Invoke("Reactivate", cooldowntime);
+            
         }
     }
 
