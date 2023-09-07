@@ -2611,6 +2611,7 @@ GameObject:
   - component: {fileID: 7913629094941537447}
   - component: {fileID: 7913629094941537445}
   - component: {fileID: 7913629094941537446}
+  - component: {fileID: 527494381784847567}
   m_Layer: 0
   m_Name: TrafficLightPoleV
   m_TagString: Untagged
@@ -2683,6 +2684,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &527494381784847567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913629094941537440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 55.770058, y: 52.704807, z: 1094.8567}
+  m_Center: {x: 0, y: -8.784136, z: -47.428284}
 --- !u!1 &7913629094988874463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,6 +3653,7 @@ GameObject:
   - component: {fileID: 7913629095678976363}
   - component: {fileID: 7913629095678976361}
   - component: {fileID: 7913629095678976362}
+  - component: {fileID: 6176925884531461831}
   m_Layer: 0
   m_Name: TrafficLightPoleV (1)
   m_TagString: Untagged
@@ -3711,3 +3726,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6176925884531461831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913629095678976404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 55.770058, y: 52.704807, z: 1094.8567}
+  m_Center: {x: 0, y: -8.784136, z: -47.428284}
