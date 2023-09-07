@@ -382,7 +382,11 @@ public class AbilitySystem : MonoBehaviour
             {
                 SoundManager.Instance.PlaySound(ShootSound);
                 Handheld.Vibrate();
-                ShootEffect.Play();
+                if (ShootEffect != null)
+                {
+                    ShootEffect.Play();
+                }
+                
             }
         }
         if(AdditionalAbilityIndex == 2)
@@ -391,13 +395,21 @@ public class AbilitySystem : MonoBehaviour
             {
                 if (SirensVFX.activeInHierarchy)
                 {
-                    SirensVFX.SetActive(false);
+                    if (SirensVFX != null)
+                    {
+                        SirensVFX.SetActive(false);
+                    }
+                    
                     SoundManager.Instance.StopSound();
                 }
                 else
                 {
                     SoundManager.Instance.PlaySound(SirenSound);
-                    SirensVFX.SetActive(true);
+                    if (SirensVFX != null)
+                    {
+                        SirensVFX.SetActive(true);
+                    }
+                    
                 }
 
             }

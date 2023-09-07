@@ -11,6 +11,8 @@ public class OpenWorldDropOff : MonoBehaviour
     float t;
     public GameObject passenger;
     public GameObject passengerDropoffIcon;
+    public Animator PassengerDropOffAnim;
+    public GameObject PassengerLocal;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && consumed == false)
@@ -53,7 +55,9 @@ public class OpenWorldDropOff : MonoBehaviour
     void PassengerDropped()
     {
         passenger.SetActive(true);
+        PassengerDropOffAnim.SetTrigger("isPassengerBoarding");
         passengerDropoffIcon.SetActive(false);
+        Invoke("ResetAnimation", 1);
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
         OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
         if (PlayerLevelSystem.PLSinstance != null)
@@ -61,6 +65,14 @@ public class OpenWorldDropOff : MonoBehaviour
             PlayerLevelSystem.PLSinstance.AddXP(10);
         }
     }
+
+    void ResetAnimation()
+    {
+        passenger.SetActive(false);
+        PassengerLocal.transform.localPosition = new Vector3(0, 0, 0);
+        PassengerLocal.transform.localRotation = Quaternion.identity;
+    }
+
 
     public void ReactivatePassenger()
     {

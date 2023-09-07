@@ -14,6 +14,8 @@ public class OpenWorldPassenger : MonoBehaviour
     public float cooldowntime = 15;
     public OpenWorldDropOff OWDO;
 
+    public Animator PickupAnimator;
+    public GameObject AnimatedPassenger;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -57,17 +59,27 @@ public class OpenWorldPassenger : MonoBehaviour
 
     void PassengerCollected()
     {
-        passenger.SetActive(false);
+        
         passengerPickupIcon.SetActive(false);
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
         OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
         Invoke("ReactivatePassenger", cooldowntime);
+        Invoke("ResetAnimation", 1);
         OWDO.ReactivatePassenger();
+        PickupAnimator.SetTrigger("isPassengerBoarding");
+
         if(PlayerLevelSystem.PLSinstance!= null)
         {
             PlayerLevelSystem.PLSinstance.AddXP(10);
         }
         
+    }
+
+    void ResetAnimation()
+    {
+        passenger.SetActive(false);
+        AnimatedPassenger.transform.localPosition = new Vector3(0, 0, 0);
+        AnimatedPassenger.transform.localRotation = Quaternion.identity;
     }
 
     void ReactivatePassenger()

@@ -14,12 +14,25 @@ public class OpenWorldRobot : MonoBehaviour
     float LightDuration;
     public GameObject ImageBAR;
 
-
+    bool RewardUsed;
+    int CoinsPayout = 5;
 
     float Countdown;
     int CountdownInt;
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player" && RewardUsed == false && RedLightON == false)
+        {
+            RewardUsed = true;
+            OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
+            OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
+            if (PlayerLevelSystem.PLSinstance != null)
+            {
+                PlayerLevelSystem.PLSinstance.AddXP(15);
+            }
+        }
+    }
 
     private void OnEnable()
     {
@@ -58,7 +71,7 @@ public class OpenWorldRobot : MonoBehaviour
 
     void CountToGreenComplete()
     {
-
+        RewardUsed = false;
         RedLightON = false;
         SetLightVisuals(new Color32(0, 255, 0, 67));
 

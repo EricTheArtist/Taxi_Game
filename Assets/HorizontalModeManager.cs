@@ -21,23 +21,21 @@ public class HorizontalModeManager : MonoBehaviour
     {
         if(Screen.orientation == ScreenOrientation.Portrait)
         {
-
+            
         }
         else if(Screen.orientation == ScreenOrientation.LandscapeLeft)
         {
-            ToggleSteerigwheel();
+            //ToggleSteerigwheel();
+            Screen.orientation = ScreenOrientation.AutoRotation;
         }
         else if (Screen.orientation == ScreenOrientation.LandscapeRight)
         {
-            ToggleSteerigwheel();
+            //ToggleSteerigwheel();
+            Screen.orientation = ScreenOrientation.AutoRotation;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void ToggleSteerigwheel()
     {
