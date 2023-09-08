@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 122711199}
   - component: {fileID: 122711198}
   - component: {fileID: 122711197}
+  - component: {fileID: 122711201}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -511,6 +512,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &122711201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122711196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65eb1065738007b42b388d91872ccf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion: {fileID: 8031118792281136502, guid: 2e34387bf6e1ba646a057babd4667049,
+    type: 3}
 --- !u!1 &181333244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1313,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!198 &519096136 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7204610295130357818, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+    type: 3}
+  m_PrefabInstance: {fileID: 1717356649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &570127222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1917,6 +1938,7 @@ MonoBehaviour:
   ShootPos: {fileID: 1808801692}
   Tank: {fileID: 765943103}
   Turret: {fileID: 1591979826}
+  MuzleFlash: {fileID: 519096136}
 --- !u!1 &796890360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,6 +3559,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881350210630297515, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1995571284987025715, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}
       propertyPath: m_Name
@@ -3596,6 +3658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258311365149885366, guid: 176fa6346a6e62a4dbe4b32eb0042943,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8711318391333091420, guid: 176fa6346a6e62a4dbe4b32eb0042943,
         type: 3}

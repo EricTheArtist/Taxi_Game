@@ -10,6 +10,7 @@ public class ShootingRangeShoot : MonoBehaviour
     public Transform ShootPos;
     public GameObject Tank;
     public GameObject Turret;
+    public ParticleSystem MuzleFlash;
     bool AimL = false;
     bool AimR = false;
     bool AimUP = false;
@@ -19,7 +20,7 @@ public class ShootingRangeShoot : MonoBehaviour
     {
 
             GameObject ball = Instantiate(projectile, ShootPos.position,ShootPos.rotation);
-
+            MuzleFlash.Play();
             ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, launchVelocity));
         
     }
