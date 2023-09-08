@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OpenWorldDropOff : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class OpenWorldDropOff : MonoBehaviour
     public GameObject passengerDropoffIcon;
     public Animator PassengerDropOffAnim;
     public GameObject PassengerLocal;
+
+    public UnityEvent OWEnterDropOffEvent;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && consumed == false)
         {
             carInside = true;
+            OWEnterDropOffEvent.Invoke();
             //start timer
         }
     }

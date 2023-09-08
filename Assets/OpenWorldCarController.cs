@@ -27,7 +27,9 @@ namespace SimpleInputNamespace
         bool SmokeR;
         bool SmokeL;
 
+        public Animator RimAnimator;
 
+        bool toggledanim;
 
 
 
@@ -56,12 +58,17 @@ namespace SimpleInputNamespace
         }
         void FixedUpdate()
         {
-            WheelL.transform.localEulerAngles = new Vector3(0, 180+(SWOW.Angle/5), WheelL.transform.localRotation.eulerAngles.z);
-            WheelR.transform.localEulerAngles = new Vector3(0, 0+ (SWOW.Angle/5), WheelR.transform.localRotation.eulerAngles.z);
+            WheelL.transform.localEulerAngles = new Vector3(0, 180+(SWOW.Angle/10), WheelL.transform.localRotation.eulerAngles.z);
+            WheelR.transform.localEulerAngles = new Vector3(0, 0+ (SWOW.Angle/10), WheelR.transform.localRotation.eulerAngles.z);
 
 
             if (isMovingforward) // Check input for forward
             {
+                if(toggledanim == false)
+                {
+                    RimAnimator.SetBool("IsMoving", true);
+                    toggledanim = true;
+                }
                 if (moveSpeed < maxSpeed)
                 {
                     moveSpeed = moveSpeed + (Time.deltaTime + acceleration);
@@ -70,11 +77,16 @@ namespace SimpleInputNamespace
                 {
                     moveSpeed = maxSpeed;
                 }
-
+                
 
             }
             else if (isMovingbackward) // check input for reverse
             {
+                if (toggledanim == false)
+                {
+                    RimAnimator.SetBool("IsMoving", true);
+                    toggledanim = true;
+                }
                 if (moveSpeed > -maxReverse)
                 {
                     moveSpeed = moveSpeed - (Time.deltaTime + breaking);
@@ -100,6 +112,12 @@ namespace SimpleInputNamespace
                 else
                 {
                     moveSpeed = 0;
+                    if (toggledanim == true)
+                    {
+                        RimAnimator.SetBool("IsMoving", false);
+                        toggledanim = false;
+                    }
+
                 }
                 
             }

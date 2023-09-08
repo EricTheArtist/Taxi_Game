@@ -26,7 +26,19 @@ namespace KartGame.KartSystems {
             {
                 if(ThisRB.velocity.magnitude > 0.5)
                 {
-                    Steering = (SWOW.Angle / 360);
+                    if (SWOW.Angle > 180)
+                    {
+                        Steering = 1;
+                    }
+                    else if(SWOW.Angle < -180)
+                    {
+                        Steering = -1;
+                    }
+                    else
+                    {
+                        Steering = (SWOW.Angle / 180);
+                    }
+                    
                 }
                 else
                 {

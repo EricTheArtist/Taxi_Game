@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OpenWorldPassenger : MonoBehaviour
 {
@@ -16,13 +17,15 @@ public class OpenWorldPassenger : MonoBehaviour
 
     public Animator PickupAnimator;
     public GameObject AnimatedPassenger;
+
+    public UnityEvent OWEnterPassengerEvent;
     
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && consumed == false)
         {
             carInside = true;
-            
+            OWEnterPassengerEvent.Invoke();
             //start timer
         }
     }
