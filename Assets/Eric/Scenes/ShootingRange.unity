@@ -2279,6 +2279,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997064652}
   m_Mesh: {fileID: -6281424698479989189, guid: fe601fb3031dbdd47bed429423a2f2ba, type: 3}
+--- !u!1 &1077166275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077166277}
+  - component: {fileID: 1077166276}
+  m_Layer: 0
+  m_Name: ArcadeCurrencySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1077166276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077166275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e548b6b6b088e43bd7e06377dbf4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coins_Text: {fileID: 2096308495}
+  Coins_Shadow: {fileID: 1782796221}
+  CoinsCollectClip: {fileID: 8300000, guid: 93836c46b432c4d4d96203764a3bfca4, type: 3}
+--- !u!4 &1077166277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077166275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180855674
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,6 +5399,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 58.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.56074226
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].inSlope
+      value: -5.9233165
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].inWeight
+      value: 0.20948632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696551243732224973, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].outSlope
+      value: -5.9233165
+      objectReference: {fileID: 0}
     - target: {fileID: 6708691012443940089, guid: 5c78fdc0c00c00347b5fd13d27feacd7,
         type: 3}
       propertyPath: m_Name
