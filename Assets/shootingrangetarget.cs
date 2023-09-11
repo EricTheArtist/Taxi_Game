@@ -8,11 +8,13 @@ public class shootingrangetarget : MonoBehaviour
     public ParticleSystem Coins;
     public GameObject CarBody;
     public GameObject Carwreck;
+    public Collider ThisCol;
     bool hit = false;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Stop" && hit ==false)
         {
+            ThisCol.enabled = false;
             hit = true;
             CarBody.SetActive(false);
             Carwreck.SetActive(true);
