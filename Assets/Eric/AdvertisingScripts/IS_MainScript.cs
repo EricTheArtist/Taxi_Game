@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IS_MainScript : MonoBehaviour
 {
@@ -212,6 +213,11 @@ string appkey = "";
             RewardRecievedScreen.SetActive(true);
             PlayerLevelSystem.PLSinstance.AddXP(10);
         }
+        else
+        {
+            SceneManager.LoadScene(3);
+        }
+
 
 
 
