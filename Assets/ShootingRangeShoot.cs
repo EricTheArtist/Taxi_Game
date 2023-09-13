@@ -15,14 +15,31 @@ public class ShootingRangeShoot : MonoBehaviour
     bool AimR = false;
     bool AimUP = false;
     bool AimDOWN = false;
+    public Renderer TaxiMaterial;
 
+    [SerializeField] private AudioClip ShootClip;
+
+    public Texture2D TankBaseTex;
+    public Texture2D TankMaskTex;
+
+    private void Start()
+    {
+        TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Tex", TankBaseTex);
+        TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetTexture("_Car_Mask", TankMaskTex);
+    }
     public void ShootBullet()
     {
 
             GameObject ball = Instantiate(projectile, ShootPos.position,ShootPos.rotation);
             MuzleFlash.Play();
             ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, launchVelocity));
-        
+
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(ShootClip);
+        }
+
     }
 
     private void FixedUpdate()

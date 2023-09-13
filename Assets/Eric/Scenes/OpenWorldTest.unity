@@ -15284,7 +15284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347be7b28efbd2940b588d041e2e3c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WatchADPrompt: {fileID: 1630261043}
+  WatchADPrompt: {fileID: 869670542}
 --- !u!1001 &342300833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71933,9 +71933,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 338657741}
-        m_TargetAssemblyTypeName: IS_MainScript, Assembly-CSharp
-        m_MethodName: ShowRewardAd
+      - m_Target: {fileID: 338657743}
+        m_TargetAssemblyTypeName: IS_RewardedAd, Assembly-CSharp
+        m_MethodName: CloseWatchADPrompt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -71945,9 +71945,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 338657743}
-        m_TargetAssemblyTypeName: IS_RewardedAd, Assembly-CSharp
-        m_MethodName: CloseWatchADPrompt
+      - m_Target: {fileID: 338657741}
+        m_TargetAssemblyTypeName: IS_MainScript, Assembly-CSharp
+        m_MethodName: ShowRewardAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

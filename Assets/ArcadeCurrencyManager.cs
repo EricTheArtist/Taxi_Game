@@ -57,9 +57,8 @@ public class ArcadeCurrencyManager : MonoBehaviour
 
         if (Countdown < 0)
         {
+            Countdown_Text.SetText("0");
             ShootingTimeEnded();
- 
-
         }
     }
 
@@ -67,17 +66,24 @@ public class ArcadeCurrencyManager : MonoBehaviour
     {
         
         bool Owned = (PlayerPrefs.GetInt("Car02Premium") != 0);
+        GameEndScreen.SetActive(true);
+        if(Score > HighScore)
+        {
+            HighScore = Score;
+            PlayerPrefs.SetInt("ShootingHighScore", Score);
+        }
+        End_RecentScore.SetText(Score.ToString());
+        End_HighScore.SetText(HighScore.ToString());
+
         if(Owned == true)
         {
-            GameEndScreen.SetActive(true);
             ReplayButton.SetActive(true);
         }
         if(Owned == false)
         {
-            GameEndScreen.SetActive(true);
             RentAgainGameEndScreen.SetActive(true);
         }
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     void RefreshUIAmounts()
@@ -96,6 +102,7 @@ public class ArcadeCurrencyManager : MonoBehaviour
         PlayerPrefs.SetInt("Main Amount", coins);
         Score++;
         RefreshUIAmounts();
+        PlayCoinCollectSound();
     }
 
     public void PlayCoinCollectSound()

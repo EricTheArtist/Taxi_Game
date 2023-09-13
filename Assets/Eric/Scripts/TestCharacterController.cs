@@ -17,9 +17,9 @@ namespace SimpleInputNamespace
         public float maxMovementSpeed = 40f;
         public float MovementIncrement = 4;
         [Header("Steering Wheel")]
-        public SteeringWheel SW;
-        private float hMovement; //horixontal movement, the speed at which the x value of the taxi is shifted 
-        public GameObject SteeringwheelUI;
+        //public SteeringWheel SW;
+        //private float hMovement; //horixontal movement, the speed at which the x value of the taxi is shifted 
+        //public GameObject SteeringwheelUI;
 
         [Header("Swiping")]
         public float[] LanesX; //X value of each lane stored in an array
@@ -45,19 +45,19 @@ namespace SimpleInputNamespace
 
 
         [Header("Breaking")]
-        private int brakesAmount = 100;
+        //private int brakesAmount = 100;
         public float _movementSpeed; //is used by lane spawner if the taxi is busy breaking
         public bool isBraking = false;
-        float BreakingSpeed = 3f; // used for lerping the break
-        float LerpOfBreak;
-        bool CanLerp = false; // used to enable the lerp once the break is pressed
-        bool breakfinished = true; // set true when the player releases the break button
+        //float BreakingSpeed = 3f; // used for lerping the break
+        //float LerpOfBreak;
+        //bool CanLerp = false; // used to enable the lerp once the break is pressed
+       //bool breakfinished = true; // set true when the player releases the break button
         public Image image_brakepad;
         public GameObject breakButton;
         public TMP_Text BreakInstruction;
 
         public Animator animator;
-        public GameObject SteeringCar;
+        //public GameObject SteeringCar;
         public GameObject SwipingCarBody;
         public GameObject SwipingCarWF;
         public GameObject SwipingCarWB;
@@ -70,12 +70,15 @@ namespace SimpleInputNamespace
             breakButton.SetActive(false);
 
             game_over = false;
+            /*
             if(SteeringWheel == false)
             {
                 SteeringwheelUI.SetActive(false);
             } 
+            */
         }
 
+        /*
         public void ToggleSteeringWheel()
         {
             if(SteeringWheel == false)
@@ -100,13 +103,13 @@ namespace SimpleInputNamespace
                 SwipingShadow.SetActive(true);
             }
 
-        }
+        }*/
         void Update()
         {
             MovementTest(); // testing input for PC (Remove later)
 
             //Code for steering wheel
-            SteeringWheelUpdate();
+            //SteeringWheelUpdate();
 
             //Code for swiping controls 
             SwipingUpdate();
@@ -146,6 +149,7 @@ namespace SimpleInputNamespace
 
         }
 
+        /*
         void SteeringWheelUpdate()
         {
             //Code for steering wheel
@@ -186,7 +190,7 @@ namespace SimpleInputNamespace
                 }
             }
         }
-
+        */
         void SwipingUpdate()
         {
 
@@ -256,6 +260,7 @@ namespace SimpleInputNamespace
             {
                 // set The forward movement
                 float vMovement = 1 * movementSpeed;
+                /*
                 if (SteeringWheel == true)
                 {
                     //updates the position of the car with steering wheel included
@@ -264,12 +269,13 @@ namespace SimpleInputNamespace
 
 
                 }
-                else
-                {
+                */
+                
+                
                     //updates the position of the car with swiping
                     transform.Translate(new Vector3(0, 0, vMovement) * Time.deltaTime);
                     this.transform.position = new Vector3(hPosition, 0.5f, transform.position.z);
-                }
+                
 
             }
         }
@@ -360,7 +366,7 @@ namespace SimpleInputNamespace
          
         }
 
-
+        /*
         void LerpBreaking()
         {
             if (CanLerp == true)
@@ -381,7 +387,7 @@ namespace SimpleInputNamespace
             }
         }
 
-
+        */
 
 
 

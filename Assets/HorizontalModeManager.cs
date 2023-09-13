@@ -7,15 +7,15 @@ using UnityEngine.Events;
 public class HorizontalModeManager : MonoBehaviour
 {
 
-    public Color32 ActiveColor;
-    public Color32 InactiveColor;
+    //public Color32 ActiveColor;
+    //public Color32 InactiveColor;
 
-    public Image SteerigActiveImage;
-    public bool SteeringWheelActive = false;
+    //public Image SteerigActiveImage;
+    //public bool SteeringWheelActive = false;
 
-    public UnityEvent Entersteering;
+    //public UnityEvent Entersteering;
 
-    public SimpleInputNamespace.TestCharacterController controller;
+    //public SimpleInputNamespace.TestCharacterController controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class HorizontalModeManager : MonoBehaviour
     }
 
 
-
+    /*
     public void ToggleSteerigwheel()
     {
         controller.ToggleSteeringWheel();
@@ -57,5 +57,5 @@ public class HorizontalModeManager : MonoBehaviour
         }
 
     }
-
+    */
 }

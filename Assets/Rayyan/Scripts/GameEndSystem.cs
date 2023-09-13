@@ -95,10 +95,10 @@ public class GameEndSystem : MonoBehaviour
         {
             RestartSpeed = 10f;
 
-            if (controller.SteeringWheel == false)
-            { 
+            
+             
                 CSU.CarChasisHolder.SetActive(false);
-            }
+            
                 
             CSU.Drivechain.SetActive(true);
             Collison_Crash();
@@ -179,6 +179,7 @@ public class GameEndSystem : MonoBehaviour
         _overallRankingSystem.ScoreCalculator();
         googleHandlerScript.PassengerCountHandler();
         googleHandlerScript.OverAllScoreHandler();
+        /*
         if (HMM.SteeringWheelActive == true)
         {
             HighScore = PlayerPrefs.GetInt("HighScoreSteering");
@@ -186,12 +187,13 @@ public class GameEndSystem : MonoBehaviour
             googleHandlerScript.SteeringScoreHandler();
             Debug.Log("Steeringscore pushed");
         }
-        else
-        {
+        */
+        
+        
             HighScore = PlayerPrefs.GetInt("HighScore");
             googleHandlerScript.SwippingScoreHandler();
             Debug.Log("Swipingscore pushed");
-        }
+        
 
         HighScore_text.SetText(HighScore.ToString());
         //PlayerPrefs.SetInt("Main Amount", currency_system.main_amount);
@@ -211,10 +213,9 @@ public class GameEndSystem : MonoBehaviour
             RestartSpeed = 5f;
         }
 
-        if (controller.SteeringWheel == false)
-        {
+
             CSU.CarChasisHolder.SetActive(true);
-        }
+        
         
         CSU.Drivechain.SetActive(false);
         Debug.Log("Game Restarted");
