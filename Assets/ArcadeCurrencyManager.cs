@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ArcadeCurrencyManager : MonoBehaviour
 {
@@ -9,14 +10,30 @@ public class ArcadeCurrencyManager : MonoBehaviour
 
     public TMP_Text Coins_Text;
     public TMP_Text Coins_Shadow;
+    public TMP_Text Score_Text;
+    public TMP_Text Countdown_Text;
+
+    public TMP_Text End_RecentScore;
+    public TMP_Text End_HighScore;
 
     int coins;
+    int Score = 0;
+    int HighScore;
+
+    float Countdown = 30;
+    int CountdownInt;
+    public GameObject GameEndScreen;
+    public GameObject RentAgainGameEndScreen;
+    public GameObject ReplayButton;
 
     [SerializeField] private AudioClip CoinsCollectClip;
 
     // Start is called before the first frame update
     void Start()
     {
+        RefreshUIAmounts();
+        HighScore = PlayerPrefs.GetInt("ShootingHighScore");
+        
         if (ACMInstance == null)
         {
             ACMInstance = this;
@@ -27,7 +44,40 @@ public class ArcadeCurrencyManager : MonoBehaviour
         }
 
 
-        RefreshUIAmounts();
+        
+    }
+
+    void Update()
+    {
+
+        Countdown -= Time.deltaTime;
+
+        CountdownInt = (int)Countdown + 1;
+        Countdown_Text.SetText(CountdownInt.ToString());
+
+        if (Countdown < 0)
+        {
+            ShootingTimeEnded();
+ 
+
+        }
+    }
+
+    void ShootingTimeEnded()
+    {
+        
+        bool Owned = (PlayerPrefs.GetInt("Car02Premium") != 0);
+        if(Owned == true)
+        {
+            GameEndScreen.SetActive(true);
+            ReplayButton.SetActive(true);
+        }
+        if(Owned == false)
+        {
+            GameEndScreen.SetActive(true);
+            RentAgainGameEndScreen.SetActive(true);
+        }
+        Time.timeScale = 0;
     }
 
     void RefreshUIAmounts()
@@ -35,6 +85,8 @@ public class ArcadeCurrencyManager : MonoBehaviour
         coins = PlayerPrefs.GetInt("Main Amount");
         Coins_Text.SetText(coins.ToString());
         Coins_Shadow.SetText(coins.ToString());
+
+        Score_Text.SetText(Score.ToString());
     }
 
     public void IncrementCoins(int NumberOfCoins)
@@ -42,6 +94,7 @@ public class ArcadeCurrencyManager : MonoBehaviour
         coins = PlayerPrefs.GetInt("Main Amount");
         coins += NumberOfCoins;
         PlayerPrefs.SetInt("Main Amount", coins);
+        Score++;
         RefreshUIAmounts();
     }
 
@@ -53,6 +106,25 @@ public class ArcadeCurrencyManager : MonoBehaviour
         }
     }
 
+    public void LoadShop()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadMain()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+
+    public void ReloadThis()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(3);
+    }
+
+    
 
 
 }
