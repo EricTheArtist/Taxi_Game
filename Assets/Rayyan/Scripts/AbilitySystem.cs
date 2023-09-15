@@ -106,7 +106,7 @@ public class AbilitySystem : MonoBehaviour
                 AdditionalAbilityIndex = 0;
             }
         }
-        if (Carindex == 1 || Carindex == 8 || Carindex == 10) //Quantum or hance
+        if (Carindex == 1 || Carindex == 8 || Carindex == 10 || Carindex == 12) //Quantum or hance
         {
             abilityType = AbilityType.DoubleCoins;
             Ability_Text.SetText("2 x COINS");

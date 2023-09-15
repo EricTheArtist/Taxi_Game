@@ -78,7 +78,7 @@ public class Test_LaneElements : MonoBehaviour
             {
                 AbilityObjectShield.SetActive(true);
             }
-            if (Carindex == 1 || Carindex == 8 || Carindex == 10) //Quantum or hance
+            if (Carindex == 1 || Carindex == 8 || Carindex == 10 || Carindex == 12) //Quantum or hance
             {
                 AbilityObject2X.SetActive(true);
             }

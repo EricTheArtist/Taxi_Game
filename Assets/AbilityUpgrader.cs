@@ -121,7 +121,7 @@ public class AbilityUpgrader : MonoBehaviour
             SetIcon(3);
 
         }
-        if (carIndex == 1 || carIndex == 8 || carIndex == 10) //Quantum
+        if (carIndex == 1 || carIndex == 8 || carIndex == 10 || carIndex == 12) //Quantum
         {
 
             AbilityTitle.SetText("2X COINS");
@@ -178,7 +178,7 @@ public class AbilityUpgrader : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("Ability_Armour", NewTimeVal);
             }
-            if (CarINDEX == 1 || CarINDEX == 8 || CarINDEX == 10) //Quantum or hance
+            if (CarINDEX == 1 || CarINDEX == 8 || CarINDEX == 10 || CarINDEX == 12) //Quantum or hance
             {
                 PlayerPrefs.SetFloat("Ability_Double", NewTimeVal);
             }
