@@ -10,6 +10,7 @@ public class IS_MainScript : MonoBehaviour
     //public CurrencySystem CS;
     public ShopUIManager SUIM;
     public GameObject RewardRecievedScreen;
+    public bool Tank = false;
 #if UNITY_ANDROID
     string appkey = "19a7621a5";
 #elif UNITY_IOS
@@ -213,7 +214,7 @@ string appkey = "";
             RewardRecievedScreen.SetActive(true);
             PlayerLevelSystem.PLSinstance.AddXP(10);
         }
-        else
+        if(Tank == true)
         {
             SceneManager.LoadScene(3);
         }
