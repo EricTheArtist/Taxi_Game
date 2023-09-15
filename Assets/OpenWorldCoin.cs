@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OpenWorldCoin : MonoBehaviour
-{
+{   
     public float rotationSpeed = 0.5f;
     public GameObject Coin;
     bool Active = true;
     public float cooldowntime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-
+    WaitForSeconds delay = new WaitForSeconds(10);
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,8 +22,7 @@ public class OpenWorldCoin : MonoBehaviour
             OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(1);
             OpenWorldCurrencyManager.OWCMInstance.PlayCoinCollectVFX();
 
-            Invoke("Reactivate", cooldowntime);
-            
+            StartCoroutine(WaitTenSeconds());
         }
     }
 
@@ -44,9 +38,20 @@ public class OpenWorldCoin : MonoBehaviour
         
     }
 
+
+    IEnumerator WaitTenSeconds()
+    {
+        yield return delay;
+        Coin.SetActive(true);
+        Active = true;
+        // I waited five seconds!
+    }
+    /*
     void Reactivate()
     {
         Coin.SetActive(true);
         Active = true;
     }
+    */
+    
 }

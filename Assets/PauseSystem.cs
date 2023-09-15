@@ -9,6 +9,7 @@ public class PauseSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 30;
         Paused = false;
     }
 
