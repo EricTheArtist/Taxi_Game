@@ -19,7 +19,17 @@ public class BuyNoAdsPanelManager : MonoBehaviour
     }
     public void ClickNoAdsButton()
     {
-        NCP.BuyProduct("com.vetkoekstudios.taxiranked.noads");
+        bool Owned = (PlayerPrefs.GetInt("NoAds") != 0);
+        if (Owned == true)
+        {
+            IS_MAIN.DestroyBannerAd();
+            BuynoadsButton.SetActive(false);
+        }
+        else
+        {
+            NCP.BuyProduct("com.vetkoekstudios.taxiranked.noads");
+        }
+        
     }
     public void VoidONnoAdsPurchase()
     {

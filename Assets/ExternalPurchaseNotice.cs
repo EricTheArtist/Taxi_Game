@@ -53,8 +53,11 @@ public class ExternalPurchaseNotice : MonoBehaviour
 
     public void externalPurchaseSucced(Product product)
     {
+        if(Notice!= null)
+        {
+            Notice.SetActive(true);
+        }
         
-        Notice.SetActive(true);
         
         CurrentBalance = PlayerPrefs.GetInt("Main Amount");
 
@@ -209,7 +212,11 @@ public class ExternalPurchaseNotice : MonoBehaviour
             ProductName.SetText("Car product Restored");
         }
 
-
+        if (product.definition.id == "com.vetkoekstudios.taxiranked.noads") //no ads
+        {
+            PlayerPrefs.SetInt("NoAds", (true ? 1 : 0));
+            ProductName.SetText("Ads Removed");
+        }
 
 
         // updates text on screen
@@ -219,6 +226,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
             run_amount_shadow.SetText(NewBalance.ToString());
         }
 
+        /*
         if (product.hasReceipt) // checks to see if the product is looged as owned
         {
             
@@ -235,7 +243,7 @@ public class ExternalPurchaseNotice : MonoBehaviour
 
             }
         }
-
+        */
     }
 
     public void CloseExternalPurchaseNotice()
