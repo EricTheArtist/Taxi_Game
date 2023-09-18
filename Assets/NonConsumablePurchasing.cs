@@ -50,6 +50,8 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car04";
     public string ProductIDCar05 = "com.vetkoekstudios.taxiranked.car05";
 
+    public string ProductIDnoads = "com.vetkoekstudios.taxiranked.noads";
+
     public string ProductIDfromButton;
 
     public Text myText;
@@ -141,6 +143,8 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         builder.AddProduct(ProductIDCar03, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar04, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar05, ProductType.NonConsumable);
+
+        builder.AddProduct(ProductIDnoads, ProductType.NonConsumable);
 
         UnityPurchasing.Initialize(this, builder);
         
@@ -291,11 +295,15 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
         {
             
 
-                //handles currency payout
+            //handles currency payout
+            if(SUIM!= null)
+            {
                 CurrentBalance = PlayerPrefs.GetInt("Main Amount");
                 NewBalance = CurrentBalance + payoutREF;
                 PlayerPrefs.SetInt("Main Amount", NewBalance);
                 SUIM.updateCoinsText();
+            }
+
                 payoutREF = 0;
 
             //handles colour purchase
@@ -373,6 +381,10 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
                 PlayerPrefs.SetInt("Car05Premium", (true ? 1 : 0));
             }
 
+            if(ProductIDfromButton == ProductIDnoads)
+            {
+                PlayerPrefs.SetInt("NoAds", (true ? 1 : 0));
+            }
 
 
             SucessfullPurchase.Invoke();

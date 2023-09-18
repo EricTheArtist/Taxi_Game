@@ -11,6 +11,7 @@ public class IS_MainScript : MonoBehaviour
     public ShopUIManager SUIM;
     public GameObject RewardRecievedScreen;
     public bool Tank = false;
+    public OpenWorldLoadShootingRange OWLSR;
 #if UNITY_ANDROID
     string appkey = "19a7621a5";
 #elif UNITY_IOS
@@ -214,9 +215,9 @@ string appkey = "";
             RewardRecievedScreen.SetActive(true);
             PlayerLevelSystem.PLSinstance.AddXP(10);
         }
-        if(Tank == true)
+        if(OWLSR != null)
         {
-            SceneManager.LoadScene(3);
+            OWLSR.LoadShootingRange();
         }
 
 
