@@ -5405,7 +5405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451117038837983507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2881, z: -0.619}
+  m_LocalPosition: {x: 0, y: -0.2881, z: -0.471}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5444,7 +5444,7 @@ Transform:
   m_Children:
   - {fileID: 3287263731303749265}
   m_Father: {fileID: 1129739129749937321}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689087711454147191
 GameObject:
@@ -15912,6 +15912,7 @@ MonoBehaviour:
   - {fileID: 920402054343508649}
   - {fileID: 8060356812357377140}
   - {fileID: 2912505467383100836}
+  - {fileID: 7922264796085058114}
   _CarBaseTex:
   - {fileID: 2800000, guid: b1c672a7900abf241afa27f3c6f6e661, type: 3}
   - {fileID: 2800000, guid: 5a2e2628762599645b086f1dca82b797, type: 3}
@@ -15926,6 +15927,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 13a29cfcb78ae9345a0cf2e739a68f37, type: 3}
   - {fileID: 2800000, guid: f2e21eeceabd70e41b21d783b9b8249f, type: 3}
   - {fileID: 2800000, guid: 4445ac4d621bd904f8123e216c403699, type: 3}
+  - {fileID: 2800000, guid: 00bf568a81432a84aae769d1e5b2d0d7, type: 3}
   _CarMaskTex:
   - {fileID: 2800000, guid: 249be02bf841d3b4d9b3abf70ced17e3, type: 3}
   - {fileID: 2800000, guid: daf0891e9474e074baa391b083294d8f, type: 3}
@@ -15940,6 +15942,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1738ae34da5c01046803a0c97008fdb1, type: 3}
   - {fileID: 2800000, guid: ba03a66a866cb7240935ce36712d00fb, type: 3}
   - {fileID: 2800000, guid: 922623cd4a3a09047bd8ced152ffc37a, type: 3}
+  - {fileID: 2800000, guid: 1716b7808eff25a42aaff2d924ffbb73, type: 3}
   TaxiMaterial: {fileID: 896256060650039391}
   TyresFront: {fileID: 4302278161475937966}
   TyresBack: {fileID: 1451117038837983507}
@@ -15959,6 +15962,7 @@ MonoBehaviour:
   - {x: 0, y: -0.3699, z: 0.4942}
   - {x: 0, y: -0.31, z: 0.683}
   - {x: 0, y: -0.292, z: 0.744}
+  - {x: 0, y: -0.292, z: 0.55}
   TyresBackPos:
   - {x: 0, y: -0.3267, z: -0.6331}
   - {x: 0, y: -0.3267, z: -0.748}
@@ -15973,6 +15977,7 @@ MonoBehaviour:
   - {x: 0, y: -0.366, z: -0.508}
   - {x: 0, y: -0.31, z: -0.644}
   - {x: 0, y: -0.288, z: -0.619}
+  - {x: 0, y: -0.2881, z: -0.471}
   TyresScaleX:
   - 1
   - 0.88
@@ -15986,6 +15991,7 @@ MonoBehaviour:
   - 0.87
   - 0.7
   - 0.87
+  - 0.9
   - 0.9
   SloganPosition:
   - {x: 0, y: 0.333, z: -1.204}
@@ -16001,6 +16007,7 @@ MonoBehaviour:
   - {x: 0, y: 0.25, z: -0.644}
   - {x: 0, y: 0.1379, z: -0.8654}
   - {x: 0, y: 0.159, z: -0.563}
+  - {x: 0, y: 0.295, z: -0.365}
   SloganXrotation:
   - 15
   - 15
@@ -16015,6 +16022,7 @@ MonoBehaviour:
   - 18
   - 41
   - 38
+  - 56
   SloganScale:
   - 0.01
   - 0.01
@@ -16029,6 +16037,7 @@ MonoBehaviour:
   - 0.007
   - 0.007
   - 0.007
+  - 0.005
   NumberPlatePosition:
   - {x: 0, y: -0.061, z: -1.261}
   - {x: 0, y: -0.0874, z: -1.2493}
@@ -16043,6 +16052,7 @@ MonoBehaviour:
   - {x: 0, y: -0.157, z: -0.693}
   - {x: 0, y: -0.219, z: -0.98}
   - {x: 0, y: -0.121, z: -1.149}
+  - {x: 0, y: -0.144, z: -0.725}
   CarChasisHolder: {fileID: 7353220202749501993}
   Wheelsleft:
   - {fileID: 1689087711454147191}
@@ -16062,6 +16072,7 @@ MonoBehaviour:
   - 1.1
   - 1
   - 0.7
+  - 1
   - 1
   - 1
   WheelStartAngle: 0
@@ -16378,7 +16389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2531195502363471646
 Transform:
   m_ObjectHideFlags: 0
@@ -16503,18 +16514,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3691509655238694763}
-  m_LocalRotation: {x: 0.32556805, y: 0, z: 0, w: 0.9455186}
-  m_LocalPosition: {x: 0, y: 0, z: -0.563}
-  m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
+  m_LocalRotation: {x: 0.4694715, y: 0, z: 0, w: 0.8829476}
+  m_LocalPosition: {x: 0, y: 0, z: -0.365}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1421491509592586688}
   m_Father: {fileID: 1129739129749937321}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 38, y: 0, z: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 56, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.159}
+  m_AnchoredPosition: {x: 0, y: 0.295}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &312133058792596146
@@ -21741,7 +21752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4302278161475937966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.292, z: 0.744}
+  m_LocalPosition: {x: 0, y: -0.292, z: 0.55}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21810,17 +21821,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4788487874157199397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.149}
+  m_LocalPosition: {x: 0, y: 0, z: -0.725}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9107214237194035906}
   m_Father: {fileID: 1129739129749937321}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.121}
+  m_AnchoredPosition: {x: 0, y: -0.144}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5451223280795006216
@@ -46887,6 +46898,7 @@ Transform:
   - {fileID: 544439014298425363}
   - {fileID: 3356797983828248735}
   - {fileID: 2531195502363471646}
+  - {fileID: 7402327306004013304}
   - {fileID: 7309136311133791756}
   - {fileID: 7085794413769865478}
   - {fileID: 1205037202704263641}
@@ -46925,6 +46937,89 @@ Transform:
   m_Father: {fileID: 5826842742586135640}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &7922264796085058114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7402327306004013304}
+  - component: {fileID: 5842720000762457949}
+  - component: {fileID: 8570760945806400407}
+  m_Layer: 0
+  m_Name: Me_Car_Banana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7402327306004013304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922264796085058114}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.319, z: 0}
+  m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1129739129749937321}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5842720000762457949
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922264796085058114}
+  m_Mesh: {fileID: 150581138598605843, guid: 29678bcacf9feae4bb42ccb2acbdad9d, type: 3}
+--- !u!23 &8570760945806400407
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922264796085058114}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7ce6d86b6e4f6f04988f3f8af3db3765, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8060356812357377140
 GameObject:
   m_ObjectHideFlags: 0

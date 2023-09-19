@@ -42,6 +42,7 @@ public class ScriptedIAPListner : MonoBehaviour, IDetailedStoreListener
     public string ProductIDCar03 = "com.vetkoekstudios.taxiranked.car03";
     public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car04";
     public string ProductIDCar05 = "com.vetkoekstudios.taxiranked.car05";
+    public string ProductIDCar06 = "com.vetkoekstudios.taxiranked.car06";
 
     public string ProductIDnoads = "com.vetkoekstudios.taxiranked.noads";
 
@@ -109,6 +110,7 @@ public class ScriptedIAPListner : MonoBehaviour, IDetailedStoreListener
         builder.AddProduct(ProductIDCar03, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar04, ProductType.NonConsumable);
         builder.AddProduct(ProductIDCar05, ProductType.NonConsumable);
+        builder.AddProduct(ProductIDCar06, ProductType.NonConsumable);
 
         builder.AddProduct(ProductIDnoads, ProductType.NonConsumable);
 

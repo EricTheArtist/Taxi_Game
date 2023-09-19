@@ -66,7 +66,7 @@ public class Test_LaneElements : MonoBehaviour
         {
             int Carindex = PlayerPrefs.GetInt("ActiveCar");
 
-            if (Carindex == 2 || Carindex == 5 || Carindex == 7 || Carindex == 9) //golf or BMW or delorian or golf 7
+            if (Carindex == 2 || Carindex == 5 || Carindex == 7 || Carindex == 9 || Carindex == 13) //golf or BMW or delorian or golf 7
             {
                 AbilityObjectSpeedBoost.SetActive(true);
             }
