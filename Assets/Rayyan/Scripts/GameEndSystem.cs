@@ -67,6 +67,7 @@ public class GameEndSystem : MonoBehaviour
 
     float RestartSpeed = 10f;
 
+    public GameModeSelector GMS;
     public GameObject AdditionalAbilitybutton;
     // Start is called before the first frame update
     void Start()
@@ -264,9 +265,17 @@ public class GameEndSystem : MonoBehaviour
         welcome_ui_dynamic.SetActive(false);
         if (StartCarAnim != null)
         {
-            StartCarAnim.SetBool("Play", true);
-            SmokeBurst.Play();
-            Invoke("restart_button", 1);
+            if(GMS.OpenWorldMode == true)
+            {
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                StartCarAnim.SetBool("Play", true);
+                SmokeBurst.Play();
+                Invoke("restart_button", 1);
+            }
+
         }
         else
         {
