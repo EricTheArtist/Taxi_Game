@@ -80,7 +80,7 @@ public class AbilityUpgrader : MonoBehaviour
         {
 
             //Set title text
-            AbilityTitle.SetText("SPEED BOOST");
+            AbilityTitle.SetText("PENINGKATAN KELAJUAN");
             //Set Duration text
             SecondsValue.SetText(CurrentAbilityValSpeed.ToString() + "s");
             //Set Bar Scale
@@ -88,7 +88,7 @@ public class AbilityUpgrader : MonoBehaviour
 
             TimeToUpgrade = CurrentAbilityValSpeed;
 
-            UpgradeButtonText.SetText("UPGRADE");
+            UpgradeButtonText.SetText("NAIK TARAF");
             CanUpgrade = true;
 
             SetIcon(2);
@@ -97,11 +97,11 @@ public class AbilityUpgrader : MonoBehaviour
         if (carIndex == 4|| carIndex == 11) //police truck
         {
 
-            AbilityTitle.SetText("NO POLICE");
+            AbilityTitle.SetText("TIADA POLIS");
             SecondsValue.SetText("N/A");
             AbilityBar.transform.localScale = new Vector3(MaxAbilityTime / MaxAbilityTime, 1, 1);
 
-            UpgradeButtonText.SetText("PASSIVE");
+            UpgradeButtonText.SetText("PASIF");
             CanUpgrade = false;
 
             TimeToUpgrade = 10;
@@ -110,12 +110,12 @@ public class AbilityUpgrader : MonoBehaviour
         if (carIndex == 3 || carIndex == 6) //landcruiser
         {
 
-            AbilityTitle.SetText("SHIELD");
+            AbilityTitle.SetText("PERISAI");
             SecondsValue.SetText(CurrentAbilityValArmour.ToString() + "s");
             AbilityBar.transform.localScale = new Vector3(CurrentAbilityValArmour / MaxAbilityTime, 1, 1);
             TimeToUpgrade = CurrentAbilityValArmour;
 
-            UpgradeButtonText.SetText("UPGRADE");
+            UpgradeButtonText.SetText("NAIK TARAF");
             CanUpgrade = true;
 
             SetIcon(3);
@@ -124,19 +124,19 @@ public class AbilityUpgrader : MonoBehaviour
         if (carIndex == 1 || carIndex == 8 || carIndex == 10 || carIndex == 12) //Quantum
         {
 
-            AbilityTitle.SetText("2X COINS");
+            AbilityTitle.SetText("2X SYILING");
             SecondsValue.SetText(CurrentAbilityValDouble.ToString() + "s");
             AbilityBar.transform.localScale = new Vector3(CurrentAbilityValDouble / MaxAbilityTime, 1, 1);
             TimeToUpgrade = CurrentAbilityValDouble;
 
-            UpgradeButtonText.SetText("UPGRADE");
+            UpgradeButtonText.SetText("NAIK TARAF");
             CanUpgrade = true;
 
             SetIcon(1);
         }
         if (carIndex == 0)
         {
-            AbilityTitle.SetText("NO ABILITY");
+            AbilityTitle.SetText("TIADA KEMAMPUAN");
             SecondsValue.SetText("N/A");
             AbilityBar.transform.localScale = new Vector3(MaxAbilityTime/ MaxAbilityTime, 1, 1);
             TimeToUpgrade = 10;
@@ -153,7 +153,7 @@ public class AbilityUpgrader : MonoBehaviour
 
         if (TimeToUpgrade == MaxAbilityTime)
         {
-            UpgradeButtonText.SetText("Maxed");
+            UpgradeButtonText.SetText("Maks");
             UpgradeCostText.SetText("-");
             CanUpgrade = false;
         }

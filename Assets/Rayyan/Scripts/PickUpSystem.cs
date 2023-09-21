@@ -92,7 +92,7 @@ public class PickUpSystem : MonoBehaviour
             //AudioCoincollect.Play();
             SoundManager.Instance.PlaySound(_coinCollectClip);
             controller.breakButton.SetActive(true);
-            controller.BreakInstruction.SetText("TAP!");
+            controller.BreakInstruction.SetText("KETIK!");
             used = false;
             pickUpPoint = other.transform.parent.gameObject;
 
@@ -112,7 +112,7 @@ public class PickUpSystem : MonoBehaviour
             if(TR.RedLightON == true && CopIsChasing == false)
             {
                 controller.breakButton.SetActive(true);
-                controller.BreakInstruction.SetText("HOLD!");
+                controller.BreakInstruction.SetText("TAHAN!");
                 EnterRobot.Invoke(); //event used for tutorial
                 
             }
@@ -148,7 +148,7 @@ public class PickUpSystem : MonoBehaviour
             Test_Robot TR = other.gameObject.GetComponent<Test_Robot>();
             if (TR.RedLightON == false) //if the light is green 
             {
-                controller.BreakInstruction.SetText("GO!");
+                controller.BreakInstruction.SetText("PERGI!");
             }
             if (controller.isBraking == false && TR.RedLightON == false) //if the player is moving and the light is green 
             {

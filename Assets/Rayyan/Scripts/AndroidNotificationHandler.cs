@@ -52,8 +52,8 @@ public class AndroidNotificationHandler : MonoBehaviour
 
         //setup for the actual notification that is going to be sent
         var notification = new AndroidNotification();
-        notification.Title = "Howzit Bra!";
-        notification.Text = "Your daily skaftin is waiting for you! Come find it on the road.";
+        notification.Title = "Hai kawan!";
+        notification.Text = "Kotak makan tengah hari harian anda sedang menunggu untuk anda! Datang cari di jalan raya.";
         notification.FireTime = System.DateTime.Now.AddHours(24); //sent within 24 hours of exiting app
         notification.SmallIcon = "my_custom_icon_id";
         notification.LargeIcon = "my_custom_large_icon_id";
@@ -64,8 +64,8 @@ public class AndroidNotificationHandler : MonoBehaviour
         
         //setup for the actual notification that is going to be sent
         var notification2 = new AndroidNotification();
-        notification2.Title = "Hey man!";
-        notification2.Text = "Passengers are needing a ride and will pay you!";
+        notification2.Title = "Hai kawan!";
+        notification2.Text = "Penumpang memerlukan perjalanan dan akan membayar anda!";
         notification2.FireTime = System.DateTime.Now.AddDays(3); //sent within 24 hours of exiting app
         notification2.SmallIcon = "my_custom_icon_id";
         notification2.LargeIcon = "my_custom_large_icon_id";
@@ -76,8 +76,8 @@ public class AndroidNotificationHandler : MonoBehaviour
         
         //setup for the actual notification that is going to be sent
         var notification3 = new AndroidNotification();
-        notification3.Title = "What's up!";
-        notification3.Text = "You need to drive your taxi soon or the battery is going to run flat!";
+        notification3.Title = "Hai kawan!";
+        notification3.Text = "Anda perlu memandu teksi anda tidak lama lagi atau bateri akan kehabisan!";
         notification3.FireTime = System.DateTime.Now.AddDays(7); //sent within 24 hours of exiting app
         notification3.SmallIcon = "my_custom_icon_id";
         notification3.LargeIcon = "my_custom_large_icon_id";

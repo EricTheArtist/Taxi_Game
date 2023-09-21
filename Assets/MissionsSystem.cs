@@ -160,7 +160,7 @@ public class MissionsSystem : MonoBehaviour
         }
         if (missionSet == 10)
         {
-            MissionText[0].SetText("All Missions Complete!");
+            MissionText[0].SetText("Semua Misi Selesai!");
             MissionText[1].SetText("");
             MissionText[2].SetText("");
             AllMissionsComplete = true;
@@ -190,13 +190,13 @@ public class MissionsSystem : MonoBehaviour
                 {
                     MissionComplete[i] = true;
                     CurrentPassengers = 0;
-                    MissionText[i].SetText("Mission Complete!");
+                    MissionText[i].SetText("Misi selesai!");
                     PlayerPrefs.SetInt("MissionPassengers", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if(MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Collect Passengers: " + CurrentPassengers +"/"+ PassengersCollected[missionSet]);
+                    MissionText[i].SetText("Kumpul Penumpang: " + CurrentPassengers +"/"+ PassengersCollected[missionSet]);
                 }
             }
             if(Missions[i] == MissionTypes.Coins)
@@ -206,13 +206,13 @@ public class MissionsSystem : MonoBehaviour
                 {
                     MissionComplete[i] = true;
                     CurrentCoins = 0;
-                    MissionText[i].SetText("Mission Complete!");
+                    MissionText[i].SetText("Misi selesai!");
                     PlayerPrefs.SetInt("MissionCoins", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Collect Coins: " + CurrentCoins + "/" + CoinsCollected[missionSet]);
+                    MissionText[i].SetText("Kumpul Syiling: " + CurrentCoins + "/" + CoinsCollected[missionSet]);
                 }
             }
             if (Missions[i] == MissionTypes.Robots)
@@ -221,13 +221,13 @@ public class MissionsSystem : MonoBehaviour
                 {
                     MissionComplete[i] = true;
                     CurrentRobotsDrivenPast = 0;
-                    MissionText[i].SetText("Mission Complete!");
+                    MissionText[i].SetText("Misi selesai!");
                     PlayerPrefs.SetInt("MissionRobots", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Pass Robots: " + CurrentRobotsDrivenPast + "/" + RobotsDrivenPast[missionSet]);
+                    MissionText[i].SetText("Lulus lampu isyarat: " + CurrentRobotsDrivenPast + "/" + RobotsDrivenPast[missionSet]);
                 }
             }
             if (Missions[i] == MissionTypes.Cops)
@@ -236,13 +236,13 @@ public class MissionsSystem : MonoBehaviour
                 {
                     MissionComplete[i] = true;
                     CurrentCopsEscaped = 0;
-                    MissionText[i].SetText("Mission Complete!");
+                    MissionText[i].SetText("Misi selesai!");
                     PlayerPrefs.SetInt("MissionCops", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Escape Cops: " + CurrentCopsEscaped + "/" + CopsEscaped[missionSet]);
+                    MissionText[i].SetText("Polis melarikan diri: " + CurrentCopsEscaped + "/" + CopsEscaped[missionSet]);
                 }
             }
             if (Missions[i] == MissionTypes.Distance)
@@ -251,13 +251,13 @@ public class MissionsSystem : MonoBehaviour
                 {
                     MissionComplete[i] = true;
                     CurrentDistanceDriven = 0;
-                    MissionText[i].SetText("Mission Complete!");
+                    MissionText[i].SetText("Misi selesai!");
                     PlayerPrefs.SetInt("MissionDistance", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
                 {
-                    MissionText[i].SetText("Travel Distance: " + CurrentDistanceDriven + "/" + DistanceDriven[missionSet]);
+                    MissionText[i].SetText("Jarak Perjalanan: " + CurrentDistanceDriven + "/" + DistanceDriven[missionSet]);
                 }
             }
         }
@@ -301,17 +301,17 @@ public class MissionsSystem : MonoBehaviour
         if (PlayerPrefs.GetInt("Mission1") == 1)
         {
             MissionComplete[0] = true;
-            MissionText[0].SetText("Mission Complete!");
+            MissionText[0].SetText("Misi selesai!");
         }
         if (PlayerPrefs.GetInt("Mission2") == 1)
         {
             MissionComplete[1] = true;
-            MissionText[1].SetText("Mission Complete!");
+            MissionText[1].SetText("Misi selesai!");
         }
         if (PlayerPrefs.GetInt("Mission3") == 1)
         {
             MissionComplete[2] = true;
-            MissionText[2].SetText("Mission Complete!");
+            MissionText[2].SetText("Misi selesai!");
         }
 
         CurrentPassengers = PlayerPrefs.GetInt("MissionPassengers");

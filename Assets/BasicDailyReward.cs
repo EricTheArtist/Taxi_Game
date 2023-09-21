@@ -90,17 +90,17 @@ public class BasicDailyReward : MonoBehaviour
         bool Pending = (PlayerPrefs.GetInt("RewardPendingOpen") != 0);
         if (CanClaim == true)
         {
-            RewardInfroText.SetText("A luncbox is waiting for you somewhere on the road!");
+            RewardInfroText.SetText("Kotak makan tengahari sedang menunggu anda di suatu tempat di jalan raya!");
             RewardUnlockButton.SetActive(false);
         }
         if (Pending == true)
         {
-            RewardInfroText.SetText("Tap to get your random reward!");
+            RewardInfroText.SetText("Ketik untuk mendapatkan ganjaran rawak anda!");
             RewardUnlockButton.SetActive(true);
         }
         if (CanClaim == false && Pending == false)
         {
-            RewardInfroText.SetText("Come back tomorrow to find another lunchbox!");
+            RewardInfroText.SetText("Kembali esok untuk mencari kotak makan tengah hari yang lain!");
             RewardUnlockButton.SetActive(false);
         }
     }

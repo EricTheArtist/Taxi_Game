@@ -74,7 +74,7 @@ public class AbilitySystem : MonoBehaviour
         if(Carindex == 2 || Carindex == 5 || Carindex == 7 || Carindex == 9 || Carindex == 13) //golf or BMW or delorian or golf7
         {
             abilityType = AbilityType.SpeedBoost;
-            Ability_Text.SetText("BOOST");
+            Ability_Text.SetText("GALAKAN");
             CanSpawnPickup = true;
 
             //sets value of ability timer
@@ -85,7 +85,7 @@ public class AbilitySystem : MonoBehaviour
         if(Carindex == 4 || Carindex == 11) //police truck
         {
             abilityType = AbilityType.Escapist;
-            Ability_Text.SetText("NO POLICE");
+            Ability_Text.SetText("TIADA POLIS");
             CanSpawnPickup = true;
             AdditionalAbilityIndex = 2;
 
@@ -93,7 +93,7 @@ public class AbilitySystem : MonoBehaviour
         if(Carindex == 3 || Carindex == 6) //landcruiser or tank
         {
             abilityType = AbilityType.Armour;
-            Ability_Text.SetText("SHIELD");
+            Ability_Text.SetText("PERISAI");
             CanSpawnPickup = true;
             //sets value of ability timer
             ArmourAbiltyTimer = PlayerPrefs.GetFloat("Ability_Armour");
@@ -109,7 +109,7 @@ public class AbilitySystem : MonoBehaviour
         if (Carindex == 1 || Carindex == 8 || Carindex == 10 || Carindex == 12) //Quantum or hance
         {
             abilityType = AbilityType.DoubleCoins;
-            Ability_Text.SetText("2 x COINS");
+            Ability_Text.SetText("2 x SYILING");
             CanSpawnPickup = true;
             AdditionalAbilityIndex = 0;
             //sets value of ability timer
