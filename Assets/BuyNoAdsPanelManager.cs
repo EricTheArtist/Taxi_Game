@@ -27,7 +27,7 @@ public class BuyNoAdsPanelManager : MonoBehaviour
         }
         else
         {
-            NCP.BuyProduct("com.vetkoekstudios.taxiranked.noads");
+            NCP.BuyProduct("com.vetkoekstudios.pemanduteksi.noads");
         }
         
     }

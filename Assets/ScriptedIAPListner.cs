@@ -15,36 +15,36 @@ public class ScriptedIAPListner : MonoBehaviour, IDetailedStoreListener
     IGooglePlayStoreExtensions m_GooglePlayStoreExtensions; //google extensions
 
     // list of product IDs for all products in the game 
-    public static string ProductIDCoinsTiny = "com.vetkoekstudios.taxiranked.coinstiny";
-    public static string ProductIDCoinsSmall = "com.vetkoekstudios.taxiranked.coinssmall";
-    public static string ProductIDCoinsMedium = "com.vetkoekstudios.taxiranked.coinsmediumv2";
-    public static string ProductIDCoinsLarge = "com.vetkoekstudios.taxiranked.coinslargev2";
-    public static string ProductIDCoinsExtraLarge = "com.vetkoekstudios.taxiranked.coinsextralargev2";
-    public static string ProductIDCoinsMassive = "com.vetkoekstudios.taxiranked.coinsmassivev2";
+    public static string ProductIDCoinsTiny = "com.vetkoekstudios.pemanduteksi.coinstiny";
+    public static string ProductIDCoinsSmall = "com.vetkoekstudios.pemanduteksi.coinssmall";
+    public static string ProductIDCoinsMedium = "com.vetkoekstudios.pemanduteksi.coinsmediumv2";
+    public static string ProductIDCoinsLarge = "com.vetkoekstudios.pemanduteksi.coinslargev2";
+    public static string ProductIDCoinsExtraLarge = "com.vetkoekstudios.pemanduteksi.coinsextralargev2";
+    public static string ProductIDCoinsMassive = "com.vetkoekstudios.pemanduteksi.coinsmassivev2";
 
-    public string ProductIDColour01 = "com.vetkoekstudios.taxiranked.colour01";
-    public string ProductIDColour02 = "com.vetkoekstudios.taxiranked.colour02";
-    public string ProductIDColour03 = "com.vetkoekstudios.taxiranked.colour03";
-    public string ProductIDColour04 = "com.vetkoekstudios.taxiranked.colour04";
+    public string ProductIDColour01 = "com.vetkoekstudios.pemanduteksi.colour01";
+    public string ProductIDColour02 = "com.vetkoekstudios.pemanduteksi.colour02";
+    public string ProductIDColour03 = "com.vetkoekstudios.pemanduteksi.colour03";
+    public string ProductIDColour04 = "com.vetkoekstudios.pemanduteksi.colour04";
 
-    public string ProductIDColour02Top = "com.vetkoekstudios.taxiranked.colour02top";
-    public string ProductIDColour03Top = "com.vetkoekstudios.taxiranked.colour03top";
-    public string ProductIDColour04Top = "com.vetkoekstudios.taxiranked.colour04top";
+    public string ProductIDColour02Top = "com.vetkoekstudios.pemanduteksi.colour02top";
+    public string ProductIDColour03Top = "com.vetkoekstudios.pemanduteksi.colour03top";
+    public string ProductIDColour04Top = "com.vetkoekstudios.pemanduteksi.colour04top";
 
-    public string ProductIDRims01 = "com.vetkoekstudios.taxiranked.rims01";
-    public string ProductIDRims02 = "com.vetkoekstudios.taxiranked.rims02";
-    public string ProductIDRims03 = "com.vetkoekstudios.taxiranked.rims03";
-    public string ProductIDRims04 = "com.vetkoekstudios.taxiranked.rims04";
-    public string ProductIDRims05 = "com.vetkoekstudios.taxiranked.rims05";
-    public string ProductIDRims06 = "com.vetkoekstudios.taxiranked.rims06";
+    public string ProductIDRims01 = "com.vetkoekstudios.pemanduteksi.rims01";
+    public string ProductIDRims02 = "com.vetkoekstudios.pemanduteksi.rims02";
+    public string ProductIDRims03 = "com.vetkoekstudios.pemanduteksi.rims03";
+    public string ProductIDRims04 = "com.vetkoekstudios.pemanduteksi.rims04";
+    public string ProductIDRims05 = "com.vetkoekstudios.pemanduteksi.rims05";
+    public string ProductIDRims06 = "com.vetkoekstudios.pemanduteksi.rims06";
 
-    public string ProductIDCar02 = "com.vetkoekstudios.taxiranked.car02";
-    public string ProductIDCar03 = "com.vetkoekstudios.taxiranked.car03";
-    public string ProductIDCar04 = "com.vetkoekstudios.taxiranked.car04";
-    public string ProductIDCar05 = "com.vetkoekstudios.taxiranked.car05";
-    public string ProductIDCar06 = "com.vetkoekstudios.taxiranked.car06";
+    public string ProductIDCar02 = "com.vetkoekstudios.pemanduteksi.car02";
+    public string ProductIDCar03 = "com.vetkoekstudios.pemanduteksi.car03";
+    public string ProductIDCar04 = "com.vetkoekstudios.pemanduteksi.car04";
+    public string ProductIDCar05 = "com.vetkoekstudios.pemanduteksi.car05";
+    public string ProductIDCar06 = "com.vetkoekstudios.pemanduteksi.car06";
 
-    public string ProductIDnoads = "com.vetkoekstudios.taxiranked.noads";
+    public string ProductIDnoads = "com.vetkoekstudios.pemanduteksi.noads";
 
     //refrence to purchase notice
     ExternalPurchaseNotice EPN;
