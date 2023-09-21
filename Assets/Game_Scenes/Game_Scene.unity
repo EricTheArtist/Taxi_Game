@@ -570,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &11541561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -611,7 +611,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Steering Wheel L/R
+  m_text: "If you enjoy playing our game, \n5 star reviews on Google Play\nwill help
+    us update it more! <3 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e986445ac2ce8c42aa1de7ca15318bd, type: 2}
   m_sharedMaterial: {fileID: -5402781702067669879, guid: 8e986445ac2ce8c42aa1de7ca15318bd,
@@ -639,15 +640,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
   m_fontStyle: 1
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -675,7 +676,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -10.380051, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2981,7 +2982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48.000366}
+  m_AnchoredPosition: {x: 0, y: -48.000183}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &143137370
@@ -25263,8 +25264,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"Ekse, driver, <br>we''re getting bored of the <b>same old ride</b>. When
-    are you adding another car to your fleet?'
+  m_text: Looks like those driving skills have improved. A little bit. You can also
+    practice your taxi driving skill in the open world game mode.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e986445ac2ce8c42aa1de7ca15318bd, type: 2}
   m_sharedMaterial: {fileID: -5402781702067669879, guid: 8e986445ac2ce8c42aa1de7ca15318bd,
@@ -58861,6 +58862,8 @@ MonoBehaviour:
     are up for a challenge, the high score is ranked seperatly.
   NI_1stCrash: Surprised you got far with that Skorokoro. When you have some earnings,
     come find a <b>upgrade</b> at the store.
+  NI_2ndCrash: Looks like those driving skills have improved. A little bit. You can
+    also practice your taxi driving skill in the open world game mode.
   crash: 
   NI_ShopWelcome: Adding <b>any car</b> <br>to your taxi fleet? Crazy idea, my laatjie.
     At least <b>customize</b> them so passengers know the difference.

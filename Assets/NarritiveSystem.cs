@@ -16,6 +16,7 @@ public class NarritiveSystem : MonoBehaviour
     public string NI_RobotTut; //has function
     public string NI_SteerringWheelTut; //has function
     public string NI_1stCrash; //has function
+    public string NI_2ndCrash; //has function
     public string crash;
     public string NI_ShopWelcome;
     public string NI_CaughtByCop; //has function
@@ -44,6 +45,7 @@ public class NarritiveSystem : MonoBehaviour
             OpenInterface(NI_PassengerTut,C_TaxiBoss);
             PlayerPrefs.SetInt("NI_PassengerTut", 1);
         }
+
 
     }
 
@@ -74,7 +76,12 @@ public class NarritiveSystem : MonoBehaviour
             OpenInterface(NI_1stCrash,C_ShopOwner);
             PlayerPrefs.SetInt("NI_1stCrash", 1);
         }
-        
+        if (PlayerPrefs.GetInt("NI_1stCrash") == 1)
+        {
+            OpenInterface(NI_2ndCrash, C_TaxiBoss);
+            PlayerPrefs.SetInt("NI_1stCrash", 2);
+        }
+
     }
 
     public void NI_CaughtAtRobot()
