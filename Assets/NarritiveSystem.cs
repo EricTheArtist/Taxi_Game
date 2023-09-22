@@ -23,6 +23,7 @@ public class NarritiveSystem : MonoBehaviour
     public string NI_1stHighScoreUploadedToLeaderboard; //this currently happens when they crash for first time
     public string NI_1st5KCoins;
     public string NI_CrashWithCop;
+    public string NI_InfiniteTut;
 
 
     // Start is called before the first frame update
@@ -48,6 +49,15 @@ public class NarritiveSystem : MonoBehaviour
 
 
     }
+
+    public void NI_SwitchedToInfinteHigway()
+    {
+        if (PlayerPrefs.GetInt("NI_InfiniteTut") == 0)
+        {
+            OpenInterface(NI_InfiniteTut, C_TaxiBoss);
+            PlayerPrefs.SetInt("NI_InfiniteTut", 1);
+        }
+    } 
 
     public void NI_EnterRobotEvent()
     {
@@ -76,7 +86,7 @@ public class NarritiveSystem : MonoBehaviour
             OpenInterface(NI_1stCrash,C_ShopOwner);
             PlayerPrefs.SetInt("NI_1stCrash", 1);
         }
-        if (PlayerPrefs.GetInt("NI_1stCrash") == 1)
+        else if (PlayerPrefs.GetInt("NI_1stCrash") == 1)
         {
             OpenInterface(NI_2ndCrash, C_TaxiBoss);
             PlayerPrefs.SetInt("NI_1stCrash", 2);
