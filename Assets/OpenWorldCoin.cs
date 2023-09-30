@@ -29,6 +29,8 @@ public class OpenWorldCoin : MonoBehaviour
 
 
     // Update is called once per frame
+
+    /*
     void Update()
     {
         if(Active == true)
@@ -37,7 +39,7 @@ public class OpenWorldCoin : MonoBehaviour
         }
         
     }
-
+    */
 
     IEnumerator WaitTenSeconds()
     {
