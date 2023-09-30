@@ -107,7 +107,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     {
         if (IsInitialized())
         {
-            return;
+            //return;
         }
 
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
