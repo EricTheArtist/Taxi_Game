@@ -11,6 +11,7 @@ public class NarritiveSystem : MonoBehaviour
     public Sprite C_Police;
     public TMP_Text DialougeText;
     public GameObject NarritiveInterface;
+    public GameObject GameModePointer;
     public string NI_Welcome; //has function
     public string NI_PassengerTut; //has function
     public string NI_RobotTut; //has function
@@ -34,6 +35,10 @@ public class NarritiveSystem : MonoBehaviour
         {
             PlayerPrefs.SetInt("NI_Welcome", 1);
             OpenInterface(NI_Welcome,C_TaxiBoss);
+        }
+        if (PlayerPrefs.GetInt("NI_GameModePointer") == 1)
+        {
+            Destroy(GameModePointer);
         }
     }
 
@@ -102,6 +107,13 @@ public class NarritiveSystem : MonoBehaviour
     public void NI_CrashWithCopChase()
     {
         OpenInterface(NI_CrashWithCop,C_Police);
+    }
+
+    public void NI_selectgamemode()
+    {
+        Destroy(GameModePointer);
+        PlayerPrefs.SetInt("NI_GameModePointer", 1);
+
     }
 
 
