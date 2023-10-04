@@ -70,6 +70,7 @@ public class OpenWorldPassenger : MonoBehaviour
         Invoke("ResetAnimation", 1);
         OWDO.ReactivatePassenger();
         PickupAnimator.SetTrigger("isPassengerBoarding");
+        OpenWorldMissionSystem.OWMSinstance.AddPassenger();
 
         if(PlayerLevelSystem.PLSinstance!= null)
         {

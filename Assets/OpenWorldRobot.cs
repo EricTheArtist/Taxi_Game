@@ -27,6 +27,7 @@ public class OpenWorldRobot : MonoBehaviour
             RewardUsed = true;
             OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
             OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
+            OpenWorldMissionSystem.OWMSinstance.AddRobotPassed();
             if (PlayerLevelSystem.PLSinstance != null)
             {
                 PlayerLevelSystem.PLSinstance.AddXP(15);

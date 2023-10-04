@@ -34,7 +34,15 @@ public class LevelUIManager : MonoBehaviour
         }
         else
         {
-            MissionsSystem.MSinstance.CheckProgress();
+            if (MissionsSystem.MSinstance != null)
+            {
+                MissionsSystem.MSinstance.CheckProgress();
+            }
+            if(OpenWorldMissionSystem.OWMSinstance != null)
+            {
+                OpenWorldMissionSystem.OWMSinstance.CheckProgress();
+            }
+            
             IconLevel.SetText(PlayerPrefs.GetInt("PlayerLevel").ToString());
             LevelUIDisplay.SetActive(true);
             DisplayLevel.SetText(PlayerLevelSystem.PLSinstance.PlayerLevel.ToString());

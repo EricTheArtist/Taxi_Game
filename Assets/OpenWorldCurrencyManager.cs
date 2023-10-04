@@ -50,6 +50,7 @@ public class OpenWorldCurrencyManager : MonoBehaviour
 
     public void IncrementCoins(int NumberOfCoins)
     {
+        OpenWorldMissionSystem.OWMSinstance.AddCoins(NumberOfCoins);
         coins = PlayerPrefs.GetInt("Main Amount");
         coins += NumberOfCoins;
         PlayerPrefs.SetInt("Main Amount",coins);

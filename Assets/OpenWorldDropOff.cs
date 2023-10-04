@@ -64,6 +64,7 @@ public class OpenWorldDropOff : MonoBehaviour
         Invoke("ResetAnimation", 1);
         OpenWorldCurrencyManager.OWCMInstance.IncrementCoins(CoinsPayout);
         OpenWorldCurrencyManager.OWCMInstance.PlayPassengerCollectDropVFX();
+        OpenWorldMissionSystem.OWMSinstance.AddPassengerDrop();
         if (PlayerLevelSystem.PLSinstance != null)
         {
             PlayerLevelSystem.PLSinstance.AddXP(10);

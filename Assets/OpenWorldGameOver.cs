@@ -30,7 +30,7 @@ public class OpenWorldGameOver : MonoBehaviour
         {
             SoundManager.Instance.PlaySound(_crashSoundClip);
         }
-        Invoke("End", 1);
+        Invoke("End", 0.5f);
 
 
     }

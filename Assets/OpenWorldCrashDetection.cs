@@ -18,6 +18,7 @@ public class OpenWorldCrashDetection : MonoBehaviour
         {
             other.tag = "Pothole";
             PlayerLevelSystem.PLSinstance.AddXP(1);
+            OpenWorldMissionSystem.OWMSinstance.AddObjHit();
         }
     }
 
