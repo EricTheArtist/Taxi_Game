@@ -21,7 +21,7 @@ public class Mamello_HighScore : MonoBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
 
-        highScore = PlayerPrefs.GetInt("HighScore");
+        highScore = PlayerPrefs.GetInt("MLHighScore");
         
         
         //HighRunEffect.
@@ -53,7 +53,7 @@ public class Mamello_HighScore : MonoBehaviour
                     
                 
                 highScore = scoreInt;
-                PlayerPrefs.SetInt("HighScore", highScore);
+                PlayerPrefs.SetInt("MLHighScore", highScore);
                 CurrentScore.color = new Color32(255,203,0,255);
             }
             
@@ -63,7 +63,7 @@ public class Mamello_HighScore : MonoBehaviour
 
     public void ResetScore()
     {
-        highScore = PlayerPrefs.GetInt("HighScore");
+        highScore = PlayerPrefs.GetInt("MLHighScore");
         CurrentScore.color = new Color32(255, 255, 255, 255);
         HighRunEffect.Stop();
         score = 0;

@@ -9,7 +9,7 @@ public class MasterVolumeSlider : MonoBehaviour
 
     void Start()
     {
-        float savedVolume = PlayerPrefs.GetFloat("SavedVolume");
+        float savedVolume = PlayerPrefs.GetFloat("MLSavedVolume");
         _slider.value = savedVolume;
         SoundManager.Instance.ChangeMasterVolume(_slider.value);
         _slider.onValueChanged.AddListener(val => SoundManager.Instance.ChangeMasterVolume(val));
@@ -17,7 +17,7 @@ public class MasterVolumeSlider : MonoBehaviour
 
     public void SaveSound()
     {
-        PlayerPrefs.SetFloat("SavedVolume", _slider.value);
+        PlayerPrefs.SetFloat("MLSavedVolume", _slider.value);
     }
 
 }

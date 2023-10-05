@@ -12,7 +12,7 @@ public class OpenWorldSwapSteeringAndBreak : MonoBehaviour
 
     private void Start()
     {
-        int setup = PlayerPrefs.GetInt("PadLocation");
+        int setup = PlayerPrefs.GetInt("MLPadLocation");
         if(setup == 1)
         {
             ToggleBrakeAndWheel();
@@ -24,7 +24,7 @@ public class OpenWorldSwapSteeringAndBreak : MonoBehaviour
     {
         if (PadOnRight == true)
         {
-            PlayerPrefs.SetInt("PadLocation", 1);
+            PlayerPrefs.SetInt("MLPadLocation", 1);
             BrakePad.anchorMin = new Vector2(0, 0);
             BrakePad.anchorMax = new Vector2(0, 0);
             BrakePad.pivot = new Vector2(0, 0);
@@ -37,7 +37,7 @@ public class OpenWorldSwapSteeringAndBreak : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("PadLocation", 0);
+            PlayerPrefs.SetInt("MLPadLocation", 0);
             BrakePad.anchorMin = new Vector2(1, 0);
             BrakePad.anchorMax = new Vector2(1, 0);
             BrakePad.pivot = new Vector2(1, 0);

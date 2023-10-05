@@ -27,7 +27,7 @@ public class Shop_Item_Rim : MonoBehaviour
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
         NCS = canvas.GetComponent<NonConsumablePurchasing>();
-        if (PlayerPrefName == "Rim01") //just for the starter vhecle
+        if (PlayerPrefName == "MLRim01") //just for the starter vhecle
         {
             PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
         }
@@ -43,7 +43,7 @@ public class Shop_Item_Rim : MonoBehaviour
         if (Owned == true) //if the player already owns the item, disables the price overlay
         {
             PriceBG.SetActive(false);
-            if (RimIndex == PlayerPrefs.GetInt("ActiveRimIndex")) // if the this rim is the same as the active rim update to show it in the shop 
+            if (RimIndex == PlayerPrefs.GetInt("MLActiveRimIndex")) // if the this rim is the same as the active rim update to show it in the shop 
             {
                 SUIM.UpdateRims();
             }
@@ -94,7 +94,7 @@ public class Shop_Item_Rim : MonoBehaviour
         }
         else if (Owned == true) // if the player owns the item sets it to the active car
         {
-            PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
+            PlayerPrefs.SetInt("MLActiveRimIndex", RimIndex);
             SUIM.UpdateRims();
 
             //SEM.SwitchedCars();
@@ -115,7 +115,7 @@ public class Shop_Item_Rim : MonoBehaviour
             if(Owned == true && NCS.ProductIDfromButton == MyRimProductID)
             {
                 PriceBG.SetActive(false);
-                PlayerPrefs.SetInt("ActiveRimIndex", RimIndex);
+                PlayerPrefs.SetInt("MLActiveRimIndex", RimIndex);
                 SUIM.UpdateRims();
 
                 SEM.BoughtNewCar();

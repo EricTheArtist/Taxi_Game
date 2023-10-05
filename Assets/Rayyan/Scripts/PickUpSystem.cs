@@ -47,7 +47,7 @@ public class PickUpSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TotalPassengerCount = PlayerPrefs.GetInt("TotalPassengerCount");
+        TotalPassengerCount = PlayerPrefs.GetInt("MLTotalPassengerCount");
         PassengerCountText.SetText(TotalPassengerCount.ToString());
         passengerCount = 0;
         copsEscaped = 0;
@@ -236,7 +236,7 @@ public class PickUpSystem : MonoBehaviour
     {
         passengerCount++;
         TotalPassengerCount++;
-        PlayerPrefs.SetInt("TotalPassengerCount", TotalPassengerCount);
+        PlayerPrefs.SetInt("MLTotalPassengerCount", TotalPassengerCount);
         PassengerCountText.SetText(TotalPassengerCount.ToString());
         SoundManager.Instance.PlaySound(_passengerCollectClip);
         currencySystem.run_amount=currencySystem.Addition_Function(7, currencySystem.run_amount);//this var is only used for display purposes at the end of a run

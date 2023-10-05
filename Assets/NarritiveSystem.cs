@@ -28,9 +28,9 @@ public class NarritiveSystem : MonoBehaviour
     void Start()
     {
         
-        if (PlayerPrefs.GetInt("NI_Welcome")== 0)
+        if (PlayerPrefs.GetInt("MLNI_Welcome") == 0)
         {
-            PlayerPrefs.SetInt("NI_Welcome", 1);
+            PlayerPrefs.SetInt("MLNI_Welcome", 1);
             OpenInterface(NI_Welcome,C_TaxiBoss);
         }
     }
@@ -39,10 +39,10 @@ public class NarritiveSystem : MonoBehaviour
 
     public void NI_PassengerTutFunction()
     {
-        if (PlayerPrefs.GetInt("NI_PassengerTut") == 0)
+        if (PlayerPrefs.GetInt("MLNI_PassengerTut") == 0)
         {
             OpenInterface(NI_PassengerTut,C_TaxiBoss);
-            PlayerPrefs.SetInt("NI_PassengerTut", 1);
+            PlayerPrefs.SetInt("MLNI_PassengerTut", 1);
         }
 
     }
@@ -50,29 +50,29 @@ public class NarritiveSystem : MonoBehaviour
     public void NI_EnterRobotEvent()
     {
 
-        if (PlayerPrefs.GetInt("NI_EnterRobot") == 0)
+        if (PlayerPrefs.GetInt("MLNI_EnterRobot") == 0)
         {
             OpenInterface(NI_RobotTut, C_Police);
-            PlayerPrefs.SetInt("NI_EnterRobot", 1);
+            PlayerPrefs.SetInt("MLNI_EnterRobot", 1);
         }
 
     }
 
     public void NI_OpenSteeringwheel()
     {
-        if (PlayerPrefs.GetInt("NI_SteeringWheeltut") == 0)
+        if (PlayerPrefs.GetInt("MLNI_SteeringWheeltut") == 0)
         {
             OpenInterface(NI_SteerringWheelTut, C_TaxiBoss);
-            PlayerPrefs.SetInt("NI_SteeringWheeltut", 1);
+            PlayerPrefs.SetInt("MLNI_SteeringWheeltut", 1);
         }
     }
 
     public void NI_Crashed()
     {
-        if (PlayerPrefs.GetInt("NI_1stCrash") == 0)
+        if (PlayerPrefs.GetInt("MLNI_1stCrash") == 0)
         {
             OpenInterface(NI_1stCrash,C_ShopOwner);
-            PlayerPrefs.SetInt("NI_1stCrash", 1);
+            PlayerPrefs.SetInt("MLNI_1stCrash", 1);
         }
         
     }

@@ -12,7 +12,7 @@ public class ShootingRangeEntry : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            bool Owned = (PlayerPrefs.GetInt("Car02Premium") != 0);
+            bool Owned = (PlayerPrefs.GetInt("MLCar02Premium") != 0);
             if(Owned == true)
             {
                 ISMAIN.DestroyBannerAd();

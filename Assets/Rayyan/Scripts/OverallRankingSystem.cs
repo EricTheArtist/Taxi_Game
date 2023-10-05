@@ -34,13 +34,13 @@ public class OverallRankingSystem : MonoBehaviour
         //checks between the two distance scores and sets greatest one
         #region Set Longest Distance
 
-        if (PlayerPrefs.GetInt("HighScore") > PlayerPrefs.GetInt("HighScoreSteering"))
+        if (PlayerPrefs.GetInt("MLHighScore") > PlayerPrefs.GetInt("MLHighScoreSteering"))
         {
-            longestDistance = PlayerPrefs.GetInt("HighScore");
+            longestDistance = PlayerPrefs.GetInt("MLHighScore");
         }
         else
         {
-            longestDistance = PlayerPrefs.GetInt("HighScoreSteering");
+            longestDistance = PlayerPrefs.GetInt("MLHighScoreSteering");
         }
 
         #endregion
@@ -48,28 +48,28 @@ public class OverallRankingSystem : MonoBehaviour
         //checks at end of run if run amount is greater than what is currently stored/recorded
         #region Set Most Coin Runs
 
-        if (PlayerPrefs.GetInt("LongestCoinRun") < _currencySystem.run_amount)
+        if (PlayerPrefs.GetInt("MLLongestCoinRun") < _currencySystem.run_amount)
         {
-            PlayerPrefs.SetInt("LongestCoinRun", _currencySystem.run_amount);
-            mostRunCoins = PlayerPrefs.GetInt("LongestCoinRun");
+            PlayerPrefs.SetInt("MLLongestCoinRun", _currencySystem.run_amount);
+            mostRunCoins = PlayerPrefs.GetInt("MLLongestCoinRun");
         }
         else
         {
-            mostRunCoins = PlayerPrefs.GetInt("LongestCoinRun");
+            mostRunCoins = PlayerPrefs.GetInt("MLLongestCoinRun");
         }
         #endregion
         
         //Sets Most Passenger Pickups
         #region Set Most Passenger Pickups
 
-        if (PlayerPrefs.GetInt("MostPassengers") < _pickUpSystem.passengerCount)
+        if (PlayerPrefs.GetInt("MLMostPassengers") < _pickUpSystem.passengerCount)
         {
-            PlayerPrefs.SetInt("MostPassengers", _pickUpSystem.passengerCount);
-            mostPassengers = PlayerPrefs.GetInt("MostPassengers");
+            PlayerPrefs.SetInt("MLMostPassengers", _pickUpSystem.passengerCount);
+            mostPassengers = PlayerPrefs.GetInt("MLMostPassengers");
         }
         else
         {
-            mostPassengers = PlayerPrefs.GetInt("MostPassengers");
+            mostPassengers = PlayerPrefs.GetInt("MLMostPassengers");
         }
 
         #endregion
@@ -78,14 +78,14 @@ public class OverallRankingSystem : MonoBehaviour
 
         #region  Set Most Cop Escapes
 
-        if (PlayerPrefs.GetInt("MostEscapes") < _pickUpSystem.copsEscaped)
+        if (PlayerPrefs.GetInt("MLMostEscapes") < _pickUpSystem.copsEscaped)
         {
-            PlayerPrefs.SetInt("MostEscapes", _pickUpSystem.copsEscaped);
-            mostRunEscapes = PlayerPrefs.GetInt("MostEscapes");
+            PlayerPrefs.SetInt("MLMostEscapes", _pickUpSystem.copsEscaped);
+            mostRunEscapes = PlayerPrefs.GetInt("MLMostEscapes");
         }
         else
         {
-            mostRunEscapes = PlayerPrefs.GetInt("MostEscapes");
+            mostRunEscapes = PlayerPrefs.GetInt("MLMostEscapes");
         }
 
         #endregion
@@ -94,14 +94,14 @@ public class OverallRankingSystem : MonoBehaviour
 
         #region Set Most Green Lights Passed
 
-        if (PlayerPrefs.GetInt("MostGreenLights") < _pickUpSystem.greenLightPassed)
+        if (PlayerPrefs.GetInt("MLMostGreenLights") < _pickUpSystem.greenLightPassed)
         {
-            PlayerPrefs.SetInt("MostGreenLights", _pickUpSystem.greenLightPassed);
-            mostGreenRobots = PlayerPrefs.GetInt("MostGreenLights");
+            PlayerPrefs.SetInt("MLMostGreenLights", _pickUpSystem.greenLightPassed);
+            mostGreenRobots = PlayerPrefs.GetInt("MLMostGreenLights");
         }
         else
         {
-            mostGreenRobots = PlayerPrefs.GetInt("MostGreenLights");
+            mostGreenRobots = PlayerPrefs.GetInt("MLMostGreenLights");
         }
 
         #endregion
@@ -118,15 +118,15 @@ public class OverallRankingSystem : MonoBehaviour
         );
         Debug.Log("OverAll Calculations Done: " +PlayerPrefs.GetInt("OverAllScore") + "||" + overAllScore);
 */
-        if (PlayerPrefs.GetInt("OverAllScore") < overAllScore)
+        if (PlayerPrefs.GetInt("MLOverAllScore") < overAllScore)
         {
             //Debug.Log("Setting new over all score: ");
-            PlayerPrefs.SetInt("OverAllScore", overAllScore);
-            overAllScore = PlayerPrefs.GetInt("OverAllScore");
+            PlayerPrefs.SetInt("MLOverAllScore", overAllScore);
+            overAllScore = PlayerPrefs.GetInt("MLOverAllScore");
         }
         else
         {
-            overAllScore = PlayerPrefs.GetInt("OverAllScore");
+            overAllScore = PlayerPrefs.GetInt("MLOverAllScore");
         }
 
         #endregion

@@ -18,7 +18,7 @@ public class Test_RankUISystem : MonoBehaviour
     {
         if(MyHighScore!= null)
         {
-            int high = PlayerPrefs.GetInt("HighScore");
+            int high = PlayerPrefs.GetInt("MLHighScore");
             MyHighScore.SetText(high.ToString());
         }
 

@@ -62,13 +62,13 @@ public class Car_Settings_Updater : MonoBehaviour
         else
         {
         stanceStarty = CarChasisHolder.transform.localPosition.y;
-        ActiveCar = PlayerPrefs.GetInt("ActiveCar");
+        ActiveCar = PlayerPrefs.GetInt("MLActiveCar");
         UpdateCarsMain(ActiveCar);
         UpdateRims();
         Color Colourbottom;
-        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("ColourBottomSave"), out Colourbottom);
+        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("MLColourBottomSave"), out Colourbottom);
         Color Colourtop;
-        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("ColourTopSave"), out Colourtop);
+        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("MLColourTopSave"), out Colourtop);
         TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Colourbottom);
         TaxiMaterial.GetComponent<Renderer>().sharedMaterial.SetColor("_Color2", Colourtop);
         }
@@ -85,7 +85,7 @@ public class Car_Settings_Updater : MonoBehaviour
     public void UpdateCarsMain(int CarIndex)
     {
         //Sets suspension height
-        float Stance = PlayerPrefs.GetFloat("Suspension");
+        float Stance = PlayerPrefs.GetFloat("MLSuspension");
 
         float yheight = Mathf.Lerp(stanceStarty, stanceStarty - 0.1f, Stance);
         CarChasisHolder.transform.localPosition = new Vector3(CarChasisHolder.transform.localPosition.x, yheight,
@@ -138,7 +138,7 @@ public class Car_Settings_Updater : MonoBehaviour
         for (int j = 0; j < RimTransform.Length; j++)
         {
             
-            int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+            int activerim = PlayerPrefs.GetInt("MLActiveRimIndex");
             Instantiate(RimPrefabs[activerim], RimTransform[j].transform);
         }
 
@@ -147,7 +147,7 @@ public class Car_Settings_Updater : MonoBehaviour
         for (int k = 0; k < TankRimTransform.Length; k++)
         {
             Destroy(LastTankRims[k]);
-            int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+            int activerim = PlayerPrefs.GetInt("MLActiveRimIndex");
             LastTankRims[k] = Instantiate(RimPrefabs[activerim], TankRimTransform[k].transform);
         }
         }

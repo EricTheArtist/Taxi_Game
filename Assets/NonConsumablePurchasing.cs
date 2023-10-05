@@ -107,7 +107,7 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
     {
         if (IsInitialized())
         {
-            return;
+            //return;
         }
 
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
@@ -300,9 +300,9 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
             //handles currency payout
             if(SUIM!= null)
             {
-                CurrentBalance = PlayerPrefs.GetInt("Main Amount");
+                CurrentBalance = PlayerPrefs.GetInt("MLMain Amount");
                 NewBalance = CurrentBalance + payoutREF;
-                PlayerPrefs.SetInt("Main Amount", NewBalance);
+                PlayerPrefs.SetInt("MLMain Amount", NewBalance);
                 SUIM.updateCoinsText();
             }
 
@@ -311,85 +311,85 @@ public class NonConsumablePurchasing : MonoBehaviour, IDetailedStoreListener
             //handles colour purchase
             if(ProductIDfromButton == ProductIDColour01)
             {
-                PlayerPrefs.SetInt("Colour01_Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour01_Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDColour02)
             {
-                PlayerPrefs.SetInt("Colour02_Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour02_Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDColour03)
             {
-                PlayerPrefs.SetInt("Colour03_Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour03_Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDColour04)
             {
-                PlayerPrefs.SetInt("Colour04_Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour04_Premium", (true ? 1 : 0));
             }
 
             if (ProductIDfromButton == ProductIDColour02Top)
             {
-                PlayerPrefs.SetInt("Colour02_PremiumTop", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour02_PremiumTop", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDColour03Top)
             {
-                PlayerPrefs.SetInt("Colour03_PremiumTop", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour03_PremiumTop", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDColour04Top)
             {
-                PlayerPrefs.SetInt("Colour04_PremiumTop", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLColour04_PremiumTop", (true ? 1 : 0));
             }
 
             //handles rims purchase
             if (ProductIDfromButton == ProductIDRims01)
             {
-                PlayerPrefs.SetInt("Rim01Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLRim01Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDRims02)
             {
-                PlayerPrefs.SetInt("Rim02Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLRim02Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDRims03)
             {
-                PlayerPrefs.SetInt("Rim03Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLRim03Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDRims04)
             {
-                PlayerPrefs.SetInt("Rim04Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLRim04Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDRims05)
             {
-                PlayerPrefs.SetInt("Rim05Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLRim05Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDRims06)
             {
-                PlayerPrefs.SetInt("Rim06Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLRim06Premium", (true ? 1 : 0));
             }
 
             //handles cars purchase
             if (ProductIDfromButton == ProductIDCar02)
             {
-                PlayerPrefs.SetInt("Car02Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLCar02Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDCar03)
             {
-                PlayerPrefs.SetInt("Car03Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLCar03Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDCar04)
             {
-                PlayerPrefs.SetInt("Car04Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLCar04Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDCar05)
             {
-                PlayerPrefs.SetInt("Car05Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLCar05Premium", (true ? 1 : 0));
             }
             if (ProductIDfromButton == ProductIDCar06)
             {
-                PlayerPrefs.SetInt("Car06Premium", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLCar06Premium", (true ? 1 : 0));
             }
 
             if (ProductIDfromButton == ProductIDnoads)
             {
-                PlayerPrefs.SetInt("NoAds", (true ? 1 : 0));
+                PlayerPrefs.SetInt("MLNoAds", (true ? 1 : 0));
             }
 
 

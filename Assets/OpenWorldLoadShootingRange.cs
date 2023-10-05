@@ -10,20 +10,20 @@ public class OpenWorldLoadShootingRange : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("Ads_OWFirstOpen") == 0)
+        if (PlayerPrefs.GetInt("MLAds_OWFirstOpen") == 0)
         {
             BuynoadsButton.SetActive(false);
         }
-        if (PlayerPrefs.GetInt("Ads_OWFirstOpen") == 1)
+        if (PlayerPrefs.GetInt("MLAds_OWFirstOpen") == 1)
         {
-            bool Owned = (PlayerPrefs.GetInt("NoAds") != 0);
+            bool Owned = (PlayerPrefs.GetInt("MLNoAds") != 0);
             if(Owned == false)
             {
                 IS_MAIN.LoadBannerAd(0);   
             }
             
         }
-        PlayerPrefs.SetInt("Ads_OWFirstOpen", 1);
+        PlayerPrefs.SetInt("MLAds_OWFirstOpen", 1);
 
     }
     public void LoadShootingRange()

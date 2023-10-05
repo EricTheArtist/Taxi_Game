@@ -35,7 +35,7 @@ public class BasicDailyReward : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("RewardPendingOpen")==1)
+        if (PlayerPrefs.GetInt("MLRewardPendingOpen") ==1)
         {
             RewardNotifiyerIcon.SetActive(true);
         }
@@ -43,8 +43,8 @@ public class BasicDailyReward : MonoBehaviour
 
 
         // Load the last rewarded time from PlayerPrefs or initialize it if it doesn't exist
-        string lastRewardTimeString = PlayerPrefs.GetString("LastRewardTime", string.Empty);
-        LifetimeRewardsGranted = PlayerPrefs.GetInt("LifetimeRewardsGranted");
+        string lastRewardTimeString = PlayerPrefs.GetString("MLLastRewardTime", string.Empty);
+        LifetimeRewardsGranted = PlayerPrefs.GetInt("MLLifetimeRewardsGranted");
         Debug.Log("Lifetime Rewards Granted: " + LifetimeRewardsGranted);
         if (!string.IsNullOrEmpty(lastRewardTimeString))
         {
@@ -78,16 +78,16 @@ public class BasicDailyReward : MonoBehaviour
     {
         //Set reward claim button active 
         RewardNotifiyerIcon.SetActive(true);
-        PlayerPrefs.SetInt("RewardPendingOpen", (true ? 1 : 0));
+        PlayerPrefs.SetInt("MLRewardPendingOpen", (true ? 1 : 0));
         // Update the last rewarded time to the current time
         lastRewardTime = DateTime.Now;
-        PlayerPrefs.SetString("LastRewardTime", lastRewardTime.ToString());
+        PlayerPrefs.SetString("MLLastRewardTime", lastRewardTime.ToString());
     }
     
     void updateUnlockInfo()
     {
         bool CanClaim = CanClaimReward(); //checks time difference
-        bool Pending = (PlayerPrefs.GetInt("RewardPendingOpen") != 0);
+        bool Pending = (PlayerPrefs.GetInt("MLRewardPendingOpen") != 0);
         if (CanClaim == true)
         {
             RewardInfroText.SetText("Kotak makan tengahari sedang menunggu anda di suatu tempat di jalan raya!");
@@ -120,7 +120,7 @@ public class BasicDailyReward : MonoBehaviour
 
     public void ButtonOpenLunchbox()
     {
-        PlayerPrefs.SetInt("RewardPendingOpen", (false ? 1 : 0));
+        PlayerPrefs.SetInt("MLRewardPendingOpen", (false ? 1 : 0));
         RewardNotifiyerIcon.SetActive(false);
         updateUnlockInfo();
         OpenUnlockScreen();
@@ -167,7 +167,7 @@ public class BasicDailyReward : MonoBehaviour
         
 
         LifetimeRewardsGranted++;
-        PlayerPrefs.SetInt("LifetimeRewardsGranted",LifetimeRewardsGranted);
+        PlayerPrefs.SetInt("MLLifetimeRewardsGranted", LifetimeRewardsGranted);
 
 
 
@@ -212,7 +212,7 @@ public class BasicDailyReward : MonoBehaviour
                 RewardInfroText.SetText("Time traveling detected, 500 coin fee has been applied.");
                 CS.Eric_DeductCoins(0);
                 lastRewardTime = DateTime.Now;
-                PlayerPrefs.SetString("LastRewardTime", lastRewardTime.ToString());
+                PlayerPrefs.SetString("MLLastRewardTime", lastRewardTime.ToString());
             }
 
 

@@ -41,7 +41,7 @@ public class AbilityUpgrader : MonoBehaviour
 
         RefreshAbilityValues();
 
-        CarINDEX = PlayerPrefs.GetInt("ActiveCar");
+        CarINDEX = PlayerPrefs.GetInt("MLActiveCar");
 
         ChangeUIforCar(CarINDEX);
 
@@ -51,9 +51,9 @@ public class AbilityUpgrader : MonoBehaviour
     void RefreshAbilityValues()
     {
         //Gets ability status from player prefs
-        CurrentAbilityValSpeed = PlayerPrefs.GetFloat("Ability_Speed");
-        CurrentAbilityValArmour = PlayerPrefs.GetFloat("Ability_Armour");
-        CurrentAbilityValDouble = PlayerPrefs.GetFloat("Ability_Double");
+        CurrentAbilityValSpeed = PlayerPrefs.GetFloat("MLAbility_Speed");
+        CurrentAbilityValArmour = PlayerPrefs.GetFloat("MLAbility_Armour");
+        CurrentAbilityValDouble = PlayerPrefs.GetFloat("MLAbility_Double");
 
         //for fist time play sets ability to level 1
         if (CurrentAbilityValSpeed == 0)
@@ -62,9 +62,9 @@ public class AbilityUpgrader : MonoBehaviour
             CurrentAbilityValArmour = 3f;
             CurrentAbilityValDouble = 6f;
 
-            PlayerPrefs.SetFloat("Ability_Speed",CurrentAbilityValSpeed);
-            PlayerPrefs.SetFloat("Ability_Armour", CurrentAbilityValArmour);
-            PlayerPrefs.SetFloat("Ability_Double", CurrentAbilityValDouble);
+            PlayerPrefs.SetFloat("MLAbility_Speed", CurrentAbilityValSpeed);
+            PlayerPrefs.SetFloat("MLAbility_Armour", CurrentAbilityValArmour);
+            PlayerPrefs.SetFloat("MLAbility_Double", CurrentAbilityValDouble);
         }
     }
 
@@ -168,7 +168,7 @@ public class AbilityUpgrader : MonoBehaviour
 
             if (CarINDEX == 2 || CarINDEX == 5 || CarINDEX == 7 || CarINDEX == 9 || CarINDEX == 13) //golf or BMW or delorian or golf 7
             {
-                PlayerPrefs.SetFloat("Ability_Speed", NewTimeVal);
+                PlayerPrefs.SetFloat("MLAbility_Speed", NewTimeVal);
             }
             if (CarINDEX == 4 || CarINDEX == 11) //police truck or police golf
             {
@@ -176,11 +176,11 @@ public class AbilityUpgrader : MonoBehaviour
             }
             if (CarINDEX == 3 || CarINDEX == 6) //landcruiser
             {
-                PlayerPrefs.SetFloat("Ability_Armour", NewTimeVal);
+                PlayerPrefs.SetFloat("MLAbility_Armour", NewTimeVal);
             }
             if (CarINDEX == 1 || CarINDEX == 8 || CarINDEX == 10 || CarINDEX == 12) //Quantum or hance
             {
-                PlayerPrefs.SetFloat("Ability_Double", NewTimeVal);
+                PlayerPrefs.SetFloat("MLAbility_Double", NewTimeVal);
             }
             if (CarINDEX == 0)
             {

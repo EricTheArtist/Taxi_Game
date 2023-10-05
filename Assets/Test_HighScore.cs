@@ -22,7 +22,7 @@ public class Test_HighScore : MonoBehaviour
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         controller = Player.GetComponent<SimpleInputNamespace.TestCharacterController>();
 
-        highScoreSwiping = PlayerPrefs.GetInt("HighScore");
+        highScoreSwiping = PlayerPrefs.GetInt("MLHighScore");
         //highScoreSteering = PlayerPrefs.GetInt("HighScoreSteering");
         
         //HighRunEffect.
@@ -52,7 +52,7 @@ public class Test_HighScore : MonoBehaviour
                 }
 
                 highScoreSwiping = scoreInt;
-                PlayerPrefs.SetInt("HighScore", highScoreSwiping);
+                PlayerPrefs.SetInt("MLHighScore", highScoreSwiping);
                 CurrentScore.color = new Color32(255,203,0,255);
             }
             /*
@@ -78,7 +78,7 @@ public class Test_HighScore : MonoBehaviour
     public void ResetScore()
     {
         //highScoreSteering = PlayerPrefs.GetInt("HighScoreSteering");
-        highScoreSwiping = PlayerPrefs.GetInt("HighScore");
+        highScoreSwiping = PlayerPrefs.GetInt("MLHighScore");
         CurrentScore.color = new Color32(255, 255, 255, 255);
         HighRunEffect.Stop();
         score = 0;

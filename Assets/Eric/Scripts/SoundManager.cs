@@ -24,20 +24,20 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("EffectsVol") == 1)
+        if (PlayerPrefs.GetInt("MLEffectsVol") == 1)
         {
             _effectsSource.mute = true;
         }
-        if (PlayerPrefs.GetInt("EffectsVol") == 0)
+        if (PlayerPrefs.GetInt("MLEffectsVol") == 0)
         {
             _effectsSource.mute = false;
         }
-        if (!PlayerPrefs.HasKey("SavedVolume"))
+        if (!PlayerPrefs.HasKey("MLSavedVolume"))
         {
-            PlayerPrefs.SetFloat("SavedVolume", 1);
+            PlayerPrefs.SetFloat("MLSavedVolume", 1);
         }
 
-        float savedVolume = PlayerPrefs.GetFloat("SavedVolume");
+        float savedVolume = PlayerPrefs.GetFloat("MLSavedVolume");
         ChangeMasterVolume(savedVolume);
 
     }

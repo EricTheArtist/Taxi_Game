@@ -18,7 +18,7 @@ public class LevelUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        IconLevel.SetText(PlayerPrefs.GetInt("PlayerLevel").ToString());
+        IconLevel.SetText(PlayerPrefs.GetInt("MLPlayerLevel").ToString());
     }
     // Update is called once per frame
     void Update()
@@ -35,7 +35,7 @@ public class LevelUIManager : MonoBehaviour
         else
         {
             MissionsSystem.MSinstance.CheckProgress();
-            IconLevel.SetText(PlayerPrefs.GetInt("PlayerLevel").ToString());
+            IconLevel.SetText(PlayerPrefs.GetInt("MLPlayerLevel").ToString());
             LevelUIDisplay.SetActive(true);
             DisplayLevel.SetText(PlayerLevelSystem.PLSinstance.PlayerLevel.ToString());
             XPProgression.SetText(PlayerLevelSystem.PLSinstance.PlayerCurrentXP.ToString() + "/" + PlayerLevelSystem.PLSinstance.XPtoNextLevel.ToString());

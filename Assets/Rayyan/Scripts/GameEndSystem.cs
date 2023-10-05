@@ -191,7 +191,7 @@ public class GameEndSystem : MonoBehaviour
         */
         
         
-            HighScore = PlayerPrefs.GetInt("HighScore");
+            HighScore = PlayerPrefs.GetInt("MLHighScore");
             googleHandlerScript.SwippingScoreHandler();
             Debug.Log("Swipingscore pushed");
         

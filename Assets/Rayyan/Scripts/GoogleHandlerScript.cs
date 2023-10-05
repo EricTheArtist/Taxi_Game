@@ -71,7 +71,7 @@ public class GoogleHandlerScript : MonoBehaviour
             {
                 indexNumberLeaderboards = 0;
                 long OverAllScore = 0;
-                OverAllScore = PlayerPrefs.GetInt("OverAllScore");
+                OverAllScore = PlayerPrefs.GetInt("MLOverAllScore");
                 //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                 GameServices.Instance.SubmitScore(OverAllScore,LeaderboardNames.TaxiRank , ScoreSubmitted);
             }
@@ -83,7 +83,7 @@ public class GoogleHandlerScript : MonoBehaviour
             if (GameServices.Instance.IsLoggedIn())
             {
                 indexNumberLeaderboards = 3;
-                swipingHighscore = PlayerPrefs.GetInt("HighScore");
+                swipingHighscore = PlayerPrefs.GetInt("MLHighScore");
                 //GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                //Eric Try this line of code below, so call the leaderbaord by name instead of index.
                //I have commented the same lines to use in the other fucntions.
@@ -98,7 +98,7 @@ public class GoogleHandlerScript : MonoBehaviour
             if (GameServices.Instance.IsLoggedIn())
             {
                 indexNumberLeaderboards = 2;
-                steeringHighscore = PlayerPrefs.GetInt("HighScoreSteering");
+                steeringHighscore = PlayerPrefs.GetInt("MLHighScoreSteering");
                 //GameServices.Instance.SubmitScore(steeringHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                 GameServices.Instance.SubmitScore(steeringHighscore,LeaderboardNames.SteeringDistance, ScoreSubmitted);
             }
@@ -112,7 +112,7 @@ public class GoogleHandlerScript : MonoBehaviour
             {
                 indexNumberLeaderboards = 1;
                 long passengerCount = 0;
-                passengerCount = PlayerPrefs.GetInt("MostPassengers");//add passenger count prefs
+                passengerCount = PlayerPrefs.GetInt("MLMostPassengers");//add passenger count prefs
                 //Debug.Log("GoogleHandler Passenger Count: " + passengerCount);
                 //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                 GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.PassengersCount, ScoreSubmitted);

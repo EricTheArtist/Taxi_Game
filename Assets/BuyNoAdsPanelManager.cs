@@ -11,7 +11,7 @@ public class BuyNoAdsPanelManager : MonoBehaviour
 
     private void Start()
     {
-        bool Owned = (PlayerPrefs.GetInt("NoAds") != 0);
+        bool Owned = (PlayerPrefs.GetInt("MLNoAds") != 0);
         if (Owned == true)
         {
             BuynoadsButton.SetActive(false);
@@ -19,7 +19,7 @@ public class BuyNoAdsPanelManager : MonoBehaviour
     }
     public void ClickNoAdsButton()
     {
-        bool Owned = (PlayerPrefs.GetInt("NoAds") != 0);
+        bool Owned = (PlayerPrefs.GetInt("MLNoAds") != 0);
         if (Owned == true)
         {
             IS_MAIN.DestroyBannerAd();

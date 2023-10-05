@@ -26,7 +26,7 @@ public class CurrencySystem : MonoBehaviour
     {
         run_amount = 0;
         multiplier = 1;
-        main_amount = PlayerPrefs.GetInt("Main Amount");
+        main_amount = PlayerPrefs.GetInt("MLMain Amount");
         RefreshCoinAmountDisplay();
         
     }
@@ -42,7 +42,7 @@ public class CurrencySystem : MonoBehaviour
 
     void RefreshCoinAmountDisplay()
     {
-        main_amount = PlayerPrefs.GetInt("Main Amount");
+        main_amount = PlayerPrefs.GetInt("MLMain Amount");
         run_amount_text.SetText(main_amount.ToString());
         run_amount_shadow.SetText(main_amount.ToString());
     }
@@ -64,7 +64,7 @@ public class CurrencySystem : MonoBehaviour
 
     public void Eric_DeductCoins(int deductAmount) //all coin deduction in the game scene must run through this function
     {
-        Coins = PlayerPrefs.GetInt("Main Amount");
+        Coins = PlayerPrefs.GetInt("MLMain Amount");
         if (deductAmount > Coins)
         {
             Coins = 0;
@@ -74,15 +74,15 @@ public class CurrencySystem : MonoBehaviour
             Coins = Coins - deductAmount;
         }
         
-        PlayerPrefs.SetInt("Main Amount", Coins);
+        PlayerPrefs.SetInt("MLMain Amount", Coins);
         RefreshCoinAmountDisplay();
     }
 
     public void Eric_AddCoins(int AddAmount) //all coin addition in the game scene must run through this function
     {
-        Coins = PlayerPrefs.GetInt("Main Amount");
+        Coins = PlayerPrefs.GetInt("MLMain Amount");
         Coins = Coins + AddAmount;
-        PlayerPrefs.SetInt("Main Amount", Coins);
+        PlayerPrefs.SetInt("MLMain Amount", Coins);
         RefreshCoinAmountDisplay();
     }
 

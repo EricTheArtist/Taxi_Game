@@ -32,7 +32,7 @@ public class ArcadeCurrencyManager : MonoBehaviour
     void Start()
     {
         RefreshUIAmounts();
-        HighScore = PlayerPrefs.GetInt("ShootingHighScore");
+        HighScore = PlayerPrefs.GetInt("MLShootingHighScore");
         
         if (ACMInstance == null)
         {
@@ -65,12 +65,12 @@ public class ArcadeCurrencyManager : MonoBehaviour
     void ShootingTimeEnded()
     {
         
-        bool Owned = (PlayerPrefs.GetInt("Car02Premium") != 0);
+        bool Owned = (PlayerPrefs.GetInt("MLCar02Premium") != 0);
         GameEndScreen.SetActive(true);
         if(Score > HighScore)
         {
             HighScore = Score;
-            PlayerPrefs.SetInt("ShootingHighScore", Score);
+            PlayerPrefs.SetInt("MLShootingHighScore", Score);
         }
         End_RecentScore.SetText(Score.ToString());
         End_HighScore.SetText(HighScore.ToString());
@@ -88,7 +88,7 @@ public class ArcadeCurrencyManager : MonoBehaviour
 
     void RefreshUIAmounts()
     {
-        coins = PlayerPrefs.GetInt("Main Amount");
+        coins = PlayerPrefs.GetInt("MLMain Amount");
         Coins_Text.SetText(coins.ToString());
         Coins_Shadow.SetText(coins.ToString());
 
@@ -97,9 +97,9 @@ public class ArcadeCurrencyManager : MonoBehaviour
 
     public void IncrementCoins(int NumberOfCoins)
     {
-        coins = PlayerPrefs.GetInt("Main Amount");
+        coins = PlayerPrefs.GetInt("MLMain Amount");
         coins += NumberOfCoins;
-        PlayerPrefs.SetInt("Main Amount", coins);
+        PlayerPrefs.SetInt("MLMain Amount", coins);
         Score++;
         RefreshUIAmounts();
         PlayCoinCollectSound();

@@ -13,21 +13,21 @@ public class GameModeSelector : MonoBehaviour
 
     void Start()
     {
-        OpenWorldMode = (PlayerPrefs.GetInt("GameModeSelectOpenW") != 0);
+        OpenWorldMode = (PlayerPrefs.GetInt("MLGameModeSelectOpenW") != 0);
         toggleGameModeSelect();
     }
 
     public void SelectOpenWorld()
     {
         OpenWorldMode = true;
-        PlayerPrefs.SetInt("GameModeSelectOpenW", (true ? 1 : 0));
+        PlayerPrefs.SetInt("MLGameModeSelectOpenW", (true ? 1 : 0));
         toggleGameModeSelect();
     }
 
     public void SelectInfiniteHighway()
     {
         OpenWorldMode = false;
-        PlayerPrefs.SetInt("GameModeSelectOpenW", (false ? 1 : 0));
+        PlayerPrefs.SetInt("MLGameModeSelectOpenW", (false ? 1 : 0));
         toggleGameModeSelect();
     }
 

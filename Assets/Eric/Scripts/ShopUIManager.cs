@@ -136,17 +136,17 @@ public class ShopUIManager : MonoBehaviour
 
         AU = gameObject.GetComponent<AbilityUpgrader>();
 
-        Coins = PlayerPrefs.GetInt("Main Amount");
-        Passengers = PlayerPrefs.GetInt("TotalPassengerCount");
+        Coins = PlayerPrefs.GetInt("MLMain Amount");
+        Passengers = PlayerPrefs.GetInt("MLTotalPassengerCount");
 
         updateCoinsText();
         refreshcolouronsamples();
-        ActiveCar = PlayerPrefs.GetInt("ActiveCar");
+        ActiveCar = PlayerPrefs.GetInt("MLActiveCar");
         UpdateCars(ActiveCar);
         UpdateRims();
 
         // recalling the stance save
-        float savedStance = PlayerPrefs.GetFloat("Suspension");
+        float savedStance = PlayerPrefs.GetFloat("MLSuspension");
         StanceSlider.value = savedStance;
         Debug.Log("Stance save: " + savedStance);
 
@@ -157,7 +157,7 @@ public class ShopUIManager : MonoBehaviour
         }
         //recalling the underglow save
         Color Underglow;
-        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("UnderglowSave"), out Underglow);
+        ColorUtility.TryParseHtmlString("#" + PlayerPrefs.GetString("MLUnderglowSave"), out Underglow);
         if (Underglow.r == 1 && Underglow.g == 1 && Underglow.b == 1)
         {
             FCP.color = DefaultUnderglow;
@@ -187,7 +187,7 @@ public class ShopUIManager : MonoBehaviour
 
 
 
-        ActiveCar = PlayerPrefs.GetInt("ActiveCar");
+        ActiveCar = PlayerPrefs.GetInt("MLActiveCar");
         float yheight = Mathf.Lerp(stanceStarty, stanceStarty - 0.1f, StanceBar.value); //some refrence seems to be missing here
         //Debug.Log("SnanceValue: " + StanceBar.value);
         
@@ -277,13 +277,13 @@ public class ShopUIManager : MonoBehaviour
     {
         //ADscript.DestroyBannerAd();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
-        PlayerPrefs.SetFloat("Suspension", StanceBar.value);
-        PlayerPrefs.SetString("UnderglowSave", ColorUtility.ToHtmlStringRGBA(FCP.color));
+        PlayerPrefs.SetFloat("MLSuspension", StanceBar.value);
+        PlayerPrefs.SetString("MLUnderglowSave", ColorUtility.ToHtmlStringRGBA(FCP.color));
     }
 
     void RefreshCoinValue()
     {
-        Coins = PlayerPrefs.GetInt("Main Amount");
+        Coins = PlayerPrefs.GetInt("MLMain Amount");
     }
     public void updateCoinsText()
     {
@@ -300,7 +300,7 @@ public class ShopUIManager : MonoBehaviour
         }
         
         Coins = Coins - deductAmount;
-        PlayerPrefs.SetInt("Main Amount", Coins);
+        PlayerPrefs.SetInt("MLMain Amount", Coins);
         updateCoinsText();
     }
 
@@ -308,13 +308,13 @@ public class ShopUIManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(_coinCollectClip);
         Passengers = Passengers - deductAmount;
-        PlayerPrefs.SetInt("TotalPassengerCount", Passengers);
+        PlayerPrefs.SetInt("MLTotalPassengerCount", Passengers);
     }
 
     public void AddCoins(int AddAmount)
     {
         Coins = Coins + AddAmount;
-        PlayerPrefs.SetInt("Main Amount", Coins);
+        PlayerPrefs.SetInt("MLMain Amount", Coins);
         updateCoinsText();
     }
 
@@ -401,7 +401,7 @@ public class ShopUIManager : MonoBehaviour
         for (int j = 0; j < RimTransform.Length; j++)
         {
             Destroy(LastRims[j]);
-            int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+            int activerim = PlayerPrefs.GetInt("MLActiveRimIndex");
             LastRims[j] = Instantiate(RimPrefabs[activerim], RimTransform[j].transform);
         }
         //if (ActiveCar == 6) //if tank enabled
@@ -409,7 +409,7 @@ public class ShopUIManager : MonoBehaviour
             for (int k = 0; k <TankRimTransform.Length; k++)
             {
                 Destroy(LastTankRims[k]);
-                int activerim = PlayerPrefs.GetInt("ActiveRimIndex");
+                int activerim = PlayerPrefs.GetInt("MLActiveRimIndex");
                 LastTankRims[k] = Instantiate(RimPrefabs[activerim], TankRimTransform[k].transform);
             }
         //}
@@ -508,14 +508,14 @@ public class ShopUIManager : MonoBehaviour
 
         if(P_CarIndex != 100)
         {
-            PlayerPrefs.SetInt("ActiveCar", P_CarIndex);
+            PlayerPrefs.SetInt("MLActiveCar", P_CarIndex);
             UpdateCars(P_CarIndex);
             SEM.BoughtNewCar();
             LockControl(false);
         }
         if(P_Rimindex != 100)
         {
-            PlayerPrefs.SetInt("ActiveRimIndex", P_Rimindex);
+            PlayerPrefs.SetInt("MLActiveRimIndex", P_Rimindex);
             UpdateRims();
             SEM.BoughtNewCar();
         }

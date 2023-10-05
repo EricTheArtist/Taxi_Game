@@ -45,7 +45,7 @@ public class MissionsSystem : MonoBehaviour
 
     private void Start()
     {
-        missionSet = PlayerPrefs.GetInt("MissionSet");
+        missionSet = PlayerPrefs.GetInt("MLMissionSet");
         loadSavedMissionProgress();
         SetMissions();
     }
@@ -55,7 +55,7 @@ public class MissionsSystem : MonoBehaviour
         if ((Missions[0] == MissionTypes.Passengers && MissionComplete[0] == false) || (Missions[1] == MissionTypes.Passengers && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Passengers && MissionComplete[2] == false))
         {
             CurrentPassengers++;
-            PlayerPrefs.SetInt("MissionPassengers", CurrentPassengers);
+            PlayerPrefs.SetInt("MLMissionPassengers", CurrentPassengers);
         }
         
     }
@@ -65,7 +65,7 @@ public class MissionsSystem : MonoBehaviour
         if ((Missions[0] == MissionTypes.Coins && MissionComplete[0] == false) || (Missions[1] == MissionTypes.Coins && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Coins && MissionComplete[2] == false))
         {
             CurrentCoins += coins;
-            PlayerPrefs.SetInt("MissionCoins", CurrentCoins);
+            PlayerPrefs.SetInt("MLMissionCoins", CurrentCoins);
         }
     }
 
@@ -74,7 +74,7 @@ public class MissionsSystem : MonoBehaviour
         if ((Missions[0] == MissionTypes.Robots && MissionComplete[0] == false) || (Missions[1] == MissionTypes.Robots && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Robots && MissionComplete[2] == false))
         {
             CurrentRobotsDrivenPast++;
-            PlayerPrefs.SetInt("MissionRobots", CurrentRobotsDrivenPast);
+            PlayerPrefs.SetInt("MLMissionRobots", CurrentRobotsDrivenPast);
         }
     }
 
@@ -83,7 +83,7 @@ public class MissionsSystem : MonoBehaviour
         if ((Missions[0] == MissionTypes.Cops && MissionComplete[0] == false) || (Missions[1] == MissionTypes.Cops && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Cops && MissionComplete[2] == false))
         {
             CurrentCopsEscaped++;
-            PlayerPrefs.SetInt("MissionCops", CurrentCopsEscaped);
+            PlayerPrefs.SetInt("MLMissionCops", CurrentCopsEscaped);
         }
     }
 
@@ -92,7 +92,7 @@ public class MissionsSystem : MonoBehaviour
         if ((Missions[0] == MissionTypes.Distance && MissionComplete[0] == false) || (Missions[1] == MissionTypes.Distance && MissionComplete[1] == false) || (Missions[2] == MissionTypes.Distance && MissionComplete[2] == false))
         {
             CurrentDistanceDriven += distance;
-            PlayerPrefs.SetInt("MissionDistance", CurrentDistanceDriven);
+            PlayerPrefs.SetInt("MLMissionDistance", CurrentDistanceDriven);
         }
     }
 
@@ -191,7 +191,7 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentPassengers = 0;
                     MissionText[i].SetText("Misi selesai!");
-                    PlayerPrefs.SetInt("MissionPassengers", 0);
+                    PlayerPrefs.SetInt("MLMissionPassengers", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if(MissionComplete[i] == false)
@@ -207,7 +207,7 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentCoins = 0;
                     MissionText[i].SetText("Misi selesai!");
-                    PlayerPrefs.SetInt("MissionCoins", 0);
+                    PlayerPrefs.SetInt("MLMissionCoins", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
@@ -222,7 +222,7 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentRobotsDrivenPast = 0;
                     MissionText[i].SetText("Misi selesai!");
-                    PlayerPrefs.SetInt("MissionRobots", 0);
+                    PlayerPrefs.SetInt("MLMissionRobots", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
@@ -237,7 +237,7 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentCopsEscaped = 0;
                     MissionText[i].SetText("Misi selesai!");
-                    PlayerPrefs.SetInt("MissionCops", 0);
+                    PlayerPrefs.SetInt("MLMissionCops", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
@@ -252,7 +252,7 @@ public class MissionsSystem : MonoBehaviour
                     MissionComplete[i] = true;
                     CurrentDistanceDriven = 0;
                     MissionText[i].SetText("Misi selesai!");
-                    PlayerPrefs.SetInt("MissionDistance", 0);
+                    PlayerPrefs.SetInt("MLMissionDistance", 0);
                     PlayerLevelSystem.PLSinstance.AddXP(100);
                 }
                 else if (MissionComplete[i] == false)
@@ -264,26 +264,26 @@ public class MissionsSystem : MonoBehaviour
 
         if (MissionComplete[0] == true)
         {
-            PlayerPrefs.SetInt("Mission1", 1);
+            PlayerPrefs.SetInt("MLMission1", 1);
         }
         if (MissionComplete[1] == true)
         {
-            PlayerPrefs.SetInt("Mission2", 1);
+            PlayerPrefs.SetInt("MLMission2", 1);
         }
         if (MissionComplete[2] == true)
         {
-            PlayerPrefs.SetInt("Mission3", 1);
+            PlayerPrefs.SetInt("MLMission3", 1);
         }
 
         if (MissionComplete[0] == true && MissionComplete[1] == true && MissionComplete[2] == true)
         {
             missionSet++;
-            PlayerPrefs.SetInt("MissionSet", missionSet);
+            PlayerPrefs.SetInt("MLMissionSet", missionSet);
             
 
-            PlayerPrefs.SetInt("Mission1", 0);
-            PlayerPrefs.SetInt("Mission2", 0);
-            PlayerPrefs.SetInt("Mission3", 0);
+            PlayerPrefs.SetInt("MLMission1", 0);
+            PlayerPrefs.SetInt("MLMission2", 0);
+            PlayerPrefs.SetInt("MLMission3", 0);
 
             MissionComplete[0] = false;
             MissionComplete[1] = false;
@@ -298,27 +298,27 @@ public class MissionsSystem : MonoBehaviour
 
     void loadSavedMissionProgress()
     {
-        if (PlayerPrefs.GetInt("Mission1") == 1)
+        if (PlayerPrefs.GetInt("MLMission1") == 1)
         {
             MissionComplete[0] = true;
             MissionText[0].SetText("Misi selesai!");
         }
-        if (PlayerPrefs.GetInt("Mission2") == 1)
+        if (PlayerPrefs.GetInt("MLMission2") == 1)
         {
             MissionComplete[1] = true;
             MissionText[1].SetText("Misi selesai!");
         }
-        if (PlayerPrefs.GetInt("Mission3") == 1)
+        if (PlayerPrefs.GetInt("MLMission3") == 1)
         {
             MissionComplete[2] = true;
             MissionText[2].SetText("Misi selesai!");
         }
 
-        CurrentPassengers = PlayerPrefs.GetInt("MissionPassengers");
-        CurrentCoins = PlayerPrefs.GetInt("MissionCoins");
-        CurrentRobotsDrivenPast = PlayerPrefs.GetInt("MissionRobots");
-        CurrentCopsEscaped = PlayerPrefs.GetInt("MissionCops");
-        CurrentDistanceDriven = PlayerPrefs.GetInt("MissionDistance");
+        CurrentPassengers = PlayerPrefs.GetInt("MLMissionPassengers");
+        CurrentCoins = PlayerPrefs.GetInt("MLMissionCoins");
+        CurrentRobotsDrivenPast = PlayerPrefs.GetInt("MLMissionRobots");
+        CurrentCopsEscaped = PlayerPrefs.GetInt("MLMissionCops");
+        CurrentDistanceDriven = PlayerPrefs.GetInt("MLMissionDistance");
         
 
 

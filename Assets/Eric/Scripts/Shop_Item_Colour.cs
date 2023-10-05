@@ -107,11 +107,11 @@ public class Shop_Item_Colour : MonoBehaviour
     {
         if (shaderInput == "_Color")
         {
-            PlayerPrefs.SetString("ColourBottomSave", ColorUtility.ToHtmlStringRGB(Colour));
+            PlayerPrefs.SetString("MLColourBottomSave", ColorUtility.ToHtmlStringRGB(Colour));
         }
         else
         {
-            PlayerPrefs.SetString("ColourTopSave", ColorUtility.ToHtmlStringRGB(Colour));
+            PlayerPrefs.SetString("MLColourTopSave", ColorUtility.ToHtmlStringRGB(Colour));
         }
     }
 

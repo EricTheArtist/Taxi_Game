@@ -69,7 +69,7 @@ public class AbilitySystem : MonoBehaviour
     {
         _PickupSystem = gameObject.GetComponent<PickUpSystem>();
         //setting which ability should be acive based on what car is selected
-        Carindex = PlayerPrefs.GetInt("ActiveCar");
+        Carindex = PlayerPrefs.GetInt("MLActiveCar");
 
         if(Carindex == 2 || Carindex == 5 || Carindex == 7 || Carindex == 9 || Carindex == 13) //golf or BMW or delorian or golf7
         {
@@ -78,7 +78,7 @@ public class AbilitySystem : MonoBehaviour
             CanSpawnPickup = true;
 
             //sets value of ability timer
-            SpeedAbilityTimer = PlayerPrefs.GetFloat("Ability_Speed");
+            SpeedAbilityTimer = PlayerPrefs.GetFloat("MLAbility_Speed");
             AdditionalAbilityIndex = 0;
 
         }
@@ -96,7 +96,7 @@ public class AbilitySystem : MonoBehaviour
             Ability_Text.SetText("PERISAI");
             CanSpawnPickup = true;
             //sets value of ability timer
-            ArmourAbiltyTimer = PlayerPrefs.GetFloat("Ability_Armour");
+            ArmourAbiltyTimer = PlayerPrefs.GetFloat("MLAbility_Armour");
             if (Carindex == 6)
             {
                 AdditionalAbilityIndex = 1;
@@ -113,7 +113,7 @@ public class AbilitySystem : MonoBehaviour
             CanSpawnPickup = true;
             AdditionalAbilityIndex = 0;
             //sets value of ability timer
-            DoubleCoinAbilityTimer = PlayerPrefs.GetFloat("Ability_Double");
+            DoubleCoinAbilityTimer = PlayerPrefs.GetFloat("MLAbility_Double");
         }
         if (Carindex == 0)
         {

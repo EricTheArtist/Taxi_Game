@@ -31,7 +31,7 @@ public class Shop_Item_Car : MonoBehaviour
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
         NCP = canvas.GetComponent<NonConsumablePurchasing>();
 
-        if(PlayerPrefName == "Car00") //just for the starter vhecle
+        if(PlayerPrefName == "MLCar00") //just for the starter vhecle
         {
             PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
         }
@@ -46,7 +46,7 @@ public class Shop_Item_Car : MonoBehaviour
         if (Owned == true) //if the player already owns the item, disables the price overlay
         {
             PriceBG.SetActive(false);
-            if (CarIndex == PlayerPrefs.GetInt("ActiveCar")) // if the this car is the same as the active car update to show it in the shop 
+            if (CarIndex == PlayerPrefs.GetInt("MLActiveCar")) // if the this car is the same as the active car update to show it in the shop 
             {
                 SUIM.UpdateCars(CarIndex);
             }
@@ -84,7 +84,7 @@ public class Shop_Item_Car : MonoBehaviour
         }
         else if (Owned == true) // if the player owns the item sets it to the active car
         {
-            PlayerPrefs.SetInt("ActiveCar", CarIndex);
+            PlayerPrefs.SetInt("MLActiveCar", CarIndex);
             SUIM.UpdateCars(CarIndex);
 
             SEM.SwitchedCars();
@@ -102,7 +102,7 @@ public class Shop_Item_Car : MonoBehaviour
             {
             PriceBG.SetActive(false);
         
-            PlayerPrefs.SetInt("ActiveCar", CarIndex);
+            PlayerPrefs.SetInt("MLActiveCar", CarIndex);
 
             SUIM.UpdateCars(CarIndex);
 

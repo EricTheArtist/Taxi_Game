@@ -21,37 +21,37 @@ public class OpenWorldTutorial : MonoBehaviour
     void Start()
     {
 
-        if (PlayerPrefs.GetInt("NI_OWFirstOpen") == 0)
+        if (PlayerPrefs.GetInt("MLNI_OWFirstOpen") == 0)
         {
-            PlayerPrefs.SetInt("NI_OWFirstOpen", 1);
+            PlayerPrefs.SetInt("MLNI_OWFirstOpen", 1);
             OpenInterface(OWFirstOpen, C_TaxiBoss, 1);
         }
     }
 
     public void OWFirstPickUpEvent()
     {
-        if (PlayerPrefs.GetInt("NI_OWFirstPickUp") == 0)
+        if (PlayerPrefs.GetInt("MLNI_OWFirstPickUp") == 0)
         {
             OpenInterface(OWFirstPickup, C_TaxiBoss, 0);
-            PlayerPrefs.SetInt("NI_OWFirstPickUp", 1);
+            PlayerPrefs.SetInt("MLNI_OWFirstPickUp", 1);
         }
     }
 
     public void OWFirstDropOffEvent()
     {
-        if (PlayerPrefs.GetInt("NI_OWFirstDropOff") == 0)
+        if (PlayerPrefs.GetInt("MLNI_OWFirstDropOff") == 0)
         {
             OpenInterface(OWFirstDropOff, C_TaxiBoss, 0);
-            PlayerPrefs.SetInt("NI_OWFirstDropOff", 1);
+            PlayerPrefs.SetInt("MLNI_OWFirstDropOff", 1);
         }
     }
 
     public void OWFirstCrashEvent()
     {
-        if (PlayerPrefs.GetInt("NI_OWFirstCrash") == 0)
+        if (PlayerPrefs.GetInt("MLNI_OWFirstCrash") == 0)
         {
             OpenInterface(OWFirstCrash, C_Police, 1);
-            PlayerPrefs.SetInt("NI_OWFirstCrash", 1);
+            PlayerPrefs.SetInt("MLNI_OWFirstCrash", 1);
         }
     }
 

@@ -30,19 +30,19 @@ public class PlayerLevelSystem : MonoBehaviour
     {
 
 
-        PlayerCurrentXP = PlayerPrefs.GetInt("CurrentXP");
-        PlayerLevel = PlayerPrefs.GetInt("PlayerLevel");
+        PlayerCurrentXP = PlayerPrefs.GetInt("MLCurrentXP");
+        PlayerLevel = PlayerPrefs.GetInt("MLPlayerLevel");
 
         
 
-        if (PlayerPrefs.HasKey("XPtoNextLevel"))
+        if (PlayerPrefs.HasKey("MLXPtoNextLevel"))
         {
-            XPtoNextLevel = PlayerPrefs.GetInt("XPtoNextLevel");
+            XPtoNextLevel = PlayerPrefs.GetInt("MLXPtoNextLevel");
         }
         else
         {
             XPtoNextLevel = 20;
-            PlayerPrefs.SetInt("XPtoNextLevel", XPtoNextLevel);
+            PlayerPrefs.SetInt("MLXPtoNextLevel", XPtoNextLevel);
             
         }
     }
@@ -57,9 +57,9 @@ public class PlayerLevelSystem : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            PlayerPrefs.SetInt("XPtoNextLevel", 0);
-            PlayerPrefs.SetInt("CurrentXP", 0);
-            PlayerPrefs.SetInt("PlayerLevel", 0);
+            PlayerPrefs.SetInt("MLXPtoNextLevel", 0);
+            PlayerPrefs.SetInt("MLCurrentXP", 0);
+            PlayerPrefs.SetInt("MLPlayerLevel", 0);
         }
     }
     
@@ -73,7 +73,7 @@ public class PlayerLevelSystem : MonoBehaviour
         notice.SetXPValue(XP);
 
         PlayerCurrentXP += XP;
-        PlayerPrefs.SetInt("CurrentXP",PlayerCurrentXP);
+        PlayerPrefs.SetInt("MLCurrentXP", PlayerCurrentXP);
 
         if(PlayerCurrentXP >= XPtoNextLevel)
         {
@@ -84,13 +84,13 @@ public class PlayerLevelSystem : MonoBehaviour
     void setNewLevel(int newLevel)
     {
         PlayerLevel = newLevel;
-        PlayerPrefs.SetInt("PlayerLevel", PlayerLevel);
+        PlayerPrefs.SetInt("MLPlayerLevel", PlayerLevel);
 
         PlayerCurrentXP = PlayerCurrentXP - XPtoNextLevel;
-        PlayerPrefs.SetInt("CurrentXP", PlayerCurrentXP);
+        PlayerPrefs.SetInt("MLCurrentXP", PlayerCurrentXP);
 
         XPtoNextLevel = (int)(50f * (Mathf.Pow(PlayerLevel + 1, 2) - (5 * (PlayerLevel + 1)) + 8));
-        PlayerPrefs.SetInt("XPtoNextLevel", XPtoNextLevel);
+        PlayerPrefs.SetInt("MLXPtoNextLevel", XPtoNextLevel);
 
     }
 

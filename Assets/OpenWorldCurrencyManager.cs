@@ -40,19 +40,19 @@ public class OpenWorldCurrencyManager : MonoBehaviour
 
     void RefreshUIAmounts()
     {
-        coins = PlayerPrefs.GetInt("Main Amount");
+        coins = PlayerPrefs.GetInt("MLMain Amount");
         Coins_Text.SetText(coins.ToString());
         Coins_Shadow.SetText(coins.ToString());
 
-        passengers = PlayerPrefs.GetInt("TotalPassengerCount");
+        passengers = PlayerPrefs.GetInt("MLTotalPassengerCount");
         Passenger_Count.SetText(passengers.ToString());
     }
 
     public void IncrementCoins(int NumberOfCoins)
     {
-        coins = PlayerPrefs.GetInt("Main Amount");
+        coins = PlayerPrefs.GetInt("MLMain Amount");
         coins += NumberOfCoins;
-        PlayerPrefs.SetInt("Main Amount",coins);
+        PlayerPrefs.SetInt("MLMain Amount", coins);
         RefreshUIAmounts();
     }
 
@@ -77,9 +77,9 @@ public class OpenWorldCurrencyManager : MonoBehaviour
 
     public void IncrementPassengers(int NumberOfPassengers)
     {
-        passengers = PlayerPrefs.GetInt("TotalPassengerCount");
+        passengers = PlayerPrefs.GetInt("MLTotalPassengerCount");
         passengers += NumberOfPassengers;
-        PlayerPrefs.SetInt("TotalPassengerCount", passengers);
+        PlayerPrefs.SetInt("MLTotalPassengerCount", passengers);
         RefreshUIAmounts();
     }
 

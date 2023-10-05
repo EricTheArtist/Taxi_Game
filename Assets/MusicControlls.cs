@@ -19,21 +19,21 @@ public class MusicControlls : MonoBehaviour
     {
         MusicTrack = gameObject.GetComponent<AudioSource>();
 
-        if (PlayerPrefs.GetInt("Music") == 1)
+        if (PlayerPrefs.GetInt("MLMusic") == 1)
         {
             MusicPlaying = false;
             RadioBackPlate.color = InactiveColor;
             MusicTrack.Pause();
             Debug.Log("Start: Music Paused");
         }
-        if (PlayerPrefs.GetInt("Music") == 0)
+        if (PlayerPrefs.GetInt("MLMusic") == 0)
         {
             MusicPlaying = true;
             RadioBackPlate.color = ActiveColor;
             MusicTrack.Play();
             Debug.Log("Start: Music Play");
         }
-        if (PlayerPrefs.GetInt("EffectsVol") == 1)
+        if (PlayerPrefs.GetInt("MLEffectsVol") == 1)
         {
             EffectsColour = false;
             if (EffectsBackPlate != null) 
@@ -42,7 +42,7 @@ public class MusicControlls : MonoBehaviour
             }
             
         }
-        if (PlayerPrefs.GetInt("EffectsVol") == 0)
+        if (PlayerPrefs.GetInt("MLEffectsVol") == 0)
         {
             EffectsColour = true;
             if (EffectsBackPlate != null) 
@@ -62,7 +62,7 @@ public class MusicControlls : MonoBehaviour
             MusicPlaying = false;
             RadioBackPlate.color = InactiveColor;
             MusicTrack.Pause();
-            PlayerPrefs.SetInt("Music", 1);
+            PlayerPrefs.SetInt("MLMusic", 1);
 
             Debug.Log("Toggle: Music Paused");
         }
@@ -71,7 +71,7 @@ public class MusicControlls : MonoBehaviour
             MusicPlaying = true;
             RadioBackPlate.color = ActiveColor;
             MusicTrack.Play();
-            PlayerPrefs.SetInt("Music", 0);
+            PlayerPrefs.SetInt("MLMusic", 0);
             Debug.Log("Toggle: Music Play");
         }
     }
@@ -82,11 +82,11 @@ public class MusicControlls : MonoBehaviour
         {
             EffectsColour = false;
             EffectsBackPlate.color = InactiveColor;
-            PlayerPrefs.SetInt("EffectsVol", 1);
+            PlayerPrefs.SetInt("MLEffectsVol", 1);
         }
         else
         {
-            PlayerPrefs.SetInt("EffectsVol", 0);
+            PlayerPrefs.SetInt("MLEffectsVol", 0);
             EffectsColour = true;
             EffectsBackPlate.color = ActiveColor;
         }
