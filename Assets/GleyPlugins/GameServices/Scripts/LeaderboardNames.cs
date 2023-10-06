@@ -1,6 +1,6 @@
 public enum LeaderboardNames
 {
-TaxiRank,
-SwipingDistance,
-PassengersCount,
+Pangkat,
+Jarak,
+Penumpang,
 }

@@ -24,9 +24,9 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_taxi_rank = "CgkI3M-635wQEAIQAw"; // <GPGSID>
-        public const string achievement_this_is_taxi_ranked = "CgkI3M-635wQEAIQAg"; // <GPGSID>
-        public const string achievement_the_bus_boy = "CgkI3M-635wQEAIQAQ"; // <GPGSID>
+        public const string leaderboard_pangkat = "CgkIg77U7sMIEAIQAQ"; // <GPGSID>
+        public const string leaderboard_jarak = "CgkIg77U7sMIEAIQAw"; // <GPGSID>
+        public const string leaderboard_penumpang = "CgkIg77U7sMIEAIQAg"; // <GPGSID>
 
 }
 

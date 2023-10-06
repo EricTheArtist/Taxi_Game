@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GleyGameServices;
 using UnityEngine;
+using TMPro;
 
 
 public class GoogleHandlerScript : MonoBehaviour
@@ -16,7 +17,7 @@ public class GoogleHandlerScript : MonoBehaviour
 
     private long steeringHighscore = 0;
     private long swipingHighscore = 0;
-
+    public TMP_Text DebugText;
     
     //check login status
     private bool isLoggedInCheck = false;
@@ -50,10 +51,12 @@ public class GoogleHandlerScript : MonoBehaviour
             if (success == true)
             {
                 //Login was successful
+                DebugText.SetText("");
             }
             else
             {
-                //Login failed
+                DebugText.SetText("Google Game Services Login Fail");
+            //Login failed
             }
             Debug.Log("Login success: " + success);
             GleyGameServices.ScreenWriter.Write("Login success: " + success);
@@ -75,7 +78,7 @@ public class GoogleHandlerScript : MonoBehaviour
                 long OverAllScore = 0;
                 OverAllScore = PlayerPrefs.GetInt("MLOverAllScore");
                 //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
-                GameServices.Instance.SubmitScore(OverAllScore,LeaderboardNames.TaxiRank , ScoreSubmitted);
+                GameServices.Instance.SubmitScore(OverAllScore,LeaderboardNames.Pangkat , ScoreSubmitted);
             }
             
         }
@@ -89,7 +92,7 @@ public class GoogleHandlerScript : MonoBehaviour
                 //GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                //Eric Try this line of code below, so call the leaderbaord by name instead of index.
                //I have commented the same lines to use in the other fucntions.
-               GameServices.Instance.SubmitScore(swipingHighscore,LeaderboardNames.SwipingDistance, ScoreSubmitted);
+               GameServices.Instance.SubmitScore(swipingHighscore,LeaderboardNames.Jarak, ScoreSubmitted);
                //Debug.Log("Board Index: " + indexNumberLeaderboards + allLeaderboards[indexNumberLeaderboards]);
             }
             
@@ -117,7 +120,7 @@ public class GoogleHandlerScript : MonoBehaviour
                 passengerCount = PlayerPrefs.GetInt("MLMostPassengers");//add passenger count prefs
                 //Debug.Log("GoogleHandler Passenger Count: " + passengerCount);
                 //GameServices.Instance.SubmitScore(passengerCount,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
-                GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.PassengersCount, ScoreSubmitted);
+                GameServices.Instance.SubmitScore(passengerCount,LeaderboardNames.Penumpang, ScoreSubmitted);
             }
             
         }
