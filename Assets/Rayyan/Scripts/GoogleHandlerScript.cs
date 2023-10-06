@@ -82,7 +82,7 @@ public class GoogleHandlerScript : MonoBehaviour
             Debug.Log("Check and Add Swipping Highscore");
             if (GameServices.Instance.IsLoggedIn())
             {
-                indexNumberLeaderboards = 3;
+                indexNumberLeaderboards = 2;
                 swipingHighscore = PlayerPrefs.GetInt("HighScore");
                 //GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                //Eric Try this line of code below, so call the leaderbaord by name instead of index.
@@ -92,6 +92,7 @@ public class GoogleHandlerScript : MonoBehaviour
             }
             
         } 
+    /*
         public void SteeringScoreHandler()
         {
             Debug.Log("Check and Add Steering Highscore");
@@ -104,6 +105,7 @@ public class GoogleHandlerScript : MonoBehaviour
             }
             
         }
+    */
         public void PassengerCountHandler()
         {
             
