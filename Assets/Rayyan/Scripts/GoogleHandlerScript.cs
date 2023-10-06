@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GleyGameServices;
 using UnityEngine;
 
+
 public class GoogleHandlerScript : MonoBehaviour
 {
     [SerializeField]private LeaderboardNames[] allLeaderboards;//Stores all LeaderBaords
@@ -16,6 +17,7 @@ public class GoogleHandlerScript : MonoBehaviour
     private long steeringHighscore = 0;
     private long swipingHighscore = 0;
 
+    
     //check login status
     private bool isLoggedInCheck = false;
     [SerializeField] private GameObject Player;
@@ -82,7 +84,7 @@ public class GoogleHandlerScript : MonoBehaviour
             Debug.Log("Check and Add Swipping Highscore");
             if (GameServices.Instance.IsLoggedIn())
             {
-                indexNumberLeaderboards = 3;
+                indexNumberLeaderboards = 2;
                 swipingHighscore = PlayerPrefs.GetInt("MLHighScore");
                 //GameServices.Instance.SubmitScore(swipingHighscore,allLeaderboards[indexNumberLeaderboards], ScoreSubmitted);
                //Eric Try this line of code below, so call the leaderbaord by name instead of index.
@@ -91,7 +93,7 @@ public class GoogleHandlerScript : MonoBehaviour
                //Debug.Log("Board Index: " + indexNumberLeaderboards + allLeaderboards[indexNumberLeaderboards]);
             }
             
-        } 
+        } /*
         public void SteeringScoreHandler()
         {
             Debug.Log("Check and Add Steering Highscore");
@@ -103,7 +105,7 @@ public class GoogleHandlerScript : MonoBehaviour
                 GameServices.Instance.SubmitScore(steeringHighscore,LeaderboardNames.SteeringDistance, ScoreSubmitted);
             }
             
-        }
+        }*/
         public void PassengerCountHandler()
         {
             

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AchievmentHandler : MonoBehaviour
 {
+    /*
     [SerializeField] private AchievementNames[] allAchievements;
     private int indexNumberAchievements;
 
@@ -143,5 +144,5 @@ public class AchievmentHandler : MonoBehaviour
 
     #endregion
     #endregion
-    
+    */
 }
