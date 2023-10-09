@@ -12,6 +12,8 @@ public class IS_MainScript : MonoBehaviour
     public GameObject RewardRecievedScreen;
     public bool Tank = false;
     public OpenWorldLoadShootingRange OWLSR;
+    public KartGame.UI.LoadSceneButton LSB;
+
 #if UNITY_ANDROID
     string appkey = "19a7621a5";
 #elif UNITY_IOS
@@ -218,6 +220,10 @@ string appkey = "";
         if(OWLSR != null)
         {
             OWLSR.LoadShootingRange();
+        }
+        if(LSB!= null)
+        {
+            LSB.LoadTargetScene();
         }
 
 
