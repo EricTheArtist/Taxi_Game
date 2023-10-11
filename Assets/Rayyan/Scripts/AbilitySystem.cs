@@ -90,7 +90,7 @@ public class AbilitySystem : MonoBehaviour
             AdditionalAbilityIndex = 2;
 
         }
-        if(Carindex == 3 || Carindex == 6) //landcruiser or tank
+        if(Carindex == 3 || Carindex == 6 || Carindex == 14) //landcruiser or tank
         {
             abilityType = AbilityType.Armour;
             Ability_Text.SetText("SHIELD");

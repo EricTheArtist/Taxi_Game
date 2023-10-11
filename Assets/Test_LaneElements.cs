@@ -74,7 +74,7 @@ public class Test_LaneElements : MonoBehaviour
             {
                 AbilityObjectCooldrink.SetActive(true);
             }
-            if (Carindex == 3 || Carindex == 6) //landcruiser
+            if (Carindex == 3 || Carindex == 6 || Carindex == 14) //landcruiser
             {
                 AbilityObjectShield.SetActive(true);
             }

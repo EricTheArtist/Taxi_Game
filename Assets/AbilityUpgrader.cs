@@ -107,7 +107,7 @@ public class AbilityUpgrader : MonoBehaviour
             TimeToUpgrade = 10;
             SetIcon(4);
         }
-        if (carIndex == 3 || carIndex == 6) //landcruiser
+        if (carIndex == 3 || carIndex == 6 || carIndex == 14) //landcruiser
         {
 
             AbilityTitle.SetText("SHIELD");
@@ -174,7 +174,7 @@ public class AbilityUpgrader : MonoBehaviour
             {
 
             }
-            if (CarINDEX == 3 || CarINDEX == 6) //landcruiser
+            if (CarINDEX == 3 || CarINDEX == 6 || CarINDEX == 14) //landcruiser
             {
                 PlayerPrefs.SetFloat("Ability_Armour", NewTimeVal);
             }
