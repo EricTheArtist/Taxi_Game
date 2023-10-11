@@ -22,6 +22,7 @@ public class NarritiveSystem : MonoBehaviour
     public string NI_1stHighScoreUploadedToLeaderboard; //this currently happens when they crash for first time
     public string NI_1st5KCoins;
     public string NI_CrashWithCop;
+    public GameObject GameModePointer;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,17 @@ public class NarritiveSystem : MonoBehaviour
             PlayerPrefs.SetInt("MLNI_Welcome", 1);
             OpenInterface(NI_Welcome,C_TaxiBoss);
         }
+        if (PlayerPrefs.GetInt("MLNI_GameModePointer") == 1)
+        {
+            Destroy(GameModePointer);
+        }
+    }
+
+    public void NI_selectgamemode()
+    {
+        Destroy(GameModePointer);
+        PlayerPrefs.SetInt("MLNI_GameModePointer", 1);
+
     }
 
     // Update is called once per frame

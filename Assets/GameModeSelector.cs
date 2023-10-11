@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameModeSelector : MonoBehaviour
 {
@@ -10,9 +11,14 @@ public class GameModeSelector : MonoBehaviour
     public Color32 InactiveColor;
     public Image OWplate;
     public Image Highwayplate;
-
+    public UnityEvent SelectInfintyRun;
     void Start()
     {
+        if (!PlayerPrefs.HasKey("MLGameModeSelectOpenW"))
+        {
+            PlayerPrefs.SetInt("MLGameModeSelectOpenW", (true ? 1 : 0));
+        }
+
         OpenWorldMode = (PlayerPrefs.GetInt("MLGameModeSelectOpenW") != 0);
         toggleGameModeSelect();
     }
@@ -29,6 +35,7 @@ public class GameModeSelector : MonoBehaviour
         OpenWorldMode = false;
         PlayerPrefs.SetInt("MLGameModeSelectOpenW", (false ? 1 : 0));
         toggleGameModeSelect();
+        SelectInfintyRun.Invoke();
     }
 
     void toggleGameModeSelect()
