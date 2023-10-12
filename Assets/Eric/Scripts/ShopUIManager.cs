@@ -302,6 +302,21 @@ public class ShopUIManager : MonoBehaviour
         Coins = Coins - deductAmount;
         PlayerPrefs.SetInt("Main Amount", Coins);
         updateCoinsText();
+
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(
+        Firebase.Analytics.FirebaseAnalytics.EventSpendVirtualCurrency,
+        new Firebase.Analytics.Parameter[] 
+        {
+            new Firebase.Analytics.Parameter(
+                Firebase.Analytics.FirebaseAnalytics.ParameterItemName, "In Game Currency Spend"),
+            new Firebase.Analytics.Parameter(
+                Firebase.Analytics.FirebaseAnalytics.ParameterValue, deductAmount),
+            new Firebase.Analytics.Parameter(
+                Firebase.Analytics.FirebaseAnalytics.ParameterVirtualCurrencyName, "Coins"),
+        }
+        );
+
+
     }
 
     public void DeductPassengers(int deductAmount)

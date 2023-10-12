@@ -55,13 +55,13 @@ public class Shop_Item_Rim : MonoBehaviour
             if(NCS.CheckProductOwnership(MyRimProductID) == false)
             {
                 Owned = false;
-                PlayerPrefs.SetInt(MyRimProductID, (false ? 1 : 0));
+                PlayerPrefs.SetInt(PlayerPrefName, (false ? 1 : 0));
                 PriceBG.SetActive(true);
             }
             if(NCS.CheckProductOwnership(MyRimProductID) == true)
             {
                 Owned = true;
-                PlayerPrefs.SetInt(MyRimProductID, (true ? 1 : 0));
+                PlayerPrefs.SetInt(PlayerPrefName, (true ? 1 : 0));
                 PriceBG.SetActive(false);
             }
             

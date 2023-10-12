@@ -54,6 +54,19 @@ public class Shop_Item_Car : MonoBehaviour
         if (Premium == true)
         {
             LocalisedPrice.text = NCP.priceString(MyCarProductID);
+
+            if (NCP.CheckProductOwnership(MyCarProductID) == false)
+            {
+                Owned = false;
+                PlayerPrefs.SetInt(PlayerPrefName, (false ? 1 : 0));
+                PriceBG.SetActive(true);
+            }
+            if (NCP.CheckProductOwnership(MyCarProductID) == true)
+            {
+                Owned = true;
+                PlayerPrefs.SetInt(PlayerPrefName, (true ? 1 : 0));
+                PriceBG.SetActive(false);
+            }
         }
     }
 
