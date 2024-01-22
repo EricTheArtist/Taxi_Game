@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BuyNoAdsPanelManager : MonoBehaviour
 {
-    public IS_MainScript IS_MAIN;
-    public NonConsumablePurchasing NCP;
+    //public IS_MainScript IS_MAIN;
+    //public NonConsumablePurchasing NCP;
     public GameObject BuynoadsButton;
 
     private void Start()
@@ -22,18 +22,18 @@ public class BuyNoAdsPanelManager : MonoBehaviour
         bool Owned = (PlayerPrefs.GetInt("NoAds") != 0);
         if (Owned == true)
         {
-            IS_MAIN.DestroyBannerAd();
+            //IS_MAIN.DestroyBannerAd();
             BuynoadsButton.SetActive(false);
         }
         else
         {
-            NCP.BuyProduct("com.vetkoekstudios.taxiranked.noads");
+            //NCP.BuyProduct("com.vetkoekstudios.taxiranked.noads");
         }
         
     }
     public void VoidONnoAdsPurchase()
     {
-        IS_MAIN.DestroyBannerAd();
+        //IS_MAIN.DestroyBannerAd();
         BuynoadsButton.SetActive(false);
     }
 }

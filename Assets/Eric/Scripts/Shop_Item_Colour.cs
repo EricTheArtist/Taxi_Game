@@ -24,7 +24,7 @@ public class Shop_Item_Colour : MonoBehaviour
     public string MyproductID;
 
     public bool Premium = false;
-    public NonConsumablePurchasing NCP;
+    //public NonConsumablePurchasing NCP;
 
     public bool TestWithoutIAPButton = false;
 
@@ -51,7 +51,7 @@ public class Shop_Item_Colour : MonoBehaviour
         }
         if (Premium == true)
         {
-            RealCurrencyPrice.text = NCP.priceString(MyproductID);
+           // RealCurrencyPrice.text = NCP.priceString(MyproductID);
         }
     }
 
@@ -77,7 +77,7 @@ public class Shop_Item_Colour : MonoBehaviour
         }
         if(Premium == true && TestWithoutIAPButton == true && Owned == false)
         {
-            NCP.BuyProduct(MyproductID);
+            //NCP.BuyProduct(MyproductID);
         }
 
 
@@ -85,7 +85,7 @@ public class Shop_Item_Colour : MonoBehaviour
     }
 
     public void RealCurrencyColourPurchaseSucess()
-    {
+    {/*
         if (isActiveAndEnabled)
         {
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
@@ -99,7 +99,7 @@ public class Shop_Item_Colour : MonoBehaviour
 
         }
         }
-
+        */
 
     }
 

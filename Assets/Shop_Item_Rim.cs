@@ -18,7 +18,7 @@ public class Shop_Item_Rim : MonoBehaviour
     public int RimIndex;
 
     ShopEffectManager SEM;
-    NonConsumablePurchasing NCS;
+    //NonConsumablePurchasing NCS;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class Shop_Item_Rim : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
-        NCS = canvas.GetComponent<NonConsumablePurchasing>();
+        //NCS = canvas.GetComponent<NonConsumablePurchasing>();
         if (PlayerPrefName == "Rim01") //just for the starter vhecle
         {
             PlayerPrefs.SetInt(PlayerPrefName, (Owned ? 1 : 0));
@@ -49,7 +49,7 @@ public class Shop_Item_Rim : MonoBehaviour
             }
         }
         if (Premium == true)
-        {
+        { /*
             RealMoneyPrice.text = NCS.priceString(MyRimProductID);
 
             if(NCS.CheckProductOwnership(MyRimProductID) == false)
@@ -64,7 +64,7 @@ public class Shop_Item_Rim : MonoBehaviour
                 PlayerPrefs.SetInt(PlayerPrefName, (true ? 1 : 0));
                 PriceBG.SetActive(false);
             }
-            
+            */
             
         }
     }
@@ -74,7 +74,7 @@ public class Shop_Item_Rim : MonoBehaviour
     {
         if(Premium == true && Owned == false)
         {
-            NCS.BuyProduct(MyRimProductID);
+            //NCS.BuyProduct(MyRimProductID);
         }
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false) // if the player has enough money and does not own the item
         {
@@ -107,6 +107,7 @@ public class Shop_Item_Rim : MonoBehaviour
         }
     }
 
+    /*
     public void RealCurrencyRimsPurchaseSucess() // called by the IAP button when a payment is sucessful
     {
         if (isActiveAndEnabled)
@@ -123,15 +124,10 @@ public class Shop_Item_Rim : MonoBehaviour
             }
         }
 
-        
-        
-        
-        
-
 
         //SUIM.LockControl(false);
     }
-
+    */
 
     public void PurchaseEvent()
     {

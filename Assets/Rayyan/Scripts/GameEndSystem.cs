@@ -55,11 +55,11 @@ public class GameEndSystem : MonoBehaviour
     public UnityEvent CrashEvent;
     public UnityEvent CopCrashEvent;
 
-    private GoogleHandlerScript googleHandlerScript;
+    //private GoogleHandlerScript googleHandlerScript;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private AudioClip _crashSoundClip;
 
-    private OverallRankingSystem _overallRankingSystem;
+    //private OverallRankingSystem _overallRankingSystem;
     public GameObject GameManager;
     AbilitySystem ABS;
     Car_Settings_Updater CSU;
@@ -74,14 +74,14 @@ public class GameEndSystem : MonoBehaviour
     {
         CSU = gameObject.GetComponent<Car_Settings_Updater>();
         ABS = gameObject.GetComponent<AbilitySystem>();
-        _overallRankingSystem = GameManager.GetComponent<OverallRankingSystem>();
+        //_overallRankingSystem = GameManager.GetComponent<OverallRankingSystem>();
         THS = gameObject.GetComponent<Test_HighScore>();
         currency_system = GetComponent<CurrencySystem>();
         controller = GetComponent<SimpleInputNamespace.TestCharacterController>();
         controller.game_over = true;
         //ISS_Ads.LoadBannerAd(0);
         //ISS_Ads.LoadFullAd();
-        googleHandlerScript = gameManager.GetComponent<GoogleHandlerScript>();
+        //googleHandlerScript = gameManager.GetComponent<GoogleHandlerScript>();
     }
 
     // Update is called once per frame
@@ -167,7 +167,7 @@ public class GameEndSystem : MonoBehaviour
         controller.breakButton.SetActive(false);
         welcome_ui_dynamic.SetActive(true);
         Endgame_Calculations();
-        _overallRankingSystem.ResetValues();
+        //_overallRankingSystem.ResetValues();
         //call endgame calculations here
         //save players current amount
     }
@@ -177,9 +177,9 @@ public class GameEndSystem : MonoBehaviour
         MissionsSystem.MSinstance.AddCoins(currency_system.run_amount); //mission tracking
         Score_Text.SetText(THS.scoreInt.ToString());
         MissionsSystem.MSinstance.AddDistanceDriven(THS.scoreInt); //mission tracking
-        _overallRankingSystem.ScoreCalculator();
-        googleHandlerScript.PassengerCountHandler();
-        googleHandlerScript.OverAllScoreHandler();
+        //_overallRankingSystem.ScoreCalculator();
+        //googleHandlerScript.PassengerCountHandler();
+        //googleHandlerScript.OverAllScoreHandler();
         /*
         if (HMM.SteeringWheelActive == true)
         {
@@ -192,7 +192,7 @@ public class GameEndSystem : MonoBehaviour
         
         
             HighScore = PlayerPrefs.GetInt("HighScore");
-            googleHandlerScript.SwippingScoreHandler();
+            //googleHandlerScript.SwippingScoreHandler();
             Debug.Log("Swipingscore pushed");
         
 

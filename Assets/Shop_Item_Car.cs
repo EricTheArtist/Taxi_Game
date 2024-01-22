@@ -21,7 +21,7 @@ public class Shop_Item_Car : MonoBehaviour
     public Text LocalisedPrice;
 
     ShopEffectManager SEM;
-    NonConsumablePurchasing NCP;
+    //NonConsumablePurchasing NCP;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class Shop_Item_Car : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         SUIM = canvas.GetComponent<ShopUIManager>();
         SEM = GameObject.FindGameObjectWithTag("ShopEffectManager").GetComponent<ShopEffectManager>();
-        NCP = canvas.GetComponent<NonConsumablePurchasing>();
+        //NCP = canvas.GetComponent<NonConsumablePurchasing>();
 
         if(PlayerPrefName == "Car00") //just for the starter vhecle
         {
@@ -53,7 +53,7 @@ public class Shop_Item_Car : MonoBehaviour
         }
         if (Premium == true)
         {
-            LocalisedPrice.text = NCP.priceString(MyCarProductID);
+           /* LocalisedPrice.text = NCP.priceString(MyCarProductID);
 
             if (NCP.CheckProductOwnership(MyCarProductID) == false)
             {
@@ -66,7 +66,7 @@ public class Shop_Item_Car : MonoBehaviour
                 Owned = true;
                 PlayerPrefs.SetInt(PlayerPrefName, (true ? 1 : 0));
                 PriceBG.SetActive(false);
-            }
+            }*/
         }
     }
 
@@ -76,7 +76,7 @@ public class Shop_Item_Car : MonoBehaviour
         Owned = (PlayerPrefs.GetInt(PlayerPrefName) != 0);
         if (Premium == true && Owned == false)
         {
-            NCP.BuyProduct(MyCarProductID);
+           // NCP.BuyProduct(MyCarProductID);
         }
         if (SUIM.CheckForEnoughMoney(Price) == true && Owned == false && Premium == false && CarIndex!= 8) // if the player has enough money and does not own the item
         {
@@ -106,7 +106,7 @@ public class Shop_Item_Car : MonoBehaviour
 
     }
 
-    public void RealCurrencyCarPurchaseSucess() // subscribed to event called by NonConsumablePurchasing when a payment is sucessful
+    /*public void RealCurrencyCarPurchaseSucess() // subscribed to event called by NonConsumablePurchasing when a payment is sucessful
     {
         if (isActiveAndEnabled)
         {
@@ -123,11 +123,11 @@ public class Shop_Item_Car : MonoBehaviour
             SUIM.LockControl(false);
             }
         }
-
+    
 
         
 
-    }
+    } */
 
     public void PurchaseEvent()
     {

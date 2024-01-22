@@ -9,17 +9,17 @@ public class Shop_Item_coins : MonoBehaviour
     int CurrentBalance;
     int NewBalance;
     public ShopUIManager SUIM;
-    public NonConsumablePurchasing NCP;
+    //public NonConsumablePurchasing NCP;
     public string ProductID;
     public Text PriceTag;
     public void CoinPurchaseRequest()
     {
-        NCP.BuyGold(ProductID,CoinsToBuy);
+       // NCP.BuyGold(ProductID,CoinsToBuy);
 
     }
 
     public void Start()
     {
-        PriceTag.text = NCP.priceString(ProductID);
+      //  PriceTag.text = NCP.priceString(ProductID);
     }
 }

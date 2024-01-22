@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ShootingRangeEntry : MonoBehaviour
 {
     public GameObject RentTankOption;
-    public IS_MainScript ISMAIN;
+    //public IS_MainScript ISMAIN;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -15,7 +15,7 @@ public class ShootingRangeEntry : MonoBehaviour
             bool Owned = (PlayerPrefs.GetInt("Car02Premium") != 0);
             if(Owned == true)
             {
-                ISMAIN.DestroyBannerAd();
+                //ISMAIN.DestroyBannerAd();
                 SceneManager.LoadScene(3);
             }
             else

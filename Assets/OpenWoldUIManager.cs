@@ -7,7 +7,7 @@ public class OpenWoldUIManager : MonoBehaviour
 {
     public GameObject OWsettigns_ui_static;
     public GameObject OWsettigns_ui_dynamic;
-    public IS_MainScript IS_MAIN;
+    //public IS_MainScript IS_MAIN;
 
     // Start is called before the first frame update
     void Start()
@@ -37,14 +37,14 @@ public class OpenWoldUIManager : MonoBehaviour
 
     public void shop_button()
     {
-        IS_MAIN.DestroyBannerAd();
+        //IS_MAIN.DestroyBannerAd();
         Time.timeScale = 1f;
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void InfinteRunner_button()
     {
-        IS_MAIN.DestroyBannerAd();
+        //IS_MAIN.DestroyBannerAd();
         Time.timeScale = 1f;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }

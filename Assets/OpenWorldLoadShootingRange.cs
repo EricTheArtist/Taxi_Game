@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class OpenWorldLoadShootingRange : MonoBehaviour
 {
-    public IS_MainScript IS_MAIN;
+    //public IS_MainScript IS_MAIN;
     public GameObject BuynoadsButton;
 
     private void Start()
@@ -19,7 +19,7 @@ public class OpenWorldLoadShootingRange : MonoBehaviour
             bool Owned = (PlayerPrefs.GetInt("NoAds") != 0);
             if(Owned == false)
             {
-                IS_MAIN.LoadBannerAd(0);   
+                //IS_MAIN.LoadBannerAd(0);   
             }
             
         }
@@ -28,7 +28,7 @@ public class OpenWorldLoadShootingRange : MonoBehaviour
     }
     public void LoadShootingRange()
     {
-        IS_MAIN.DestroyBannerAd();
+        //IS_MAIN.DestroyBannerAd();
         SceneManager.LoadScene(3);
     }
 }
